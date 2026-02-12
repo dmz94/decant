@@ -238,7 +238,7 @@ Extends Flowdoc from format-only conversion to content transformation, informed 
 
 ## Sources
 
-- British Dyslexia Association. (2023). *Dyslexia Friendly Style Guide*. https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide
+- British Dyslexia Association. (2023). *Dyslexia Friendly Style Guide*. https://www.bdadyslexia.org.uk/
 - Kuster, S. M., van Weerdenburg, M., Gompel, M., & Bosman, A. M. T. (2018). Dyslexie font does not benefit reading in children with or without dyslexia. *Annals of Dyslexia*, 68(1), 25-42.
 - Marinus, E., Mostard, M., Segers, E., Schubert, T. M., Madelaine, A., & Wheldall, K. (2016). A special font for people with dyslexia: Does it work and, if so, why? *Dyslexia*, 22(3), 233-244.
 - Wery, J. J., & Diliberto, J. A. (2017). The effect of a specialized dyslexia font, OpenDyslexic, on reading rate and accuracy. *Annals of Dyslexia*, 67(2), 114-127.
@@ -251,3 +251,5 @@ Extends Flowdoc from format-only conversion to content transformation, informed 
 - Duranovic, M., Senka, S., & Babic-Gavric, B. (2018). Influence of increased letter spacing and font type on the reading ability of dyslexic children. *Annals of Dyslexia*, 68(3), 218-228.
 - International Dyslexia Association. (2025). *Dyslexia Definition & Understanding*. https://dyslexiaida.org/
 - Braille Institute. (2025). *Atkinson Hyperlegible Font*. https://www.brailleinstitute.org/freefont/
+- OpenDyslexic. (n.d.). *OpenDyslexic Font*. https://opendyslexic.org/
+- Lexend. (n.d.). *The Lexend Font Family*. https://www.lexend.com/
