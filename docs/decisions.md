@@ -33,12 +33,15 @@ Rationale:
 - No embedding required
 - Research shows standard sans serif fonts perform as well as specialized dyslexia fonts for speed and accuracy
 
+**Embedding rule: System fonts are never embedded in output HTML.**
+
 v1 Font Toggle: OpenDyslexic (optional)
 
 Implementation:
 - Enabled via `--font opendyslexic`
 - Embedded as base64 in CSS only when selected
 - Not embedded by default
+- **Font selection is binary: system fonts OR OpenDyslexic only**
 
 Research context:
 - Most controlled studies show no reliable improvement over standard sans serif fonts
@@ -53,7 +56,52 @@ Deferred to v2:
 - Atkinson Hyperlegible
 - Dyslexie
 
-See `1.5 Research_typography_guidelines.md` for full research summary.
+See [research_typography_guidelines.md](research_typography_guidelines.md) for full research summary.
+
+---
+
+## Internal Document Model
+
+**Model structure (v1):**
+
+```
+Document
+  - title
+  - sections[]
+    - heading
+    - blocks[]
+      - paragraph (contains inline elements)
+      - ordered_list (items contain inline elements)
+      - unordered_list (items contain inline elements)
+      - preformatted (code/pre blocks)
+      - quote (blockquote, contains inline elements)
+
+Inline elements (explicitly modeled):
+  - text
+  - emphasis (em, i)
+  - strong (strong, b)
+  - code (inline code)
+  - link (a with href and text)
+```
+
+**Critical constraint:**
+Inline elements must be modeled explicitly in the internal representation.
+
+**Rationale:**
+Without explicit inline modeling, the parser must choose between:
+- Dropping inline semantics (data loss) - breaks technical/work documents
+- Leaking raw HTML into output (breaks rendering and trust)
+
+Both outcomes are unacceptable for a general-purpose document converter.
+
+**Block type additions:**
+- `preformatted`: Protects code blocks and technical content from formatting interference
+- `quote`: Explicit blockquote handling preserves semantic distinction from regular paragraphs
+
+These prevent silent structure flattening and maintain semantic clarity required for technical and work documents.
+
+**Intentional exclusions:**
+The internal model is intentionally minimal. Unsupported structures (tables, images, forms, navigation elements, etc.) are not represented in the model and are handled via deterministic degradation rules defined in the HTML Element Handling section.
 
 ---
 
@@ -72,7 +120,7 @@ Decision: ~0.16em (minimum 3.5× letter spacing)
 Rationale: Must scale proportionally with letter spacing to maintain word boundaries.
 
 Line Length  
-Decision: 60-70 characters  
+Decision: 60–70 characters  
 Rationale: Reduces eye-tracking fatigue and excessive line breaks.
 
 Color and Contrast  
@@ -104,7 +152,7 @@ Deferred to v2: DOCX and Markdown input.
 Decision: Reject non-semantic HTML.
 
 Rejection criteria:
-- No h1-h6 headings
+- No h1–h6 headings
 - No p, ul, or ol elements
 - Pure div-based layout
 
@@ -137,7 +185,7 @@ Rationale: Predictable and testable behavior aligned with HTML5 semantics.
 ## HTML Element Handling
 
 Supported:
-- h1-h6
+- h1–h6
 - p
 - ol, ul
 - blockquote
@@ -271,15 +319,15 @@ Typography:
 - Word spacing ~0.16em
 
 Layout:
-- 60-70 character line width
+- 60–70 character line width
 - Single column
 - Generous margins
 - Left-aligned
 
 Spacing:
-- Headings =20% larger than body
-- =1em paragraph spacing
-- =1.5em before headings
+- Headings ≥20% larger than body
+- ≥1em paragraph spacing
+- ≥1.5em before headings
 - Clear list indentation
 
 Color:
@@ -295,6 +343,36 @@ Print:
 - Do not shrink below 12pt
 - Adequate margins
 - Maintain contrast in black-and-white
+
+---
+
+## Architecture Principles
+
+**Determinism:**
+The transformation engine must be deterministic. Identical input + identical version + identical flags → identical output (model representation and rendered HTML).
+
+**Note:** Formatting rules are subject to change during v1 validation based on dyslexic reader feedback.
+
+**Parser constraints:**
+The parser layer must map cleanly into the internal document model without special cases or raw DOM structure dependencies.
+
+Any HTML structure not representable in the internal model must be degraded deterministically before model construction, following the rules defined in the HTML Element Handling section.
+
+**Renderer constraints:**
+The renderer must never depend on raw DOM structures. All rendering decisions derive from the internal model only.
+
+**Library reuse:**
+HTML parsing and sanitization will reuse mature, well-tested libraries rather than custom implementations.
+
+**Content selection:**
+Content selection (main → article → body) is deterministic and rule-based. Flowdoc v1 does not include heuristic readability algorithms or scraping logic.
+
+**Rationale:**
+- Determinism enables golden-file testing and prevents formatting drift
+- Clean parser/model mapping prevents accumulation of special cases and edge-case handling
+- Renderer independence from DOM ensures portability and testability
+- Mature libraries reduce security vulnerabilities and parsing edge cases
+- Deterministic content selection maintains predictable, testable behavior
 
 ---
 
