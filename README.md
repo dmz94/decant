@@ -74,6 +74,7 @@ Example output: flowdoc convert recipe.html produces recipe.flowdoc.html
 
 - [SCOPE.md](SCOPE.md) - Project scope, boundaries, and what Flowdoc is (and isn't)
 - [docs/decisions.md](docs/decisions.md) - Technical decisions, typography research, and implementation rationale
+- [docs/research_typography_guidelines.md](docs/research_typography_guidelines.md) - Full typography research and BDA guidelines
 
 ## Contributing
 

@@ -72,7 +72,7 @@ Decision: ~0.16em (minimum 3.5× letter spacing)
 Rationale: Must scale proportionally with letter spacing to maintain word boundaries.
 
 Line Length  
-Decision: 6070 characters  
+Decision: 60-70 characters  
 Rationale: Reduces eye-tracking fatigue and excessive line breaks.
 
 Color and Contrast  
@@ -104,7 +104,7 @@ Deferred to v2: DOCX and Markdown input.
 Decision: Reject non-semantic HTML.
 
 Rejection criteria:
-- No h1h6 headings
+- No h1-h6 headings
 - No p, ul, or ol elements
 - Pure div-based layout
 
@@ -137,7 +137,7 @@ Rationale: Predictable and testable behavior aligned with HTML5 semantics.
 ## HTML Element Handling
 
 Supported:
-- h1h6
+- h1-h6
 - p
 - ol, ul
 - blockquote
@@ -271,7 +271,7 @@ Typography:
 - Word spacing ~0.16em
 
 Layout:
-- 6070 character line width
+- 60-70 character line width
 - Single column
 - Generous margins
 - Left-aligned
@@ -323,4 +323,4 @@ Print:
 - Zorzi et al. (2012). PNAS
 - Franzen et al. (2019). Annals of Eye Science (conference abstract)
 
-See `1.5 Research_typography_guidelines.md` for full research detail.
+See [research_typography_guidelines.md](research_typography_guidelines.md) for full research summary.
