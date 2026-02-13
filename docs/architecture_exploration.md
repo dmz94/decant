@@ -1,143 +1,313 @@
 
-No hidden state. No project files. No persistent configuration. No embedded application logic.
+# Flowdoc — Architectural Brainstorming
 
-This implies:
+**Status:** Revised  
+**Last Updated:** February 11, 2026  
 
-- Deterministic output.
-- Clear exit codes.
-- Errors to stderr.
-- Output to stdout (or explicit file).
-- Safe for scripting and piping.
-- Predictable behavior in automation contexts.
-
-If the engine is cleanly separated from the CLI, the CLI can remain thin and composable. That keeps scope tight and avoids it turning into an application platform.
-
-The danger to watch is feature creep — adding flags or behaviors that shift it from “transformer” to “application.” That boundary matters.
+This document captures some architectural brainstorming around Flowdoc’s runtime, CLI philosophy, integration strategy, parsing approach, and longer-term considerations. The purpose is to retain the thinking behind early technical exploration without presenting it as finalized decisions.
 
 ---
 
-## 3) Does CLI-first make this hard for non-technical users?
+## Runtime and Tech Stack
 
-That concern is valid.
+Will this tool be a Linux or Windows CLI? What is the tech stack? What are the realistic implementation options, what are the pros and cons of each, and why should one be chosen over the others?
 
-A CLI-first tool inherently limits accessibility for non-technical users. However, sequencing matters.
+First, make an explicit product decision: Flowdoc should be cross-platform from day one (Windows + macOS + Linux). A CLI is inherently portable if the right runtime and packaging approach are selected. “Picking an OS” would unintentionally constrain adoption and downstream integrations. The real decision is the distribution model and runtime.
 
-If you build a wrapper too early, you multiply surface area:
-- UI decisions
-- Packaging decisions
-- Preview logic
-- Platform quirks
-- Distribution complexity
+Tech stack options that fit the v1 scope (semantic HTML → internal model → self-contained HTML):
 
-Before the engine is validated, that’s risk.
+### Option A: Python CLI + Python library (recommended for v1)
 
-The better sequence is:
+**Pros**
 
-1. Build the engine.
-2. Expose it via CLI.
-3. Validate value with real users.
-4. Add a minimal wrapper if and when it’s justified.
+- Best-in-class HTML parsing and sanitization ecosystem (BeautifulSoup/lxml, html5lib, bleach, etc.).
+- Fast iteration speed; easy to prototype transformation rules and typography output.
+- Straightforward test tooling, fixtures, and golden-file tests.
+- Natural path to a library-first architecture (importable by other tools).
 
-The wrapper is packaging, not architecture. If the engine is cleanly separated (library-first), adding a drag-and-drop wrapper later becomes straightforward.
+**Cons**
 
-The architectural priority now is separation of concerns — not user interface.
+- Packaging can be inconvenient if users must install Python.
+- `pip install` works well for developers but is less ideal for non-technical users.
 
----
+**Mitigation**
 
-## 4) I want other developers to be able to incorporate this into their tools.
-
-This is an important strategic point.
-
-If Flowdoc is to be embedded in something like a recipe manager, the architecture must support it from day one.
-
-That implies:
-
-- A clean internal model.
-- Deterministic transformation.
-- No reliance on raw DOM structures in rendering.
-- A stable engine boundary.
-- Library-first design, CLI as a thin layer.
-
-There are two possible integration surfaces:
-
-1. Direct library import.
-2. CLI invocation with predictable contract.
-
-Library-first architecture is significantly more attractive for real integration. If the core logic is separable and clean, integration becomes feasible. If everything is wired through CLI assumptions, it becomes harder.
-
-Even if integration isn’t immediate, designing for it now prevents painful refactoring later.
+- Publish both: a pip package for developers and standalone binaries (via PyInstaller or similar) for non-developers.
 
 ---
 
-## 5) Long-term roadmap: wrapper? browser extension? library? what else?
+### Option B: Node.js CLI + library
 
-Several expansion paths exist:
+**Pros**
 
-- Desktop wrapper
-- Local web UI
-- Browser extension
-- Additional input formats (Markdown, DOCX)
-- Native PDF generation
+- Common in toolchains; good CLI distribution via npm.
+- Solid HTML parsing options (parse5, jsdom, cheerio) and sanitizers.
+- Straightforward path to a future Electron wrapper if needed.
 
-The risk is expanding before validating the core transformation.
+**Cons**
 
-The disciplined sequence should be:
-
-- Engine first.
-- Validate with dyslexic readers.
-- Stabilize transformation rules.
-- Expand only if justified.
-
-A browser extension, for example, pushes the project toward scraping and heuristic extraction. That’s a different problem space.
-
-A wrapper is packaging. It should not dictate engine design.
-
-The architecture should assume expansion is possible — but not necessary for v1.
+- Sanitization correctness and browser-like parsing behavior can become subtle.
+- Dependency trees can grow large.
+- Producing a true single binary is more difficult without shipping the Node runtime.
 
 ---
 
-## 6) Parsing HTML is well understood. Shouldn’t we reuse libraries?
+### Option C: Go CLI (with optional library)
 
-Yes. Absolutely.
+**Pros**
 
-HTML parsing and sanitization are solved problems. Flowdoc should not implement its own parser.
+- Excellent single-binary distribution across operating systems.
+- Fast and predictable deployment; aligns well with a “Linux command” philosophy.
 
-The pipeline should look like:
+**Cons**
 
-HTML → parsed DOM (library) → internal model → renderer → output HTML
-
-Flowdoc’s value is in:
-
-- The internal document model.
-- Deterministic degradation rules.
-- Readability-focused rendering.
-- Typography and layout decisions.
-
-Not in reinventing HTML tokenization or security sanitization.
-
-It is also important to draw a boundary:
-
-- Content selection should remain deterministic (main → article → body).
-- No heuristic readability algorithms in v1.
-- No scraping-style content guessing.
-
-Otherwise the project shifts scope entirely.
+- HTML parsing and sanitization ecosystem is thinner than Python or Node for this use case.
+- Slower iteration while transformation rules are still evolving.
+- Rapid changes to typography or layout rules create a heavier development loop.
 
 ---
 
-## 7) Anything else to consider?
+### Option D: Rust CLI
 
-A few structural considerations surfaced during discussion:
+**Pros**
 
-- Determinism should include version and flag context.
-- Golden-file tests will likely be necessary to prevent formatting drift.
-- Renderer must not depend on DOM shortcuts.
-- Engine and interface must remain separate.
-- Embedded font size implications should be understood.
-- Scope creep is the main long-term risk.
+- Strong performance and safety characteristics; long-term engine credibility.
+- Potentially well-suited for embedding as a library later.
 
-None of these change the immediate next step, but they shape how Step 4 and Step 5 should be implemented.
+**Cons**
+
+- Highest development friction early on.
+- HTML parsing and web-like behavior require more effort.
+- Overkill for the v1 scope.
 
 ---
 
-This captures the current architectural thinking before implementation begins.
+### Why Python is the Recommended Choice for v1
+
+- The differentiator is not parsing; it is the transformation rules, readable HTML output, and validation with dyslexic readers.
+- Python minimizes time-to-correctness for sanitization and DOM traversal, and keeps the internal model work inexpensive to evolve.
+- A “Linux-command-feeling” tool can still be shipped by distributing a single executable per OS, even if implemented in Python.
+
+---
+
+### Concrete Recommendation
+
+- Architecture: core engine as a library + thin CLI wrapper.
+- Implementation: Python 3.12+.
+- Distribution: pip for developers; standalone binaries for Windows/macOS/Linux.
+- CLI interface: stable, scriptable, deterministic exit codes, predictable output naming.
+
+---
+
+## Linux Command Philosophy
+
+Do one thing well, and compose with other commands.
+
+What this means in practice:
+
+- The CLI should be a pure transformer: input → output, with no interactive state, no hidden caches, and no “project” concept.
+- It should be easy to use in pipes and automation: predictable exit codes, deterministic output, stable flags.
+- Concerns should remain separated: parsing/selection, transformation, rendering, packaging.
+
+How this expresses itself in the CLI:
+
+- Default support for stdin/stdout (even when file arguments are accepted):
+
+  `flowdoc convert < input.html > output.html`
+
+- File I/O remains optional and explicit:
+
+  `flowdoc convert input.html -o output.html`
+
+- Composition-friendly commands rather than a single mega-command:
+
+  - `flowdoc convert` (main transformation)
+  - `flowdoc validate` (checks semantic HTML and explains rejection)
+  - `flowdoc info` (prints detected title/sections, element counts, degradation summary)
+
+This aligns with a Unix mental model: inspect → validate → convert.
+
+Determinism and trust (critical for composability):
+
+- Same input + same version + same flags ⇒ same output (byte-stable if feasible).
+- No silent dropping: degraded elements either receive placeholders and/or are reported via a machine-readable report (`--report json`).
+
+This matters for future integrations. If the CLI behaves as a reliable pure function, other tools can invoke it safely. If the engine is separated as a library, direct embedding remains viable.
+
+Minimal rule of thumb:
+
+- Fewer flags, sharper contracts.
+- Flags are added only when they change output meaningfully and predictably.
+
+---
+
+## Embedding in Other Tools
+
+There is a goal of allowing other developers to incorporate Flowdoc (e.g., a recipe manager offering “Save as Flowdoc”).
+
+This is primarily an architecture and packaging concern. The objective is to be embed-friendly from day one.
+
+What downstream developers typically require:
+
+- A callable library API (preferred).
+- Alternatively, a stable CLI they can shell out to.
+- Deterministic output and predictable failure modes.
+- Machine-readable diagnostics.
+
+Concrete enabling steps:
+
+### A) Library-first core
+
+Expose a small, stable API such as:
+
+- `convert(html: str, options) -> (output_html: str, report)`
+- `validate(html: str) -> report`
+- `extract_main(html: str) -> (html_fragment, report)` (optional)
+
+The core should remain pure: no filesystem requirement, no global state.
+
+### B) Stable CLI contract
+
+- Exit codes: 0 success; non-zero for validation failure, parse error, or internal error.
+- `--report json` option producing structured diagnostics.
+- `--stdout` mode for piping.
+
+### C) Versioning strategy
+
+Downstream tools are sensitive to unexpected visual diffs.
+
+- Semantic versioning.
+- Clear documentation of what changes in MINOR versus MAJOR.
+- Formatting rule changes that alter appearance should be treated as potentially breaking.
+
+### D) Licensing and embedding
+
+MIT licensing supports adoption.
+OpenDyslexic license handling should remain explicit.
+
+### E) Integration documentation
+
+A concise `docs/integration.md` describing:
+
+- Library usage.
+- CLI usage.
+- Exit codes.
+- Report schema.
+- Example calls.
+
+A commercial tool is more likely to embed a library dependency than require users to install an external CLI. The architectural implication is clear: separate the core conversion engine cleanly from the CLI layer.
+
+---
+
+## HTML Parsing and Library Reuse
+
+HTML parsing is a solved problem and should rely on mature libraries. Parsing and sanitizing HTML is not the differentiator; transformation rules and readable output are.
+
+Key principle:
+
+- Do not implement a custom HTML parser.
+- Do not implement a custom sanitizer.
+- Treat those as infrastructure.
+
+Required capabilities from parsing:
+
+- Correct handling of real-world, imperfect HTML.
+- Reliable DOM traversal.
+- HTML5-compliant parsing behavior.
+- Safe sanitization (scripts, event handlers, external resources removed).
+
+Ownership boundaries:
+
+**Owned**
+
+- DOM → Internal Model mapping.
+- Degradation rules (tables, images, etc.).
+- Main content extraction policy (main → article → body).
+- Typography and layout generation.
+- Deterministic rendering rules.
+
+**Not owned**
+
+- Low-level tokenization.
+- HTML specification edge-case handling.
+- XSS protection logic.
+- URL normalization.
+
+Architectural flow:
+
+HTML input  
+→ Parser (library)  
+→ Sanitizer (library)  
+→ DOM tree  
+→ Internal Document model  
+→ Readability transformation rules  
+→ Deterministic HTML renderer  
+
+Scraping-style heuristic extraction would shift the product into a different problem space. For v1, focus remains on well-structured semantic HTML.
+
+Reuse aggressively. Time and complexity should be invested in the internal model and transformation layer.
+
+---
+
+## Additional Strategic Considerations
+
+1. Testing strategy
+
+- Golden file tests (input → exact expected output).
+- Regression tests for typography and layout rules.
+- Real-world fixture corpus (recipes, articles, technical documentation).
+
+Formatting engines drift without golden tests.
+
+2. Change control over formatting rules
+
+Typography tweaks may appear minor but can be visually breaking.
+
+Questions to resolve:
+
+- Are formatting rule changes MAJOR version bumps?
+- Are visual shifts permitted in MINOR versions?
+
+3. Output stability vs readability evolution
+
+If spacing or font sizing improves based on research or feedback:
+
+- Should old behavior auto-upgrade?
+- Or should versioned “format profiles” exist?
+
+4. Main-content extraction boundary
+
+Current policy: deterministic selection (main → article → body).
+
+Heuristic readability extraction introduces scraping complexity and maintenance burden.
+
+5. Internationalization
+
+Unaddressed areas include:
+
+- Non-English languages.
+- RTL scripts.
+- CJK typography.
+- Hyphenation rules.
+
+A decision may be required on whether v1 is English-focused by design.
+
+6. Accessibility positioning
+
+Is the aim informal accessibility improvement or formal WCAG alignment?
+
+7. Feedback loop
+
+Validation with dyslexic readers implies structured feedback collection and potential rule evolution.
+
+8. Governance model
+
+If open source:
+
+- Who decides typography changes?
+- How are formatting disputes resolved?
+- Are external pull requests accepted for formatting rules?
+
+9. Long-term positioning
+
+Determine whether Flowdoc remains dyslexia-specific or evolves into a broader readability engine with dyslexia as a core focus.

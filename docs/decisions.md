@@ -1,5 +1,8 @@
 # Technical Decisions and Rationale
 
+**Status:** Revised  
+**Last Updated:** February 13, 2026  
+
 This document captures key technical decisions for Flowdoc v1, including typography research, implementation choices, and the reasoning behind them.
 
 ---

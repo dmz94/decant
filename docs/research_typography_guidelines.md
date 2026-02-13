@@ -2,7 +2,6 @@
 
 **Status:** Revised  
 **Last Updated:** February 11, 2026  
-**Research Period:** Initial 30 minutes + peer review  
 **Sources:** BDA Style Guide 2023, IDA, peer-reviewed studies (2013-2025)
 
 ---
