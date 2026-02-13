@@ -251,63 +251,90 @@ Reuse aggressively. Time and complexity should be invested in the internal model
 
 ## Additional Strategic Considerations
 
-1. Testing strategy
+### Testing Strategy
 
-- Golden file tests (input → exact expected output).
-- Regression tests for typography and layout rules.
-- Real-world fixture corpus (recipes, articles, technical documentation).
+Golden file tests (input → exact expected output).  
+Regression tests for typography and layout rules.  
+A real-world fixture corpus (recipes, articles, technical documentation).
 
 Formatting engines drift without golden tests.
 
-2. Change control over formatting rules
+---
+
+### Change Control Over Formatting Rules
 
 Typography tweaks may appear minor but can be visually breaking.
 
-Questions to resolve:
+Key questions:
 
-- Are formatting rule changes MAJOR version bumps?
+- Are formatting rule changes treated as MAJOR version bumps?
 - Are visual shifts permitted in MINOR versions?
 
-3. Output stability vs readability evolution
+---
+
+### Output Stability vs Readability Evolution
 
 If spacing or font sizing improves based on research or feedback:
 
-- Should old behavior auto-upgrade?
+- Should existing output automatically adopt the new behavior?
 - Or should versioned “format profiles” exist?
 
-4. Main-content extraction boundary
+---
+
+### Main-Content Extraction Boundary
 
 Current policy: deterministic selection (main → article → body).
 
-Heuristic readability extraction introduces scraping complexity and maintenance burden.
+Introducing heuristic readability extraction (similar to Readability.js) would shift the product into scraping territory and significantly increase maintenance complexity.
 
-5. Internationalization
+---
 
-Unaddressed areas include:
+### Internationalization
+
+Areas not yet addressed:
 
 - Non-English languages.
-- RTL scripts.
+- Right-to-left scripts.
 - CJK typography.
 - Hyphenation rules.
 
-A decision may be required on whether v1 is English-focused by design.
+A decision may be required on whether v1 is intentionally English-focused.
 
-6. Accessibility positioning
+---
 
-Is the aim informal accessibility improvement or formal WCAG alignment?
+### Accessibility Positioning
 
-7. Feedback loop
+Clarify whether the goal is:
 
-Validation with dyslexic readers implies structured feedback collection and potential rule evolution.
+- Informal accessibility improvement, or
+- Explicit alignment with WCAG standards.
 
-8. Governance model
+This distinction affects long-term positioning and potential institutional adoption.
+
+---
+
+### Feedback and Iteration Model
+
+Validation with dyslexic readers implies a structured feedback loop.
+
+Questions to consider:
+
+- How will feedback be collected?
+- Will typography rules evolve in response?
+- How will changes be communicated?
+
+---
+
+### Governance Model
 
 If open source:
 
-- Who decides typography changes?
-- How are formatting disputes resolved?
+- Who approves typography or formatting changes?
+- How are disputes resolved?
 - Are external pull requests accepted for formatting rules?
 
-9. Long-term positioning
+---
 
-Determine whether Flowdoc remains dyslexia-specific or evolves into a broader readability engine with dyslexia as a core focus.
+### Long-Term Positioning
+
+Determine whether Flowdoc remains dyslexia-specific or evolves into a broader readability engine with dyslexia as a primary focus.
