@@ -1,6 +1,6 @@
 # FLOWDOC V1 PLAN (REVISED)
 
-## Step 1 — Lock scope in writing
+## Step 1 - Lock scope in writing
 
 Create SCOPE.md and freeze it for v1:
 
@@ -24,7 +24,7 @@ Create SCOPE.md and freeze it for v1:
 - **Semantic HTML is required.** Flowdoc will reject div soup with a clear error.
 - **Readability trumps fidelity.** Original visual design is not preserved.
 
-## Step 1.5 — Research typography guidelines
+## Step 1.5 - Research typography guidelines
 
 Read British Dyslexia Association Style Guide for typography recommendations.
 
@@ -34,7 +34,7 @@ Document findings in `docs/decisions.md`:
 * Color/contrast recommendations
 * Sources and research backing decisions
 
-## Step 2 — Create GitHub repo
+## Step 2 - Create GitHub repo
 
 * **Repo name:** flowdoc
 * **License:** MIT
@@ -68,7 +68,7 @@ Document findings in `docs/decisions.md`:
 - **Font decision:** System fonts (Arial/Verdana) default; OpenDyslexic as only v1 toggle
 - **Font licensing:** OpenDyslexic SIL-OFL allows embedding
 - Why PDF is output format (v2), not input
-- **Main content selection rule:** `<main>` → `<article>` → `<body>`
+- **Main content selection rule:** `<main>` -> `<article>` -> `<body>`
 - **Firm policies for unsupported HTML elements** (tables, images, nav, footnotes, etc.)
 - **Inline element handling:** whitespace preservation, nesting rules
 - **HTML sanitization:** scripts, event handlers, active content dropped
@@ -116,7 +116,7 @@ Document findings in `docs/decisions.md`:
 - CODEOWNERS file (add when review responsibilities are clear)
 - Signed commits (optional, adds friction early)
 
-## Step 3 — Define minimal internal model
+## Step 3 - Define minimal internal model
 
 Document model - enough for recipes and general documents:
 
@@ -178,7 +178,7 @@ Both outcomes kill trust for technical/work documents.
 - `quote` handles blockquotes already parsed in Step 4
 - These prevent silently dropping content or flattening structure
 
-## Step 3.5 — Architecture & Tech Stack
+## Step 3.5 - Architecture & Tech Stack
 
 Lock architectural and runtime decisions before implementation.
 
@@ -194,12 +194,12 @@ Lock architectural and runtime decisions before implementation.
 Implementing Step 4 (parser) before locking architecture risks rework when building Step 5 (renderer). Renderer requirements may expose parser design issues.
 
 **Deliverable:**
-Add new section to decisions.md titled "Step 3.5 — Architecture & Tech Stack" containing all finalized decisions with justifications.
+Add new section to decisions.md titled "Step 3.5 - Architecture & Tech Stack" containing all finalized decisions with justifications.
 
 **Constraint validation:**
 Before proceeding to Step 4, verify architecture supports determinism, clean separation, embedding capability, and security requirements.
 
-## Step 4 — Implement HTML → model
+## Step 4 - Implement HTML -> model
 
 ### Main content selection (deterministic)
 
@@ -232,11 +232,11 @@ Parse only the selected main content area. Drop everything else (nav, header, fo
 **Nested inline tags:**
 - Support one level of nesting (e.g., `<strong>` inside `<a>`)
 - Flatten deeper nesting with consistent rule: preserve innermost semantic meaning
-- Example: `<a><strong><em>text</em></strong></a>` → treat as strong emphasized link
+- Example: `<a><strong><em>text</em></strong></a>` -> treat as strong emphasized link
 
 ### HTML sanitization (security)
 
-Because HTML in → HTML out, apply strict sanitization:
+Because HTML in -> HTML out, apply strict sanitization:
 
 **Drop entirely:**
 - `<script>` tags and content
@@ -295,7 +295,7 @@ Because HTML in → HTML out, apply strict sanitization:
 
 **Goal:** Every unsupported element has a deterministic, predictable outcome.
 
-## Step 5 — Implement renderer + CSS
+## Step 5 - Implement renderer + CSS
 
 Create readable HTML output:
 
@@ -349,7 +349,7 @@ Based on BDA typography guidelines, these are **mandatory** for v1:
 
 **These are not suggestions.** Violating these requirements defeats the purpose of dyslexia-friendly output.
 
-## Step 6 — Add CLI wrapper
+## Step 6 - Add CLI wrapper
 
 Basic command-line interface:
 
@@ -409,7 +409,7 @@ flowdoc convert input.html [-o output.html]
   - Error: "Input HTML lacks semantic structure (no headings, paragraphs, or lists found)"
 - Do NOT attempt best-effort conversion of div soup
 
-## Step 7 — Create test suite
+## Step 7 - Create test suite
 
 Build test cases covering different document types and failure modes:
 
@@ -448,7 +448,7 @@ Beyond visual inspection, add automated regression prevention:
 
 Convert all fixtures, visually inspect results, catch obvious failures.
 
-## Step 8a — Test with dyslexic readers
+## Step 8a - Test with dyslexic readers
 
 Share output with Colin and Cameron:
 
@@ -473,7 +473,7 @@ Higher-signal feedback than "looks good / looks bad."
 
 **Note:** Font preference question is about individual preference, NOT a research claim about OpenDyslexic efficacy.
 
-## Step 8b — Code and architecture review
+## Step 8b - Code and architecture review
 
 Ask Colin and Cameron for:
 
@@ -482,7 +482,7 @@ Ask Colin and Cameron for:
 * Internal model evaluation (too narrow? too broad?)
 * Error handling suggestions
 
-## Step 9 — Plan v2 (only after v1 works end-to-end)
+## Step 9 - Plan v2 (only after v1 works end-to-end)
 
 After v1 validates core value, consider expansion in two directions:
 
@@ -509,7 +509,7 @@ Based on BDA writing style guidance, extend Flowdoc from format-only conversion 
 
 **Readability Enhancement:**
 - Readability scoring against BDA plain language principles
-- Sentence simplification (break long sentences, passive → active voice)
+- Sentence simplification (break long sentences, passive -> active voice)
 - Jargon expansion (detect abbreviations, provide expanded forms on first use)
 - Paragraph breaking (split dense text blocks into shorter, spaced paragraphs)
 - Symbol cleanup (remove/replace characters interfering with TTS/screen readers)
