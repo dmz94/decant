@@ -1,285 +1,91 @@
-# Flowdoc - Scope Document
+# Flowdoc - v1 Scope
 
-**Version:** 1.0  
+**Version:** 1.0
 **Status:** Frozen for v1 development
-
----
-
-## What is Flowdoc?
 
 Flowdoc is a general-purpose document converter that transforms structured documents into dyslexia-friendly, readable formats.
 
-**v1 is optimized for text-flow documents** - content with headings, paragraphs, and lists - rather than complex layout replication or visual design preservation.
+v1 is intentionally narrow: it validates core value with dyslexic readers before any scope expansion.
 
-The tool accepts documents with semantic structure and produces optimized output with:
-- Dyslexia-friendly typography (defaults informed by research and tuned via reader feedback)
-- Proper spacing and layout
-- Single-column, flowed presentation
-- Cross-platform compatibility (modern browsers, mobile devices, print)
+## Design principle
 
----
+Readability over fidelity.
 
-## Design Principle: Readability Over Fidelity
+Flowdoc does not preserve original layout, branding, or page geometry. Output may look completely different from the source. This is by design.
 
-**Flowdoc intentionally does not preserve original layout, branding, or page geometry.**
+## v1 inputs
 
-The goal is readable content for dyslexic readers, not visual reproduction of the source document. Output may look completely different from the original - this is by design, not a limitation.
+HTML only.
 
----
+Operational requirement: input must be **semantic HTML** (text-flow structure), not div-based layouts.
 
-## Use Cases
+At a minimum, v1 expects:
+- at least one heading in **h1-h3**
+- body content expressed via **p and/or ul/ol**
+- semantic structure usable without heuristics
 
-Flowdoc works on text-based structured content:
+Flowdoc rejects non-semantic HTML with a clear error. Exact validation rules are defined in `docs/decisions.md`.
 
-- Recipes
-- Articles and blog posts
-- Educational materials
-- Technical documentation
-- Instructional content (how-tos, manuals)
-- Work documents
-- Any document with headings, paragraphs, and lists
+## v1 output
 
----
+Readable HTML (canonical output).
 
-## v1 Scope
+Self-contained means:
+- a single HTML file
+- no external CSS, fonts, scripts, or images
+- CSS inlined in one `<style>` block
+- fonts embedded only when OpenDyslexic toggle is enabled
 
-### Input Format
+PDF output is out of scope for v1. Use browser print-to-PDF.
 
-**HTML only** (Tier-1 input)
+## In-scope functionality (v1)
 
-**Requirements:**
-- Must contain semantic structure: headings (h1-h6), paragraphs (p), lists (ul, ol)
-- "Semantic HTML" means proper use of semantic tags, not div-based layouts ("div soup")
-- Content must have text-flow structure (headings, paragraphs, lists)
+- Deterministic main content selection (main -> article -> body)
+- Parse headings, paragraphs, lists, blockquotes, and code blocks
+- Preserve inline emphasis, strong, inline code, and links
+- Deterministic degradation for unsupported elements (e.g., tables/images)
+- Strict sanitization to remove active content
+- Simple CLI conversion workflow
+- Validate usefulness with dyslexic readers before expanding scope
 
-**Flowdoc will reject non-semantic HTML with a clear error message.**
+Exact handling rules live in `docs/decisions.md`.
 
-Rejection criteria (operational definition):
-* Input lacks at least one h1-h3 heading
-* Input lacks p, ul, or ol elements for body content
-* Input is div-only layout structure with no semantic tags
-* Missing heading hierarchy triggers error
+## Out of scope (v1)
 
-Error message: "Input HTML lacks semantic structure (no headings, paragraphs, or lists found). Flowdoc requires semantic HTML elements (h1-h6, p, ul, ol)."
+Inputs:
+- PDF
+- DOCX
+- Markdown
+- OCR / image-based documents
+- Heuristic scraping / "readability extraction" for div soup
 
-### Output Format
-
-**Readable HTML** (canonical output)
-
-**Self-contained HTML definition:**
-- No external dependencies (no external CSS, fonts, scripts, or images)
-- All CSS inlined in a single `<style>` block
-- Fonts are NOT embedded by default (system font stack used)
-- Fonts ARE embedded only when OpenDyslexic toggle is used (see below)
-- Output is a single HTML file that works offline
-
-**Compatibility:**
-- Modern browsers (recent versions of Chrome, Edge, Safari, Firefox)
-- Mobile devices (iOS, Android)
-- Print (via browser print-to-PDF)
-
-### HTML Element Handling
-
-**Supported (v1 first-class):**
-- Headings (h1-h6)
-- Paragraphs (p)
-- Ordered lists (ol)
-- Unordered lists (ul)
-- Blockquotes (blockquote)
-- Code blocks (pre, code)
-- Inline emphasis (em, strong)
-- Links (a with href)
-- Inline code (code within paragraphs)
-
-**Degrades with placeholders (v1):**
-- Tables -> `[Table omitted - X rows, Y columns]`
-- Images -> `[Image: alt text]` or `[Image omitted]` if alt missing
-- Figures/captions -> Caption text preserved, image handled per image policy
-- Footnotes/endnotes -> Converted to regular paragraphs at point of reference
-
-**Dropped (v1):**
-- Navigation (nav)
-- Sidebars (aside)
-- Headers/footers (header, footer)
-- Advertisements
-- Decorative containers
-- Scripts, event handlers, active content (security)
-
-### OpenDyslexic Font Toggle
-
-**In scope for v1:**
-- Optional OpenDyslexic font toggle (accessed via `--font opendyslexic` CLI flag)
-- NOT the default font
-- Provided as a preference toggle; no claim of universal improvement
-- OpenDyslexic is embedded only when selected; otherwise system font stack (Arial, Verdana) is used and no fonts are embedded
-- Note: Enabling OpenDyslexic embeds font files and increases output file size significantly.
-
-**Out of scope for v1:**
-- Multiple font toggles (Lexend, Dyslexie, Atkinson Hyperlegible, etc.)
-- v1 supports exactly two font options: system fonts OR OpenDyslexic
-
-### Core Features
-- Parse HTML semantic structure
-- Apply dyslexia-friendly typography
-- Optimize spacing, line height, margins
-- Single-column layout
-- Command-line interface
-- Deterministic content selection (main -> article -> body)
-- HTML sanitization:
-  * Remove all script tags and content
-  * Strip inline event handlers (onclick, onload, etc.)
-  * Remove external resource URLs
-  * Drop iframe, object, embed elements
-  * Drop all active content
-
----
-
-## Non-Goals (Out of Scope for v1)
-
-### Input
-- PDF files (fixed layout, hard to parse reliably)
-- DOCX files (defer to v2)
-- Markdown files (defer to v2)
-- Image-based documents (OCR out of scope)
-- "Div soup" HTML without semantic structure
-
-### Output
-- Native PDF generation (v1 uses browser print-to-PDF)
+Outputs:
+- native PDF generation
 - DOCX output
-- Layout fidelity or visual preservation
-- Preserving original branding or page geometry
+- layout fidelity / visual preservation
 
-### Features
-- Graphical user interface (GUI)
-- Cloud service or web app
-- Recipe-specific features (ingredient parsing, nutrition facts, etc.)
-- Image processing or optimization
-- Real-time collaborative editing
-- Document editing (conversion only, not an editor)
-- Complex layout replication
+Features:
+- GUI or web service
+- recipe-specific parsing or enrichment
+- document editing (conversion only)
+- batch processing features beyond basic CLI usage
 
-### Domain Specificity
-- Recipe manager functionality
-- Domain-specific parsers (recipes, legal docs, etc.)
-- Content management
+## Font support (v1)
 
----
+- Default: system sans-serif stack (Arial/Verdana)
+- Optional toggle: OpenDyslexic via `--font opendyslexic`
 
-## Print-to-PDF Workflow
+OpenDyslexic is provided as a preference toggle; Flowdoc makes no universal efficacy claim.
 
-**Print-to-PDF via browser is an acceptable v1 workflow; native PDF export is out of scope for v1.**
+## Success criteria (v1)
 
-Browser print-to-PDF:
-- Preserves CSS exactly as rendered
-- Works on all modern browsers
-- Sufficient for v1 needs
-- No additional dependencies required
+1. Accepts semantic HTML inputs within scope.
+2. Produces a self-contained readable HTML output.
+3. Output is measurably better for dyslexic readers versus the original formatting, using a simple comparison protocol (fewer re-reads / fewer line-loss incidents / lower fatigue scores).
+4. Works on modern browsers, mobile devices, and print.
+5. Failure modes are predictable and explained clearly.
+6. Inline elements (links/emphasis/code) render correctly.
+7. Unsupported elements degrade deterministically (no silent dropping).
+8. Sanitization prevents active-content and injection issues.
 
-Native PDF generation deferred to v2.
-
----
-
-## Scope Boundaries
-
-**What Flowdoc IS:**
-- A document converter
-- A command-line tool
-- General-purpose (works on any structured text with semantic HTML)
-- Focused on dyslexia-friendly readability
-- Optimized for text-flow documents (headings, paragraphs, lists)
-
-**What Flowdoc IS NOT:**
-- A recipe app
-- A PDF repair tool
-- A document editor
-- A layout preservation tool
-- A browser extension
-- A cloud service
-- A visual design replicator
-
----
-
-## Why These Boundaries?
-
-### HTML First
-HTML already contains semantic structure. Parsing is straightforward and reliable. Other formats (DOCX, Markdown) can be added in v2 once core value is proven.
-
-### No PDF Input
-PDFs are fixed-layout formats. Extracting semantic structure is unreliable and error-prone. Starting with structured inputs (HTML) allows focus on the conversion quality, not parsing complexity.
-
-### No Native PDF Output (v1)
-Browser print-to-PDF works well and preserves CSS. Adding programmatic PDF generation (via headless Chrome) adds ~300MB dependency and significant complexity before validating core value.
-
-### General-Purpose, Not Recipe-Specific
-The trigger for this project was a recipe, but the problem is broader: any document can benefit from dyslexia-friendly formatting. Building a general tool maximizes utility and prevents over-fitting to one use case.
-
-### Readability Over Fidelity
-Preserving original layout defeats the purpose. Dyslexia-friendly formatting requires specific typography, spacing, and structure that are incompatible with arbitrary visual designs.
-
----
-
-## Success Criteria for v1
-
-1. Takes an HTML file with semantic structure
-2. Produces a self-contained, readable HTML file
-3. **Output is measurably better for dyslexic readers**
-   * Validation framework:
-      * Fewer self-reported re-read events during timed reading task
-      * Lower fatigue score on 1-5 scale after 3-minute reading session
-      * Fewer line-loss incidents counted during reading
-   * Measured via comparison with original formatting using same content
-   * Tested with dyslexic readers (minimum N=5 for v1 validation)
-4. Works reliably on modern browsers, mobile devices, and print
-5. Command-line interface is simple and functional
-6. Font licensing is clear and documented (OpenDyslexic SIL-OFL)
-7. Failure modes are predictable and consistent
-8. Inline elements (links, emphasis, code) render correctly
-9. Unsupported elements (tables, images) degrade gracefully per defined policy
-10. HTML sanitization prevents security issues
-
-If v1 meets these criteria, scope expansion is justified.  
-If not, scope expansion is premature.
-
----
-
-## Future Considerations (v2 and Beyond)
-
-These are explicitly out of scope for v1 but may be considered after validation:
-
-### Additional Input Formats
-- DOCX input (via libraries like python-docx or mammoth)
-- Markdown input (easy addition)
-
-### Additional Output Formats
-- Native PDF output (if browser print proves insufficient)
-
-### Additional Font Options
-- Lexend, Atkinson Hyperlegible, Dyslexie (beyond OpenDyslexic)
-
-### Content Transformation
-- Text-to-speech compatibility enhancements
-- Readability scoring and improvement
-- Sentence simplification
-- Jargon expansion
-
-### Other Enhancements
-- Configurable themes beyond high-contrast
-- Local web preview mode
-- Batch conversion
-
-**v1 must prove core value before expanding scope.**
-
----
-
-## Summary
-
-Flowdoc v1 is a focused tool:
-- Converts semantic HTML to dyslexia-friendly HTML
-- Prioritizes readability over visual fidelity
-- Supports or degrades HTML elements deterministically
-- Offers optional OpenDyslexic font toggle
-- Uses browser print-to-PDF for PDF output
-- Targets modern browsers and mobile devices
-- Validates with dyslexic readers before expansion
-
-Scope is intentionally narrow to ship a working, validated v1.
+If v1 meets these criteria, scope expansion is justified; otherwise it is premature.

@@ -1,13 +1,18 @@
-# Flowdoc - Architectural Brainstorming
+# Flowdoc - Architectural Exploration (Non-Normative)
 
-**Status:** Revised  
-**Last Updated:** February 13, 2026  
+**Status:** Revised
+**Last Updated:** February 16, 2026
 
-This document captures some architectural brainstorming around Flowdoc's runtime, CLI philosophy, integration strategy, parsing approach, and longer-term considerations. The purpose is to retain the thinking behind early technical exploration without presenting it as finalized decisions.
+This document captures architectural exploration and background thinking. It is **not** authoritative.
+Locked v1 implementation choices live in `ARCHITECTURE.md`. Authoritative behavior contracts live in `decisions.md`.
+This file preserves earlier thinking and trade-offs. Treat the options below as historical background only; they are not under consideration for v1.
 
 ---
 
+
 ## Runtime And Tech Stack
+
+Note: The v1 runtime and libraries are locked in `ARCHITECTURE.md`. The discussion below is retained for context.
 
 Will this tool be a Linux or Windows CLI? What is the tech stack? What are the realistic implementation options, what are the pros and cons of each, and why should one be chosen over the others?
 
@@ -15,7 +20,7 @@ First, make an explicit product decision: Flowdoc should be cross-platform from 
 
 Tech stack options that fit the v1 scope (semantic HTML -> internal model -> self-contained HTML):
 
-### Option A: Python CLI + Python Library (Recommended For V1)
+### Option A: Python CLI + Python Library (Historical front-runner)
 
 **Pros**
 
@@ -73,13 +78,13 @@ Tech stack options that fit the v1 scope (semantic HTML -> internal model -> sel
 - HTML parsing and web-like behavior require more effort.
 - Overkill for the v1 scope.
 
-### Why Python Is The Recommended Choice For V1
+### Why Python Emerged As The Front-Runner (Historical rationale)
 
 - The differentiator is not parsing; it is the transformation rules, readable HTML output, and validation with dyslexic readers.
 - Python minimizes time-to-correctness for sanitization and DOM traversal, and keeps the internal model work inexpensive to evolve.
 - A "Linux-command-feeling" tool can still be shipped by distributing a single executable per OS, even if implemented in Python.
 
-### Concrete Recommendation
+### Historical Recommendation (superseded)
 
 - Architecture: core engine as a library + thin CLI wrapper.
 - Implementation: Python 3.12+.
@@ -111,15 +116,15 @@ How this expresses itself in the CLI:
 - Composition-friendly commands rather than a single mega-command:
 
   - `flowdoc convert` (main transformation)
-  - `flowdoc validate` (checks semantic HTML and explains rejection)
-  - `flowdoc info` (prints detected title/sections, element counts, degradation summary)
+  - `flowdoc validate` (future consideration; out of v1)
+  - `flowdoc info` (future consideration; out of v1)
 
 This aligns with a Unix mental model: inspect -> validate -> convert.
 
 Determinism and trust (critical for composability):
 
 - Same input + same version + same flags -> same output (byte-stable if feasible).
-- No silent dropping: degraded elements either receive placeholders and/or are reported via a machine-readable report (`--report json`).
+- No silent dropping: degraded elements either receive placeholders and/or are reported via a machine-readable report (`--report json`; future consideration; out of v1).
 
 This matters for future integrations. If the CLI behaves as a reliable pure function, other tools can invoke it safely. If the engine is separated as a library, direct embedding remains viable.
 
@@ -171,7 +176,7 @@ Downstream tools are sensitive to unexpected visual diffs.
 
 ### D) Licensing And Embedding
 
-MIT licensing supports adoption.  
+MIT licensing supports adoption.
 OpenDyslexic license handling should remain explicit.
 
 ### E) Integration Documentation
@@ -224,13 +229,13 @@ Ownership boundaries:
 
 Architectural flow:
 
-HTML input  
--> Parser (library)  
--> Sanitizer (library)  
--> DOM tree  
--> Internal Document model  
--> Readability transformation rules  
--> Deterministic HTML renderer  
+HTML input
+-> Parser (library)
+-> Sanitizer (library)
+-> DOM tree
+-> Internal Document model
+-> Readability transformation rules
+-> Deterministic HTML renderer
 
 Scraping-style heuristic extraction would shift the product into a different problem space. For v1, focus remains on well-structured semantic HTML.
 
@@ -242,8 +247,8 @@ Reuse aggressively. Time and complexity should be invested in the internal model
 
 ### Testing Strategy
 
-Golden file tests (input -> exact expected output).  
-Regression tests for typography and layout rules.  
+Golden file tests (input -> exact expected output).
+Regression tests for typography and layout rules.
 A real-world fixture corpus (recipes, articles, technical documentation).
 
 Formatting engines drift without golden tests.

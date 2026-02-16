@@ -1,7 +1,9 @@
 # Typography Guidelines for Dyslexia-Friendly Design
 
-**Status:** Revised  
-**Last Updated:** February 11, 2026  
+This is a reference document (evidence, guidelines, citations). v1 implementation contracts live in `decisions.md`.
+
+**Status:** Revised
+**Last Updated:** February 11, 2026
 **Sources:** BDA Style Guide 2023, IDA, peer-reviewed studies (2013-2025)
 
 ---
