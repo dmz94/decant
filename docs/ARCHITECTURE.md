@@ -6,7 +6,7 @@
 This document locks the v1 implementation choices (runtime, libraries, module layout, pipeline, and testing approach).
 These are decisions, not options. Do not re-decide them during implementation.
 
-Authoritative behavior contracts (validation rules, model schema, element handling, CSS invariants, CLI contract) live in `decisions.md`.
+Authoritative behavior contracts (validation rules, model schema, element handling, CSS invariants, CLI contract) live in [decisions.md](decisions.md).
 This document answers "what stack do we use and how is the codebase shaped".
 
 ---
@@ -135,7 +135,7 @@ Required test layers:
 - outputs must be byte-identical
 
 Fixture corpus:
-- Minimum set is defined in `decisions.md` (real-world HTML, not hand-crafted micro HTML).
+- Minimum set is defined in [decisions.md](decisions.md) (real-world HTML, not hand-crafted micro HTML).
 
 ---
 
