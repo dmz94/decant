@@ -4,7 +4,7 @@
 **Last Updated:** February 16, 2026
 
 This document captures architectural exploration and background thinking. It is **not** authoritative.
-Locked v1 implementation choices live in `ARCHITECTURE.md`. Authoritative behavior contracts live in `decisions.md`.
+Locked v1 implementation choices live in [ARCHITECTURE.md](ARCHITECTURE.md). Authoritative behavior contracts live in [decisions.md](decisions.md).
 This file preserves earlier thinking and trade-offs. Treat the options below as historical background only; they are not under consideration for v1.
 
 ---
@@ -12,7 +12,7 @@ This file preserves earlier thinking and trade-offs. Treat the options below as 
 
 ## Runtime And Tech Stack
 
-Note: The v1 runtime and libraries are locked in `ARCHITECTURE.md`. The discussion below is retained for context.
+Note: The v1 runtime and libraries are locked in [ARCHITECTURE.md](ARCHITECTURE.md). The discussion below is retained for context.
 
 Will this tool be a Linux or Windows CLI? What is the tech stack? What are the realistic implementation options, what are the pros and cons of each, and why should one be chosen over the others?
 
