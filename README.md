@@ -11,7 +11,7 @@ Why Flowdoc? Many documents are technically "readable" but visually fatiguing fo
 - Readability over fidelity: no attempt to preserve original styling or branding
 - Optional font toggle: `--font opendyslexic` (not default)
 
-Full boundaries: see `SCOPE.md`.
+Full boundaries: see [SCOPE.md](SCOPE.md).
 
 ## Status
 
@@ -29,14 +29,14 @@ Print to PDF: open the output in a browser and use print-to-PDF.
 
 ## Documentation
 
-- `SCOPE.md` - frozen v1 product boundaries and success criteria
-- `docs/decisions.md` - authoritative implementation/test spec (contracts + invariants)
-- `docs/ARCHITECTURE.md` - locked v1 implementation choices (runtime, libraries, module structure, pipeline, testing)
-- `docs/0_0_FLOWDOC_V1_PLAN.md` - execution checklist for v1
-- `docs/research_typography_guidelines.md` - typography research/reference
-- `docs/architecture_exploration.md` - non-normative historical exploration/background
-- `ABOUT.md` - project origin story and motivation
+- [SCOPE.md](SCOPE.md) - frozen v1 product boundaries and success criteria
+- [docs/decisions.md](docs/decisions.md) - authoritative implementation/test spec (contracts + invariants)
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) - locked v1 implementation choices (runtime, libraries, module structure, pipeline, testing)
+- [docs/0_0_FLOWDOC_V1_PLAN.md](docs/0_0_FLOWDOC_V1_PLAN.md) - execution checklist for v1
+- [docs/research_typography_guidelines.md](docs/research_typography_guidelines.md) - typography research/reference
+- [docs/architecture_exploration.md](docs/architecture_exploration.md) - non-normative historical exploration/background
+- [ABOUT.md](ABOUT.md) - project origin story and motivation
 
 ## License
 
-MIT
+[MIT](LICENSE)
