@@ -8,7 +8,7 @@ See decisions.md sections 5-8 for parsing rules.
 from bs4 import BeautifulSoup, Tag, NavigableString
 
 from flowdoc.core.model import (
-    Document, Section, Heading, Block,
+    Document, Section, Heading, Block, Inline,
     Paragraph, ListBlock, ListItem, Quote, Preformatted,
     Text, Emphasis, Strong, Code, Link
 )
@@ -146,7 +146,7 @@ def parse_heading(element: Tag) -> Heading:
     level = int(element.name[1])
     
     # Parse inline content (TODO: implement parse_inlines next)
-    inlines = [Text(text=element.get_text().strip())]  # Placeholder - simplified
+    inlines = parse_inlines(element)
     
     return Heading(level=level, inlines=inlines)
 
@@ -199,7 +199,7 @@ def parse_paragraph(element: Tag) -> Paragraph:
         Paragraph with inline content
     """
     # TODO: Implement parse_inlines (next part)
-    inlines = [Text(text=element.get_text().strip())]  # Placeholder
+    inlines = parse_inlines(element)
     return Paragraph(inlines=inlines)
 
 
@@ -219,8 +219,12 @@ def parse_list(element: Tag) -> ListBlock:
     items = []
     
     for li in element.find_all("li", recursive=False):  # Direct children only
-        # TODO: Implement parse_inlines (next part)
-        inlines = [Text(text=li.get_text(separator=" ", strip=True))]  # Placeholder
+    # Parse inlines, but exclude nested lists from inline parsing
+    # (nested lists are handled separately via children)
+        li_copy = li.__copy__()
+        for nested in li_copy.find_all(["ul", "ol"], recursive=False):
+            nested.decompose()
+        inlines = parse_inlines(li_copy)
         
         # Find nested lists
         nested_lists = li.find_all(["ul", "ol"], recursive=False)
@@ -264,3 +268,69 @@ def parse_preformatted(element: Tag) -> Preformatted:
         Preformatted with verbatim text
     """
     return Preformatted(text=element.get_text())
+
+
+def parse_inlines(element: Tag) -> list[Inline]:
+    """
+    Parse inline content recursively.
+    
+    Handles nested inline elements and text nodes.
+    Applies whitespace normalization.
+    
+    Args:
+        element: BeautifulSoup Tag containing inline content
+        
+    Returns:
+        List of Inline model objects
+    """
+    result = []
+    
+    for child in element.children:
+        if isinstance(child, NavigableString):
+            # Text node
+            text = str(child).strip()
+            if text:  # Skip empty text nodes
+                result.append(Text(text=text))
+        elif isinstance(child, Tag):
+            inline = parse_inline_element(child)
+            if isinstance(inline, list):
+                result.extend(inline)
+            elif inline:
+                result.append(inline)
+    
+    return result
+
+
+def parse_inline_element(element: Tag) -> Inline | list[Inline] | None:
+    """
+    Parse single inline element.
+    
+    Returns Inline object, list of Inlines, or None for unknown elements.
+    
+    Args:
+        element: BeautifulSoup Tag for inline element
+        
+    Returns:
+        Inline model object(s) or None
+    """
+    tag_name = element.name
+    
+    if tag_name in ("em", "i"):
+        return Emphasis(children=parse_inlines(element))
+    elif tag_name in ("strong", "b"):
+        return Strong(children=parse_inlines(element))
+    elif tag_name == "code":
+        # Inline code - plain text only
+        return Code(text=element.get_text())
+    elif tag_name == "a":
+        href = element.get("href", "")
+        return Link(href=href, children=parse_inlines(element))
+    elif tag_name == "img":
+        # Image inside paragraph
+        return degrade_image(element)
+    else:
+        # Unknown inline element - extract text
+        text = element.get_text().strip()
+        if text:
+            return Text(text=text)
+        return None
