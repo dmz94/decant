@@ -269,6 +269,24 @@ def parse_preformatted(element: Tag) -> Preformatted:
     """
     return Preformatted(text=element.get_text())
 
+def collapse_whitespace(text: str) -> str:
+    """
+    Collapse runs of whitespace into a single space.
+
+    Preserves leading/trailing space if the original had whitespace
+    at those boundaries. This matches HTML whitespace collapsing rules
+    (decisions.md section 8).
+    """
+    import re
+    if not text:
+        return ""
+    leading = " " if text[0].isspace() else ""
+    trailing = " " if text[-1].isspace() else ""
+    collapsed = re.sub(r"\s+", " ", text.strip())
+    if not collapsed:
+        return ""
+    return leading + collapsed + trailing
+
 
 def parse_inlines(element: Tag) -> list[Inline]:
     """
@@ -288,7 +306,7 @@ def parse_inlines(element: Tag) -> list[Inline]:
     for child in element.children:
         if isinstance(child, NavigableString):
             # Text node
-            text = str(child).strip()
+            text = collapse_whitespace(str(child))
             if text:  # Skip empty text nodes
                 result.append(Text(text=text))
         elif isinstance(child, Tag):
