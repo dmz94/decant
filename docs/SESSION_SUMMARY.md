@@ -129,16 +129,17 @@ These are explicitly deferred (see SCOPE.md):
 - Windows 11, Command Prompt terminal (not PowerShell)
 - GitHub Desktop for version control
 - Dependencies: beautifulsoup4, lxml, nh3, pytest, flask
-- GitHub linked to Claude project - source files accessible via view tool at /mnt/project/
+- GitHub repo linked to Claude project via GitHub integration
 
 ## Key Decisions Made
 
 1. **Incremental development:** Build module by module with tests
-2. **Code in chat blocks:** Show code in code blocks for copy/paste, NOT as downloadable files
-3. **Step-by-step process:** Explain -> Strategize -> Plan -> Code -> Test
-4. **Locked specs:** decisions.md is authoritative, no scope changes during implementation
-5. **Real testing:** Validate with actual HTML files and user feedback before v2
-6. **Preview tool testing:** Manual only - no automated tests for preview_server.py
+2. **For documentation files:** Ask user each time - code block or whole file download?
+3. **For source code files:** Always use code blocks for copy/paste into VS Code.
+4. **Step-by-step process:** Explain -> Strategize -> Plan -> Code -> Test
+5. **Locked specs:** decisions.md is authoritative, no scope changes during implementation
+6. **Real testing:** Validate with actual HTML files and user feedback before v2
+7. **Preview tool testing:** Manual only - no automated tests for preview_server.py
 
 ## File Organization
 
@@ -236,7 +237,7 @@ These rules MUST be followed in every response:
 1. **Four-step process:** Purpose -> Strategy -> Plan -> Code. Wait for "yes" after EACH step before proceeding. No exceptions.
 2. **One file at a time:** Show one file, wait for "done" before showing next file.
 3. **Code blocks contain code and commands ONLY:** Never put file names, instructions, or explanations inside code blocks. These go outside the block.
-4. **Always read files first:** Use view tool to read ANY file before showing changes to it. State "Reading X now" before every view call. No exceptions.
+4. **Always read files first:** Use project_knowledge_search for .py files, view tool for .md files. State "Reading X now" before every call. No exceptions.
 5. **Verify function signatures:** Never assume parameter names. Read the actual source file first.
 6. **Complete changes across files:** When a change spans multiple files, read ALL affected files first, then list every change needed before touching any of them.
 7. **New dependencies:** Call out pip install command BEFORE showing the run command.
@@ -244,21 +245,33 @@ These rules MUST be followed in every response:
 9. **Code blocks must use 4 spaces for indentation, not tabs:** This ensures pasting into VS Code works correctly every time.
 10. **No em dashes or smart quotes in code blocks:** ASCII only (straight quotes, hyphens).
 11. **Commit guidance:** Provide summary and description for GitHub Desktop after each completed task.
+12. **Documentation files output:** Ask the user each time - code block or whole file download? For source code files, always use code blocks.
 
 ## Critical Files to Read at Start of Every Session
 
-1. /mnt/project/SESSION_SUMMARY.md - Current state (this file)
-2. /mnt/project/decisions.md - Implementation contracts
-3. /mnt/project/SCOPE.md - v1 boundaries
-4. /mnt/project/ARCHITECTURE.md - Tech stack and structure
+1. /mnt/project/SESSION_SUMMARY.md - Current state (this file) - use view tool
+2. /mnt/project/decisions.md - Implementation contracts - use view tool
+3. /mnt/project/SCOPE.md - v1 boundaries - use view tool
+4. /mnt/project/ARCHITECTURE.md - Tech stack and structure - use view tool
 
-## Source Files Accessible via View Tool
+## How to Access Source Files
 
-All source files are at /mnt/project/ (flat, not in subdirectories in the project view):
-- model.py, constants.py, sanitizer.py, content_selector.py
-- degradation.py, parser.py, renderer.py
-- main.py, reader.py, writer.py
-- preview_server.py, preview.html
+The view tool only reaches root-level .md files at /mnt/project/.
+Python source files and test files are NOT accessible via the view tool.
+
+Use project_knowledge_search to read any .py file before modifying it.
+State "Reading X now" before each search. This replaces the view tool
+for all source files.
+
+Limitation: search returns chunks, not whole files. Use multiple searches
+with different keywords if a file is long.
+
+Files under flowdoc/core/: model.py, constants.py, sanitizer.py,
+content_selector.py, degradation.py, parser.py, renderer.py
+
+Files under flowdoc/cli/: main.py
+Files under flowdoc/io/: reader.py, writer.py
+Dev tools (project root): preview_server.py, preview.html
 
 ## Success Criteria (from SCOPE.md)
 
