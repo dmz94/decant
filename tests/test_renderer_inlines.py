@@ -129,3 +129,25 @@ def test_renders_nested_inlines():
     )
     html = render(doc)
     assert "<strong>Bold with <em>italic</em></strong>" in html
+
+
+def test_renders_linebreak():
+    """LineBreak renders as br element."""
+    from flowdoc.core.model import LineBreak
+    doc = Document(
+        title="Test",
+        sections=[
+            Section(
+                heading=Heading(level=1, inlines=[Text(text="Title")]),
+                blocks=[
+                    Paragraph(inlines=[
+                        Text(text="Step 1."),
+                        LineBreak(),
+                        Text(text="Step 2.")
+                    ])
+                ]
+            )
+        ]
+    )
+    html = render(doc)
+    assert "<br>" in html

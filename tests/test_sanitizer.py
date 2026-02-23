@@ -72,3 +72,10 @@ def test_allowed_attributes_preserved():
     result = sanitize(html)
     assert 'href="http://example.com"' in result
     assert 'alt="Description"' in result
+    
+
+def test_br_tag_preserved():
+    """BR tags survive sanitization."""
+    html = "<p>Step 1.<br/>Step 2.</p>"
+    result = sanitize(html)
+    assert "<br" in result    

@@ -80,12 +80,10 @@ def test_degrades_inline_image():
     assert "[Image: photo]" in para.inlines[1].text
 
 
-    def test_br_tag_becomes_space():
-        """BR tags produce a space so adjacent text does not run together."""
-        html = "<body><h1>Title</h1><p>Step 1.<br/>Step 2.</p></body>"
-        doc = parse(html)
-        para = doc.sections[0].blocks[0]
-        full_text = "".join(i.text for i in para.inlines)
-        assert "1. Step" not in full_text
-        assert "1." in full_text
-        assert "Step 2." in full_text
+def test_br_tag_becomes_linebreak():
+    """BR tags produce a LineBreak inline object."""
+    from flowdoc.core.model import LineBreak
+    html = "<body><h1>Title</h1><p>Step 1.<br/>Step 2.</p></body>"
+    doc = parse(html)
+    para = doc.sections[0].blocks[0]
+    assert any(isinstance(i, LineBreak) for i in para.inlines)
