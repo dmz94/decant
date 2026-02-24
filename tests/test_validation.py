@@ -6,6 +6,7 @@ message and that valid HTML passes through without error.
 See decisions.md section 3 for validation rules.
 """
 import pytest
+from pathlib import Path
 from flowdoc.core.parser import parse, ValidationError
 
 
@@ -78,3 +79,12 @@ def test_exact_error_message():
     with pytest.raises(ValidationError) as exc_info:
         parse(html)
     assert str(exc_info.value) == ERROR_MESSAGE
+
+
+def test_paulgraham_identity_rejected():
+    """Real-world non-semantic HTML fixture is rejected with correct error."""
+    fixture_path = Path(__file__).parent / "fixtures" / "input" / "paulgraham_identity.html"
+    html = fixture_path.read_text(encoding='utf-8')
+    with pytest.raises(ValidationError) as exc_info:
+        parse(html)
+    assert str(exc_info.value) == ERROR_MESSAGE    
