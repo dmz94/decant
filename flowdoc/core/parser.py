@@ -5,6 +5,8 @@ Converts sanitized DOM tree to internal model representation.
 Pipeline: Step 4 (after sanitization and content selection)
 See decisions.md sections 5-8 for parsing rules.
 """
+import re
+
 import trafilatura
 
 from bs4 import BeautifulSoup, Tag, NavigableString
@@ -119,12 +121,12 @@ def extract_title(soup: BeautifulSoup, content: Tag, original_title=None) -> str
     # Use original title if provided (extract mode - Trafilatura strips <head>)
     title_tag = original_title or soup.find("title")
     if title_tag:
-        return title_tag.get_text().strip()
+        return re.sub(r'\s+', ' ', title_tag.get_text()).strip()
 
     # Fall back to first <h1> in content
     h1 = content.find("h1")
     if h1:
-        return h1.get_text().strip()
+        return re.sub(r'\s+', ' ', h1.get_text()).strip()
 
     return ""
 
@@ -348,7 +350,6 @@ def collapse_whitespace(text: str) -> str:
     at those boundaries. This matches HTML whitespace collapsing rules
     (decisions.md section 8).
     """
-    import re
     if not text:
         return ""
     leading = " " if text[0].isspace() else ""
