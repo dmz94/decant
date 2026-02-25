@@ -240,7 +240,8 @@ def parse_block(element: Tag) -> Block | None:
     tag_name = element.name
 
     if tag_name == "p":
-        return parse_paragraph(element)
+        block = parse_paragraph(element)
+        return block if block.inlines else None
     elif tag_name in ("ul", "ol"):
         return parse_list(element)
     elif tag_name == "blockquote":

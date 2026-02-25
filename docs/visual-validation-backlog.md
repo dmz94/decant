@@ -114,6 +114,17 @@ These are documented as out of scope. Record here for v2 consideration.
 
 ---
 
+## Priority 5 - Fixture Corpus Refresh (before golden file tests)
+
+### P5-1: Refresh and expand test fixtures
+- Current corpus: 8 good fixtures, coverage is thin and unrepresentative
+- Missing fixture types: news article, long-form blog post, government/official
+  page with clean semantic structure, simple how-to (non-WikiHow format)
+- Action: Source and validate new fixtures before implementing golden file tests
+- Timing: After Priority 1 bug fixes, before golden file tests
+
+---
+
 ## Suggested Work Order for Next Session
 
 1. P3-1 (italic/em) - one-line CSS fix, high accessibility impact, do this first
