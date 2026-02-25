@@ -56,7 +56,8 @@ def extract_with_trafilatura(html: str) -> str:
     )
     has_headings = extracted and any(f"<h{i}" in extracted for i in range(1, 7))
     if has_headings:
-        return extracted
+        cleaned = re.sub(r'<p>\s*Advertisement\s*</p>', '', extracted)
+        return cleaned
     return html
 
 
