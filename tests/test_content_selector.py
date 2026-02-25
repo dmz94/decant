@@ -1,11 +1,12 @@
 """
-Tests for main content selection.
+Tests for main content selection and mode detection.
 
 Validates deterministic selection order: main -> article -> body.
+Also validates auto mode detection routing logic.
 """
 import pytest
 from bs4 import BeautifulSoup
-from flowdoc.core.content_selector import select_main_content
+from flowdoc.core.content_selector import select_main_content, detect_mode
 
 
 def test_selects_main_when_present():
@@ -46,3 +47,57 @@ def test_prefers_main_over_article():
 # automatically add <body> tags during parsing, making this scenario impossible
 # to trigger in practice. The ValueError in content_selector.py remains as
 # defensive coding.
+
+
+def test_detect_mode_returns_transform_for_clean_html():
+    """Clean semantic HTML with no scripts or nav returns transform."""
+    html = "<html><body><main><h1>Title</h1><p>Content</p></main></body></html>"
+    assert detect_mode(html) == "transform"
+
+
+def test_detect_mode_returns_extract_for_high_script_count():
+    """HTML with 10 or more scripts returns extract."""
+    scripts = "".join("<script>var x=1;</script>" for _ in range(10))
+    html = f"<html><body>{scripts}<h1>Title</h1><p>Content</p></body></html>"
+    assert detect_mode(html) == "extract"
+
+
+def test_detect_mode_returns_extract_for_high_nav_count():
+    """HTML with 5 or more nav/aside/footer/header elements returns extract."""
+    nav_elements = (
+        "<nav>Nav</nav>"
+        "<nav>Nav</nav>"
+        "<aside>Aside</aside>"
+        "<footer>Footer</footer>"
+        "<header>Header</header>"
+    )
+    html = f"<html><body>{nav_elements}<h1>Title</h1><p>Content</p></body></html>"
+    assert detect_mode(html) == "extract"
+
+
+def test_detect_mode_defaults_to_transform_when_ambiguous():
+    """Ambiguous input (below both thresholds) defaults to transform."""
+    html = (
+        "<html><body>"
+        "<nav>Nav</nav>"
+        "<script>var x=1;</script>"
+        "<h1>Title</h1><p>Content</p>"
+        "</body></html>"
+    )
+    assert detect_mode(html) == "transform"
+
+
+def test_detect_mode_simple_article_is_transform():
+    """simple_article.html fixture is detected as transform mode."""
+    from pathlib import Path
+    fixture_path = Path(__file__).parent / "fixtures" / "input" / "simple_article.html"
+    html = fixture_path.read_text(encoding='utf-8')
+    assert detect_mode(html) == "transform"
+
+
+def test_detect_mode_wikipedia_is_extract():
+    """Wikipedia fixture is detected as extract mode."""
+    from pathlib import Path
+    fixture_path = Path(__file__).parent / "fixtures" / "input" / "wikipedia_dyslexia.html"
+    html = fixture_path.read_text(encoding='utf-8')
+    assert detect_mode(html) == "extract"

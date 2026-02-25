@@ -5,6 +5,8 @@ Converts sanitized DOM tree to internal model representation.
 Pipeline: Step 4 (after sanitization and content selection)
 See decisions.md sections 5-8 for parsing rules.
 """
+import trafilatura
+
 from bs4 import BeautifulSoup, Tag, NavigableString
 
 from flowdoc.core.model import (
@@ -18,28 +20,69 @@ from flowdoc.core.degradation import (
     degrade_table, degrade_image, degrade_form, degrade_hr
 )
 
+
 class ValidationError(Exception):
     """Raised when input HTML lacks required semantic structure."""
     pass
 
-def parse(html: str) -> Document:
+
+def extract_with_trafilatura(html: str) -> str:
     """
-    Parse HTML string to Document model.
-    
-    Full pipeline: sanitize -> parse DOM -> select content -> build model.
-    
+    Extract main content from HTML using Trafilatura.
+
+    Used in extract mode (real-world pages with boilerplate).
+    Returns extracted HTML if Trafilatura succeeds and preserves heading
+    structure. Falls back to original HTML if extraction fails or strips
+    all headings.
+
+    Known limitations in extract mode:
+    - <pre> code blocks are converted to <blockquote>
+    - Some inline spacing may be lost around inline elements
+    These are documented limitations, not bugs.
+
     Args:
         html: Raw HTML string
-        
+
+    Returns:
+        Extracted HTML string, or original HTML if extraction failed
+    """
+    extracted = trafilatura.extract(
+        html,
+        output_format="html",
+        include_formatting=True,
+        include_links=True,
+    )
+    has_headings = extracted and any(f"<h{i}" in extracted for i in range(1, 7))
+    if has_headings:
+        return extracted
+    return html
+
+
+def parse(html: str, original_title=None) -> Document:
+    """
+    Parse HTML string to Document model.
+
+    Full pipeline: sanitize -> parse DOM -> select content -> build model.
+
+    In transform mode, call parse() directly with raw HTML.
+    In extract mode, call extract_with_trafilatura() first, then parse()
+    with the original_title captured before extraction.
+
+    Args:
+        html: Raw HTML string (pre-extracted if in extract mode)
+        original_title: Optional BeautifulSoup Tag for <title>, captured
+                        before Trafilatura strips <head>. Passed by main.py
+                        in extract mode to preserve document title.
+
     Returns:
         Document model with title and sections
     """
     # Step 1: Sanitize
     clean_html = sanitize(html)
-    
+
     # Step 2: Parse DOM
     soup = BeautifulSoup(clean_html, "lxml")
-    
+
     # Step 3: Select main content
     content = select_main_content(soup)
 
@@ -50,38 +93,41 @@ def parse(html: str) -> Document:
     sections = build_sections(content)
 
     # Step 6: Extract title
-    title = extract_title(soup, content)
-    
+    title = extract_title(soup, content, original_title=original_title)
+
     return Document(title=title, sections=sections)
 
 
-def extract_title(soup: BeautifulSoup, content: Tag) -> str:
+def extract_title(soup: BeautifulSoup, content: Tag, original_title=None) -> str:
     """
     Extract document title from <title> tag or first <h1>.
-    
+
     Per decisions.md section 5:
     - If <title> exists, use its text
     - Else if first <h1> in content exists, use its text
     - Else empty string
-    
+
     Args:
         soup: Full DOM tree (for <title> access)
         content: Selected content subtree
-        
+        original_title: Optional BeautifulSoup Tag captured before
+                        Trafilatura stripped <head>
+
     Returns:
         Title string (may be empty)
     """
-    # Try <title> tag first
-    title_tag = soup.find("title")
+    # Use original title if provided (extract mode - Trafilatura strips <head>)
+    title_tag = original_title or soup.find("title")
     if title_tag:
         return title_tag.get_text().strip()
-    
+
     # Fall back to first <h1> in content
     h1 = content.find("h1")
     if h1:
         return h1.get_text().strip()
-    
+
     return ""
+
 
 def validate_structure(content: Tag) -> None:
     """
@@ -106,95 +152,91 @@ def validate_structure(content: Tag) -> None:
             "(requires at least one h1-h3 and body content in p/ul/ol)."
         )
 
+
 def build_sections(content: Tag) -> list[Section]:
     """
     Build sections from headings in content.
-    
+
     Per decisions.md section 5:
     - Drop all content before first heading
     - Each heading starts a new section
     - Section continues until next heading (any level)
-    
+
     v2 consideration: Could preserve pre-heading content as preamble with warning.
-    
+
     Args:
         content: Selected content subtree
-        
+
     Returns:
         List of Section objects
     """
     # Find all headings (h1-h6)
     headings = content.find_all(["h1", "h2", "h3", "h4", "h5", "h6"])
-    
+
     if not headings:
         # No headings found - will fail validation later
         return []
-    
+
     sections = []
-    
+
     for i, heading_elem in enumerate(headings):
         # Parse the heading
         heading = parse_heading(heading_elem)
-        
+
         # Collect blocks until next heading
         blocks = []
         current = heading_elem.next_sibling
-        
+
         # Find next heading element (or None if last section)
         next_heading = headings[i + 1] if i + 1 < len(headings) else None
-        
+
         while current:
             # Stop if we hit the next heading
             if next_heading and current == next_heading:
                 break
-            
-            # Parse blocks (TODO: implement parse_block next)
+
             if isinstance(current, Tag):
                 block = parse_block(current)
                 if block:
                     blocks.append(block)
-            
+
             current = current.next_sibling
-        
+
         sections.append(Section(heading=heading, blocks=blocks))
-    
+
     return sections
 
 
 def parse_heading(element: Tag) -> Heading:
     """
     Parse heading element to Heading model.
-    
+
     Args:
         element: BeautifulSoup Tag for h1-h6
-        
+
     Returns:
         Heading with level and inline content
     """
-    # Extract level from tag name (h1 -> 1, h2 -> 2, etc.)
     level = int(element.name[1])
-    
-    # Parse inline content (TODO: implement parse_inlines next)
     inlines = parse_inlines(element)
-    
     return Heading(level=level, inlines=inlines)
 
 
 def parse_block(element: Tag) -> Block | None:
     """
     Parse block-level element to Block model.
-    
+
     Returns None for unrecognized elements (silently skipped in v1).
     v2: Add warning logging for skipped elements.
-    
+
     Args:
         element: BeautifulSoup Tag for block element
-        
+
     Returns:
         Block model object or None if unsupported
     """
     tag_name = element.name
-    
+
     if tag_name == "p":
         return parse_paragraph(element)
     elif tag_name in ("ul", "ol"):
@@ -220,14 +262,13 @@ def parse_block(element: Tag) -> Block | None:
 def parse_paragraph(element: Tag) -> Paragraph:
     """
     Parse paragraph to Paragraph model.
-    
+
     Args:
         element: BeautifulSoup Tag for <p>
-        
+
     Returns:
         Paragraph with inline content
     """
-    # TODO: Implement parse_inlines (next part)
     inlines = parse_inlines(element)
     return Paragraph(inlines=inlines)
 
@@ -235,42 +276,42 @@ def parse_paragraph(element: Tag) -> Paragraph:
 def parse_list(element: Tag) -> ListBlock:
     """
     Parse list to ListBlock model.
-    
+
     Handles nested lists via ListItem.children.
-    
+
     Args:
         element: BeautifulSoup Tag for <ul> or <ol>
-        
+
     Returns:
         ListBlock with items
     """
     ordered = element.name == "ol"
     items = []
-    
-    for li in element.find_all("li", recursive=False):  # Direct children only
-    # Parse inlines, but exclude nested lists from inline parsing
-    # (nested lists are handled separately via children)
+
+    for li in element.find_all("li", recursive=False):
+        # Parse inlines, but exclude nested lists from inline parsing
+        # (nested lists are handled separately via children)
         li_copy = li.__copy__()
         for nested in li_copy.find_all(["ul", "ol"], recursive=False):
             nested.decompose()
         inlines = parse_inlines(li_copy)
-        
+
         # Find nested lists
         nested_lists = li.find_all(["ul", "ol"], recursive=False)
         children = [parse_list(nested) for nested in nested_lists]
-        
+
         items.append(ListItem(inlines=inlines, children=children))
-    
+
     return ListBlock(ordered=ordered, items=items)
 
 
 def parse_quote(element: Tag) -> Quote:
     """
     Parse blockquote to Quote model (recursive).
-    
+
     Args:
         element: BeautifulSoup Tag for <blockquote>
-        
+
     Returns:
         Quote containing blocks
     """
@@ -280,23 +321,24 @@ def parse_quote(element: Tag) -> Quote:
             block = parse_block(child)
             if block:
                 blocks.append(block)
-    
+
     return Quote(blocks=blocks)
 
 
 def parse_preformatted(element: Tag) -> Preformatted:
     """
     Parse <pre> to Preformatted model.
-    
+
     Preserves whitespace exactly.
-    
+
     Args:
         element: BeautifulSoup Tag for <pre>
-        
+
     Returns:
         Preformatted with verbatim text
     """
     return Preformatted(text=element.get_text())
+
 
 def collapse_whitespace(text: str) -> str:
     """
@@ -320,23 +362,22 @@ def collapse_whitespace(text: str) -> str:
 def parse_inlines(element: Tag) -> list[Inline]:
     """
     Parse inline content recursively.
-    
+
     Handles nested inline elements and text nodes.
     Applies whitespace normalization.
-    
+
     Args:
         element: BeautifulSoup Tag containing inline content
-        
+
     Returns:
         List of Inline model objects
     """
     result = []
-    
+
     for child in element.children:
         if isinstance(child, NavigableString):
-            # Text node
             text = collapse_whitespace(str(child))
-            if text:  # Skip empty text nodes
+            if text:
                 result.append(Text(text=text))
         elif isinstance(child, Tag):
             inline = parse_inline_element(child)
@@ -344,24 +385,24 @@ def parse_inlines(element: Tag) -> list[Inline]:
                 result.extend(inline)
             elif inline:
                 result.append(inline)
-    
+
     return result
 
 
 def parse_inline_element(element: Tag) -> Inline | list[Inline] | None:
     """
     Parse single inline element.
-    
+
     Returns Inline object, list of Inlines, or None for unknown elements.
-    
+
     Args:
         element: BeautifulSoup Tag for inline element
-        
+
     Returns:
         Inline model object(s) or None
     """
     tag_name = element.name
-    
+
     if tag_name == "br":
         return LineBreak()
     elif tag_name in ("em", "i"):
@@ -369,13 +410,11 @@ def parse_inline_element(element: Tag) -> Inline | list[Inline] | None:
     elif tag_name in ("strong", "b"):
         return Strong(children=parse_inlines(element))
     elif tag_name == "code":
-        # Inline code - plain text only
         return Code(text=element.get_text())
     elif tag_name == "a":
         href = element.get("href", "")
         return Link(href=href, children=parse_inlines(element))
     elif tag_name == "img":
-        # Image inside paragraph
         return degrade_image(element)
     else:
         # Unknown inline element - extract text

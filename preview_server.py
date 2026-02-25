@@ -10,9 +10,10 @@ Then open http://localhost:5000 in a browser.
 """
 from flask import Flask, request
 import os
+from bs4 import BeautifulSoup
 
-from flowdoc.core.sanitizer import sanitize
-from flowdoc.core.parser import parse
+from flowdoc.core.content_selector import detect_mode
+from flowdoc.core.parser import parse, extract_with_trafilatura
 from flowdoc.core.renderer import render
 
 app = Flask(__name__)
@@ -35,6 +36,7 @@ def convert():
     Form fields:
         file - HTML file to convert (required)
         font - optional; pass 'opendyslexic' to enable font toggle
+        mode - optional; 'transform', 'extract', or 'auto' (default: auto)
     """
     f = request.files.get("file")
     if not f:
@@ -42,15 +44,38 @@ def convert():
 
     raw_html = f.read().decode("utf-8", errors="replace")
     font = request.form.get("font", None)
+    requested_mode = request.form.get("mode", "auto")
 
     try:
-        clean = sanitize(raw_html)
-        doc = parse(clean)
+        # Determine mode
+        if requested_mode == "auto":
+            mode = detect_mode(raw_html)
+        else:
+            mode = requested_mode
+
+        # Route to appropriate pipeline
+        original_title = None
+        html_to_parse = raw_html
+
+        if mode == "extract":
+            # Capture title before Trafilatura strips <head>
+            original_soup = BeautifulSoup(raw_html, "lxml")
+            original_title = original_soup.find("title")
+            html_to_parse = extract_with_trafilatura(raw_html)
+
+        doc = parse(html_to_parse, original_title=original_title)
         use_opendyslexic = (font == "opendyslexic")
         output = render(doc, use_opendyslexic=use_opendyslexic)
+
+        # Add mode info as HTML comment for debugging
+        output = output.replace(
+            "<!DOCTYPE html>",
+            f"<!DOCTYPE html>\n<!-- flowdoc mode: {mode} -->"
+        )
+
         return output, 200, {"Content-Type": "text/html; charset=utf-8"}
+
     except ValueError as e:
-        # Validation error - non-semantic HTML, missing structure, etc.
         return f"<pre>Validation error: {e}</pre>", 422
     except Exception as e:
         return f"<pre>Error: {e}</pre>", 500
