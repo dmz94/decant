@@ -8,7 +8,7 @@ See research_typography_guidelines.md for evidence and decisions.md for contract
 # === Typography ===
 
 FONT_STACK: str = "Arial, Verdana, sans-serif"
-BODY_FONT_SIZE: str = "20px"
+BODY_FONT_SIZE: str = "22px"
 
 # Heading size multipliers (applied to body font size)
 # h1 = 2.0x, h2 = 1.75x, h3 = 1.5x, h4 = 1.25x, h5 = 1.1x, h6 = 1.0x
@@ -47,7 +47,7 @@ LINK_VISITED_COLOR: str = "#551a8b"  # Purple for visited links
 
 # === Layout ===
 
-MAX_LINE_WIDTH: str = "65ch"  # 60-70 characters (BDA recommendation)
+MAX_LINE_WIDTH: str = "58ch"  # 60-70 characters (BDA recommendation)
 CONTAINER_PADDING: str = "2rem 3rem"  # Padding around content
 
 
