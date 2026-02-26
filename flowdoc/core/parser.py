@@ -53,6 +53,9 @@ def extract_with_trafilatura(html: str) -> str:
         output_format="html",
         include_formatting=True,
         include_links=True,
+        include_comments=False,
+        include_tables=False,
+        favor_precision=True,
     )
     has_headings = extracted and any(f"<h{i}" in extracted for i in range(1, 7))
     if has_headings:
