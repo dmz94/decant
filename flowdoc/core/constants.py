@@ -8,7 +8,7 @@ See research_typography_guidelines.md for evidence and decisions.md for contract
 # === Typography ===
 
 FONT_STACK: str = "Arial, Verdana, sans-serif"
-BODY_FONT_SIZE: str = "18px"
+BODY_FONT_SIZE: str = "20px"
 
 # Heading size multipliers (applied to body font size)
 # h1 = 2.0x, h2 = 1.75x, h3 = 1.5x, h4 = 1.25x, h5 = 1.1x, h6 = 1.0x
@@ -24,11 +24,11 @@ HEADING_MULTIPLIERS: dict[int, float] = {
 
 # === Spacing ===
 
-LINE_HEIGHT: str = "1.5"
+LINE_HEIGHT: str = "1.7"
 LETTER_SPACING: str = "0.02em"  # ~35% of average letter width (BDA guideline)
 WORD_SPACING: str = "0.16em"  # 3.5x letter spacing (BDA guideline)
 
-PARAGRAPH_SPACING: str = "1.5em"  # Space between paragraphs
+PARAGRAPH_SPACING: str = "1.8em"  # Space between paragraphs
 HEADING_MARGIN_TOP: str = "2em"  # Space before headings
 HEADING_MARGIN_BOTTOM: str = "0.75em"  # Space after headings
 
@@ -47,8 +47,8 @@ LINK_VISITED_COLOR: str = "#551a8b"  # Purple for visited links
 
 # === Layout ===
 
-MAX_LINE_WIDTH: str = "70ch"  # 60-70 characters (BDA recommendation)
-CONTAINER_PADDING: str = "2rem"  # Padding around content
+MAX_LINE_WIDTH: str = "65ch"  # 60-70 characters (BDA recommendation)
+CONTAINER_PADDING: str = "2rem 3rem"  # Padding around content
 
 
 # === Print Styles ===
