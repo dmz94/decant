@@ -195,7 +195,7 @@ BDA's Style Guide includes readability guidance beyond typography that affects s
 
 1. **Default:** Use Arial or Verdana for all primary content
 2. **Headings:** Use at least 20% larger, bold
-3. **Spacing:** 1.5x line-height (BDA recommendation); letter spacing ~35% of average letter width; word spacing at least 3.5x letter spacing
+3. **Spacing:** 1.5x line-height (BDA recommendation); letter spacing ~35% of average letter width; word spacing at least 3.5x letter spacing (v1 implementation uses 0.02em as a starting point; see docs/decisions.md §10)
 4. **Line length:** Target 60-70 characters per line
 5. **Colors:** Dark on cream/soft pastel, WCAG AA contrast minimum
 6. **Layout:** Left-aligned, generous margins, no full justification

@@ -2,15 +2,15 @@
 
 **Status:** Reference document for v2 planning
 **Last updated:** February 25, 2026
+Architecture terminology follows docs/architecture.md and docs/decisions.md.
 
-Known limitations identified during visual validation of the dual-pipeline
-architecture. These are not bugs - they are documented boundaries of v1 scope.
+Known limitations identified during visual validation of the conversion pipeline. These are not bugs - they are documented boundaries of v1 scope.
 
 ---
 
-## Trafilatura Extract Mode Limitations
+## Trafilatura Extraction Limitations
 
-These affect extract mode only. Transform mode is not affected.
+These affect Trafilatura-based extraction in the conversion pipeline.
 
 **Trailing CMS boilerplate** - Some sites (Cleveland Clinic, WikiHow) have
 CMS footer patterns that Trafilatura does not strip. Legitimate article content

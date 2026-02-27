@@ -39,7 +39,7 @@ Given input HTML string:
 
 ## 3) Input validation and rejection (testable rules)
 
-Flowdoc rejects input as "non-semantic" when any of the following are true after sanitization:
+Flowdoc rejects input as "non-semantic" when any of the following are true in the selected main content subtree (after extraction and sanitization):
 
 A. No headings usable for structure:
 - There is **no** `<h1>`, `<h2>`, or `<h3>` in the selected main content subtree.
@@ -204,7 +204,7 @@ Links:
 
 ## 9) Sanitization (security boundary)
 
-Sanitization happens before DOM parsing and content selection.
+Sanitization happens after Trafilatura extraction and before DOM parsing.
 
 Policy:
 - Allowlist tags required for v1 parsing/selection.
@@ -241,6 +241,7 @@ Typography defaults (v1):
 - line-height: 1.5
 - letter-spacing: 0.02em (starting point)
 - word-spacing: 0.16em (starting point)
+- These are starting-point values for empirical tuning; the BDA-recommended spacing targets are referenced in docs/research-typography-guidelines.md.
 - max line length: 60-70 characters (implemented via container max-width)
 - left-aligned, ragged-right (no full justification)
 - background: off-white/cream; text dark gray/black
