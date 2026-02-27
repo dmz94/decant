@@ -1,3 +1,11 @@
+---
+DEPRECATED
+
+This document is archived for historical reference.
+The canonical strategy is defined in docs/strategy.md.
+If conflicts exist, strategy.md wins.
+---
+
 # Flowdoc v1 - Development Session Summary
 
 **Date:** February 26, 2026

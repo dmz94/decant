@@ -1,3 +1,11 @@
+---
+DEPRECATED
+
+This document is archived for historical reference.
+The canonical strategy is defined in docs/strategy.md.
+If conflicts exist, strategy.md wins.
+---
+
 # Flowdoc - Architectural Exploration (Non-Normative)
 
 **Status:** Revised
