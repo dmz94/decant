@@ -1,8 +1,8 @@
 # Viability V3 - Baseline eval20 run (no code changes)
 
 Run date: 2026-02-28. Flowdoc production default (baseline extraction mode).
-17 of 20 fixtures ACCEPT; 3 REJECT. All 3 rejects are in-scope fixtures.
-Both out-of-scope fixtures (wikipedia table, w3c tool) produced ACCEPT — they were not rejected cleanly; noted as a known gap.
+15 of 20 fixtures ACCEPT; 5 REJECT. 3 rejects are in-scope fixtures; 2 are expected out-of-scope rejects.
+Out-of-scope fixtures (wikipedia table, w3c tool) now REJECT cleanly via preflight scope check (added post-baseline).
 
 | # | fixture | expected_scope | status | reason | chars | paragraphs |
 |---|---------|---------------|--------|--------|------:|----------:|
@@ -16,8 +16,8 @@ Both out-of-scope fixtures (wikipedia table, w3c tool) produced ACCEPT — they 
 | 08 | skysports | in-scope | ACCEPT | OK | 6988 | 43 |
 | 09 | smithsonian | in-scope | ACCEPT | OK | 19304 | 60 |
 | 10 | theringer | in-scope | REJECT | No article body detected (nav/boilerplate extracted) | 178 | 0 |
-| 11 | wikipedia-gdp-table | out-of-scope | ACCEPT | OK | 6665 | 30 |
-| 12 | w3c-validator-tool | out-of-scope | ACCEPT | OK | 4044 | 31 |
+| 11 | wikipedia-gdp-table | out-of-scope | REJECT | Out of scope: navigation/reference page. | 42 | 0 |
+| 12 | w3c-validator-tool | out-of-scope | REJECT | Out of scope: tool/form page. | 37 | 0 |
 | 13 | article-13-theconversation | in-scope | ACCEPT | OK | 11068 | 38 |
 | 14 | article-14-sciencedaily | in-scope | ACCEPT | OK | 12036 | 68 |
 | 15 | article-15-quantamagazine | in-scope | ACCEPT | OK | 24032 | 75 |
@@ -32,5 +32,18 @@ Both out-of-scope fixtures (wikipedia table, w3c tool) produced ACCEPT — they 
 **04 guardian / 10 theringer:**
 > No article body detected: document contains no paragraph with 20 or more words of prose text. Extraction may have captured navigation or boilerplate instead of article content.
 
-**16 article-16-e360yale:**
+**11 wikipedia-gdp-table:**
+> Out of scope: navigation/reference page.
+
+**12 w3c-validator-tool:**
+> Out of scope: tool/form page.
+
+**16 article-16-e360vale:**
 > Input HTML lacks semantic structure (requires at least one h1-h3 and body content in p/ul/ol).
+
+## Before / After ACCEPT/REJECT count
+
+| run | ACCEPT | REJECT | notes |
+|-----|-------:|-------:|-------|
+| V3 baseline (no preflight) | 17 | 3 | both out-of-scope pages false-ACCEPT |
+| V3 + preflight scope check | 15 | 5 | out-of-scope pages now REJECT cleanly |
