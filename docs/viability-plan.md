@@ -65,6 +65,39 @@ Deliverables:
 
 ---
 
+## Interim: Human Review Aid (Eval20)
+
+Goal:
+Provide a lightweight, disposable browser-based review aid allowing a human reviewer to see:
+  (1) the original live webpage,
+  (2) immersion tool rendering (triggered manually on the live page),
+  (3) the Flowdoc HTML output.
+
+Inputs:
+- tests/fixtures/eval20/manifest.md (fixture order + source URLs)
+- tests/fixtures/eval20/*.html (local snapshots)
+- docs/eval20-outputs/*.txt (Flowdoc outputs)
+
+Outputs:
+- docs/eval20-review/index.html
+- docs/eval20-review/outputs-html/<fixture>.html
+
+Procedure:
+- Convert Flowdoc outputs to real .html files using minimal HTML shell.
+- Build index.html listing fixtures in manifest order.
+- For each fixture include:
+    * Live URL
+    * Local fixture file link
+    * Flowdoc output html link
+    * Instruction: "Open Live URL, then activate immersion tool."
+
+Usage:
+Reviewer opens docs/eval20-review/index.html in browser and evaluates each fixture visually.
+
+This is a disposable artifact — not committed to the repo, regenerated as needed.
+
+---
+
 ## V3 - Baseline Run and Score (No Code Changes)
 
 Process:
