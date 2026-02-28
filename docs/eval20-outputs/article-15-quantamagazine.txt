@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>How Smell Guides Our Inner World | Quanta Magazine</title>
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 22px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    word-spacing: 0.16em;
+    background-color: #faf8f3;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 58ch;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+}
+
+
+h1 {
+    font-size: calc(22px * 2.0);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: calc(22px * 1.75);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: calc(22px * 1.5);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: calc(22px * 1.25);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h5 {
+    font-size: calc(22px * 1.1);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: calc(22px * 1.0);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+
+p {
+    margin: 0 0 1.8em 0;
+    text-align: left;
+}
+
+ul, ol {
+    margin: 0 0 1.8em 0;
+    padding-left: 2em;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+blockquote {
+    margin: 0 0 1.8em 2em;
+    padding-left: 1em;
+    border-left: 3px solid #1a1a1a;
+}
+
+pre {
+    background-color: #f5f5f5;
+    padding: 1em;
+    margin: 0 0 1.8em 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+}
+
+code {
+    background-color: #f5f5f5;
+    padding: 0.2em 0.4em;
+    font-family: 'Courier New', monospace;
+}
+
+a {
+    color: #0051a5;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #003d7a;
+}
+
+a:visited {
+    color: #551a8b;
+}
+
+@media print {
+    body {
+        font-size: 12pt;
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Introduction</h2>
+<p>When <a href="https://www.uniklinikum-dresden.de/en/the-hospital/departments-and-institutes/otorhinolaryngology/interdisciplinary-center-smell-taste/employees/prof-dr-med-thomas-hummel">Thomas Hummel</a> gets a whiff of an unripe, green tomato, he finds himself in his childhood home in Bavaria. Under the tilted ceilings of the bedroom that he shared with his two older brothers, there were three beds, a simple table and a cupboard. “My mother put those green tomatoes on the cupboard for them to ripen,” said Hummel, an olfaction researcher at the Carl Gustav Carus University Hospital in Germany. “They have this very specific smell.”</p>
+
+<p>It’s grassy, green, pungent, rough and bitter, he said. When he passes by a bin of tomatoes at the market today, “it is always to some degree emotional,” he said, “like every smell is emotional.”</p>
+
+<p>Smell is deeply tied with the emotion and memory centers of our brain. Lavender perfume might evoke memories of a close friend. A waft of cheap vodka, a relic of college days, might make you grimace. The smell of a certain laundry detergent, the same one your grandparents used, might bring tears to your eyes.</p>
+
+<p>Smell is also our most ancient sense, tracing back billions of years to the first chemical-sensing cells. But scientists know little about it compared to other senses — vision and hearing in particular. That’s in part because smell has not been deemed critical to our survival; humans have been wrongly considered “bad smellers” for more than a century. It’s also not easy to study.</p>
+
+<p>“It’s a highly dimensional sense,” said <a href="https://monell.org/valentina-parma/">Valentina Parma</a>, an olfactory researcher at the Monell Chemical Senses Center in Philadelphia. “We don’t know exactly how chemicals translate to perception.” But scientists are making progress toward systematically characterizing and quantifying what it means to smell by breaking the process down to its most fundamental elements — from the odor molecules that enter your nose to the individual neurons that process them in the brain.</p>
+
+<p>Several new databases, including one recently published in the journal <em>Scientific Data</em>, are attempting to establish <a href="https://doi.org/10.1038/s41597-025-04644-2">a shared scientific language</a> for the perception of molecular scents — what individual molecules “smell like” to us. And on the other end of the pathway, researchers recently published a study in <em>Nature</em> describing how those scent molecules are <a href="https://doi.org/10.1038/s41586-024-08016-5">translated into a neural language</a> that triggers emotions and memories.</p>
+
+<p>Together, these efforts are painting a richer picture of our strongest memory-teleportation device. This higher-resolution look is challenging the long-held assumption that smell is our least important sense.</p>
+
+<h2><strong>Anosmatique</strong></h2>
+<p>The idea that humans are bad at smelling comes from a hundred-year-old misunderstanding.</p>
+
+<p>In the late 19th century, the French neuroanatomist Paul Broca was trying to explain why humans have free will and other animals don’t, despite the similarities between our brains. He pointed out that in humans, the olfactory bulbs — the primary brain areas for analysis of information flowing in from the nose — are relatively small compared to overall brain size. In contrast, the olfactory bulbs of mice and horses are massive relative to the rest of their brains.</p>
+
+<p>He concluded that the sense of smell drives behavior, particularly irrational behavior, in animals. Humans can choose to respond to smells — but can also ignore them. This led Broca to label humans as <em>anosmatique</em>, or “non-smellers,” and some other animals as <em>osmatique</em>, or “smellers.” Our mastery over smell, he suggested, made us higher forms of life. “He made this big conclusion,” said <a href="https://psych.rutgers.edu/people/chair-v-cs/faculty-profile/119-john-mcgann">John McGann</a>, an olfactory researcher at Rutgers University. “And then he died almost immediately after that.”</p>
+
+<p>Before long, the English anatomist Sir William Turner mistranslated Broca’s findings. To him, Broca was drawing a conclusion about smelling ability rather than free will, suggesting that humans are bad smellers while dogs are good smellers.</p>
+
+<p>“Through a series of telephone games, people just kept repeating the idea, ‘Oh, humans don’t need smell,” said <a href="https://hosting.med.upenn.edu/gottfriedlab/people/">Sarah Cormiea</a>, a postdoctoral researcher studying olfaction at the University of Pennsylvania. Freud didn’t help: In his various musings throughout the 20th century, he also claimed that smell was a primitive sense that merely lingered from our ancient, animalistic past.</p>
+
+<p>He wasn’t entirely wrong. Researchers trace the mammalian sense of smell back 3 billion years to bacteria in the ancient oceans. To find food and move toward it, these organisms detected chemical gradients. Molecules in the water docked onto proteins on a bacterium’s cell membrane, triggering internal signals that urged the organism toward or away from increasing concentrations of the chemical. This ability, called chemosensation, is the most rudimentary form of smell, and it has many parallels to olfactory systems in complex, multicellular animals such as mammals.</p>
+
+<p>In that sense, smell is our most ancient interface with the environment, said <a href="https://liu.se/en/employee/matla69">Matthias Laska</a>, a zoologist at Linköping University in Sweden. “No single cell can see or hear. But single cells already can respond to chemicals.”</p>
+
+<p>Our modern chemical sense is far more complicated. In the 1990s, the future Nobel Prize–winning biologists <a href="https://www.nobelprize.org/prizes/medicine/2004/7438-the-nobel-prize-in-physiology-or-medicine-2004-2004-5/">Linda Buck and Richard Axel</a> discovered genes that code for odorant receptors in mammals. Later studies showed that humans have around 400 types of olfactory receptors in the nose, and that millions of these receptors line the nasal passages. Each receptor is a protein that can recognize and latch onto many kinds of odorants — molecules that are light enough to evaporate off your cup of coffee, the wet grass outside, or the microbes in your armpits, and waft into the air and, in turn, your nasal passages.</p>
+
+<p>When you smell a rose, more than 800 different odorants enter your nose and bind to olfactory receptors expressed in the cell membranes of various neurons, which fire to create a particular pattern interpreted by the brain. There are 5.8 million molecules on Earth that could possibly be odorants detectable by humans, although no one has the time or means to determine whether we can smell all of these, Laska said. However, we tend to underestimate our sense of smell because we lack a vocabulary for it, said <a href="https://www.klipsy.uni-jena.de/en/484/antonie-bierling-m-sc">Antonie Bierling</a>, who studies olfaction at the Dresden University of Technology. Visually, we might describe a pineapple as a yellow and green fruit wrapped in scaly skin. But how would you describe what a pineapple smells like?</p>
+
+<p>“This smells like a pineapple,” Hummel said. “But we don’t know how to describe pineapple.” Our smell words are often linked to their source — for example, something smells grassy or like a wet dog or like a pineapple. He added: “What makes the pineapple a pineapple?”</p>
+
+<p>This difficulty with describing smells, at least in some languages like English, has limited our ability to study the human sense. Several groups of researchers are now addressing this problem systematically. It’s largely mysterious how the chemical structures of an odor molecule relate to smell, Bierling said. “The only way to change that is to create data.”</p>
+
+<h2><strong>Single-Molecule Smells</strong></h2>
+<p>If a light has a certain wavelength, you will describe what you are seeing as red. If a sound is a certain frequency, you will hear an F sharp. But there’s no similarly easy way to map odors, which often arrive at our noses as a bouquet of different molecules. What’s more, that bouquet can smell different to every person depending on the context in which they smell it and their past experiences with that scent.</p>
+
+<p>“Real odors are complicated and multidimensional,” Cormiea said. “People don’t have a good understanding of what features of an odor stimulus, like a molecule, produce what perceptual experiences.”</p>
+
+<p>Why does a flower smell like a flower, and what makes cheese smell like cheese? Odorous molecules have many dimensions that can define or affect their smell. Are they big or small? What other molecules are they interacting with? Do they have a charge? Even molecules that are mirror images of one another, <a href="https://www.quantamagazine.org/how-the-universe-differs-from-its-mirror-image-20250514/">a property called chirality</a>, can smell completely different. For example, pine and citrus scents are opposite-handed chiral forms of the molecule limonene.</p>
+
+<p>Several past efforts have created databases of odor molecules to match each molecular shape to a smell description. Most of these studies enlisted expert noses, such as perfumers, or were based on a small number of participants. But mapping odor molecules requires a much bigger and more diverse data set, one that includes data from non-expert noses, to better reflect the lived reality of a highly subjective and context-driven sense.</p>
+
+<p>One study, published in 2016, asked 55 healthy people, who were not trained experts, to smell <a href="https://doi.org/10.1186/s12868-016-0287-2">more than 450 substances</a>. It was a “tremendous effort,” said Bierling, who was not involved. The researchers found, as others had before them with expert noses, some general chemical rules. The more sulfur atoms in a molecule, the more the molecule smelled decayed, garlicky or fishy. The larger and more complex the molecule, the more pleasant it seemed to the people perceiving it. But the researchers also found that different people could describe the same scent in widely divergent ways.</p>
+
+<p>Bierling and her colleagues wanted to home in on this finding and build <a href="https://doi.org/10.1038/s41597-025-04644-2">an even more diverse data set</a>. They had more than 1,200 people evaluate 74 odorants, each composed of a single type of molecule. All participants received 10 containers, each containing a different single-molecule odorant, and were asked to describe the smell in their own words; later, they smelled the odorants again and rated them with set descriptors for how intense, pleasant, irritating, warm, cold or edible they were.</p>
+
+<p>Though the main goal was to collect data, Bierling and her team did some analysis and drew a core conclusion: “The most crucial finding of this data set is really to appreciate that there are differences in olfactory perception,” she said. For example, around 250 participants described benzyl acetate as smelling like nail polish remover; around 170 others said it smelled like a banana or other fruits.</p>
+
+<p>“Both are actually correct,” she said. “This is actually, in my opinion, not just noise.” Benzyl acetate is present in both nail polish remover and bananas, and “humans get to know a molecule in a certain context,” Bierling said. “If you’ve grown up in a culture where banana is the thing you eat three times a day, then this will be completely different to you than if you live somewhere where you have never seen a banana.”</p>
+
+<p>Bierling’s team isn’t the only research team taking this approach. The Monell Chemical Senses Center, in collaboration with Google, used a scent-molecule database to create an artificial intelligence tool that can predict what molecules ought to smell like. They found, in a study published in <em>Science</em> in 2023, that their model could <a href="https://doi.org/10.1126/science.ade4401">predict most scents</a> as well as a human could by looking at the odorants’ molecular structure alone. Researchers at the Monell Center in collaboration with others have also begun to collect various data sets from different species and experiments into one big scent database named “<a href="https://doi.org/10.1038/s41597-024-04051-z">Pyrfume</a>.”</p>
+
+<p>These types of efforts are “a big deal,” said McGann, who was not involved in the study. “It’s really beginning to nail down … what the fundamental mapping of odor structure to odor perception is, at least in humans.”</p>
+
+<p>At the other end of the system, neuroscientists are trying to understand why the brain perceives an odor the way it does.</p>
+
+<h2><strong>The Brain Makes Scents</strong></h2>
+<p>Fossil evidence shows that some 500 million years ago, the earliest vertebrates had already evolved specialized brain regions dedicated to olfaction. As organisms transitioned from water to land, the number of olfactory receptors increased, and supporting structures such as nostrils evolved as well. “The brain is organized around the sense of smell,” Hummel said. “In the very beginning is breathing, and then comes smell with breathing, and then comes the rest of the brain.”</p>
+
+<p>Unlike with the other senses, smell information doesn’t pass through the thalamus, an evolutionarily more recent brain region that relays sensory information to other parts of the brain for processing. “A lot of what we smell doesn’t really get into our conscious awareness,” Parma said.</p>
+
+<p>Instead, smell works on a subliminal level, Hummel said. “It changes your behavior, but in a way that you don’t really notice.”</p>
+
+<p>When you do notice, it can be dramatic. A scent can trigger a flash of good or bad feeling; you may not even be able to pinpoint why. And it moves quickly: Smell signals travel from the nose to the amygdala, the brain’s emotional center, and the hippocampus, its memory hub, on a short pathway only a few synapses long.</p>
+
+<p>Mark Belan/<em>Quanta Magazine</em></p>
+
+<p>“No other sensory system is so directly linked to emotions and memories as the sense of smell,” Laska said. “This is why odor stimuli evoke such vivid memories, which can reach back far into your childhood.”</p>
+
+<p>Much of what we know about how we perceive odors comes from animal studies or from noninvasive brain studies in humans. These human studies could only produce results with low resolution, at the level of populations of neurons.</p>
+
+<p>Recently, the neurobiologist <a href="https://www.ukbonn.de/en/epileptology/workgroups/mormann-workgroup-cognitive-und-clinical-neurophysiology/">Florian Mormann</a> at the University of Bonn and his team got a glimpse of this process at a much higher resolution: the activity of single neurons. These rare recordings were made from the brain activity of consenting epilepsy patients who already had electrodes implanted into their brains for presurgical monitoring. Mormann’s team had participants sniff a variety of odor pens, containing smells such as licorice and coffee, and monitored neurons in brain regions known to be involved in olfaction.</p>
+
+<p>The neuron recordings were able to zoom in to several major brain regions involved in processing smells, confirming findings from animal studies. Once odorants travel into the nose, they activate neural pathways to the olfactory bulb, which first analyzes the information. Then the signal travels to neurons in the primary olfactory cortex — the region that includes the piriform cortex, which encodes the odor’s identity — and to the amygdala, which helps to create an emotional reaction to the scent (such as whether it’s good or bad). Then the signal travels to the secondary olfactory cortex, which includes the hippocampus, which helps to recognize and name the scents. The team found that neurons in the piriform cortex better encoded an odor’s chemical identity, while those in the hippocampus better encoded its perceived identity. Other brain regions are involved in this olfactory network, too, including a tertiary olfactory cortex where the information is integrated with that from other senses.</p>
+
+<p>University of Bonn</p>
+
+<p>After the participants sniffed the odor pens, the researchers showed them pictures that corresponded to each one. They found that neurons in the piriform cortex didn’t only respond to the scent molecules, but also to pictures or words related to the scent. In other words, these neurons are <a href="https://www.quantamagazine.org/concept-cells-help-your-brain-abstract-information-and-build-memories-20250121/">concept neurons</a> that respond to the abstract concept of licorice generally, no matter how it’s presented. “Finding [concept neurons] in the piriform cortex was something quite unexpected,” Mormann said. It suggests that this brain region, previously associated mainly with odor processing, is also involved in integrating sensory information into concepts.</p>
+
+<p>The discovery echoes what vision scientists have revealed about visual processing areas. These areas don’t only activate when we see an object, but also when we imagine or name that object. With smell, “something along the same lines must be happening,” Mormann said. So reading the word “licorice” or seeing a picture of it also prompts us to imagine the smell of licorice.</p>
+
+<p>The research also speaks to a larger truth about the human brain’s sensory apparatus: We perceive the world not only based on reality, but also on experience and expectation. The deeply personal nature of smell speaks to its importance to our everyday interactions and relationships.</p>
+
+<h2><strong>Surely Osmatique</strong></h2>
+<p>From the time of the ancient bacteria to the early mammals living alongside dinosaurs to businesspeople walking down the city streets, smell has been critical for survival. We use it to tell if something is familiar or not, dangerous or not, edible or not. “We know more and more that the sense of smell also plays quite a role in human behavior,” Laska said.</p>
+
+<p>Though we’re not cats sniffing crevices for rats, our sense of smell is central to the human experience. Smell is deeply entwined with taste: Taste buds provide us with broad experiences such as salty, spicy and sweet flavors, while the nuances of a caprese salad with balsamic glaze come from the nose. Smell is also important for our interactions with family and our social circles, with studies suggesting that smell can affect who we choose to befriend or partner with romantically.</p>
+
+<p>Xinhua/Alamy Stock Photo</p>
+
+<p>But, perhaps most importantly, it helps us detect threats. “If you don’t have a proper sense of smell … you don’t smell if your house is burning, or if the diapers of your baby are full. You won’t smell if your food is rotten,” Bierling said.</p>
+
+<p>Despite the hundred-year-old misunderstanding about the quality of our ability to smell, research increasingly shows that humans actually smell pretty well. “Our human sense of smell is grossly underrated — not only compared to dogs, but also compared to mice and rats and other species which have this reputation of being particularly sensitive,” said Laska, who has been comparing the sense of smell across species for decades. It just depends on what you ask us to smell.</p>
+
+<p>For example, humans are more sensitive to certain scents, especially fruity and flowery ones, relative to dogs, who “have this almost mythical reputation of being the super nose of the universe,” Laska said. Dogs are carnivores; there’s no evolutionary pressure to make them sensitive to fruity smells. But they are highly sensitive to particular fatty acids, for example, that compose the body odor of potential prey. “I would bring a human to pick out my wine,” McGann said, “but I prefer to have a dog to find the cadaver in the woods.”</p>
+
+<p>The recent data and studies suggest that “there’s way more structured information available in the olfactory system than previously thought,” Cormiea said. That makes her hopeful that we might be able to further systematize our understanding of olfaction in the form of a digital nose.</p>
+
+<p>“Most of us already have an electronic nose in its crudest form in their house, which is a smoke detector,” Bierling said. “This is an electronic nose because it determines chemicals in your surroundings and warns you about them.”</p>
+
+<p>Researchers now want to take that a step further. By digitizing olfaction, they hope to create an external system that could detect smells that might not be so apparent to humans — such as molecules evaporating off our skin that could suggest disease. Disease can alter inflammatory markers in the body, which can make you smell subtly different. These molecules also hold critical information about hormones, nutrition and overall health. “There’s a lot encrypted in this body odor,” said Bierling, whose team is working to understand <a href="https://doi.org/10.1038/s41597-025-04630-8">how body odors are perceived</a>.</p>
+
+<p>A digital nose might also help people who have lost their sense of smell due to aging, neurodegenerative diseases or certain conditions such as Covid-19. Such devices could even advance to help those people experience smell again. “This would be such an achievement, to [help people] keep smelling even at an older age,” Hummel said.</p>
+
+<p>Because our sense of smell can be largely subliminal, in surveys many people, given the choice of losing one sense, choose olfaction. But “every day, I experience people sitting in my office and talking about how they are disconnected to the world,” Hummel said. They can’t smell their children or spouses anymore. They cannot detect bad-smelling food or dangerous smoke. They no longer have access to certain memories.</p>
+
+<p>“I know the memory is there, but I don’t have the key to open [it] anymore,” Hummel said. “Life becomes a much more insecure place without a sense of smell in many ways, but you only realize it when it’s gone.”</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>An Evolutionary Timeline of Homo Sapiens</title>
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 22px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    word-spacing: 0.16em;
+    background-color: #faf8f3;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 58ch;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+}
+
+
+h1 {
+    font-size: calc(22px * 2.0);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: calc(22px * 1.75);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: calc(22px * 1.5);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: calc(22px * 1.25);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h5 {
+    font-size: calc(22px * 1.1);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: calc(22px * 1.0);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+
+p {
+    margin: 0 0 1.8em 0;
+    text-align: left;
+}
+
+ul, ol {
+    margin: 0 0 1.8em 0;
+    padding-left: 2em;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+blockquote {
+    margin: 0 0 1.8em 2em;
+    padding-left: 1em;
+    border-left: 3px solid #1a1a1a;
+}
+
+pre {
+    background-color: #f5f5f5;
+    padding: 1em;
+    margin: 0 0 1.8em 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+}
+
+code {
+    background-color: #f5f5f5;
+    padding: 0.2em 0.4em;
+    font-family: 'Courier New', monospace;
+}
+
+a {
+    color: #0051a5;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #003d7a;
+}
+
+a:visited {
+    color: #551a8b;
+}
+
+@media print {
+    body {
+        font-size: 12pt;
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<h2>550,000 to 750,000 Years Ago: The Beginning of the <em>Homo sapiens</em> Lineage</h2>
+<p>Genes, rather than fossils, can help us chart the migrations, movements and evolution of our own species—and those we descended from or interbred with over the ages.</p>
+
+<p>The oldest-recovered DNA of an early human relative comes from <a href="http://humanorigins.si.edu/research/whats-hot-human-origins/dna-and-first-neanderthals">Sima de los Huesos</a>, the “Pit of Bones.” At the bottom of a cave in Spain’s Atapuerca Mountains scientists found thousands of teeth and bones from 28 different individuals who somehow ended up collected en masse. In 2016, scientists painstakingly teased out the partial genome from these 430,000-year-old remains to <a href="https://www.eva.mpg.de/documents/Nature/Meyer_Nuclear_Nature_2016_2259387.pdf">reveal that the humans in the pit are the oldest known Neanderthals</a>, our very successful and most familiar close relatives. Scientists <a href="https://humanorigins.si.edu/evidence/dating">used the molecular clock to estimate</a> how long it took to accumulate the differences between this oldest Neanderthal genome and that of modern humans, and the researchers suggest that a common ancestor lived sometime between 550,000 and 750,000 years ago.</p>
+
+<p>Pinpoint dating isn&#x27;t the strength of genetic analyses, as the 200,000-year margin of error shows. “In general, estimating ages with genetics is imprecise,” says Joshua Akey, who studies evolution of the human genome at Princeton University. “Genetics is really good at telling us qualitative things about the order of events, and relative time frames.” Before genetics, these divergence dates were estimated by the oldest fossils of various lineages scientists found. In the case of <em>H. sapiens, </em>known remains only date back some 300,000 years, so gene studies have located the divergence far more accurately on our evolutionary timeline than bones alone ever could.</p>
+
+<p>Though our genes clearly show that modern humans, Neanderthals and <a href="https://humanorigins.si.edu/evidence/genetics/ancient-dna-and-neanderthals">Denisovans</a>—a mysterious hominin species that left behind substantial traces in our DNA but, so far, only a handful of tooth and bone remains—do share a common ancestor, it’s not apparent who it was. <em> Homo heidelbergensis</em>, a species that existed from 200,000 to 700,000 years ago, is a popular candidate. It appears that the African family tree of this species leads to </p>
+
+<p><em>Homo sapiens</em>while a European branch leads to</p>
+
+<p><em>Homo neanderthalensis</em>and the Denisovans.</p>
+
+<p>More ancient DNA could help provide a clearer picture, but finding it is no sure bet. Unfortunately, the cold, dry and stable conditions best for long-term preservation aren’t common in Africa, and few ancient African human genomes have been sequenced that are older than 10,000 years.</p>
+
+<p>“We currently have no ancient DNA from Africa that even comes near the timeframes of our evolution—a process that is likely to have largely taken place between 800,000 and 300,000 years ago,” says Eleanor Scerri, an archaeological scientist at the <a href="http://www.shh.mpg.de/en">Max Planck Institute for the Science of Human History</a> in Germany.</p>
+
+<h2>300,000 Years Ago: Fossils Found of Oldest <em>Homo sapiens</em></h2>
+<p>As the physical remains of actual ancient people, fossils tell us most about what they were like in life. But bones or teeth are still subject to a significant amount of interpretation. While human remains can survive after hundreds of thousands of years, scientists can’t always make sense of the wide range of morphological features they see to definitively classify the remains as <em>Homo sapiens</em>, or as different species of human relatives.</p>
+
+<p>Fossils often boast a mixture of modern and primitive features, and those don’t evolve uniformly toward our modern anatomy. Instead, certain features seem to change in different places and times, suggesting separate clusters of anatomical evolution would have produced quite different looking people.</p>
+
+<p>No scientists suggest that <em>Homo sapiens</em> first lived in what’s now Morocco, because so much early evidence for our species has been found in both South Africa and East Africa. But fragments of 300,000-year-old skulls, jaws, teeth and other <a href="https://www.smithsonianmag.com/science-nature/genetics-anthropology-solve-mysteries-human-evolution-180963608/">fossils found at Jebel Irhoud</a>, a rich site also home to advanced stone tools, are the oldest <em>Homo sapiens</em> remains yet found.</p>
+
+<p>The remains of five individuals at Jebel Irhoud exhibit traits of a face that looks compellingly modern, mixed with other traits like an elongated brain case reminiscent of more archaic humans. The remains’ presence in the northwestern corner of Africa isn’t evidence of our origin point, but rather of how widely spread humans were across Africa even at this early date.</p>
+
+<p>Other very old fossils often classified as early <em>Homo sapiens</em> come from Florisbad, South Africa (around 260,000 years old), and the Kibish Formation along Ethiopia’s Omo River (around 195,000 years old).</p>
+
+<p>The 160,000-year-old skulls of two adults and a child at Herto, Ethiopia, were classified as the subspecies <em>Homo sapiens idaltu</em> because of slight morphological differences including larger size. But they are otherwise so similar to modern humans that some argue they aren’t a subspecies at all. A skull discovered at Ngaloba, Tanzania, also considered <em>Homo sapiens</em>, represents a 120,000-year-old individual with a mix of archaic traits and more modern aspects like smaller facial features and a further reduced brow.</p>
+
+<p>Debate over the definition of which fossil remains represent modern humans, given these disparities, is common among experts. So much so that some seek to simplify the characterization by considering them part of a single, diverse group.</p>
+
+<p>“The fact of the matter is that all fossils before about 40,000 to 100,000 years ago contain different combinations of so called archaic and modern features. It’s therefore impossible to pick and choose which of the older fossils are members of our lineage or evolutionary dead ends,” Scerri suggests. “The best model is currently one in which they are all early <em>Homo sapiens</em>, as their material culture also indicates.”</p>
+
+<p>As Scerri references, African material culture shows a widespread shift some 300,000 years ago from clunky, handheld stone tools to the more refined blades and projectile points known as <a href="https://humanorigins.si.edu/evidence/behavior/stone-tools/middle-stone-age-tools">Middle Stone Age</a> toolkits.</p>
+
+<p>So when did fossils finally first show fully modern humans with all representative features? It’s not an easy answer. One skull (but only one of several) from Omo Kibish looks much like a modern human at 195,000 years old, while another found in Nigeria’s Iwo Eleru cave, <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0024024">appears very archaic, but is only 13,000 years old</a>. These discrepancies illustrate that the process wasn’t linear, reaching some single point after which all people were modern humans.</p>
+
+<h2>300,000 Years Ago: Artifacts Show a Revolution in Tools</h2>
+<p>Our ancestors used stone tools as long as 3.3 million years ago and by 1.75 million years ago they’d adopted the <a href="https://humanorigins.si.edu/acheulean-technology-lasts-nearly-15-million-years">Acheulean culture</a>, a suite of chunky handaxes and other cutting implements that remained in vogue for nearly 1.5 million years. As recently as 400,000 years ago, <a href="https://humanorigins.si.edu/evidence/behavior/getting-food/oldest-wooden-spear">thrusting spears</a> used during the hunt of large prey in what is now Germany were state of the art. But they could only be used up close, an obvious and sometimes dangerous limitation.</p>
+
+<p>Even as they acquired the more modern anatomy seen in living humans, the ways our ancestors lived, and the tools they created, changed as well.</p>
+
+<p>Humans took a leap in tool tech with the Middle Stone Age some 300,000 years ago by making those finely crafted tools with flaked points and attaching them to handles and spear shafts to greatly improve hunting prowess. Projectile points like those Potts and colleagues dated to 298,000 to 320,000 years old in southern Kenya were an innovation that suddenly made it possible to kill all manner of elusive or dangerous prey. “It ultimately changed how these earliest <em>sapiens</em> interacted with their ecosystems, and with other people,” says Potts.</p>
+
+<p>Scrapers and awls, which could be used to work animal hides for clothing and to shave wood and other materials, appeared around this time. By at least 90,000 years ago barbed points made of bone—<a href="https://www.jstor.org/stable/2886646?seq=1%25252523page_scan_tab_contents">like those discovered at Katanda, Democratic Republic of the Congo</a>—were used to spearfish</p>
+
+<p>As with fossils, tool advancements appear in different places and times, suggesting that distinct groups of people evolved, and possibly later shared, these tool technologies. Those groups may include other humans who are not part of our own lineage.</p>
+
+<p>Last year a <a href="https://www.sciencemag.org/news/2018/01/these-mysterious-stone-blades-point-early-human-toolmaking-india">collection including sophisticated stone blades was discovered near Chennai, India</a>, and dated to at least 250,000 years ago. The presence of this toolkit in India so soon after modern humans appeared in Africa suggests that other species may have also invented them independently—or that some modern humans spread the technology by leaving Africa earlier than most current thinking suggests.</p>
+
+<h2>100,000 to 210,000 Years Ago: Fossils Show <em>Homo sapiens</em> Lived Outside of Africa</h2>
+<p>Many genetic analyses tracing our roots back to Africa make it clear that <em>Homo sapiens</em> originated on that continent. But it appears that we had a tendency to wander from a much earlier era than scientists had previously suspected.</p>
+
+<p>A <a href="https://www.nature.com/articles/d41586-018-01261-5">jawbone found inside a collapsed cave</a> on the slopes of Mount Carmel, Israel, reveals that modern humans dwelt there, alongside the Mediterranean, some 177,000 to 194,000 years ago. Not only are the jaw and teeth from Misliya Cave unambiguously similar to those seen in modern humans, they were found with sophisticated handaxes and flint tools.</p>
+
+<p>Other finds in the region, including multiple individuals at Qafzeh, Israel, are dated later. They range from 100,000 to 130,000 years ago, suggesting a long presence for humans in the region. At Qafzeh, human remains were found with pieces of red ocher and ocher-stained tools in a site that has been interpreted as <a href="https://humanorigins.si.edu/evidence/behavior/burial/qafzeh-oldest-intentional-burial">the oldest intentional human burial</a>.</p>
+
+<p>Among the limestone cave systems of southern China, more evidence has turned up from between 80,000 and 120,000 years ago. A 100,000-year-old jawbone, complete with a pair of teeth, from Zhirendong retains some archaic traits like a less prominent chin, but otherwise appears so modern that it may represent <em>Homo sapiens</em>. A cave at Daoxian <a href="https://www.nature.com/news/teeth-from-china-reveal-early-human-trek-out-of-africa-1.18566%2525252520These">yielded a surprising array of ancient teeth</a>, barely distinguishable from our own, which suggest that <em>Homo sapiens</em> groups were already living very far from Africa from 80,000 to 120,000 years ago.</p>
+
+<p>Even earlier migrations are possible; some believe evidence exists of humans reaching Europe as long as 210,000 years ago. While most early human finds spark some scholarly debate, few reach the level of the Apidima skull fragment, in southern Greece, which may be more than 200,000 years old and might possibly represent the earliest modern human fossil discovered outside of Africa. The <a href="https://www.smithsonianmag.com/smart-news/210000-skull-may-be-oldest-human-fossil-found-europe-180972629/">site is steeped in controversy</a>, however, with some scholars believing that the badly preserved remains look less those of our own species and more like Neanderthals, whose remains are found just a few feet away in the same cave. Others question the accuracy of the dating analysis undertaken at the site, which is tricky because the fossils have long since fallen out of the geological layers in which they were deposited.<br></p>
+
+<p>While various groups of humans lived outside of Africa during this era, ultimately, they aren’t part of our own evolutionary story. Genetics can reveal which groups of people were our distant ancestors and which had descendants who eventually died out.</p>
+
+<p>“Of course, there could be multiple out of Africa dispersals,” says Akey. “The question is whether they contributed ancestry to present day individuals and we can say pretty definitely now that they did not.”</p>
+
+<h2>50,000 to 60,000 Years Ago: Genes and Climate Reconstructions Show a Migration Out of Africa</h2>
+<p>All living non-Africans, from Europeans to Australia’s aboriginal people, <a href="https://www.sciencemag.org/news/2016/09/almost-all-living-people-outside-africa-trace-back-single-migration-more-50000-years%25252523:~:targetText=Not%25252525252520so%2525252525252C%25252525252520according%25252525252520to%25252525252520a,then%25252525252520spread%25252525252520in%25252525252520different%25252525252520directions.">can trace most of their ancestry to humans who were part of a landmark migration out of Africa beginning some 50,000 to 60,000 years ago</a>, according to numerous genetic studies published in recent years. <a href="http://www.nature.com/articles/doi:10.1038/nature19365">Reconstructions of climate suggest</a> that lower sea levels created several advantageous periods for humans to leave Africa for the Arabian Peninsula and the Middle East, including one about 55,000 years ago.</p>
+
+<p>“Just by looking at DNA from present day individuals we’ve been able to infer a pretty good outline of human history,” Akey says. “A group dispersed out of Africa maybe 50 to 60 thousand years ago, and then that group traveled around the world and eventually made it to all habitable places of the world.”</p>
+
+<p>While earlier African emigres to the Middle East or China may have interbred with some of the more archaic hominids still living at that time, their lineage appears to have faded out or been overwhelmed by the later migration.</p>
+
+<h2>15,000 to 40,000 Years Ago: Genetics and Fossils Show <em>Homo sapiens</em> Became the Only Surviving Human Species</h2>
+<p>For most of our history on this planet, <em>Homo sapiens</em> have not been the only humans. We coexisted, and as our genes make clear frequently interbred with various hominin species, including some we haven’t yet identified. But they dropped off, one by one, leaving our own species to represent all humanity. On an evolutionary timescale, some of these species vanished only recently.</p>
+
+<p>On the Indonesian island of Flores, fossils evidence a curious and diminutive early human species nicknamed “hobbit.” <em> Homo floresiensis</em> appear to have been living until perhaps 50,000 years ago, but what happened to them is a mystery. They don’t appear to have any close relation to modern humans including the Rampasasa pygmy group, which lives in the same region today.</p>
+
+<p>Neanderthals once stretched across Eurasia from Portugal and the British Isles to Siberia. As <em>Homo sapiens</em> became more prevalent across these areas the Neanderthals faded in their turn, being generally consigned to history by some 40,000 years ago. Some <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1365-2699.2011.02536.x">evidence suggests that a few die-hards</a> might have held on in enclaves, like Gibraltar, until perhaps 29,000 years ago. Even today traces of them remain because modern humans carry <a href="https://www.smithsonianmag.com/smart-news/new-research-expands-neanderthals-genetic-legacy-modern-humans-180974099/">Neanderthal DNA in their genome</a>.</p>
+
+<p>Our more mysterious cousins, the Denisovans, left behind so few identifiable fossils that scientists aren’t exactly sure what they looked like, or if they might have been more than one species. A recent study of human genomes in Papua New Guinea suggests that humans may have lived with and interbred with Denisovans there as recently as 15,000 years ago, though the claims are controversial. Their genetic legacy is more certain. Many living Asian people <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3188841/">inherited perhaps 3 to 5 percent of their DNA </a>from the Denisovans.</p>
+
+<p>Despite the bits of genetic ancestry they contributed to living people, all of our close relatives eventually died out, leaving <em>Homo sapiens</em> as the only human species. Their extinctions add one more intriguing, perhaps unanswerable question to the story of our evolution—why were we the only humans to survive?</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Input HTML lacks semantic structure (requires at least one h1-h3 and body content in p/ul/ol).
