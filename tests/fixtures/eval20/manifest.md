@@ -5,16 +5,16 @@ Fixed set — do not change filenames or scoring criteria mid-run.
 
 | # | filename | source_url | capture_date | scope | notes |
 |---|----------|------------|--------------|-------|-------|
-| 01 | aeon.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | Long-form essay. Known: 6x [Form omitted] placeholder run at tail. |
-| 02 | cdc.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | Government health article. |
-| 03 | eater.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | Food/restaurant article. Known: consecutive image placeholder runs. |
-| 04 | guardian.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | News article. Known: Trafilatura extracts navigation; fails in extract mode (ValidationError). |
-| 05 | nhs.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | UK health service article. |
-| 06 | pbs.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | Public broadcasting article. |
-| 07 | propublica.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | Investigative journalism article. Known: consecutive [Form omitted] run. |
-| 08 | skysports.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | Sports news article. |
-| 09 | smithsonian.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | Magazine article. Clean extraction reference fixture. |
-| 10 | theringer.html | UNKNOWN (existing fixture) | UNKNOWN (existing fixture) | in-scope | Entertainment/sports article. Known: Trafilatura extracts navigation stub; fails in extract mode (ValidationError). |
+| 01 | aeon.html | https://aeon.co/essays/how-the-harsh-icy-world-of-snowball-earth-shaped-life-today | UNKNOWN (existing fixture) | in-scope | Long-form essay. Known: 6x [Form omitted] placeholder run at tail. |
+| 02 | cdc.html | https://www.cdc.gov/west-nile-virus/symptoms-diagnosis-treatment/index.html | UNKNOWN (existing fixture) | in-scope | Government health article. |
+| 03 | eater.html | https://www.eater.com/dining-out/919418/lisbon-pastel-de-nata-tourism-gentrification-portugal | UNKNOWN (existing fixture) | in-scope | Food/restaurant article. Known: consecutive image placeholder runs. |
+| 04 | guardian.html | https://www.theguardian.com/food/2020/feb/13/how-ultra-processed-food-took-over-your-shopping-basket-brazil-carlos-monteiro | UNKNOWN (existing fixture) | in-scope | News article. Known: Trafilatura extracts navigation; fails in extract mode (ValidationError). |
+| 05 | nhs.html | https://www.nhs.uk/conditions/dyslexia/ | UNKNOWN (existing fixture) | in-scope | UK health service article. |
+| 06 | pbs.html | https://www.pbs.org/newshour/arts/explainer-here-is-why-crowd-surges-can-kill-people | UNKNOWN (existing fixture) | in-scope | Public broadcasting article. |
+| 07 | propublica.html | https://www.propublica.org/article/3m-forever-chemicals-pfas-pfos-inside-story | UNKNOWN (existing fixture) | in-scope | Investigative journalism article. Known: consecutive [Form omitted] run. |
+| 08 | skysports.html | https://www.skysports.com/football/news/11095/13511444/home-advantage-is-on-the-wane-in-the-premier-league-between-the-lines | UNKNOWN (existing fixture) | in-scope | Sports news article. |
+| 09 | smithsonian.html | https://www.smithsonianmag.com/science-nature/essential-timeline-understanding-evolution-homo-sapiens-180976807/ | UNKNOWN (existing fixture) | in-scope | Magazine article. Clean extraction reference fixture. |
+| 10 | theringer.html | https://www.theringer.com/2024/07/25/olympics/chase-budinger-paris-2024-olympics-beach-volleyball | UNKNOWN (existing fixture) | in-scope | Entertainment/sports article. Known: Trafilatura extracts navigation stub; fails in extract mode (ValidationError). |
 | 11 | wikipedia-gdp-table.html | https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal) | 2026-02-28 | out-of-scope | Reference/table page: GDP data tables with no article prose. |
 | 12 | w3c-validator-tool.html | https://validator.w3.org/ | 2026-02-28 | out-of-scope | Tool/form interface: HTML validation service, no article content. |
 | 13 | article-13-theconversation.html | https://theconversation.com/will-ai-accelerate-or-undermine-the-way-humans-have-always-innovated-272246 | 2026-02-28 | in-scope | Academic long-form prose: AI and human innovation, ~1400 words. |
