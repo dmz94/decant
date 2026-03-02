@@ -2,7 +2,10 @@
 
 ## Identity (Frozen)
 
-Flowdoc is a deterministic CLI-based accessibility document compiler that converts semantic prose HTML into structured, readability-optimized, self-contained HTML, with dyslexia-informed typography as the initial focus profile.
+Flowdoc is a free, open-source CLI tool that converts semantic prose HTML
+into accessible, self-contained, printable HTML for readers with dyslexia
+and related conditions. For parents, teachers, SEN coordinators, and
+accessibility practitioners.
 
 ## v1 Success Definition
 
@@ -10,9 +13,11 @@ Flowdoc is a deterministic CLI-based accessibility document compiler that conver
 - Output is byte-identical across repeated runs and across supported extraction modes.
 - On at least 3 representative complex pages, Flowdoc output is qualitatively preferred over browser Reader Mode.
 
-## Primary Buyer Hypothesis
+## Primary User Hypothesis
 
-No validated buyer yet. Phase 2 focuses on technical proof and extraction reliability before committing to a specific B2B segment.
+Target users are parents, teachers, SEN coordinators, and accessibility
+practitioners who currently reformat documents manually. No institutional
+buyer dependency. Validation through direct community feedback.
 
 ## Primary Beneficiary
 
@@ -32,6 +37,22 @@ Phase 2 - Extraction reliability and deterministic post-processing.
 - Determinism preserved across extraction mode flag.
 - No regression on currently clean fixtures.
 - Niggle inventory is exhausted for the v1 fixture set (all recorded artifacts are either fixed or explicitly accepted as known limitations).
+
+## Phase 2 Status
+
+Complete. All exit criteria met. Identity10 evaluation: 8 PASS, 1 MARGINAL, 2 FAIL.
+
+## Phase 3 — Ship v1
+
+Goal: Usable open-source release via pip install.
+
+Tasks:
+1. OpenDyslexic font embedding (spec'd, not yet implemented)
+2. Input validation polish (largely done)
+3. CLI packaging for pip install (config exists)
+4. README and usage docs (partially done)
+5. Golden file tests and determinism validation
+6. CHANGELOG and release tagging
 
 ## Top Backlog (Ranked)
 

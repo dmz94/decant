@@ -2,7 +2,7 @@
 
 Status: Active  
 Supersedes: prior exploratory and session summary documents  
-Last Updated: 2026-02-27  
+Last Updated: 2026-03-02  
 
 This document defines the canonical identity, scope, and direction of Flowdoc.
 If any other document conflicts with this one, this document wins.
@@ -19,47 +19,44 @@ Status: For structured review and critique
 
 ## 1. Core Identity
 
-Flowdoc is an accessibility-focused document compiler for prose content.
+Flowdoc is a free, open-source command-line tool that converts web articles
+into clean, accessible, self-contained HTML files styled for readers with
+dyslexia and related conditions.
 
-It transforms semantic HTML into portable, self-contained, readable artifacts
-using a deterministic, security-bounded transformation pipeline.
+It transforms semantic HTML into portable, printable, offline-readable
+documents using a deterministic, security-bounded transformation pipeline
+with BDA-recommended typography.
 
 Flowdoc is not:
 - A browser reader mode replacement
 - A layout-preserving renderer
-- A universal web restructuring engine
-- A consumer-first reading app
+- A platform, SaaS product, or business
+- A consumer app or browser extension
 
-It is infrastructure that enables institutions to reliably produce accessible
-reading versions of prose documents at scale.
+It is a focused utility for parents, teachers, SEN coordinators, and
+accessibility practitioners who need actual documents -- portable,
+printable, readable offline -- prepared from web content.
 
 ---
 
 ## 2. Problem Definition
 
-Organizations publish large volumes of prose content:
-- Educational articles
-- Health information
-- Knowledge base content
-- Encyclopedic entries
-- Editorial/blog content
+A parent gets their child's dyslexia diagnosis. They search NHS, BDA,
+Understood.org. The content is there but buried in site chrome, cramped
+typography, and layouts designed for sighted neurotypical readers.
 
-Producing accessible versions of this content today is often:
-- Manual
-- Inconsistent
-- Not reproducible
-- Not portable
-- Not suitable for CI or audit
+Browser Reader Mode helps but is ephemeral -- you cannot save it reliably,
+print it with controlled typography, email it to a teacher, or hand it to
+a student on a USB stick.
 
-Browser Reader Mode improves readability, but:
-- Does not generate portable artifacts
-- Cannot run server-side
-- Cannot guarantee deterministic output
-- Cannot be version-pinned
-- Cannot be integrated into institutional workflows
+Teachers, SEN coordinators, and parents need actual documents: portable,
+printable, readable offline, with typography tuned for accessibility.
+Today that means manual reformatting. Flowdoc automates it.
 
-There is no deterministic, embeddable, reproducible transformation engine
-designed specifically for accessibility-first document normalization.
+The same problem applies across educational articles, health information,
+knowledge base content, and editorial/blog content -- any prose article
+where the content is "there" but presented in a way that creates
+unnecessary barriers for dyslexic readers.
 
 ---
 
@@ -82,9 +79,6 @@ Key properties:
 - Model-driven: renderer consumes IR only (no raw DOM)
 - Fail-fast: non-semantic inputs are rejected explicitly
 - Version-pinned: dependency changes are intentional events
-
-This makes Flowdoc suitable for CI pipelines, compliance workflows,
-publishing systems, and archival environments.
 
 ---
 
@@ -143,44 +137,35 @@ not merely applying CSS.
 
 ---
 
-## 7. Intended Adoption Model
+## 7. Intended Users
 
 End beneficiaries:
-Readers who benefit from improved readability (initially dyslexic readers).
+Readers with dyslexia or related conditions who benefit from improved
+readability.
 
-Primary adopters:
-- Educational institutions
-- Learning platforms
-- Publishers
-- Enterprise knowledge systems
-- Accessibility compliance teams
-- Archival and documentation systems
+Primary users:
+- Parents preparing reading materials for dyslexic children
+- SEN coordinators and teachers creating accessible handouts
+- Accessibility practitioners who need portable document conversion
+- Tutors preparing session materials from web content
 
-Flowdoc is infrastructure with human impact.
+Distribution:
+Free open-source tool distributed via pip and standalone binaries.
+No monetization. No institutional sales dependency.
 
 ---
 
-## 8. User-Facing Surface (Validation Layer)
+## 8. User-Facing Surface
 
-Although Flowdoc is infrastructure-first, a minimal user-facing tool is
-necessary for:
+Flowdoc ships as a CLI tool. A minimal local preview capability exists
+for testing and demonstration.
 
-- Demonstrating output quality
-- Supporting empirical validation
-- Enabling side-by-side comparison
-- Allowing artifact download and print testing
+The primary workflow is: give it an HTML file (or URL content saved as
+HTML), get back a single self-contained accessible document.
 
-This user-facing surface is not the product identity.
-It is a validation and demonstration interface.
-
-It may be:
-- A minimal local preview web app
-- A simple upload-and-convert demo tool
-
-It must not compromise:
-- Input constraints
-- Determinism
-- Security boundary
+Future consideration: a simple upload-and-convert web page or drag-and-drop
+local app could lower the barrier for non-technical users. Any such surface
+must not compromise input constraints, determinism, or security boundary.
 
 ---
 
@@ -258,13 +243,15 @@ All expansion must preserve:
 
 ---
 
-## 13. Open Strategic Questions
+## 13. Open Questions
 
-- Is the prose-document domain large enough to sustain institutional adoption?
-- Does deterministic accessibility transformation provide sufficient institutional value?
-- What level of extraction imperfection is tolerable?
-- Who inside an organization owns this problem?
-- Is commercialization open-core, hosted API, or institutional licensing?
+- Is the CLI sufficient for the target audience, or is a simpler interface
+  needed for non-technical users (parents, teachers)?
+- What distribution channels reach the dyslexia/SEN community effectively?
+  (BDA, dyslexia forums, SEN coordinator networks, parent groups)
+- What level of extraction imperfection is tolerable for the target use cases?
+- Does the tool need to handle URL input directly, or is "save page as HTML"
+  an acceptable workflow step?
 
 ---
 
@@ -272,10 +259,9 @@ All expansion must preserve:
 
 Flowdoc aims to be:
 
-An accessibility document compiler for prose content.
+A free, focused tool that saves parents, teachers, and practitioners
+the effort of manually reformatting documents for dyslexic readers.
 
-It is infrastructure.
-It produces durable artifacts.
-It reduces remediation effort.
-It is auditable and reproducible.
-It improves reading outcomes at scale.
+It produces durable, portable, printable accessible documents from web
+content. If it saves even a fraction of the manual reformatting effort
+and produces a better result, it justifies existing.

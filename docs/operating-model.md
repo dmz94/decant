@@ -14,8 +14,7 @@ The controller does not need repo access because Claude Code is the repo-aware e
 
 ## Canonical Control Docs
 
-- docs/program-board.md: identity, v1 success, scope boundaries, ranked backlog. Changes rarely.
-- docs/phase-2-plan.md: current milestone execution plan. Updated as work completes.
+- docs/program-board.md: identity, success criteria, scope boundaries, current milestone, ranked backlog.
 
 ## Daily Build Loop (Execution)
 

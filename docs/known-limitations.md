@@ -39,6 +39,11 @@ Wrong input type - Flowdoc is for prose articles, not reference tables.
 **Recipe sites** - Trafilatura strips heading structure from some recipe sites
 causing validation failure. Out of scope for v1.
 
+**Yale regression (fixed)** - Synthetic H1 injection duplicated the first
+real heading, causing drop_duplicate_consecutive_sections() to delete the
+definition section. Fixed in Phase 2 by adding a normalization guard that
+skips injection when the title matches the first extracted heading.
+
 ---
 
 ## Deferred to v2
