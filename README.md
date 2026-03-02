@@ -1,8 +1,8 @@
 # Flowdoc
 
-Flowdoc is a CLI tool that converts HTML documents into **readable, accessibility-friendly HTML** that works consistently across devices and print. The initial focus is dyslexia, grounded in British Dyslexia Association typography guidelines, but the same approach applies to related conditions such as ADHD, Irlen Syndrome, and low vision — making Flowdoc a general-purpose accessibility conversion tool.
+Flowdoc is a free, open-source CLI tool that converts web articles into clean, accessible, self-contained HTML files styled for readers with dyslexia and related conditions. It strips site chrome, extracts article content, and produces a single portable document with BDA-recommended typography -- printable, offline-readable, and ready to hand to a student or email to a teacher.
 
-Why Flowdoc? Many documents are technically "readable" but visually fatiguing for readers with dyslexia and related conditions due to cramped line length, poor spacing, and layout choices that prioritize appearance over readability. Flowdoc deliberately **throws away layout fidelity** and re-renders content with typography and spacing tuned for readability.
+Many documents are technically "readable" but visually fatiguing for readers with dyslexia due to cramped line length, poor spacing, and layout choices that prioritize appearance over readability. Browser Reader Mode helps but is ephemeral -- you cannot save it, print it with controlled typography, or share it reliably. Flowdoc produces actual documents.
 
 ## v1 scope (summary)
 
@@ -15,7 +15,7 @@ Full boundaries: see [SCOPE.md](SCOPE.md).
 
 ## Status
 
-Core pipeline implemented and tested. First real-world validation complete. Active development continuing.
+Phase 2 complete. Core pipeline built and tested against 11 real-world fixtures (8 clean passes, 1 marginal, 2 known limitations). Preparing for v1 open-source release.
 
 ## Planned CLI
 
@@ -34,10 +34,9 @@ Print to PDF: open the output in a browser and use print-to-PDF.
 - [docs/architecture.md](docs/architecture.md) - locked v1 implementation choices (runtime, libraries, module structure, pipeline, testing)
 - [docs/flowdoc-v1-plan.md](docs/flowdoc-v1-plan.md) - execution checklist for v1
 - [docs/research_typography_guidelines.md](docs/research_typography_guidelines.md) - typography research/reference
-- [docs/architecture-exploration.md](docs/architecture-exploration.md) - non-normative historical exploration/background
-- [docs/session-summary.md](docs/session-summary.md) - current development state and next steps
+- [flowdoc-elevator-pitch.md](flowdoc-elevator-pitch.md) - what Flowdoc is in 60 seconds
+- [docs/flowdoc-project-summary.md](docs/flowdoc-project-summary.md) - project history and context
 - [ABOUT.md](ABOUT.md) - project origin story and motivation
-- [CHANGELOG.md](CHANGELOG.md) - notable changes
 
 ## License
 

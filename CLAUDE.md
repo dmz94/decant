@@ -2,15 +2,13 @@
 
 ## Identity
 
-Flowdoc is an accessibility document compiler for prose content.
+Flowdoc is a free, open-source CLI tool that converts semantic HTML into
+accessible, self-contained, printable HTML documents for readers with
+dyslexia and related conditions.
 
-It transforms semantic, server-rendered HTML prose into a self-contained,
-portable, accessible HTML artifact.
-
-This is infrastructure-first software.
-It is not a general-purpose browser reader.
-It is not a hosted service.
-It is not a consumer app.
+It is a focused utility for parents, teachers, SEN coordinators, and
+accessibility practitioners. Not infrastructure. Not a platform. Not a
+business. Not a consumer app.
 
 ## v1 Scope (Non-Negotiable)
 

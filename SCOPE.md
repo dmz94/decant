@@ -91,6 +91,8 @@ If v1 meets these criteria, scope expansion is justified; otherwise it is premat
 
 ## v2 direction (not a commitment)
 
-v1 validates the core conversion pipeline for dyslexia. v2 is expected to expand in two directions:
+v1 validates the core conversion pipeline for dyslexia. v2 may expand in two directions:
 - Additional accessibility profiles (ADHD, Irlen Syndrome, low vision, color blindness)
-- Additional delivery surfaces (hosted web app, browser extension, embeddable API)
+- A simpler user interface for non-technical users (upload-and-convert web page, drag-and-drop local app)
+
+Any expansion must preserve determinism, security boundary, and explicit failure modes.
