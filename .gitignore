@@ -58,3 +58,11 @@ package-lock.json
 *.flowdoc.html
 repo_snapshot.txt
 extraction_trial_output.txt
+preview.html
+project_files.txt
+
+# Generated review outputs (regenerate from fixtures; not source)
+docs/eval20-outputs/
+docs/eval20-review/
+docs/identity10-review/
+tests/fixtures/user-study/output/
