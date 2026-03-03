@@ -105,22 +105,32 @@ surface exists -- nothing to test before then.
 
 ## Top Backlog (Ranked)
 
-1. Trafilatura configuration experiments (baseline vs precision vs fast).
+1. Image preservation pipeline (implementation pending).
+   decisions.md sections 7 and 9 specify image URL preservation.
+   Code (sanitizer.py, degradation.py, parser.py, model.py,
+   renderer.py) still degrades images to placeholder text.
+   Completion Criteria: img src preserved through sanitizer;
+   model represents preserved images; renderer emits <img> tags
+   with original source URLs; WARN placeholder used only when
+   src unavailable; tests updated.
+   Sequencing: after corpus exercise results determine priority.
+
+2. Trafilatura configuration experiments (baseline vs precision vs fast).
    Completion Criteria: Extraction modes implemented; summary runner compares all 10 fixtures; no default behavior change.
 
-2. Niggle inventory + burn-down plan.
+3. Niggle inventory + burn-down plan.
    Completion Criteria: Single consolidated artifact list created; issues classified (boundary / model / sanitization); prioritized remediation plan agreed.
 
-3. Deterministic tail boilerplate trimming.
+4. Deterministic tail boilerplate trimming.
    Completion Criteria: Trailing CMS artifacts removed without breaking clean fixtures; covered by regression tests.
 
-4. Intro/title recovery improvements (top-section extraction refinement).
+5. Intro/title recovery improvements (top-section extraction refinement).
    Completion Criteria: Titles and opening paragraphs preserved where present; no new leading junk introduced; covered by regression tests.
 
-5. Orphan trailing section detector + structural artifact cleanup.
+6. Orphan trailing section detector + structural artifact cleanup.
    Completion Criteria: No empty or heading-only trailing sections; placeholders used only where intentional; no regressions.
 
-6. Lightweight preview runner for real-user testing.
+7. Lightweight preview runner for real-user testing.
    Completion Criteria: Simple local viewer for 5 curated demo pages; usable for qualitative feedback sessions.
 
 ## Explicitly Out of Scope (v1)

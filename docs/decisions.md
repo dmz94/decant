@@ -18,7 +18,8 @@ Input (v1): HTML only.
 Output (v1): self-contained readable HTML:
 - one HTML file
 - CSS in a single inline `<style>` block
-- no external scripts, CSS, images, or fonts
+- no external scripts, CSS, or fonts
+- images use original source URLs (see section 7)
 - OpenDyslexic embedded only when enabled via `--font opendyslexic`
 
 Non-goals for v1 include: PDF input, GUI, native PDF output.
@@ -316,6 +317,8 @@ Same input HTML + same Flowdoc version + same flags -> byte-identical output.
 
 Enforcement requirements:
 - No timestamps, random values, environment-dependent paths, or non-deterministic iteration.
+  Provenance metadata (source URL, conversion date, Flowdoc version)
+  is excluded from byte-comparison. See section 13.
 - Stable ordering when iterating attributes/collections during rendering.
 - Normalize output formatting (consistent indentation/newlines) in renderer.
 

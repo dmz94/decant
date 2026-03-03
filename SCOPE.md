@@ -48,7 +48,8 @@ PDF output is out of scope for v1. Use browser print-to-PDF.
 - Main content extraction via Trafilatura (with deterministic fallback: main -> article -> body)
 - Parse headings, paragraphs, lists, blockquotes, and code blocks
 - Preserve inline emphasis, strong, inline code, and links
-- Deterministic degradation for unsupported elements (e.g., tables/images)
+- Image preservation with external source URLs; deterministic
+  degradation for remaining unsupported elements (e.g., tables)
 - Strict sanitization to remove active content
 - Simple CLI conversion workflow
 - Visible provenance in output: source URL (if supplied), conversion date, Flowdoc version
