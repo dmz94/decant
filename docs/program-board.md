@@ -25,7 +25,7 @@ Readers with dyslexia or similar reading-comprehension friction who benefit from
 
 ## Current Milestone
 
-Phase 2 - Extraction reliability and deterministic post-processing.
+Corpus expansion -- v1 definition deferred until corpus results are in.
 
 ## Phase 2 Exit Criteria
 
@@ -44,15 +44,46 @@ Complete. All exit criteria met. Identity10 evaluation: 8 PASS, 1 MARGINAL, 2 FA
 
 ## Phase 3 — Ship v1
 
-Goal: Usable open-source release via pip install.
+**Step 1 -- Corpus expansion session** *(next dedicated session)*
+Expand test fixtures beyond Identity10 and Eval20. More document types, styles,
+and sources. Diagnose Wikipedia failure -- fixable or architectural boundary.
+Results determine v1 definition.
 
-Tasks:
-1. OpenDyslexic font embedding (spec'd, not yet implemented)
-2. Input validation polish (largely done)
-3. CLI packaging for pip install (config exists)
-4. README and usage docs (partially done)
-5. Golden file tests and determinism validation
-6. CHANGELOG and release tagging
+**Step 2 -- Print validation** *(needs dedicated planning)*
+Requires thought before execution. Questions to resolve:
+- Which document types represent real use cases?
+- What are we evaluating -- typography, layout, readability, page breaks?
+- Who is assessing -- owner alone, or a dyslexic reader?
+- What is pass/fail criteria?
+
+Primary reviewer candidate: owner's son. Selection of documents and evaluation
+criteria to be agreed before printing anything.
+
+**Step 3 -- Define "done" for the engine**
+Explicit, measurable, agreed criteria before corpus results come in. Without this
+the engine work has no natural stopping point.
+
+**Step 4 -- Define v1**
+Based on corpus results, print validation, and "done" definition. Rewrite
+program-board.md Phase 3 tasks against real data.
+
+**Step 5 -- OpenDyslexic embedding**
+Contained, spec'd work. Implement before any public release. Not a current
+priority.
+
+**Step 6 -- Hosted reference surface**
+Build after engine is stable and v1 is defined. Temporary domain for early
+testing. URL input required. Basic typography controls included.
+Note: temporary domain (aglet.club) for early testing only -- not the permanent
+home.
+
+**Step 7 -- PyPI package**
+Clean API, well-documented. Enables community surfaces. Architecture and code
+review by human contacts before release.
+
+**Step 8 -- Tester recruitment**
+Warm introductions via NSPCC network and personal connections. After hosted
+surface exists -- nothing to test before then.
 
 ## Top Backlog (Ranked)
 
