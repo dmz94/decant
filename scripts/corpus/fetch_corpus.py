@@ -7,11 +7,13 @@ Supports multiple corpora via the --corpus argument.
 Usage (from project root with venv active):
     python scripts/corpus/fetch_corpus.py                  # fetch all corpora
     python scripts/corpus/fetch_corpus.py --corpus input   # fetch one corpus
+    python scripts/corpus/fetch_corpus.py --corpus candidates  # fetch candidate URLs
 
 Requires: pip install requests
 """
 
 import argparse
+import re
 import sys
 import time
 from pathlib import Path
@@ -144,7 +146,150 @@ CORPORA = {
     },
 }
 
+CANDIDATES_MD = Path(__file__).resolve().parent / "candidates.md"
+STAGING_DIR = PROJECT_ROOT / "tests" / "fixtures" / "staging"
+FETCH_RESULTS_PATH = Path(__file__).resolve().parent / "fetch-results.txt"
+
 MIN_SIZE = 10 * 1024  # 10 KB
+
+
+def parse_candidates_md(path=CANDIDATES_MD):
+    """Parse candidates.md and return list of (url, filename, id) tuples."""
+    text = path.read_text(encoding="utf-8")
+    candidates = []
+    # Match table rows: | C## | slug | URL | ... |
+    row_re = re.compile(
+        r"^\|\s*(C\d+)\s*\|\s*(\S+)\s*\|\s*(https?://\S+?)\s*\|",
+        re.MULTILINE,
+    )
+    for match in row_re.finditer(text):
+        cid = match.group(1)
+        slug = match.group(2)
+        url = match.group(3)
+        filename = slug + ".html"
+        candidates.append((url, filename, cid))
+    return candidates
+
+
+def fetch_candidates(session):
+    """Fetch all candidate URLs from candidates.md into staging dir.
+
+    Returns list of result dicts for summary table.
+    """
+    if not CANDIDATES_MD.exists():
+        print(f"ERROR: candidates.md not found: {CANDIDATES_MD}", file=sys.stderr)
+        sys.exit(1)
+
+    candidates = parse_candidates_md()
+    total = len(candidates)
+
+    STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    print(f"Corpus: candidates")
+    print(f"  Source: {CANDIDATES_MD}")
+    print(f"  Output: {STAGING_DIR}")
+    print(f"  Candidates: {total}")
+    print()
+
+    results = []
+
+    for i, (url, filename, cid) in enumerate(candidates, 1):
+        slug = filename.removesuffix(".html")
+        print(f"  [{i}/{total}] Fetching {slug}...")
+        output_path = STAGING_DIR / filename
+
+        try:
+            response = session.get(url, timeout=30)
+            response.raise_for_status()
+
+            content = response.content
+            size = len(content)
+            size_kb = size / 1024
+
+            output_path.write_bytes(content)
+
+            if size < MIN_SIZE:
+                print(f"  [{i}/{total}] SMALL - {size_kb:.0f} KB")
+                results.append({
+                    "id": cid, "slug": slug, "size_kb": size_kb,
+                    "status": "SMALL", "reason": f"<10KB ({size_kb:.0f} KB)",
+                })
+            else:
+                print(f"  [{i}/{total}] OK - {size_kb:.0f} KB")
+                results.append({
+                    "id": cid, "slug": slug, "size_kb": size_kb,
+                    "status": "OK", "reason": "",
+                })
+
+        except requests.exceptions.HTTPError as e:
+            reason = f"HTTP {e.response.status_code}" if e.response else str(e)
+            print(f"  [{i}/{total}] FAILED - {reason}")
+            results.append({
+                "id": cid, "slug": slug, "size_kb": 0,
+                "status": "FAILED", "reason": reason,
+            })
+        except requests.exceptions.ConnectionError:
+            print(f"  [{i}/{total}] FAILED - connection error")
+            results.append({
+                "id": cid, "slug": slug, "size_kb": 0,
+                "status": "FAILED", "reason": "connection error",
+            })
+        except requests.exceptions.Timeout:
+            print(f"  [{i}/{total}] FAILED - timeout")
+            results.append({
+                "id": cid, "slug": slug, "size_kb": 0,
+                "status": "FAILED", "reason": "timeout",
+            })
+        except Exception as e:
+            print(f"  [{i}/{total}] FAILED - {e}")
+            results.append({
+                "id": cid, "slug": slug, "size_kb": 0,
+                "status": "FAILED", "reason": str(e),
+            })
+
+        # Polite delay between requests
+        if i < total:
+            time.sleep(1.5)
+
+    # Print summary table
+    ok_count = sum(1 for r in results if r["status"] == "OK")
+    small_count = sum(1 for r in results if r["status"] == "SMALL")
+    fail_count = sum(1 for r in results if r["status"] == "FAILED")
+
+    print()
+    print("=" * 78)
+    print("FETCH SUMMARY")
+    print("=" * 78)
+    header = f"  {'ID':<5s} {'Slug':<35s} {'Size':>7s}  {'Status':<8s} {'Notes'}"
+    sep = f"  {'---':<5s} {'---':<35s} {'---':>7s}  {'---':<8s} {'---'}"
+    print(header)
+    print(sep)
+    for r in results:
+        size_str = f"{r['size_kb']:.0f} KB" if r["size_kb"] > 0 else "-"
+        notes = r["reason"] if r["status"] == "FAILED" else ""
+        print(f"  {r['id']:<5s} {r['slug']:<35s} {size_str:>7s}  {r['status']:<8s} {notes}")
+
+    print()
+    print(f"  OK: {ok_count}  SMALL: {small_count}  FAILED: {fail_count}  Total: {total}")
+
+    # Save results to file
+    lines = []
+    lines.append("Corpus Expansion Fetch Results")
+    lines.append(f"Date: {time.strftime('%Y-%m-%d %H:%M')}")
+    lines.append("")
+    lines.append(f"{'ID':<5s} {'Slug':<35s} {'Size':>7s}  {'Status':<8s} {'Notes'}")
+    lines.append(f"{'---':<5s} {'---':<35s} {'---':>7s}  {'---':<8s} {'---'}")
+    for r in results:
+        size_str = f"{r['size_kb']:.0f} KB" if r["size_kb"] > 0 else "-"
+        notes = r["reason"] if r["status"] == "FAILED" else ""
+        lines.append(f"{r['id']:<5s} {r['slug']:<35s} {size_str:>7s}  {r['status']:<8s} {notes}")
+    lines.append("")
+    lines.append(f"OK: {ok_count}  SMALL: {small_count}  FAILED: {fail_count}  Total: {total}")
+    lines.append("")
+
+    FETCH_RESULTS_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"\n  Results saved to: {FETCH_RESULTS_PATH}")
+
+    return ok_count, fail_count + small_count
 
 
 def fetch_corpus(name, corpus, session):
@@ -202,22 +347,28 @@ def fetch_corpus(name, corpus, session):
 
 
 def main():
+    all_choices = list(CORPORA.keys()) + ["candidates"]
     parser = argparse.ArgumentParser(description="Fetch HTML fixtures for Flowdoc test corpora")
     parser.add_argument(
         "--corpus",
         default=None,
-        choices=list(CORPORA.keys()),
-        help="Which corpus to fetch (default: all)",
+        choices=all_choices,
+        help="Which corpus to fetch (default: all except candidates)",
     )
     args = parser.parse_args()
+
+    session = requests.Session()
+    session.headers.update(HEADERS)
+
+    # "candidates" corpus is handled separately
+    if args.corpus == "candidates":
+        fetch_candidates(session)
+        return
 
     if args.corpus:
         targets = {args.corpus: CORPORA[args.corpus]}
     else:
         targets = CORPORA
-
-    session = requests.Session()
-    session.headers.update(HEADERS)
 
     total_passed = 0
     total_failed = 0
