@@ -23,6 +23,10 @@ Output (v1): self-contained readable HTML:
 
 Non-goals for v1 include: PDF input, GUI, native PDF output.
 
+The engine is file-in/file-out only. It does not fetch URLs.
+A user-facing surface (web page, browser extension, or other form)
+is a separate v1 deliverable. The engine alone is not a product.
+
 ---
 
 ## 2) Processing pipeline (order is mandatory)
@@ -156,13 +160,16 @@ Supported inline elements:
 - a[href] -> Link (href retained subject to URL policy)
 
 Degraded with placeholders (deterministic):
-- table -> a single Paragraph: `[Table omitted - X rows, Y columns]`
-  - rows = count of `<tr>`
-  - cols = max count of immediate `<td>`/`<th>` per row
-  - ignore rowspan/colspan for counting
-- img -> a single Inline Text inside a Paragraph:
-  - if alt exists and non-empty: `[Image: {alt}]`
-  - else: `[Image omitted]`
+- table -> a single Paragraph WARN placeholder:
+    `[Table not included. View original](<source URL if known>)`
+  Always link to original source when source URL is available.
+- img -> preserved as inline image when src URL is available:
+  - if src is http/https: render as `<img src="{src}" alt="{alt}">`
+  - if src is unavailable or not http/https: WARN placeholder:
+    `[Image not included. View original](<source URL if known>)`
+  Note: self-contained offline constraint is relaxed for images in v1.
+  Print quality takes precedence.
+  Implementation pending -- code changes tracked separately.
 - form/input/textarea/select/button -> Paragraph: `[Form omitted]`
 - figure/figcaption:
   - figcaption text is preserved as Paragraph(s)
@@ -220,7 +227,10 @@ URL policy:
 nh3 configuration (required for v1):
 - allowed tags include: html, head, body, main, article, h1-h6, p, ul, ol, li, blockquote, pre, code, em, i, strong, b, a, table, tr, td, th, img, figure, figcaption, dl, dt, dd, hr, form, input, textarea, select, option, button
   - (tables/images/forms are allowed so they can be degraded deterministically; they are not rendered as-is)
-- allowed attributes: `href` on `a`, `alt` on `img`
+- allowed attributes: `href` on `a`, `alt` and `src` on `img`
+  Note: src URL scheme filtering (http/https only) already applies
+  via the existing allowed schemes rule.
+  Implementation pending -- code changes tracked separately.
 - allowed schemes: http, https
 - strip comments: yes
 
@@ -285,6 +295,11 @@ Exit codes:
 - 2 render error
 - 3 I/O error
 
+Engine error codes:
+Specific error codes for structured FAIL states are deferred to the
+surface design session. The surface is responsible for translating
+engine exit codes and error messages into user-friendly explanations.
+
 Explicitly out of v1:
 - `validate` command
 - `info` command
@@ -331,3 +346,19 @@ Three extraction modes were measured: `baseline` (favor_precision=True, no_fallb
 - No status changes: all 10 fixtures ACCEPT under all 3 modes.
 
 **Decision:** Keep `baseline` as the default and only production mode. The mode switch (`ExtractionMode`) exists for experimentation only and must not be exposed in the v1 CLI. `recall` must not become the default; it performs worse on this corpus because `favor_recall=True` activates a different internal Trafilatura algorithm that extracts less content from these specific site structures.
+
+---
+
+## 13) Provenance (v1)
+
+Every output document includes visible provenance metadata:
+- Source URL (if supplied by surface or CLI parameter)
+- Conversion date
+- Flowdoc version
+
+Provenance is rendered at the bottom of the output document.
+Provenance is excluded from the determinism byte-comparison contract.
+Content is byte-identical across runs; provenance metadata may vary.
+
+CLI parameter: `--source-url <url>` (optional, no default)
+If not supplied, source URL is omitted from provenance block.
