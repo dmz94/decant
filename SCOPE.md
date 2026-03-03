@@ -24,7 +24,10 @@ At a minimum, v1 expects:
 - body content expressed via **p and/or ul/ol**
 - semantic structure usable without heuristics
 
-Flowdoc rejects non-semantic HTML with a clear error. Exact validation rules are defined in [docs/decisions.md](docs/decisions.md).
+Flowdoc rejects non-semantic HTML with a clear error. The v1 success contract is the authoritative product definition:
+[docs/flowdoc-v1-success-contract.md](docs/flowdoc-v1-success-contract.md).
+It takes precedence over all other docs where conflicts exist.
+Exact validation rules are defined in [docs/decisions.md](docs/decisions.md).
 
 ## v1 output
 
@@ -32,9 +35,11 @@ Readable HTML (canonical output).
 
 Self-contained means:
 - a single HTML file
-- no external CSS, fonts, scripts, or images
+- no external CSS, fonts, or scripts
 - CSS inlined in one `<style>` block
 - fonts embedded only when OpenDyslexic toggle is enabled
+- images reference original source URLs and render when online
+  and in print. Base64 image embedding is out of scope for v1.
 
 PDF output is out of scope for v1. Use browser print-to-PDF.
 
@@ -46,6 +51,7 @@ PDF output is out of scope for v1. Use browser print-to-PDF.
 - Deterministic degradation for unsupported elements (e.g., tables/images)
 - Strict sanitization to remove active content
 - Simple CLI conversion workflow
+- Visible provenance in output: source URL (if supplied), conversion date, Flowdoc version
 - Validate usefulness with dyslexic readers before expanding scope
 
 Exact handling rules live in [docs/decisions.md](docs/decisions.md).
@@ -68,6 +74,7 @@ Features:
 - recipe-specific parsing or enrichment
 - document editing (conversion only)
 - batch processing features beyond basic CLI usage
+- base64 image embedding / fully offline image rendering
 
 ## Font support (v1)
 
@@ -79,12 +86,15 @@ OpenDyslexic is provided as a preference toggle; Flowdoc makes no universal effi
 ## Success criteria (v1)
 
 1. Accepts semantic HTML inputs within scope.
-2. Produces a self-contained readable HTML output.
+2. Produces a single readable HTML file. No external CSS, scripts,
+   or fonts. Images reference original source URLs.
 3. Output is measurably better for dyslexic readers versus the original formatting, using a simple comparison protocol (fewer re-reads / fewer line-loss incidents / lower fatigue scores).
 4. Works on modern browsers, mobile devices, and print.
 5. Failure modes are predictable and explained clearly.
 6. Inline elements (links/emphasis/code) render correctly.
-7. Unsupported elements degrade deterministically (no silent dropping).
+7. Images preserved when source URL is available. Unsupported
+   elements degrade to WARN placeholders with link to original
+   source. No silent dropping.
 8. Sanitization prevents active-content and injection issues.
 
 If v1 meets these criteria, scope expansion is justified; otherwise it is premature.
@@ -92,6 +102,12 @@ If v1 meets these criteria, scope expansion is justified; otherwise it is premat
 ## v2 direction (not a commitment)
 
 v1 validates the core conversion pipeline for dyslexia. v2 may expand in two directions:
+
+User-configurable typography (font size, line height, background
+color, font choice) is a surface-layer feature deferred to v2,
+informed by tester feedback from the test surface. Engine defaults
+are opinionated and evidence-based.
+
 - Additional accessibility profiles (ADHD, Irlen Syndrome, low vision, color blindness)
 - A simpler user interface for non-technical users (upload-and-convert web page, drag-and-drop local app)
 
