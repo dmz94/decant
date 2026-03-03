@@ -10,6 +10,9 @@ It is a focused utility for parents, teachers, SEN coordinators, and
 accessibility practitioners. Not infrastructure. Not a platform. Not a
 business. Not a consumer app.
 
+Primary users are developers and technical practitioners. Parents and
+teachers are reached through surfaces built on the engine.
+
 ## v1 Scope (Non-Negotiable)
 
 Inputs:
