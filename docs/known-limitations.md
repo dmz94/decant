@@ -39,6 +39,13 @@ Wrong input type - Flowdoc is for prose articles, not reference tables.
 **Recipe sites** - Trafilatura strips heading structure from some recipe sites
 causing validation failure. Out of scope for v1.
 
+**ScienceDaily and similar content aggregators** - ScienceDaily's
+site structure (low script count, few nav elements) causes detect_mode()
+to route to transform mode, bypassing Trafilatura boilerplate removal.
+CMS chrome (Related Topics, Explore More, Story Source) leaks into
+output. Wrong input type for transform mode -- these sites require
+extract mode. Known limitation, not a bug.
+
 **Yale regression (fixed)** - Synthetic H1 injection duplicated the first
 real heading, causing drop_duplicate_consecutive_sections() to delete the
 definition section. Fixed in Phase 2 by adding a normalization guard that

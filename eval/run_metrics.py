@@ -175,7 +175,7 @@ def _classify_placeholder(text: str) -> str:
         return "form"
     if text.startswith("[Table"):
         return "table"
-    if text == "[---]":
+    if text == "[-]":
         return "hr"
     return "other"
 
@@ -384,20 +384,23 @@ def _collect_anomalies(metrics: dict) -> list[str]:
     return anomalies
 
 
-def print_review_block(fixture_name: str, metrics: dict) -> None:
+def print_review_block(fixture_name: str, metrics: dict, fixture_num: int = 0, fixture_total: int = 0) -> None:
     """Print the interactive baseline review block for a PASS fixture."""
     m = metrics
     headings = m["headings"]
 
+    counter = f" [{fixture_num} of {fixture_total}]" if fixture_total else ""
     print("=" * 80)
-    print(f"BASELINE REVIEW -- {fixture_name}")
+    print(f"BASELINE REVIEW -- {fixture_name}{counter}")
     print("=" * 80)
     print()
 
     print(f"HEADINGS  ({len(headings)} found)")
     print("-" * 75)
-    for h in headings:
+    for h in headings[:6]:
         print(f"  {h}")
+    if len(headings) > 6:
+        print(f"  ... and {len(headings) - 6} more")
     print()
 
     print("WORD COUNT")
@@ -453,10 +456,11 @@ def print_review_block(fixture_name: str, metrics: dict) -> None:
     print("=" * 80)
 
 
-def print_fail_review_block(fixture_name: str, error: str) -> None:
+def print_fail_review_block(fixture_name: str, error: str, fixture_num: int = 0, fixture_total: int = 0) -> None:
     """Print the interactive baseline review block for a FAIL fixture."""
+    counter = f" [{fixture_num} of {fixture_total}]" if fixture_total else ""
     print("=" * 80)
-    print(f"BASELINE REVIEW -- {fixture_name}")
+    print(f"BASELINE REVIEW -- {fixture_name}{counter}")
     print("=" * 80)
     print()
     print("STATUS: FAIL")
@@ -526,10 +530,10 @@ def save_report(corpus: str, fixture_results: list[dict]) -> Path:
 
 
 def prompt_action() -> str:
-    """Prompt for baseline review action. Returns 'a', 's', or 'q'."""
+    """Prompt for baseline review action. Returns 'a', 'm', 's', or 'q'."""
     while True:
-        response = input("ACTION  [a]pprove  [s]kip  [q]uit\n> ").strip().lower()
-        if response in ("a", "s", "q"):
+        response = input("ACTION  [a]pprove  [m]arginal  [s]kip  [q]uit\n> ").strip().lower()
+        if response in ("a", "m", "s", "q"):
             return response
 
 
@@ -586,13 +590,29 @@ def main():
     print()
 
     # Process each fixture
-    interactive_baseline = args.baseline and sys.stdin.isatty()
-    auto_baseline = args.baseline and not sys.stdin.isatty()
+    if args.baseline and not sys.stdin.isatty():
+        print(
+            "--baseline requires an interactive terminal (TTY). "
+            "Cannot run in non-interactive mode.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    interactive_baseline = args.baseline
     saved_count = 0
     skipped_count = 0
     fixture_results = []
 
-    for f in fixtures:
+    if interactive_baseline:
+        print("Tip: Maximize your terminal before continuing.")
+        print("     VS Code: click the ^ icon in the terminal panel, or right-click")
+        print("     the terminal tab and select \"Move Panel to New Window\" then maximize.")
+        print("Keys: [a] PASS  [m] MARGINAL  [s] skip  [q] quit")
+        print()
+        input("Press any key to begin...")
+        print()
+
+    total_fixtures = len(fixtures)
+    for i, f in enumerate(fixtures, 1):
         name = f["filename"].removesuffix(".html")
         fixture_path = fixture_dir / f["filename"]
 
@@ -609,12 +629,16 @@ def main():
             metrics = compute_metrics(doc, source_html, rendered)
 
             if interactive_baseline:
-                print_review_block(name, metrics)
+                print_review_block(name, metrics, i, total_fixtures)
                 action = prompt_action()
                 if action == "a":
                     record = build_baseline_record(name, args.corpus, metrics)
-                    if _collect_anomalies(metrics):
-                        record["status"] = "MARGINAL"
+                    save_baseline(args.corpus, name, record)
+                    print(f"  -> saved ({record['status']})")
+                    saved_count += 1
+                elif action == "m":
+                    record = build_baseline_record(name, args.corpus, metrics)
+                    record["status"] = "MARGINAL"
                     save_baseline(args.corpus, name, record)
                     print(f"  -> saved ({record['status']})")
                     saved_count += 1
@@ -632,12 +656,6 @@ def main():
                     f"r={metrics['word_count_ratio']:.2f}  "
                     f"p={metrics['placeholder_count']}"
                 )
-                if auto_baseline:
-                    record = build_baseline_record(name, args.corpus, metrics)
-                    if _collect_anomalies(metrics):
-                        record["status"] = "MARGINAL"
-                    save_baseline(args.corpus, name, record)
-                    print(f"        -> baseline saved ({record['status']})")
                 if args.report:
                     baseline = load_baseline(args.corpus, name)
                     anomalies = _collect_anomalies(metrics)
@@ -654,7 +672,7 @@ def main():
 
         except Exception as e:
             if interactive_baseline:
-                print_fail_review_block(name, str(e))
+                print_fail_review_block(name, str(e), i, total_fixtures)
                 action = prompt_action()
                 if action == "a":
                     record = build_baseline_record(name, args.corpus, {})

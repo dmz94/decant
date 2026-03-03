@@ -27,7 +27,7 @@ Writes to eval/reports/{timestamp}/report.json. Use when you want
 a permanent record, e.g. before a release or after a significant change.
 
 ### Check one fixture
-  python eval/run_metrics.py --corpus main --fixture 01_nhs_dyslexia
+  python eval/run_metrics.py --corpus main --fixture nhs-dyslexia
 
 Use when you're debugging a specific article or investigating an anomaly.
 
@@ -170,9 +170,9 @@ Avoid:
 ### Step 2: Save the HTML
 Open the article in a browser.
 File > Save As > Web Page, HTML Only.
-Save to: tests/fixtures/main/{descriptive-name}.html
+Save to: tests/fixtures/main/{site}-{slug}.html
 
-Use a descriptive filename, lowercase, hyphens:
+Filename convention: {site}-{slug}.html -- lowercase, hyphens only, no numeric prefixes.
   bda-style-guide-overview.html
   understood-dyscalculia-basics.html
   nhs-irlen-syndrome.html
