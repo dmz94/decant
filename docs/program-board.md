@@ -1,17 +1,30 @@
 # Flowdoc Program Board
 
-## Identity (Frozen)
+## Identity (Revised per v1 success contract)
 
 Flowdoc is a free, open-source CLI tool that converts semantic prose HTML
-into accessible, self-contained, printable HTML for readers with dyslexia
-and related conditions. For parents, teachers, SEN coordinators, and
-accessibility practitioners.
+into accessible, self-contained, printable HTML for anyone who needs
+a clearer, more readable version of a web article. Initial validation
+focuses on readers with dyslexia because that is where the research base,
+typography evidence, and personal connection are strongest. For parents,
+teachers, SEN coordinators, and accessibility practitioners.
 
 ## v1 Success Definition
 
-- >=90% of the 10-fixture corpus produces clean article content (no leading junk, no trailing boilerplate, no structural artifacts).
-- Output is byte-identical across repeated runs and across supported extraction modes.
-- On at least 3 representative complex pages, Flowdoc output is qualitatively preferred over browser Reader Mode.
+Absolute requirement:
+- 0% silent structural corruption. Output must never silently drop
+  content or corrupt meaning without flagging it.
+
+Quality bar:
+- Would you hand this printed document to a student, colleague, or
+  parent without apology?
+
+Release gate percentage:
+- Deferred until test corpus is defined. Cannot be evaluated until
+  corpus categories, composition, and user-facing surface exist.
+
+Engine + surface:
+- Both are required for v1 ship. The engine alone is not a product.
 
 ## Primary User Hypothesis
 
@@ -21,7 +34,11 @@ buyer dependency. Validation through direct community feedback.
 
 ## Primary Beneficiary
 
-Readers with dyslexia or similar reading-comprehension friction who benefit from controlled typography and structured prose.
+Anyone who needs a clearer, more readable version of a web article.
+Initial validation focuses on readers with dyslexia or similar
+reading-comprehension friction who benefit from controlled typography
+and structured prose. The same output benefits readers with ADHD, low
+vision, cognitive load issues, or anyone reading in a second language.
 
 ## Current Milestone
 
@@ -71,11 +88,12 @@ program-board.md Phase 3 tasks against real data.
 Contained, spec'd work. Implement before any public release. Not a current
 priority.
 
-**Step 6 -- Hosted reference surface**
-Build after engine is stable and v1 is defined. Temporary domain for early
-testing. URL input required. Basic typography controls included.
-Note: temporary domain (aglet.club) for early testing only -- not the permanent
-home.
+**Step 6 -- Hosted reference surface (v1 deliverable)**
+Required for v1 ship. The engine alone is not a product. Build after
+engine is stable and v1 is defined. Accepts a URL or uploaded HTML
+file, passes content to the engine, returns the converted document.
+Temporary domain (aglet.club) for early testing only -- not the
+permanent home. URL input required. Basic typography controls included.
 
 **Step 7 -- PyPI package**
 Clean API, well-documented. Enables community surfaces. Architecture and code
@@ -114,3 +132,5 @@ surface exists -- nothing to test before then.
 - Site-specific extractor registry
 - ML-based extraction
 - Visual rendering engine
+- Fully offline image rendering (images use external source URLs in v1)
+- Self-contained image embedding (self-contained constraint relaxed for images)
