@@ -29,8 +29,11 @@ or business.
 It is an engine that developers and technical users can build on, with a hosted
 reference implementation that demonstrates what the engine does.
 
-End beneficiaries are readers with dyslexia. Primary users of the tool itself are
-developers and technically capable practitioners. Parents, teachers, and SEN
+End beneficiaries are anyone who needs a clearer, more readable
+version of a web article. Initial validation focuses on readers
+with dyslexia because that is where the research base, typography
+evidence, and personal connection are strongest. Primary users of
+the tool itself are developers and technically capable practitioners. Parents, teachers, and SEN
 coordinators are reached through surfaces built on top of the engine -- not
 through the CLI directly.
 
@@ -52,8 +55,10 @@ Initially on a temporary domain for testing and demos. Accepts a URL or uploaded
 HTML file, returns a converted document. Primary purpose is validation and
 demonstration, not scale.
 
-All three layers are the responsibility of this project. Surfaces built on top of
-the PyPI package -- browser extensions, CMS plugins, educational platform
+All three layers are the responsibility of this project. Both the
+engine and the reference surface are v1 deliverables. The engine
+alone is not a product. Surfaces built on top of the PyPI package
+-- browser extensions, CMS plugins, educational platform
 integrations -- are community responsibility, not this project's.
 
 ---
@@ -93,7 +98,11 @@ Input: Semantic HTML (prose)
 Key properties:
 
 - Deterministic: same input + version + flags = byte-identical output
-- Self-contained: single HTML file, no external dependencies
+- Portable artifact: single HTML file. No external CSS, scripts,
+  or fonts. Images use original source URLs and render when online
+  and in print.
+- Provenance: visible source attribution in every document (source
+  URL, conversion date, Flowdoc version).
 - Security-bounded: strict sanitization before parsing
 - Model-driven: renderer consumes IR only (no raw DOM)
 - Fail-fast: non-semantic inputs are rejected explicitly
@@ -115,6 +124,8 @@ Explicit exclusions:
 - Layout fidelity preservation
 - PDF/DOCX input
 - GUI or hosted SaaS
+- Fully offline image rendering (images use external source URLs)
+- Self-contained image embedding
 
 Flowdoc rejects non-semantic HTML rather than guessing.
 
@@ -124,7 +135,11 @@ This constraint preserves determinism and clarity.
 
 ## 6. Accessibility Focus
 
-Initial focus: dyslexia-informed readability principles.
+Initial focus: dyslexia-informed readability principles. The same
+output benefits readers with ADHD, low vision, cognitive load
+issues, or anyone reading in a second language. Validation focuses
+on dyslexic readers first because that is where the research base,
+typography evidence, and personal connection are strongest.
 
 Includes:
 - Sans-serif typography
@@ -156,7 +171,9 @@ Secondary differentiators:
 - BDA-aligned typography defaults, not user-configured guesswork
 - Deterministic, reproducible output -- same input always produces the same file
 - Security-bounded transformation -- strict sanitization before parsing
-- No external dependencies in output -- single self-contained HTML file
+- Portable artifact output -- a single HTML document that can be
+  printed, emailed, filed, and shared. Images render when online
+  and in print. No external CSS, scripts, or fonts.
 
 The portable artifact use case is currently unvalidated with real users. This is a
 known gap to be addressed through early tester recruitment before any surface
@@ -184,15 +201,17 @@ No monetization. No institutional sales dependency.
 
 ## 9. User-Facing Surface
 
-Flowdoc ships as a CLI tool. A minimal local preview capability exists
-for testing and demonstration.
+Flowdoc ships as a CLI tool. A user-facing surface is a v1
+deliverable required for product validation and non-technical
+user access. The engine alone is not a product.
 
-The primary workflow is: give it an HTML file (or URL content saved as
-HTML), get back a single self-contained accessible document.
+The primary workflow is: give it an HTML file or URL, get back
+a single portable accessible document.
 
-Future consideration: a simple upload-and-convert web page or drag-and-drop
-local app could lower the barrier for non-technical users. Any such surface
-must not compromise input constraints, determinism, or security boundary.
+The surface accepts a URL or uploaded HTML file, passes content
+to the engine, and returns the converted document. Form factor
+TBD -- web page, browser extension, or other. Any surface must
+not compromise input constraints, determinism, or security boundary.
 
 ---
 
@@ -233,6 +252,12 @@ These are documented boundaries, not defects.
 ## 12. Validation Plan
 
 Before expansion:
+
+Instrument: the test surface (contract section 10). A disposable
+web page used to validate the product before v1 ships. Accepts
+a URL or uploaded HTML file, returns a Flowdoc document. Includes
+curated side-by-side comparisons and a sandbox for user-supplied
+URLs.
 
 1. Structured testing with diagnosed dyslexic readers
 2. Compare:
