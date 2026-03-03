@@ -33,6 +33,7 @@ Print to PDF: open the output in a browser and use print-to-PDF.
 - [docs/decisions.md](docs/decisions.md) - authoritative implementation/test spec (contracts + invariants)
 - [docs/architecture.md](docs/architecture.md) - locked v1 implementation choices (runtime, libraries, module structure, pipeline, testing)
 - [docs/flowdoc-v1-plan.md](docs/flowdoc-v1-plan.md) - execution checklist for v1
+- [docs/flowdoc-v1-success-contract.md](docs/flowdoc-v1-success-contract.md) - locked v1 success contract (takes precedence over all other docs where conflicts exist)
 - [docs/research_typography_guidelines.md](docs/research_typography_guidelines.md) - typography research/reference
 - [flowdoc-elevator-pitch.md](flowdoc-elevator-pitch.md) - what Flowdoc is in 60 seconds
 - [docs/flowdoc-project-summary.md](docs/flowdoc-project-summary.md) - project history and context
