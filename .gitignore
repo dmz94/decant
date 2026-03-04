@@ -59,6 +59,7 @@ package-lock.json
 repo_snapshot.txt
 extraction_trial_output.txt
 project_files.txt
+eval/reports/
 
 # Staging area for corpus expansion
 tests/pipeline-audit/staging/

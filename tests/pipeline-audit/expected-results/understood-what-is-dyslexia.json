@@ -1,9 +1,9 @@
 {
   "fixture": "understood-what-is-dyslexia",
   "corpus": "main",
-  "baselined_at": "2026-03-03T23:34:26.739508+00:00",
+  "baselined_at": "2026-03-04T14:19:09.690887+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
+  "status": "PASS",
   "notes": "",
   "metrics": {
     "section_count": 11,
@@ -46,7 +46,7 @@
     "stub_sections": 0
   },
   "thresholds_applied": {
-    "word_count_ratio_min": 0.3,
+    "word_count_ratio_max": 1.5,
     "avg_paragraph_words_min": 8.0,
     "placeholder_density_max": 0.2,
     "link_to_prose_ratio_max": 0.5

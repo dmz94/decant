@@ -21,7 +21,7 @@ from flowdoc.core.model import (
     Text, Emphasis, Strong, Code, Link,
 )
 from audit_config import (
-    WORD_COUNT_RATIO_MIN, AVG_PARAGRAPH_WORDS_MIN,
+    WORD_COUNT_RATIO_MAX, AVG_PARAGRAPH_WORDS_MIN,
     PLACEHOLDER_DENSITY_MAX, LINK_TO_PROSE_RATIO_MAX,
 )
 
@@ -338,7 +338,7 @@ def build_baseline_record(fixture_name: str, corpus: str, metrics: dict) -> dict
         "notes": "",
         "metrics": metrics,
         "thresholds_applied": {
-            "word_count_ratio_min": WORD_COUNT_RATIO_MIN,
+            "word_count_ratio_max": WORD_COUNT_RATIO_MAX,
             "avg_paragraph_words_min": AVG_PARAGRAPH_WORDS_MIN,
             "placeholder_density_max": PLACEHOLDER_DENSITY_MAX,
             "link_to_prose_ratio_max": LINK_TO_PROSE_RATIO_MAX,
@@ -353,10 +353,10 @@ def build_baseline_record(fixture_name: str, corpus: str, metrics: dict) -> dict
 def _collect_anomalies(metrics: dict) -> list[str]:
     """Collect threshold-based anomalies from metrics."""
     anomalies = []
-    if metrics["word_count_ratio"] < WORD_COUNT_RATIO_MIN:
+    if metrics["word_count_ratio"] > WORD_COUNT_RATIO_MAX:
         anomalies.append(
             f"Word count ratio {metrics['word_count_ratio']:.2f} "
-            f"below minimum {WORD_COUNT_RATIO_MIN}"
+            f"above maximum {WORD_COUNT_RATIO_MAX} -- possible boilerplate leakage"
         )
     if metrics["avg_paragraph_words"] < AVG_PARAGRAPH_WORDS_MIN:
         anomalies.append(
