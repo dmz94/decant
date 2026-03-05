@@ -78,4 +78,34 @@ def test_br_tag_preserved():
     """BR tags survive sanitization."""
     html = "<p>Step 1.<br/>Step 2.</p>"
     result = sanitize(html)
-    assert "<br" in result    
+    assert "<br" in result
+
+
+def test_img_src_https_preserved():
+    """img src with https scheme passes through sanitization."""
+    html = '<img src="https://example.com/photo.jpg" alt="Photo">'
+    result = sanitize(html)
+    assert 'src="https://example.com/photo.jpg"' in result
+    assert 'alt="Photo"' in result
+
+
+def test_img_src_http_preserved():
+    """img src with http scheme passes through sanitization."""
+    html = '<img src="http://example.com/photo.jpg" alt="Photo">'
+    result = sanitize(html)
+    assert 'src="http://example.com/photo.jpg"' in result
+
+
+def test_img_src_javascript_stripped():
+    """img src with javascript: scheme is stripped."""
+    html = '<img src="javascript:alert(1)" alt="Bad">'
+    result = sanitize(html)
+    assert "javascript:" not in result
+    assert 'alt="Bad"' in result
+
+
+def test_img_src_data_stripped():
+    """img src with data: scheme is stripped."""
+    html = '<img src="data:image/png;base64,abc123" alt="Logo">'
+    result = sanitize(html)
+    assert "data:" not in result    

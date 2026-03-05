@@ -1,7 +1,7 @@
 """
 Tests for consecutive identical placeholder block collapsing (burn-down item 3).
 
-Consecutive identical placeholder Paragraphs (e.g. [Form omitted], [Image omitted],
+Consecutive identical placeholder Paragraphs (e.g. [Form omitted], [Image not included],
 [Image: ...]) that appear in a run of N>=2 are collapsed to a single instance.
 
 Affected fixtures:
@@ -63,7 +63,7 @@ def test_is_placeholder_form_omitted():
 
 
 def test_is_placeholder_image_omitted():
-    p = Paragraph(inlines=[Text(text="[Image omitted]")])
+    p = Paragraph(inlines=[Text(text="[Image not included]")])
     assert _is_placeholder_paragraph(p) is True
 
 

@@ -84,8 +84,15 @@ class Preformatted:
     text: str
 
 
+@dataclass
+class Image:
+    """Preserved image with external URL. No raw HTML."""
+    src: str
+    alt: str
+
+
 # Type alias for any block element
-Block = Paragraph | ListBlock | Quote | Preformatted
+Block = Paragraph | ListBlock | Quote | Preformatted | Image
 
 
 # === Document structure ===

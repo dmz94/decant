@@ -3,7 +3,7 @@ Tests for renderer block-level element rendering.
 
 Part 2 of renderer tests - validates block element HTML generation.
 """
-from flowdoc.core.model import Document, Section, Heading, Paragraph, ListBlock, ListItem, Quote, Preformatted, Text
+from flowdoc.core.model import Document, Section, Heading, Paragraph, ListBlock, ListItem, Quote, Preformatted, Image, Text
 from flowdoc.core.renderer import render
 
 
@@ -126,3 +126,34 @@ def test_renders_preformatted():
     html = render(doc)
     assert "<pre>" in html
     assert "&lt;code&gt;" in html  # Should be escaped
+
+
+def test_renders_image():
+    """Image renders as <img> with src and alt."""
+    doc = Document(
+        title="Test",
+        sections=[
+            Section(
+                heading=Heading(level=1, inlines=[Text(text="Title")]),
+                blocks=[Image(src="https://example.com/photo.jpg", alt="A photo")]
+            )
+        ]
+    )
+    html = render(doc)
+    assert '<img src="https://example.com/photo.jpg" alt="A photo">' in html
+
+
+def test_renders_image_escapes_attributes():
+    """Image src and alt are HTML-escaped."""
+    doc = Document(
+        title="Test",
+        sections=[
+            Section(
+                heading=Heading(level=1, inlines=[Text(text="Title")]),
+                blocks=[Image(src="https://example.com/a&b.jpg", alt='Photo "1"')]
+            )
+        ]
+    )
+    html = render(doc)
+    assert "https://example.com/a&amp;b.jpg" in html
+    assert "Photo &quot;1&quot;" in html

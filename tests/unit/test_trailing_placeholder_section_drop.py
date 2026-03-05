@@ -3,7 +3,7 @@ Tests for all-placeholder trailing section drop (burn-down item 5).
 
 Extends the existing orphan-section dropper (Phase 2B.2) with a second
 end-anchored condition: drop the final section when every block in it is a
-placeholder Paragraph ([Form omitted], [Image omitted], [Image: ...]).
+placeholder Paragraph ([Form omitted], [Image not included], [Image: ...]).
 
 These sections contain no article prose and are CMS template artefacts.
 The check is end-anchored — only the final section is inspected.
@@ -68,7 +68,7 @@ def test_all_placeholder_multi_block_trailing_section_dropped():
     anchor = _make_section("Article", [_prose_para()])
     tail = _make_section("Newsletter", [
         _placeholder_para("[Form omitted]"),
-        _placeholder_para("[Image omitted]"),
+        _placeholder_para("[Image not included]"),
     ])
     result = drop_trailing_orphan_section([anchor, tail])
     assert len(result) == 1

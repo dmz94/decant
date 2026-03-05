@@ -4,8 +4,10 @@ Degradation rules for unsupported HTML elements.
 Converts tables, images, forms, and other unsupported elements into
 placeholder model objects. See decisions.md section 7 for rules.
 """
+from urllib.parse import urlparse
+
 from bs4 import Tag
-from flowdoc.core.model import Paragraph, Text
+from flowdoc.core.model import Image, Paragraph, Text
 
 
 def degrade_table(element: Tag) -> Paragraph:
@@ -33,26 +35,33 @@ def degrade_table(element: Tag) -> Paragraph:
     return Paragraph(inlines=[Text(text=text)])
 
 
-def degrade_image(element: Tag) -> Text:
+def degrade_image(element: Tag) -> Image | Text:
     """
-    Convert image to placeholder text with alt description.
-    
-    v2 consideration: Images could be included with proper sizing and alt text.
-    Base64 embedding would bloat file size and break self-contained goal.
-    
+    Preserve image when src is http/https, otherwise placeholder.
+
+    Per decisions.md section 7: images with external URLs are rendered
+    as <img> tags. Images without valid src degrade to WARN placeholder.
+
     Args:
         element: BeautifulSoup Tag for <img>
-        
+
     Returns:
-        Text with alt description or generic placeholder
+        Image when src is http/https, Text placeholder otherwise
     """
+    src = element.get("src", "").strip()
     alt = element.get("alt", "").strip()
-    
+
+    if src:
+        scheme = urlparse(src).scheme.lower()
+        if scheme in ("http", "https"):
+            return Image(src=src, alt=alt)
+
+    # Fallback: WARN placeholder
     if alt:
         text = f"[Image: {alt}]"
     else:
-        text = "[Image omitted]"
-    
+        text = "[Image not included]"
+
     return Text(text=text)
 
 

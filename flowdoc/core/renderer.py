@@ -9,7 +9,7 @@ import html as html_module
 
 from flowdoc.core.model import (
     Document, Section, Heading,
-    Paragraph, ListBlock, ListItem, Quote, Preformatted,
+    Paragraph, ListBlock, ListItem, Quote, Preformatted, Image,
     Text, Emphasis, Strong, Code, Link, LineBreak
 )
 from flowdoc.core.constants import (
@@ -157,6 +157,13 @@ code {{
     font-family: 'Courier New', monospace;
 }}
 
+img {{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 0 {PARAGRAPH_SPACING} 0;
+}}
+
 a {{
     color: {LINK_COLOR};
     text-decoration: underline;
@@ -173,6 +180,10 @@ a:visited {{
 @media print {{
     body {{
         font-size: {PRINT_MIN_FONT_SIZE};
+    }}
+    img {{
+        max-width: 100%;
+        page-break-inside: avoid;
     }}
 }}
 """
@@ -219,6 +230,8 @@ def render_block(block) -> str:
         return render_quote(block)
     elif isinstance(block, Preformatted):
         return render_preformatted(block)
+    elif isinstance(block, Image):
+        return render_image(block)
     else:
         # Unknown block type - skip
         return ""
@@ -291,6 +304,13 @@ def render_preformatted(pre: Preformatted) -> str:
     """
     escaped_text = html_module.escape(pre.text)
     return f"<pre>{escaped_text}</pre>\n"
+
+
+def render_image(image: Image) -> str:
+    """Render Image to HTML <img> tag."""
+    escaped_src = html_module.escape(image.src)
+    escaped_alt = html_module.escape(image.alt)
+    return f'<img src="{escaped_src}" alt="{escaped_alt}">\n'
 
 
 def render_inlines(inlines: list) -> str:

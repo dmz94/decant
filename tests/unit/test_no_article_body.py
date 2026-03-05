@@ -54,7 +54,7 @@ def test_has_article_body_false_for_short_prose():
 
 def test_has_article_body_excludes_placeholders():
     """Placeholder paragraphs ([...]) are excluded from the word count."""
-    sections = [_make_section([_para("[Form omitted]"), _para("[Image omitted]")])]
+    sections = [_make_section([_para("[Form omitted]"), _para("[Image not included]")])]
     assert _has_article_body(sections) is False
 
 

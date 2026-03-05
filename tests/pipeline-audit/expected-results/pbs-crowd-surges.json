@@ -1,10 +1,10 @@
 {
   "fixture": "pbs",
   "corpus": "main",
-  "baselined_at": "2026-03-05T09:44:24.986292+00:00",
+  "baselined_at": "2026-03-05T10:31:47.802859+00:00",
   "flowdoc_version": "0.1.0",
   "status": "PASS",
-  "notes": "Parser fix extracts slightly more content and image placeholders.",
+  "notes": "Images preserved as img tags; form placeholders remain.",
   "metrics": {
     "section_count": 10,
     "headings": [
@@ -19,9 +19,9 @@
       "Go Deeper",
       "Educate your inbox"
     ],
-    "output_word_count": 1015,
+    "output_word_count": 1009,
     "source_plain_word_count": 1620,
-    "word_count_ratio": 0.6265432098765432,
+    "word_count_ratio": 0.6228395061728395,
     "paragraph_count": 29,
     "avg_paragraph_words": 32.206896551724135,
     "shortest_paragraph_words": [
@@ -29,18 +29,18 @@
       6,
       6
     ],
-    "placeholder_count": 5,
+    "placeholder_count": 2,
     "placeholder_types": {
-      "image": 3,
+      "image": 0,
       "form": 2,
       "table": 0,
       "hr": 0,
       "other": 0
     },
-    "placeholder_density": 0.14705882352941177,
-    "link_word_count": 36,
-    "prose_word_count": 1015,
-    "link_to_prose_ratio": 0.035467980295566505,
+    "placeholder_density": 0.06451612903225806,
+    "link_word_count": 30,
+    "prose_word_count": 1009,
+    "link_to_prose_ratio": 0.02973240832507433,
     "empty_sections": 0,
     "stub_sections": 0
   },

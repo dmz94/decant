@@ -25,7 +25,7 @@ ALLOWED_TAGS = {
 # Allowed attributes per tag
 ALLOWED_ATTRIBUTES = {
     "a": {"href"},
-    "img": {"alt"},
+    "img": {"alt", "src"},
 }
 
 # Allowed URL schemes (blocks javascript:, data:, etc.)
