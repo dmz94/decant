@@ -1,7 +1,7 @@
 {
-  "fixture": "article-16-e360yale",
+  "fixture": "yale360-baboons",
   "corpus": "main",
-  "baselined_at": "2026-03-03T12:12:17.530584+00:00",
+  "baselined_at": "2026-03-06T21:57:31.395536+00:00",
   "flowdoc_version": "0.1.0",
   "status": "PASS",
   "notes": "",
@@ -11,15 +11,15 @@
       "Baboon Raiders: In Cape Town, Can Big Primates and People Coexist?",
       "The author’s video of chasing Kataza, the baboon, out of his kitchen in 2020 and of later finding a baboon troop in his kitchen in 2024."
     ],
-    "output_word_count": 1847,
+    "output_word_count": 1928,
     "source_plain_word_count": 2851,
-    "word_count_ratio": 0.6478428621536303,
-    "paragraph_count": 20,
-    "avg_paragraph_words": 92.35,
+    "word_count_ratio": 0.6762539459838653,
+    "paragraph_count": 24,
+    "avg_paragraph_words": 80.33333333333333,
     "shortest_paragraph_words": [
       15,
-      57,
-      67
+      18,
+      18
     ],
     "placeholder_count": 0,
     "placeholder_types": {
@@ -31,13 +31,13 @@
     },
     "placeholder_density": 0.0,
     "link_word_count": 21,
-    "prose_word_count": 1847,
-    "link_to_prose_ratio": 0.01136978884677856,
+    "prose_word_count": 1928,
+    "link_to_prose_ratio": 0.010892116182572614,
     "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {
-    "word_count_ratio_min": 0.3,
+    "word_count_ratio_max": 1.5,
     "avg_paragraph_words_min": 8.0,
     "placeholder_density_max": 0.2,
     "link_to_prose_ratio_max": 0.5

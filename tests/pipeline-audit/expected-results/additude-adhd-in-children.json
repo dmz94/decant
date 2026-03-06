@@ -1,7 +1,7 @@
 {
   "fixture": "additude-adhd-in-children",
   "corpus": "main",
-  "baselined_at": "2026-03-04T22:10:39.275834+00:00",
+  "baselined_at": "2026-03-06T21:57:22.836027+00:00",
   "flowdoc_version": "0.1.0",
   "status": "PASS",
   "notes": "",
@@ -30,8 +30,8 @@
       "Sources"
     ],
     "output_word_count": 2502,
-    "source_plain_word_count": 2811,
-    "word_count_ratio": 0.8900747065101388,
+    "source_plain_word_count": 5784,
+    "word_count_ratio": 0.43257261410788383,
     "paragraph_count": 43,
     "avg_paragraph_words": 45.395348837209305,
     "shortest_paragraph_words": [

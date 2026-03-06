@@ -1,10 +1,10 @@
 {
-  "fixture": "article-15-quantamagazine",
+  "fixture": "quanta-smell",
   "corpus": "main",
-  "baselined_at": "2026-03-03T12:12:00.448415+00:00",
+  "baselined_at": "2026-03-06T21:57:27.285079+00:00",
   "flowdoc_version": "0.1.0",
   "status": "MARGINAL",
-  "notes": "Empty section(s): stable trafilatura extraction artifact",
+  "notes": "",
   "metrics": {
     "section_count": 6,
     "headings": [
@@ -15,11 +15,11 @@
       "The Brain Makes Scents",
       "Surely Osmatique"
     ],
-    "output_word_count": 3277,
+    "output_word_count": 3439,
     "source_plain_word_count": 4832,
-    "word_count_ratio": 0.6781870860927153,
-    "paragraph_count": 54,
-    "avg_paragraph_words": 60.68518518518518,
+    "word_count_ratio": 0.7117135761589404,
+    "paragraph_count": 66,
+    "avg_paragraph_words": 52.10606060606061,
     "shortest_paragraph_words": [
       3,
       3,
@@ -35,13 +35,13 @@
     },
     "placeholder_density": 0.0,
     "link_word_count": 51,
-    "prose_word_count": 3277,
-    "link_to_prose_ratio": 0.01556301495270064,
-    "empty_sections": 1,
+    "prose_word_count": 3439,
+    "link_to_prose_ratio": 0.014829892410584472,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {
-    "word_count_ratio_min": 0.3,
+    "word_count_ratio_max": 1.5,
     "avg_paragraph_words_min": 8.0,
     "placeholder_density_max": 0.2,
     "link_to_prose_ratio_max": 0.5

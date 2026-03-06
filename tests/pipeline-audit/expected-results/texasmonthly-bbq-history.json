@@ -1,7 +1,7 @@
 {
   "fixture": "texasmonthly-bbq-history",
   "corpus": "main",
-  "baselined_at": "2026-03-04T14:19:09.690887+00:00",
+  "baselined_at": "2026-03-06T21:57:29.416604+00:00",
   "flowdoc_version": "0.1.0",
   "status": "PASS",
   "notes": "",
@@ -10,15 +10,15 @@
     "headings": [
       "Mapping Texas Barbecue History – Texas Monthly"
     ],
-    "output_word_count": 622,
+    "output_word_count": 628,
     "source_plain_word_count": 4674,
-    "word_count_ratio": 0.13307659392383397,
-    "paragraph_count": 8,
-    "avg_paragraph_words": 77.75,
+    "word_count_ratio": 0.13436029097133076,
+    "paragraph_count": 10,
+    "avg_paragraph_words": 62.8,
     "shortest_paragraph_words": [
-      34,
-      51,
-      73
+      3,
+      3,
+      34
     ],
     "placeholder_count": 0,
     "placeholder_types": {
@@ -29,9 +29,9 @@
       "other": 0
     },
     "placeholder_density": 0.0,
-    "link_word_count": 11,
-    "prose_word_count": 622,
-    "link_to_prose_ratio": 0.017684887459807074,
+    "link_word_count": 17,
+    "prose_word_count": 628,
+    "link_to_prose_ratio": 0.027070063694267517,
     "empty_sections": 0,
     "stub_sections": 0
   },

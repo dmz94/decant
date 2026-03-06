@@ -1,10 +1,10 @@
 {
   "fixture": "golf-greenside-bunker",
   "corpus": "main",
-  "baselined_at": "2026-03-04T22:10:39.413499+00:00",
+  "baselined_at": "2026-03-06T21:57:24.302358+00:00",
   "flowdoc_version": "0.1.0",
   "status": "MARGINAL",
-  "notes": "Empty section(s): stable trafilatura extraction artifact",
+  "notes": "",
   "metrics": {
     "section_count": 13,
     "headings": [
@@ -22,11 +22,11 @@
       "10. A little practice won’t hurt",
       "Cleveland Golf CBX Full-Face Custom Wedge"
     ],
-    "output_word_count": 973,
-    "source_plain_word_count": 1278,
-    "word_count_ratio": 0.7613458528951487,
+    "output_word_count": 981,
+    "source_plain_word_count": 3691,
+    "word_count_ratio": 0.26578163099431046,
     "paragraph_count": 30,
-    "avg_paragraph_words": 32.43333333333333,
+    "avg_paragraph_words": 32.7,
     "shortest_paragraph_words": [
       12,
       17,
@@ -41,9 +41,9 @@
       "other": 0
     },
     "placeholder_density": 0.0,
-    "link_word_count": 82,
-    "prose_word_count": 973,
-    "link_to_prose_ratio": 0.0842754367934224,
+    "link_word_count": 90,
+    "prose_word_count": 981,
+    "link_to_prose_ratio": 0.09174311926605505,
     "empty_sections": 1,
     "stub_sections": 0
   },

@@ -1,7 +1,7 @@
 {
-  "fixture": "article-13-theconversation",
+  "fixture": "theconversation-ai-innovation",
   "corpus": "main",
-  "baselined_at": "2026-03-03T12:11:28.119158+00:00",
+  "baselined_at": "2026-03-06T21:57:29.542633+00:00",
   "flowdoc_version": "0.1.0",
   "status": "PASS",
   "notes": "",
@@ -13,15 +13,15 @@
       "Collaboration – knowledge spanning time and place",
       "Humanity – social learning"
     ],
-    "output_word_count": 1231,
+    "output_word_count": 1273,
     "source_plain_word_count": 3781,
-    "word_count_ratio": 0.325575244644274,
-    "paragraph_count": 25,
-    "avg_paragraph_words": 49.24,
+    "word_count_ratio": 0.33668341708542715,
+    "paragraph_count": 34,
+    "avg_paragraph_words": 37.44117647058823,
     "shortest_paragraph_words": [
-      16,
-      17,
-      24
+      0,
+      2,
+      2
     ],
     "placeholder_count": 0,
     "placeholder_types": {
@@ -32,14 +32,14 @@
       "other": 0
     },
     "placeholder_density": 0.0,
-    "link_word_count": 182,
-    "prose_word_count": 1231,
-    "link_to_prose_ratio": 0.1478472786352559,
+    "link_word_count": 224,
+    "prose_word_count": 1273,
+    "link_to_prose_ratio": 0.17596229379418696,
     "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {
-    "word_count_ratio_min": 0.3,
+    "word_count_ratio_max": 1.5,
     "avg_paragraph_words_min": 8.0,
     "placeholder_density_max": 0.2,
     "link_to_prose_ratio_max": 0.5

@@ -1,21 +1,21 @@
 {
   "fixture": "ieee-spectrum-boeing-max",
   "corpus": "main",
-  "baselined_at": "2026-03-03T23:39:36.307591+00:00",
+  "baselined_at": "2026-03-06T21:57:24.914432+00:00",
   "flowdoc_version": "0.1.0",
   "status": "MARGINAL",
-  "notes": "Empty section(s): stable trafilatura extraction artifact",
+  "notes": "",
   "metrics": {
     "section_count": 2,
     "headings": [
       "How the Boeing 737 Max Disaster Looks to a Software Developer",
       "Design shortcuts meant to make a new plane seem like an old, familiar one are to blame"
     ],
-    "output_word_count": 5745,
+    "output_word_count": 5779,
     "source_plain_word_count": 15808,
-    "word_count_ratio": 0.3634235829959514,
-    "paragraph_count": 101,
-    "avg_paragraph_words": 56.17821782178218,
+    "word_count_ratio": 0.3655743927125506,
+    "paragraph_count": 102,
+    "avg_paragraph_words": 55.96078431372549,
     "shortest_paragraph_words": [
       8,
       10,
@@ -31,13 +31,13 @@
     },
     "placeholder_density": 0.0,
     "link_word_count": 73,
-    "prose_word_count": 5745,
-    "link_to_prose_ratio": 0.012706701479547432,
+    "prose_word_count": 5779,
+    "link_to_prose_ratio": 0.012631943242775567,
     "empty_sections": 1,
     "stub_sections": 0
   },
   "thresholds_applied": {
-    "word_count_ratio_min": 0.3,
+    "word_count_ratio_max": 1.5,
     "avg_paragraph_words_min": 8.0,
     "placeholder_density_max": 0.2,
     "link_to_prose_ratio_max": 0.5

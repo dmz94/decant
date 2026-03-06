@@ -4,7 +4,7 @@ Tests for parser block-level element parsing.
 Part 3 of parser tests - validates block element conversion.
 """
 from flowdoc.core.parser import parse
-from flowdoc.core.model import Paragraph, ListBlock, Quote, Preformatted
+from flowdoc.core.model import Paragraph, ListBlock, Quote, Preformatted, Image
 
 
 def test_parses_paragraph():
@@ -72,3 +72,13 @@ def test_degrades_table():
     block = doc.sections[0].blocks[0]
     assert isinstance(block, Paragraph)
     assert "Table omitted" in block.inlines[0].text
+
+
+def test_graphic_tag_parses_to_image():
+    """<graphic> with src and alt parses to an Image block, same as <img>."""
+    html = '<body><h1>Title</h1><graphic src="https://example.com/img.jpg" alt="Photo"></graphic><p>Text</p></body>'
+    doc = parse(html)
+    block = doc.sections[0].blocks[0]
+    assert isinstance(block, Image)
+    assert block.src == "https://example.com/img.jpg"
+    assert block.alt == "Photo"

@@ -365,6 +365,7 @@ def extract_with_trafilatura(
         output_format="html",
         include_formatting=True,
         include_links=True,
+        include_images=True,
         include_comments=False,
         include_tables=False,
         **traf_kwargs,
@@ -424,6 +425,15 @@ def parse(html: str, original_title=None, require_article_body: bool = False) ->
     """
     # Step 1: Sanitize
     clean_html = sanitize(html)
+
+    # Step 1.5: Convert trafilatura <graphic> to <img> before lxml parsing.
+    # lxml doesn't recognise <graphic> as void, so it nests subsequent
+    # content inside it.  <img> is a known void element.
+    clean_html = re.sub(
+        r'<graphic\b([^>]*)(?:/>|>\s*</graphic>|>)',
+        r'<img\1>',
+        clean_html,
+    )
 
     # Step 2: Parse DOM
     soup = BeautifulSoup(clean_html, "lxml")
@@ -702,7 +712,7 @@ def parse_block(element: Tag) -> Block | None:
         return parse_preformatted(element)
     elif tag_name == "table":
         return degrade_table(element)
-    elif tag_name == "img":
+    elif tag_name in ("img", "graphic"):
         result = degrade_image(element)
         if isinstance(result, Image):
             return result
@@ -871,7 +881,7 @@ def parse_inline_element(element: Tag) -> Inline | list[Inline] | None:
     elif tag_name == "a":
         href = element.get("href", "")
         return Link(href=href, children=parse_inlines(element))
-    elif tag_name == "img":
+    elif tag_name in ("img", "graphic"):
         result = degrade_image(element)
         if isinstance(result, Image):
             # Image is block-level; in inline context, use alt text

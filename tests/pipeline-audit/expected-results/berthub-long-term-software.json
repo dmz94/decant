@@ -1,7 +1,7 @@
 {
   "fixture": "berthub-long-term-software",
   "corpus": "main",
-  "baselined_at": "2026-03-03T23:39:57.600811+00:00",
+  "baselined_at": "2026-03-06T21:57:23.378283+00:00",
   "flowdoc_version": "0.1.0",
   "status": "PASS",
   "notes": "",
@@ -33,15 +33,15 @@
       9,
       10
     ],
-    "placeholder_count": 0,
+    "placeholder_count": 6,
     "placeholder_types": {
-      "image": 0,
+      "image": 6,
       "form": 0,
       "table": 0,
       "hr": 0,
       "other": 0
     },
-    "placeholder_density": 0.0,
+    "placeholder_density": 0.1016949152542373,
     "link_word_count": 100,
     "prose_word_count": 2954,
     "link_to_prose_ratio": 0.033852403520649964,
@@ -49,7 +49,7 @@
     "stub_sections": 0
   },
   "thresholds_applied": {
-    "word_count_ratio_min": 0.3,
+    "word_count_ratio_max": 1.5,
     "avg_paragraph_words_min": 8.0,
     "placeholder_density_max": 0.2,
     "link_to_prose_ratio_max": 0.5

@@ -20,12 +20,14 @@ ALLOWED_TAGS = {
     # Elements for degradation (kept so parser can create placeholders)
     "table", "tr", "td", "th", "img", "figure", "figcaption",
     "dl", "dt", "dd", "hr", "form", "input", "textarea", "select", "option", "button",
+    "graphic",
 }
 
 # Allowed attributes per tag
 ALLOWED_ATTRIBUTES = {
     "a": {"href"},
     "img": {"alt", "src"},
+    "graphic": {"alt", "src"},
 }
 
 # Allowed URL schemes (blocks javascript:, data:, etc.)

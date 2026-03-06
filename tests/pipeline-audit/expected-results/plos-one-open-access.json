@@ -1,10 +1,10 @@
 {
   "fixture": "plos-one-open-access",
   "corpus": "main",
-  "baselined_at": "2026-03-05T09:42:48.628423+00:00",
+  "baselined_at": "2026-03-06T21:57:26.579518+00:00",
   "flowdoc_version": "0.1.0",
   "status": "MARGINAL",
-  "notes": "Empty section(s): stable trafilatura extraction artifact. Parser fix eliminated content duplication (wcr 2.04 -> 0.84).",
+  "notes": "",
   "metrics": {
     "section_count": 56,
     "headings": [
@@ -68,8 +68,8 @@
     "output_word_count": 9246,
     "source_plain_word_count": 10947,
     "word_count_ratio": 0.8446149630035626,
-    "paragraph_count": 132,
-    "avg_paragraph_words": 60.75,
+    "paragraph_count": 130,
+    "avg_paragraph_words": 61.684615384615384,
     "shortest_paragraph_words": [
       0,
       0,
@@ -84,9 +84,9 @@
       "other": 0
     },
     "placeholder_density": 0.0,
-    "link_word_count": 1963,
+    "link_word_count": 1933,
     "prose_word_count": 9246,
-    "link_to_prose_ratio": 0.21230802509193164,
+    "link_to_prose_ratio": 0.209063378758382,
     "empty_sections": 3,
     "stub_sections": 0
   },

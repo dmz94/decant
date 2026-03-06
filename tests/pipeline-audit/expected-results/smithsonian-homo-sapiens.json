@@ -1,7 +1,7 @@
 {
-  "fixture": "smithsonian",
+  "fixture": "smithsonian-homo-sapiens",
   "corpus": "main",
-  "baselined_at": "2026-03-03T12:10:55.360061+00:00",
+  "baselined_at": "2026-03-06T21:57:28.979109+00:00",
   "flowdoc_version": "0.1.0",
   "status": "PASS",
   "notes": "",
@@ -16,15 +16,15 @@
       "50,000 to 60,000 Years Ago: Genes and Climate Reconstructions Show a Migration Out of Africa",
       "15,000 to 40,000 Years Ago: Genetics and Fossils Show Homo sapiens Became the Only Surviving Human Species"
     ],
-    "output_word_count": 2602,
+    "output_word_count": 2687,
     "source_plain_word_count": 4076,
-    "word_count_ratio": 0.6383709519136408,
-    "paragraph_count": 44,
-    "avg_paragraph_words": 59.13636363636363,
+    "word_count_ratio": 0.6592247301275761,
+    "paragraph_count": 50,
+    "avg_paragraph_words": 53.74,
     "shortest_paragraph_words": [
       4,
       7,
-      25
+      7
     ],
     "placeholder_count": 0,
     "placeholder_types": {
@@ -35,14 +35,14 @@
       "other": 0
     },
     "placeholder_density": 0.0,
-    "link_word_count": 142,
-    "prose_word_count": 2602,
-    "link_to_prose_ratio": 0.054573405073020755,
+    "link_word_count": 165,
+    "prose_word_count": 2687,
+    "link_to_prose_ratio": 0.06140677335318199,
     "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {
-    "word_count_ratio_min": 0.3,
+    "word_count_ratio_max": 1.5,
     "avg_paragraph_words_min": 8.0,
     "placeholder_density_max": 0.2,
     "link_to_prose_ratio_max": 0.5

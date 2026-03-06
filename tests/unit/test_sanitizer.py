@@ -108,4 +108,13 @@ def test_img_src_data_stripped():
     """img src with data: scheme is stripped."""
     html = '<img src="data:image/png;base64,abc123" alt="Logo">'
     result = sanitize(html)
-    assert "data:" not in result    
+    assert "data:" not in result
+
+
+def test_graphic_tag_preserved():
+    """graphic tag with src and alt survives sanitization."""
+    html = '<graphic src="https://example.com/img.jpg" alt="Photo">'
+    result = sanitize(html)
+    assert 'src="https://example.com/img.jpg"' in result
+    assert 'alt="Photo"' in result
+    assert "<graphic" in result
