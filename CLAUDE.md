@@ -77,10 +77,16 @@ Do not silently guess.
      and report findings before pushing.
 
 - Cleanup verification (run before every commit):
-  1. git status — only intentional changes should be present
-  2. Delete any eval/reports/ timestamped directories
+  1. git status -- only intentional changes should be present
+  2. Delete any stray working directories created during the
+     session (eval/reports/, scripts/, or anything else not in
+     the locked top-level structure)
   3. Delete any __pycache__, .pyc, or temp files outside .venv/
-  4. No new top-level directories without explicit instruction
+  4. Verify no new top-level directories exist beyond the locked
+     set: .claude, .github, .vscode, docs, eval, flowdoc, tests
+     (plus dotfiles and root-level config/doc files). If a new
+     directory was created, delete it unless the task explicitly
+     required it.
 
 - Maintain existing directory structure and naming conventions.
   Do not create new top-level directories without discussion.
