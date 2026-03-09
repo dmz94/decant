@@ -1,14 +1,13 @@
 {
-  "fixture": "09_dyslexiaida_dyslexia_basics",
+  "fixture": "dyslexiaida-dyslexia-basics",
   "corpus": "main",
-  "baselined_at": "2026-03-04T14:23:20.407477+00:00",
+  "baselined_at": "2026-03-09T21:44:12.231628+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
+  "status": "PASS",
   "notes": "",
   "metrics": {
-    "section_count": 10,
+    "section_count": 9,
     "headings": [
-      "Dyslexia Basics",
       "What is dyslexia?",
       "What causes dyslexia?",
       "How widespread is dyslexia?",
@@ -41,7 +40,7 @@
     "link_word_count": 4,
     "prose_word_count": 1486,
     "link_to_prose_ratio": 0.0026917900403768506,
-    "empty_sections": 1,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {

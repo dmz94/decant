@@ -1,15 +1,13 @@
 {
   "fixture": "plos-one-open-access",
   "corpus": "main",
-  "baselined_at": "2026-03-06T21:57:26.579518+00:00",
+  "baselined_at": "2026-03-09T21:48:32.906657+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
+  "status": "PASS",
   "notes": "",
   "metrics": {
-    "section_count": 56,
+    "section_count": 53,
     "headings": [
-      "Intense pulsed light improves signs and symptoms of dry eye disease due to meibomian gland dysfunction: A randomized controlled study",
-      "Figures",
       "Abstract",
       "Purpose",
       "Methods",
@@ -61,7 +59,6 @@
       "Mechanisms of action",
       "Limitations of the study",
       "Conclusions",
-      "Supporting information",
       "Acknowledgments",
       "References"
     ],
@@ -87,7 +84,7 @@
     "link_word_count": 1933,
     "prose_word_count": 9246,
     "link_to_prose_ratio": 0.209063378758382,
-    "empty_sections": 3,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {

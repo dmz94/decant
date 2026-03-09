@@ -1,14 +1,13 @@
 {
   "fixture": "ieee-spectrum-boeing-max",
   "corpus": "main",
-  "baselined_at": "2026-03-06T21:57:24.914432+00:00",
+  "baselined_at": "2026-03-09T21:46:44.497460+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
+  "status": "PASS",
   "notes": "",
   "metrics": {
-    "section_count": 2,
+    "section_count": 1,
     "headings": [
-      "How the Boeing 737 Max Disaster Looks to a Software Developer",
       "Design shortcuts meant to make a new plane seem like an old, familiar one are to blame"
     ],
     "output_word_count": 5779,
@@ -33,7 +32,7 @@
     "link_word_count": 73,
     "prose_word_count": 5779,
     "link_to_prose_ratio": 0.012631943242775567,
-    "empty_sections": 1,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {

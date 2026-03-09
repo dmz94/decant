@@ -1,14 +1,13 @@
 {
   "fixture": "mayoclinic-dyslexia",
   "corpus": "main",
-  "baselined_at": "2026-03-05T09:44:37.229790+00:00",
+  "baselined_at": "2026-03-09T21:45:33.578616+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
-  "notes": "Empty section(s): stable trafilatura extraction artifact",
+  "status": "PASS",
+  "notes": "",
   "metrics": {
-    "section_count": 10,
+    "section_count": 9,
     "headings": [
-      "Dyslexia - Symptoms and causes",
       "Overview",
       "Symptoms",
       "Before school",
@@ -41,7 +40,7 @@
     "link_word_count": 0,
     "prose_word_count": 622,
     "link_to_prose_ratio": 0.0,
-    "empty_sections": 1,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {

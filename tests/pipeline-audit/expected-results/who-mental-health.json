@@ -1,14 +1,13 @@
 {
   "fixture": "who-mental-health",
   "corpus": "main",
-  "baselined_at": "2026-03-03T23:42:31.988517+00:00",
+  "baselined_at": "2026-03-09T21:48:12.101351+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
-  "notes": "Empty section(s): stable trafilatura extraction artifact",
+  "status": "PASS",
+  "notes": "",
   "metrics": {
-    "section_count": 7,
+    "section_count": 6,
     "headings": [
-      "Mental health",
       "Key facts",
       "Overview",
       "Risks and protective factors",
@@ -38,11 +37,11 @@
     "link_word_count": 18,
     "prose_word_count": 983,
     "link_to_prose_ratio": 0.018311291963377416,
-    "empty_sections": 1,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {
-    "word_count_ratio_min": 0.3,
+    "word_count_ratio_max": 1.5,
     "avg_paragraph_words_min": 8.0,
     "placeholder_density_max": 0.2,
     "link_to_prose_ratio_max": 0.5

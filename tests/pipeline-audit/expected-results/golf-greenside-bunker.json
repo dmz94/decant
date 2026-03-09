@@ -1,15 +1,14 @@
 {
   "fixture": "golf-greenside-bunker",
   "corpus": "main",
-  "baselined_at": "2026-03-06T21:57:24.302358+00:00",
+  "baselined_at": "2026-03-09T21:49:44.570893+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
+  "status": "PASS",
   "notes": "",
   "metrics": {
-    "section_count": 13,
+    "section_count": 12,
     "headings": [
       "10 ways to guarantee you get out of a greenside bunker",
-      "10 tips for getting out of greenside bunkers",
       "1. Use the right tool",
       "2. Use the bounce",
       "3. Move the ball position forward",
@@ -44,7 +43,7 @@
     "link_word_count": 90,
     "prose_word_count": 981,
     "link_to_prose_ratio": 0.09174311926605505,
-    "empty_sections": 1,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {

@@ -1,14 +1,13 @@
 {
   "fixture": "substack-dyslexia-myths",
   "corpus": "main",
-  "baselined_at": "2026-03-03T23:45:22.308938+00:00",
+  "baselined_at": "2026-03-09T21:49:21.568415+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
-  "notes": "Empty section(s): stable trafilatura extraction artifact",
+  "status": "PASS",
+  "notes": "",
   "metrics": {
-    "section_count": 12,
+    "section_count": 11,
     "headings": [
-      "Why Dyslexia Myths Persist",
       "What We Get Wrong About Dyslexia and Why It Matters",
       "The Stickiness of a Good Story",
       "Why Dyslexia Myths Persist",
@@ -43,11 +42,11 @@
     "link_word_count": 1,
     "prose_word_count": 2646,
     "link_to_prose_ratio": 0.0003779289493575208,
-    "empty_sections": 1,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {
-    "word_count_ratio_min": 0.3,
+    "word_count_ratio_max": 1.5,
     "avg_paragraph_words_min": 8.0,
     "placeholder_density_max": 0.2,
     "link_to_prose_ratio_max": 0.5

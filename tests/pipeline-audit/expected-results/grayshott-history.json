@@ -1,14 +1,13 @@
 {
   "fixture": "grayshott-history",
   "corpus": "main",
-  "baselined_at": "2026-03-04T14:23:20.407477+00:00",
+  "baselined_at": "2026-03-09T21:47:38.483742+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
+  "status": "PASS",
   "notes": "",
   "metrics": {
-    "section_count": 3,
+    "section_count": 2,
     "headings": [
-      "How it all began",
       "Rolling back the years to 1935",
       "More recent developments..."
     ],
@@ -34,7 +33,7 @@
     "link_word_count": 0,
     "prose_word_count": 984,
     "link_to_prose_ratio": 0.0,
-    "empty_sections": 1,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {

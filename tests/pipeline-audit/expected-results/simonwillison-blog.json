@@ -1,14 +1,13 @@
 {
   "fixture": "simonwillison-blog",
   "corpus": "main",
-  "baselined_at": "2026-03-05T10:32:06.469703+00:00",
+  "baselined_at": "2026-03-09T21:47:03.685994+00:00",
   "flowdoc_version": "0.1.0",
-  "status": "MARGINAL",
-  "notes": "Empty section(s): stable trafilatura extraction artifact. 45 images now preserved.",
+  "status": "PASS",
+  "notes": "",
   "metrics": {
-    "section_count": 20,
+    "section_count": 19,
     "headings": [
-      "Simon Willison’s Weblog",
       "AI for Data Journalism: demonstrating what we can do with this stuff right now",
       "What’s new in LLMs?",
       "Opus at the top of the Chatbot Arena",
@@ -51,7 +50,7 @@
     "link_word_count": 479,
     "prose_word_count": 5473,
     "link_to_prose_ratio": 0.08752055545404715,
-    "empty_sections": 1,
+    "empty_sections": 0,
     "stub_sections": 0
   },
   "thresholds_applied": {
