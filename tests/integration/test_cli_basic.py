@@ -156,3 +156,27 @@ def test_cli_font_opendyslexic(tmp_path):
     output_html = output_file.read_text(encoding="utf-8")
     assert "@font-face" in output_html
     assert "OpenDyslexic" in output_html
+
+
+def test_cli_source_url_flag(tmp_path):
+    """--source-url adds View original links to placeholders."""
+    input_file = tmp_path / "input.html"
+    input_file.write_text(
+        "<html><body><h1>Test</h1>"
+        "<table><tr><td>A</td></tr></table>"
+        "<p>Content here.</p></body></html>"
+    )
+    output_file = tmp_path / "output.html"
+    sys.argv = [
+        'flowdoc', str(input_file),
+        '-o', str(output_file),
+        '--source-url', 'https://example.com/article',
+    ]
+    try:
+        main()
+    except SystemExit as e:
+        assert e.code == 0
+    output = output_file.read_text()
+    assert "View original" in output
+    assert "https://example.com/article" in output
+    assert '<div class="flowdoc-notice">' in output

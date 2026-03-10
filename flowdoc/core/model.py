@@ -117,3 +117,4 @@ class Document:
     """Top-level document structure."""
     title: str
     sections: list[Section]
+    source_url: str = ""

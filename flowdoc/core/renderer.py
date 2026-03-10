@@ -25,22 +25,95 @@ from flowdoc.core.constants import (
 )
 
 
+def _is_placeholder(paragraph: Paragraph) -> bool:
+    """Return True if paragraph is a placeholder like [Table removed]."""
+    if len(paragraph.inlines) != 1:
+        return False
+    inline = paragraph.inlines[0]
+    if not isinstance(inline, Text):
+        return False
+    return inline.text.startswith("[") and inline.text.endswith("]")
+
+
+def _placeholder_type(text: str) -> str:
+    """Classify placeholder text into type category."""
+    if text.startswith("[Table"):
+        return "table"
+    if text.startswith("[Image"):
+        return "image"
+    if text.startswith("[Form"):
+        return "form"
+    if text == "[-]":
+        return "hr"
+    return "other"
+
+
+def render_notice_banner(document: Document) -> str:
+    """Generate notice banner if document has placeholders."""
+    counts: dict[str, int] = {}
+    for section in document.sections:
+        for block in section.blocks:
+            if isinstance(block, Paragraph) and _is_placeholder(block):
+                ptype = _placeholder_type(block.inlines[0].text)
+                if ptype not in ("hr", "other"):
+                    counts[ptype] = counts.get(ptype, 0) + 1
+
+    if not counts:
+        return ""
+
+    parts = []
+    for ptype in ("table", "image", "form"):
+        n = counts.get(ptype, 0)
+        if n > 0:
+            label = ptype + ("s" if n != 1 else "")
+            parts.append(f"{n} {label}")
+
+    if not parts:
+        return ""
+
+    summary = parts[0]
+    if len(parts) == 2:
+        summary = f"{parts[0]} and {parts[1]}"
+    elif len(parts) > 2:
+        summary = ", ".join(parts[:-1]) + f", and {parts[-1]}"
+
+    if document.source_url:
+        escaped_url = html_module.escape(document.source_url)
+        suffix = (
+            f', or <a href="{escaped_url}">'
+            f'view the original page</a> for the full content.'
+        )
+    else:
+        suffix = " for details."
+
+    return (
+        f'<div class="flowdoc-notice">'
+        f'This document contains {summary} that could not be included. '
+        f'Look for the marked notes below{suffix}'
+        f'</div>\n'
+    )
+
+
 def render(document: Document, use_opendyslexic: bool = False) -> str:
     """
     Render Document model to self-contained HTML.
-    
+
     Args:
         document: Document model with title and sections
         use_opendyslexic: If True, embed OpenDyslexic font
-        
+
     Returns:
         Complete HTML string with inline CSS
     """
     css = generate_css(use_opendyslexic)
-    
-    # Render sections (TODO: implement next)
-    sections_html = "\n".join(render_section(section) for section in document.sections)
-    
+
+    source_url = document.source_url
+    sections_html = "\n".join(
+        render_section(section, source_url=source_url)
+        for section in document.sections
+    )
+    banner = render_notice_banner(document)
+
     # Assemble complete HTML document
     html_output = f"""<!DOCTYPE html>
 <html lang="en">
@@ -53,11 +126,11 @@ def render(document: Document, use_opendyslexic: bool = False) -> str:
 </head>
 <body>
 <div class="container">
-{sections_html}
+{banner}{sections_html}
 </div>
 </body>
 </html>"""
-    
+
     return html_output
 
 
@@ -100,6 +173,10 @@ def generate_css(use_opendyslexic: bool) -> str:
 em {
     font-style: normal;
     font-weight: bold;
+}
+
+.placeholder {
+    font-style: normal;
 }
 """
 
@@ -213,6 +290,26 @@ figcaption {{
     line-height: 1.4;
 }}
 
+.flowdoc-notice {{
+    background-color: #f0f0e8;
+    border-left: 3px solid #b0a870;
+    padding: 0.75em 1em;
+    margin-bottom: 1.5em;
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+}}
+
+.placeholder {{
+    color: #666;
+    font-style: italic;
+}}
+
+.view-original {{
+    font-style: normal;
+    margin-left: 0.3em;
+}}
+
 {em_restyle}
 @media print {{
     body {{
@@ -225,19 +322,23 @@ figcaption {{
     figcaption {{
         color: #333;
     }}
+    .flowdoc-notice {{
+        border-left-color: #999;
+    }}
 }}
 """
     
     return css
 
 
-def render_section(section: Section) -> str:
+def render_section(section: Section, source_url: str = "") -> str:
     """
     Render Section to HTML.
-    
+
     Args:
         section: Section with heading and blocks
-        
+        source_url: Optional source URL for placeholder links
+
     Returns:
         HTML string for section
     """
@@ -245,29 +346,33 @@ def render_section(section: Section) -> str:
     level = section.heading.level
     heading_html = render_inlines(section.heading.inlines)
     heading = f"<h{level}>{heading_html}</h{level}>\n"
-    
+
     # Render blocks
-    blocks_html = "\n".join(render_block(block) for block in section.blocks)
-    
+    blocks_html = "\n".join(
+        render_block(block, source_url=source_url)
+        for block in section.blocks
+    )
+
     return heading + blocks_html
 
 
-def render_block(block) -> str:
+def render_block(block, source_url: str = "") -> str:
     """
     Render Block to HTML (dispatcher).
-    
+
     Args:
         block: Block model object
-        
+        source_url: Optional source URL for placeholder links
+
     Returns:
         HTML string for block
     """
     if isinstance(block, Paragraph):
-        return render_paragraph(block)
+        return render_paragraph(block, source_url=source_url)
     elif isinstance(block, ListBlock):
         return render_list(block)
     elif isinstance(block, Quote):
-        return render_quote(block)
+        return render_quote(block, source_url=source_url)
     elif isinstance(block, Preformatted):
         return render_preformatted(block)
     elif isinstance(block, Image):
@@ -277,16 +382,25 @@ def render_block(block) -> str:
         return ""
 
 
-def render_paragraph(para: Paragraph) -> str:
+def render_paragraph(para: Paragraph, source_url: str = "") -> str:
     """
     Render Paragraph to HTML.
-    
+
     Args:
         para: Paragraph with inlines
-        
+        source_url: Optional source URL for placeholder links
+
     Returns:
         HTML <p> element
     """
+    if _is_placeholder(para) and source_url:
+        escaped_text = html_module.escape(para.inlines[0].text)
+        escaped_url = html_module.escape(source_url)
+        return (
+            f'<p class="placeholder">{escaped_text} '
+            f'<a href="{escaped_url}" class="view-original">'
+            f'View original</a></p>\n'
+        )
     content = render_inlines(para.inlines)
     return f"<p>{content}</p>\n"
 
@@ -318,17 +432,21 @@ def render_list(list_block: ListBlock) -> str:
     return f"<{tag}>\n{items_html}</{tag}>\n"
 
 
-def render_quote(quote: Quote) -> str:
+def render_quote(quote: Quote, source_url: str = "") -> str:
     """
     Render Quote to HTML (recursive).
-    
+
     Args:
         quote: Quote containing blocks
-        
+        source_url: Optional source URL for placeholder links
+
     Returns:
         HTML <blockquote> element
     """
-    blocks_html = "\n".join(render_block(block) for block in quote.blocks)
+    blocks_html = "\n".join(
+        render_block(block, source_url=source_url)
+        for block in quote.blocks
+    )
     return f"<blockquote>\n{blocks_html}</blockquote>\n"
 
 

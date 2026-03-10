@@ -209,7 +209,6 @@ def test_opendyslexic_em_restyled():
 
 
 def test_default_em_not_restyled():
-    """Default rendering does not restyle em."""
+    """Default rendering does not restyle em to bold."""
     html = render(_minimal_doc(), use_opendyslexic=False)
     assert "em {" not in html
-    assert "font-style: normal" not in html

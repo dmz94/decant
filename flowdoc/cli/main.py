@@ -58,6 +58,12 @@ def main():
     )
 
     parser.add_argument(
+        '--source-url',
+        default='',
+        help='URL of the original source page (used for "View original" links)'
+    )
+
+    parser.add_argument(
         '--verbose',
         action='store_true',
         help='Print processing decisions to stderr'
@@ -122,6 +128,7 @@ def main():
             original_title=original_title,
             require_article_body=(mode == "extract"),
             caption_map=caption_map,
+            source_url=args.source_url,
         )
 
         # Render to readable HTML

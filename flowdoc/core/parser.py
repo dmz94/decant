@@ -539,7 +539,8 @@ def extract_with_trafilatura(
 
 
 def parse(html: str, original_title=None, require_article_body: bool = False,
-          caption_map: dict[str, str] | None = None) -> Document:
+          caption_map: dict[str, str] | None = None,
+          source_url: str = "") -> Document:
     """
     Parse HTML string to Document model.
 
@@ -618,7 +619,7 @@ def parse(html: str, original_title=None, require_article_body: bool = False,
     # Step 6: Extract title
     title = extract_title(soup, content, original_title=original_title)
 
-    return Document(title=title, sections=sections)
+    return Document(title=title, sections=sections, source_url=source_url)
 
 
 def extract_title(soup: BeautifulSoup, content: Tag, original_title=None) -> str:
