@@ -172,6 +172,12 @@ Degraded with placeholders (deterministic):
   Print quality takes precedence.
   Implementation pending -- code changes tracked separately.
 - form/input/textarea/select/button -> Paragraph: `[Form omitted]`
+- Source URL linking: when `--source-url` is provided on the CLI,
+  each placeholder paragraph gets a "View original" link to the
+  source page. A notice banner at the top of the document summarizes
+  omitted tables/images/forms with a link to the original page.
+  Without `--source-url`, placeholders render without links and
+  the banner omits the link (but still lists omitted content types).
 - figure/figcaption:
   - In transform mode: <figure> is parsed directly.
     If it contains an image, the image is preserved with
