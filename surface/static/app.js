@@ -24,6 +24,7 @@
   var spacingToggle = document.getElementById("spacing-toggle");
   var resetBtn = document.getElementById("reset-btn");
   var widthLabel = document.getElementById("width-label");
+  var pageWrapper = document.querySelector(".page-wrapper");
 
   // --- Settings state ---
   var DEFAULTS = {
@@ -34,13 +35,13 @@
     width: "medium"
   };
 
-  var FONT_SIZE_MULTIPLIERS = [0.85, 0.925, 1.0, 1.075, 1.15];
+  var FONT_SIZE_MULTIPLIERS = [0.75, 0.875, 1.0, 1.2, 1.45];
 
   var THEMES = {
     light:    { bg: "#fafaf7", text: "#333",    link: "#1a0dab", visited: "#660099" },
     cream:    { bg: "#f5f0e8", text: "#333",    link: "#1a0dab", visited: "#660099" },
-    dark:     { bg: "#1e1e1e", text: "#e0e0e0", link: "#7aafff", visited: "#c4a4ff" },
-    contrast: { bg: "#1a1a1a", text: "#ffd700", link: "#00e5ff", visited: "#ff80ab" }
+    dark:     { bg: "#1e1e1e", text: "#e0e0e0", link: "#6db3f2", visited: "#c4a4ff" },
+    contrast: { bg: "#1a1a1a", text: "#ffd700", link: "#ffd700", visited: "#ff80ab" }
   };
 
   var WIDTH_VALUES = { narrow: "38em", medium: "48em", wide: "60em" };
@@ -141,9 +142,9 @@
     css.push("a { color: " + theme.link + " !important; }");
     css.push("a:visited { color: " + theme.visited + " !important; }");
 
-    // Font size
+    // Font size (18px is the engine default body font size)
     if (multiplier !== 1.0) {
-      css.push("body { font-size: calc(1.1rem * " + multiplier + ") !important; }");
+      css.push("body { font-size: " + (18 * multiplier) + "px !important; }");
     }
 
     // Font family
@@ -167,8 +168,16 @@
     return css.join("\n");
   }
 
+  function applyOuterTheme() {
+    var theme = THEMES[settings.theme] || THEMES.light;
+    document.body.style.backgroundColor = theme.bg;
+    pageWrapper.style.backgroundColor = theme.bg;
+  }
+
   function applyToIframe() {
     if (!currentHtml) return;
+
+    applyOuterTheme();
 
     var overrideCSS = buildOverrideCSS();
     var styleTag = '<style id="decant-override">' + overrideCSS + '</style>';
