@@ -93,3 +93,7 @@ Do not silently guess.
 
 - Fixture URLs are chosen by Dave, not by AI.
   AI does the plumbing: fetch, save, manifest, baseline, commit.
+
+- Before modifying any file, read it first and confirm you
+  understand the current state. Do not assume file contents
+  based on prompt descriptions.
