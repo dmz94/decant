@@ -6,6 +6,7 @@ Routes:
     POST /convert — Accept URL or file, return converted HTML as JSON.
 """
 import logging
+import os
 import time
 from functools import wraps
 
@@ -14,6 +15,9 @@ from flask import Flask, request, jsonify, render_template
 import config
 from convert import convert_url, convert_file, ConvertError
 from fetch import FetchError
+from rate_limit import (
+    check_rate_limit, acquire_fetch_slot, release_fetch_slot, RateLimitError,
+)
 
 app = Flask(__name__)
 
@@ -56,6 +60,19 @@ def requires_auth(f):
 
 
 # ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def get_client_ip(req) -> str:
+    """Get client IP, checking X-Forwarded-For first for proxy setups."""
+    forwarded = req.headers.get("X-Forwarded-For", "")
+    if forwarded:
+        # Take the first IP in the chain (original client)
+        return forwarded.split(",")[0].strip()
+    return req.remote_addr or "unknown"
+
+
+# ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
 
@@ -73,11 +90,31 @@ def convert():
     source = None
 
     try:
+        # Rate limit check
+        client_ip = get_client_ip(request)
+        if not check_rate_limit(client_ip):
+            raise RateLimitError()
+
         # File upload takes precedence
         uploaded = request.files.get("file")
         if uploaded and uploaded.filename:
-            source = "file_upload"
+            # Validate file extension
+            filename = uploaded.filename.lower()
+            if not filename.endswith((".html", ".htm")):
+                return jsonify({
+                    "status": "error",
+                    "message": "Please upload an HTML file (.html or .htm).",
+                }), 422
+
+            # Validate file size
             html_bytes = uploaded.read()
+            if len(html_bytes) > config.MAX_FILE_UPLOAD_SIZE:
+                return jsonify({
+                    "status": "error",
+                    "message": "That file is too large to convert.",
+                }), 422
+
+            source = "file_upload"
             converted_html, source_url = convert_file(html_bytes)
         else:
             url = request.form.get("url", "").strip()
@@ -86,8 +123,19 @@ def convert():
                     "status": "error",
                     "message": "Please provide a URL or upload a file.",
                 }), 422
-            source = url
-            converted_html, source_url = convert_url(url)
+
+            # Acquire fetch slot
+            if not acquire_fetch_slot():
+                return jsonify({
+                    "status": "error",
+                    "message": "The service is busy. Please try again in a moment.",
+                }), 503
+
+            try:
+                source = url
+                converted_html, source_url = convert_url(url)
+            finally:
+                release_fetch_slot()
 
         elapsed_ms = int((time.monotonic() - start) * 1000)
         log.info("convert OK source=%s elapsed=%dms", source, elapsed_ms)
@@ -96,6 +144,17 @@ def convert():
             "status": "ok",
             "html": converted_html,
         })
+
+    except RateLimitError as e:
+        elapsed_ms = int((time.monotonic() - start) * 1000)
+        log.warning(
+            "convert RATE_LIMITED ip=%s elapsed=%dms",
+            get_client_ip(request), elapsed_ms,
+        )
+        return jsonify({
+            "status": "error",
+            "message": e.user_message,
+        }), 429
 
     except FetchError as e:
         elapsed_ms = int((time.monotonic() - start) * 1000)

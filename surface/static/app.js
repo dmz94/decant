@@ -10,30 +10,34 @@
   var outputSection = document.getElementById("output");
   var outputFrame = document.getElementById("output-frame");
   var sourceUrlSpan = document.getElementById("source-url");
-  var errorDiv = document.getElementById("error");
+  var errorContainer = document.getElementById("error");
+  var errorMessage = document.getElementById("error-message");
+  var errorHint = document.getElementById("error-hint");
+  var convertingStatus = document.getElementById("converting");
 
   // --- Helpers ---
 
-  function showError(message) {
-    errorDiv.textContent = message;
-    errorDiv.classList.remove("hidden");
+  function showError(message, hint) {
+    errorMessage.textContent = message;
+    errorHint.textContent = hint || "";
+    errorContainer.classList.remove("hidden");
     outputSection.classList.add("hidden");
+    convertingStatus.classList.add("hidden");
   }
 
   function hideError() {
-    errorDiv.classList.add("hidden");
+    errorContainer.classList.add("hidden");
   }
 
   function showLoading() {
     hideError();
-    outputSection.classList.remove("hidden");
-    sourceUrlSpan.textContent = "";
-    outputFrame.removeAttribute("srcdoc");
-    outputFrame.srcdoc = "<p style='padding:2rem;color:#888;font-family:system-ui'>Converting\u2026</p>";
+    outputSection.classList.add("hidden");
+    convertingStatus.classList.remove("hidden");
   }
 
   function showResult(html, sourceUrl) {
     hideError();
+    convertingStatus.classList.add("hidden");
     outputSection.classList.remove("hidden");
     outputFrame.srcdoc = html;
     if (sourceUrl) {
@@ -43,46 +47,58 @@
     }
   }
 
-  // --- Convert via URL ---
+  function handleErrorResponse(resp, data) {
+    var message = (data && data.message) || "Conversion failed.";
+    var hint = "";
+    var status = resp.status;
 
-  function convertUrl(url) {
+    if (status === 429) {
+      hint = "You can try again shortly.";
+    } else if (status === 500) {
+      hint = "If this keeps happening, the page may not be compatible.";
+    }
+
+    showError(message, hint);
+  }
+
+  function handleConversion(formData, sourceUrl) {
     showLoading();
-    var formData = new FormData();
-    formData.append("url", url);
 
     fetch("/convert", { method: "POST", body: formData })
-      .then(function (resp) { return resp.json(); })
-      .then(function (data) {
-        if (data.status === "ok") {
-          showResult(data.html, url);
+      .then(function (resp) {
+        return resp.json().then(function (data) {
+          return { resp: resp, data: data };
+        });
+      })
+      .then(function (result) {
+        if (result.data.status === "ok") {
+          showResult(result.data.html, sourceUrl);
         } else {
-          showError(data.message || "Conversion failed.");
+          handleErrorResponse(result.resp, result.data);
         }
       })
       .catch(function () {
-        showError("Network error. Check your connection and try again.");
+        showError(
+          "Couldn't connect to the server.",
+          "Check your internet connection and try again."
+        );
       });
+  }
+
+  // --- Convert via URL ---
+
+  function convertUrl(url) {
+    var formData = new FormData();
+    formData.append("url", url);
+    handleConversion(formData, url);
   }
 
   // --- Convert via file ---
 
   function convertFile(file) {
-    showLoading();
     var formData = new FormData();
     formData.append("file", file);
-
-    fetch("/convert", { method: "POST", body: formData })
-      .then(function (resp) { return resp.json(); })
-      .then(function (data) {
-        if (data.status === "ok") {
-          showResult(data.html, "");
-        } else {
-          showError(data.message || "Conversion failed.");
-        }
-      })
-      .catch(function () {
-        showError("Network error. Check your connection and try again.");
-      });
+    handleConversion(formData, "");
   }
 
   // --- Event listeners ---
