@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decant</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Decant</h1>
+  </header>
+
+  <section class="input-zone">
+    <form id="url-form" class="url-form">
+      <input type="text" id="url-input" name="url"
+             placeholder="Paste a URL..." autocomplete="off">
+      <button type="submit">Convert</button>
+    </form>
+
+    <div class="or-divider">or</div>
+
+    <div id="drop-zone" class="drop-zone">
+      <p>Drop an HTML file here, or click to browse</p>
+      <input type="file" id="file-input" accept=".html,.htm" hidden>
+    </div>
+  </section>
+
+  <div id="error" class="error-zone hidden"></div>
+
+  <section id="output" class="output-zone hidden">
+    <div class="status-bar">
+      Source: <span id="source-url"></span>
+    </div>
+    <iframe id="output-frame" sandbox="allow-same-origin"></iframe>
+  </section>
+
+</div>
+
+<script src="/static/app.js"></script>
+{% if prefilled_url %}
+<script>window.__prefilled_url = {{ prefilled_url | tojson }};</script>
+{% endif %}
+</body>
+</html>
