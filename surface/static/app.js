@@ -162,7 +162,11 @@
 
     // Content width
     var maxW = WIDTH_VALUES[settings.width] || WIDTH_VALUES.medium;
-    css.push(".container { max-width: " + maxW + " !important; }");
+    if (multiplier !== 1.0) {
+      css.push(".container { max-width: calc(" + maxW + " / " + multiplier + ") !important; }");
+    } else {
+      css.push(".container { max-width: " + maxW + " !important; }");
+    }
 
     return css.join("\n");
   }
