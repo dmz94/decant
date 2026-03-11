@@ -119,14 +119,15 @@
       <!-- D. Text spacing -->
       <div class="control-group">
         <label class="control-label">Text spacing</label>
-        <div class="toggle-row">
-          <label class="toggle-switch">
-            <input type="checkbox" id="spacing-toggle">
-            <span class="toggle-track"></span>
-          </label>
-          <span class="toggle-label">Wider spacing</span>
+        <div class="spacing-row">
+          <button type="button" class="spacing-btn active" data-spacing="standard"
+                  aria-label="Standard spacing">Standard</button>
+          <button type="button" class="spacing-btn" data-spacing="loose"
+                  aria-label="Loose spacing">Loose</button>
+          <button type="button" class="spacing-btn" data-spacing="veryloose"
+                  aria-label="Very loose spacing">Very Loose</button>
         </div>
-        <p class="control-hint">Wider spacing may improve reading fluency</p>
+        <div class="spacing-label-display" id="spacing-label">Standard</div>
       </div>
 
       <!-- E. Content width -->

@@ -21,7 +21,7 @@
   var settingsOverlay = document.getElementById("settings-overlay");
   var panelClose = document.getElementById("panel-close");
   var fontSizeSlider = document.getElementById("font-size-slider");
-  var spacingToggle = document.getElementById("spacing-toggle");
+  var spacingLabel = document.getElementById("spacing-label");
   var resetBtn = document.getElementById("reset-btn");
   var widthLabel = document.getElementById("width-label");
   var pageWrapper = document.querySelector(".page-wrapper");
@@ -31,7 +31,7 @@
     fontSize: 2,
     theme: "light",
     font: "sans",
-    spacing: false,
+    spacing: "standard",
     width: "medium"
   };
 
@@ -46,6 +46,14 @@
 
   var WIDTH_VALUES = { narrow: "38em", medium: "48em", wide: "60em" };
   var WIDTH_LABELS = { narrow: "Narrow", medium: "Medium", wide: "Wide" };
+
+  var SPACING_VALUES = {
+    standard: null,
+    loose: { letterSpacing: "0.08em", wordSpacing: "0.3em", lineHeight: "1.8" },
+    veryloose: { letterSpacing: "0.14em", wordSpacing: "0.45em", lineHeight: "2.1" }
+  };
+
+  var SPACING_LABELS = { standard: "Standard", loose: "Loose", veryloose: "Very Loose" };
 
   var settings = loadSettings();
   var currentSourceUrl = "";
@@ -62,7 +70,7 @@
           fontSize: parsed.fontSize !== undefined ? parsed.fontSize : DEFAULTS.fontSize,
           theme: parsed.theme || DEFAULTS.theme,
           font: parsed.font || DEFAULTS.font,
-          spacing: !!parsed.spacing,
+          spacing: (parsed.spacing === true) ? "loose" : (parsed.spacing === false) ? "standard" : (parsed.spacing || DEFAULTS.spacing),
           width: parsed.width || DEFAULTS.width
         };
       }
@@ -156,8 +164,9 @@
     }
 
     // Text spacing
-    if (settings.spacing) {
-      css.push("body { letter-spacing: 0.05em !important; word-spacing: 0.2em !important; line-height: 1.8 !important; }");
+    var sv = SPACING_VALUES[settings.spacing];
+    if (sv) {
+      css.push("body { letter-spacing: " + sv.letterSpacing + " !important; word-spacing: " + sv.wordSpacing + " !important; line-height: " + sv.lineHeight + " !important; }");
     }
 
     // Content width
@@ -239,8 +248,11 @@
       el.checked = el.value === settings.font;
     });
 
-    // Spacing toggle
-    spacingToggle.checked = settings.spacing;
+    // Spacing buttons
+    document.querySelectorAll(".spacing-btn").forEach(function (el) {
+      el.classList.toggle("active", el.getAttribute("data-spacing") === settings.spacing);
+    });
+    spacingLabel.textContent = SPACING_LABELS[settings.spacing] || "Standard";
 
     // Width buttons
     document.querySelectorAll(".width-btn").forEach(function (el) {
@@ -368,9 +380,12 @@
   });
 
   // D. Spacing
-  spacingToggle.addEventListener("change", function () {
-    settings.spacing = spacingToggle.checked;
-    onSettingChange();
+  document.querySelectorAll(".spacing-btn").forEach(function (el) {
+    el.addEventListener("click", function () {
+      settings.spacing = el.getAttribute("data-spacing");
+      syncControlsToSettings();
+      onSettingChange();
+    });
   });
 
   // E. Width
