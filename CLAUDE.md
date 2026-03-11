@@ -97,3 +97,9 @@ Do not silently guess.
 - Before modifying any file, read it first and confirm you
   understand the current state. Do not assume file contents
   based on prompt descriptions.
+
+- Wait for Render deploy to go live before pushing another
+  commit. Back-to-back pushes crash Render free tier.
+
+- Surface fixes: commit and push each fix individually.
+  Do not batch pushes.
