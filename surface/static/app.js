@@ -141,9 +141,9 @@
     css.push("a { color: " + theme.link + " !important; }");
     css.push("a:visited { color: " + theme.visited + " !important; }");
 
-    // Font size (percentage on html so headings scale proportionally)
+    // Font size (zoom scales everything proportionally)
     if (multiplier !== 1.0) {
-      css.push("html { font-size: " + (multiplier * 100) + "% !important; }");
+      css.push("body { zoom: " + multiplier + " !important; }");
     }
 
     // Font family
