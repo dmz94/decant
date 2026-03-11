@@ -99,7 +99,6 @@
   function showResult(html, sourceUrl) {
     hideError();
     convertingStatus.classList.add("hidden");
-    inputZone.classList.add("hidden");
     outputSection.classList.remove("hidden");
     settingsBtn.classList.remove("hidden");
 
