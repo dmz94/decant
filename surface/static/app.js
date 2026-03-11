@@ -3,19 +3,79 @@
 (function () {
   "use strict";
 
+  // --- DOM refs ---
   var urlForm = document.getElementById("url-form");
   var urlInput = document.getElementById("url-input");
   var dropZone = document.getElementById("drop-zone");
   var fileInput = document.getElementById("file-input");
+  var inputZone = document.getElementById("input-zone");
   var outputSection = document.getElementById("output");
   var outputFrame = document.getElementById("output-frame");
-  var sourceUrlSpan = document.getElementById("source-url");
+  var viewOriginalLink = document.getElementById("view-original");
   var errorContainer = document.getElementById("error");
   var errorMessage = document.getElementById("error-message");
   var errorHint = document.getElementById("error-hint");
   var convertingStatus = document.getElementById("converting");
+  var settingsBtn = document.getElementById("settings-btn");
+  var settingsPanel = document.getElementById("settings-panel");
+  var settingsOverlay = document.getElementById("settings-overlay");
+  var panelClose = document.getElementById("panel-close");
+  var fontSizeSlider = document.getElementById("font-size-slider");
+  var spacingToggle = document.getElementById("spacing-toggle");
+  var resetBtn = document.getElementById("reset-btn");
+  var widthLabel = document.getElementById("width-label");
 
-  // --- Helpers ---
+  // --- Settings state ---
+  var DEFAULTS = {
+    fontSize: 2,
+    theme: "light",
+    font: "sans",
+    spacing: false,
+    width: "medium"
+  };
+
+  var FONT_SIZE_MULTIPLIERS = [0.85, 0.925, 1.0, 1.075, 1.15];
+
+  var THEMES = {
+    light:    { bg: "#fafaf7", text: "#333",    link: "#1a0dab", visited: "#660099" },
+    cream:    { bg: "#f5f0e8", text: "#333",    link: "#1a0dab", visited: "#660099" },
+    dark:     { bg: "#1e1e1e", text: "#e0e0e0", link: "#7aafff", visited: "#c4a4ff" },
+    contrast: { bg: "#1a1a1a", text: "#ffd700", link: "#00e5ff", visited: "#ff80ab" }
+  };
+
+  var WIDTH_VALUES = { narrow: "38em", medium: "48em", wide: "60em" };
+  var WIDTH_LABELS = { narrow: "Narrow", medium: "Medium", wide: "Wide" };
+
+  var settings = loadSettings();
+  var currentSourceUrl = "";
+  var currentHtml = "";
+
+  // --- localStorage ---
+
+  function loadSettings() {
+    try {
+      var stored = localStorage.getItem("decant_settings");
+      if (stored) {
+        var parsed = JSON.parse(stored);
+        return {
+          fontSize: parsed.fontSize !== undefined ? parsed.fontSize : DEFAULTS.fontSize,
+          theme: parsed.theme || DEFAULTS.theme,
+          font: parsed.font || DEFAULTS.font,
+          spacing: !!parsed.spacing,
+          width: parsed.width || DEFAULTS.width
+        };
+      }
+    } catch (e) { /* ignore */ }
+    return JSON.parse(JSON.stringify(DEFAULTS));
+  }
+
+  function saveSettings() {
+    try {
+      localStorage.setItem("decant_settings", JSON.stringify(settings));
+    } catch (e) { /* ignore */ }
+  }
+
+  // --- UI state helpers ---
 
   function showError(message, hint) {
     errorMessage.textContent = message;
@@ -38,12 +98,20 @@
   function showResult(html, sourceUrl) {
     hideError();
     convertingStatus.classList.add("hidden");
+    inputZone.classList.add("hidden");
     outputSection.classList.remove("hidden");
-    outputFrame.srcdoc = html;
+    settingsBtn.classList.remove("hidden");
+
+    currentHtml = html;
+    currentSourceUrl = sourceUrl;
+
+    applyToIframe();
+
     if (sourceUrl) {
-      sourceUrlSpan.textContent = sourceUrl;
+      viewOriginalLink.href = sourceUrl;
+      viewOriginalLink.classList.remove("hidden");
     } else {
-      sourceUrlSpan.textContent = "uploaded file";
+      viewOriginalLink.classList.add("hidden");
     }
   }
 
@@ -60,6 +128,114 @@
 
     showError(message, hint);
   }
+
+  // --- CSS injection into iframe ---
+
+  function buildOverrideCSS() {
+    var css = [];
+    var theme = THEMES[settings.theme] || THEMES.light;
+    var multiplier = FONT_SIZE_MULTIPLIERS[settings.fontSize] || 1.0;
+
+    // Theme colors
+    css.push("body { background-color: " + theme.bg + " !important; color: " + theme.text + " !important; }");
+    css.push("a { color: " + theme.link + " !important; }");
+    css.push("a:visited { color: " + theme.visited + " !important; }");
+
+    // Font size
+    if (multiplier !== 1.0) {
+      css.push("body { font-size: calc(1.1rem * " + multiplier + ") !important; }");
+    }
+
+    // Font family
+    if (settings.font === "opendyslexic") {
+      css.push("body { font-family: 'OpenDyslexic', Arial, Verdana, sans-serif !important; }");
+    } else if (settings.font === "serif") {
+      css.push("body { font-family: Georgia, 'Times New Roman', serif !important; }");
+    } else {
+      css.push("body { font-family: Arial, Verdana, 'Segoe UI', sans-serif !important; }");
+    }
+
+    // Text spacing
+    if (settings.spacing) {
+      css.push("body { letter-spacing: 0.05em !important; word-spacing: 0.2em !important; line-height: 1.8 !important; }");
+    }
+
+    // Content width
+    var maxW = WIDTH_VALUES[settings.width] || WIDTH_VALUES.medium;
+    css.push(".container { max-width: " + maxW + " !important; }");
+
+    return css.join("\n");
+  }
+
+  function applyToIframe() {
+    if (!currentHtml) return;
+
+    var overrideCSS = buildOverrideCSS();
+    var styleTag = '<style id="decant-override">' + overrideCSS + '</style>';
+
+    // Insert override style just before </head>
+    var injected = currentHtml;
+    if (injected.indexOf("</head>") !== -1) {
+      injected = injected.replace("</head>", styleTag + "</head>");
+    } else {
+      injected = styleTag + injected;
+    }
+
+    outputFrame.srcdoc = injected;
+  }
+
+  // --- Settings panel ---
+
+  function openPanel() {
+    settingsPanel.classList.add("open");
+    settingsOverlay.classList.remove("hidden");
+  }
+
+  function closePanel() {
+    settingsPanel.classList.remove("open");
+    settingsOverlay.classList.add("hidden");
+  }
+
+  function togglePanel() {
+    if (settingsPanel.classList.contains("open")) {
+      closePanel();
+    } else {
+      openPanel();
+    }
+  }
+
+  // --- Sync controls to settings state ---
+
+  function syncControlsToSettings() {
+    // Font size slider
+    fontSizeSlider.value = settings.fontSize;
+
+    // Theme swatches
+    document.querySelectorAll(".theme-swatch").forEach(function (el) {
+      el.classList.toggle("active", el.getAttribute("data-theme") === settings.theme);
+    });
+
+    // Font radios
+    document.querySelectorAll('input[name="font"]').forEach(function (el) {
+      el.checked = el.value === settings.font;
+    });
+
+    // Spacing toggle
+    spacingToggle.checked = settings.spacing;
+
+    // Width buttons
+    document.querySelectorAll(".width-btn").forEach(function (el) {
+      el.classList.toggle("active", el.getAttribute("data-width") === settings.width);
+    });
+    widthLabel.textContent = WIDTH_LABELS[settings.width] || "Medium";
+  }
+
+  function onSettingChange() {
+    saveSettings();
+    applyToIframe();
+  }
+
+  // --- Conversion ---
 
   function handleConversion(formData, sourceUrl) {
     showLoading();
@@ -85,15 +261,11 @@
       });
   }
 
-  // --- Convert via URL ---
-
   function convertUrl(url) {
     var formData = new FormData();
     formData.append("url", url);
     handleConversion(formData, url);
   }
-
-  // --- Convert via file ---
 
   function convertFile(file) {
     var formData = new FormData();
@@ -101,7 +273,7 @@
     handleConversion(formData, "");
   }
 
-  // --- Event listeners ---
+  // --- Event listeners: input ---
 
   urlForm.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -111,7 +283,6 @@
     }
   });
 
-  // Drop zone click -> trigger file picker
   dropZone.addEventListener("click", function () {
     fileInput.click();
   });
@@ -122,7 +293,6 @@
     }
   });
 
-  // Drag and drop
   ["dragenter", "dragover"].forEach(function (evt) {
     dropZone.addEventListener(evt, function (e) {
       e.preventDefault();
@@ -146,11 +316,63 @@
     }
   });
 
-  // Prevent default drag on the whole page
   document.addEventListener("dragover", function (e) { e.preventDefault(); });
   document.addEventListener("drop", function (e) { e.preventDefault(); });
 
-  // --- Prefilled URL auto-submit ---
+  // --- Event listeners: settings panel ---
+
+  settingsBtn.addEventListener("click", togglePanel);
+  panelClose.addEventListener("click", closePanel);
+  settingsOverlay.addEventListener("click", closePanel);
+
+  // A. Font size
+  fontSizeSlider.addEventListener("input", function () {
+    settings.fontSize = parseInt(fontSizeSlider.value, 10);
+    onSettingChange();
+  });
+
+  // B. Theme
+  document.querySelectorAll(".theme-swatch").forEach(function (el) {
+    el.addEventListener("click", function () {
+      settings.theme = el.getAttribute("data-theme");
+      syncControlsToSettings();
+      onSettingChange();
+    });
+  });
+
+  // C. Font
+  document.querySelectorAll('input[name="font"]').forEach(function (el) {
+    el.addEventListener("change", function () {
+      settings.font = el.value;
+      onSettingChange();
+    });
+  });
+
+  // D. Spacing
+  spacingToggle.addEventListener("change", function () {
+    settings.spacing = spacingToggle.checked;
+    onSettingChange();
+  });
+
+  // E. Width
+  document.querySelectorAll(".width-btn").forEach(function (el) {
+    el.addEventListener("click", function () {
+      settings.width = el.getAttribute("data-width");
+      syncControlsToSettings();
+      onSettingChange();
+    });
+  });
+
+  // F. Reset
+  resetBtn.addEventListener("click", function () {
+    settings = JSON.parse(JSON.stringify(DEFAULTS));
+    syncControlsToSettings();
+    onSettingChange();
+  });
+
+  // --- Init ---
+
+  syncControlsToSettings();
 
   if (window.__prefilled_url) {
     urlInput.value = window.__prefilled_url;

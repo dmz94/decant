@@ -62,7 +62,7 @@ def _run_engine(raw_html: str, source_url: str = "") -> str:
             caption_map=caption_map,
             source_url=source_url,
         )
-        return render(doc)
+        return render(doc, use_opendyslexic=True)
 
     except (ValidationError, ValueError):
         raise ConvertError(
