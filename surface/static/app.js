@@ -210,6 +210,18 @@
     outputFrame.srcdoc = injected;
   }
 
+  // After iframe loads, rewrite links to open in new tab
+  outputFrame.addEventListener("load", function () {
+    try {
+      var doc = outputFrame.contentDocument;
+      if (!doc) return;
+      doc.querySelectorAll("a[href]").forEach(function (a) {
+        a.setAttribute("target", "_blank");
+        a.setAttribute("rel", "noopener noreferrer");
+      });
+    } catch (e) { /* cross-origin or sandbox restriction */ }
+  });
+
   // --- Sync controls to settings state ---
 
   function syncControlsToSettings() {
