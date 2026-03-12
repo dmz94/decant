@@ -11,20 +11,10 @@
   var inputZone = document.getElementById("input-zone");
   var outputSection = document.getElementById("output");
   var outputFrame = document.getElementById("output-frame");
-  var viewOriginalLink = document.getElementById("view-original");
   var errorContainer = document.getElementById("error");
   var errorMessage = document.getElementById("error-message");
   var errorHint = document.getElementById("error-hint");
   var convertingStatus = document.getElementById("converting");
-  var settingsBtn = document.getElementById("settings-btn");
-  var settingsPanel = document.getElementById("settings-panel");
-  var settingsOverlay = document.getElementById("settings-overlay");
-  var panelClose = document.getElementById("panel-close");
-  var fontSizeSlider = document.getElementById("font-size-slider");
-  var spacingLabel = document.getElementById("spacing-label");
-  var resetBtn = document.getElementById("reset-btn");
-  var widthLabel = document.getElementById("width-label");
-  var pageWrapper = document.querySelector(".page-wrapper");
 
   // --- Settings state ---
   var DEFAULTS = {
@@ -108,19 +98,11 @@
     hideError();
     convertingStatus.classList.add("hidden");
     outputSection.classList.remove("hidden");
-    settingsBtn.classList.remove("hidden");
 
     currentHtml = html;
     currentSourceUrl = sourceUrl;
 
     applyToIframe();
-
-    if (sourceUrl) {
-      viewOriginalLink.href = sourceUrl;
-      viewOriginalLink.classList.remove("hidden");
-    } else {
-      viewOriginalLink.classList.add("hidden");
-    }
   }
 
   function handleErrorResponse(resp, data) {
@@ -184,17 +166,11 @@
     var theme = THEMES[settings.theme] || THEMES.light;
     document.body.style.backgroundColor = theme.bg;
     var bgEls = document.querySelectorAll(
-      ".page-wrapper, .container, .output-zone, .result-bar, .site-header"
+      ".page-wrapper, .container, .output-zone, .site-header"
     );
     bgEls.forEach(function (el) {
       el.style.backgroundColor = theme.bg;
     });
-
-    // Align result-bar width with content width
-    var resultBar = document.querySelector(".result-bar");
-    if (resultBar) {
-      resultBar.style.maxWidth = WIDTH_VALUES[settings.width] || WIDTH_VALUES.medium;
-    }
   }
 
   function applyToIframe() {
@@ -216,55 +192,29 @@
     outputFrame.srcdoc = injected;
   }
 
-  // --- Settings panel ---
-
-  function openPanel() {
-    settingsPanel.classList.add("open");
-    settingsOverlay.classList.remove("hidden");
-    outputSection.style.marginRight = "320px";
-  }
-
-  function closePanel() {
-    settingsPanel.classList.remove("open");
-    settingsOverlay.classList.add("hidden");
-    outputSection.style.marginRight = "0";
-  }
-
-  function togglePanel() {
-    if (settingsPanel.classList.contains("open")) {
-      closePanel();
-    } else {
-      openPanel();
-    }
-  }
-
   // --- Sync controls to settings state ---
 
   function syncControlsToSettings() {
-    // Font size slider
-    fontSizeSlider.value = settings.fontSize;
+    // Syncs control UI to current settings state.
+    // Controls are added in chunk 4b; querySelectorAll safely no-ops on empty results.
+    var slider = document.getElementById("font-size-slider");
+    if (slider) slider.value = settings.fontSize;
 
-    // Theme swatches
     document.querySelectorAll(".theme-swatch").forEach(function (el) {
       el.classList.toggle("active", el.getAttribute("data-theme") === settings.theme);
     });
 
-    // Font radios
     document.querySelectorAll('input[name="font"]').forEach(function (el) {
       el.checked = el.value === settings.font;
     });
 
-    // Spacing buttons
     document.querySelectorAll(".spacing-btn").forEach(function (el) {
       el.classList.toggle("active", el.getAttribute("data-spacing") === settings.spacing);
     });
-    spacingLabel.textContent = SPACING_LABELS[settings.spacing] || "Standard";
 
-    // Width buttons
     document.querySelectorAll(".width-btn").forEach(function (el) {
       el.classList.toggle("active", el.getAttribute("data-width") === settings.width);
     });
-    widthLabel.textContent = WIDTH_LABELS[settings.width] || "Medium";
   }
 
   function onSettingChange() {
@@ -356,59 +306,8 @@
   document.addEventListener("dragover", function (e) { e.preventDefault(); });
   document.addEventListener("drop", function (e) { e.preventDefault(); });
 
-  // --- Event listeners: settings panel ---
-
-  settingsBtn.addEventListener("click", togglePanel);
-  panelClose.addEventListener("click", closePanel);
-  settingsOverlay.addEventListener("click", closePanel);
-
-  // A. Font size
-  fontSizeSlider.addEventListener("input", function () {
-    settings.fontSize = parseInt(fontSizeSlider.value, 10);
-    onSettingChange();
-  });
-
-  // B. Theme
-  document.querySelectorAll(".theme-swatch").forEach(function (el) {
-    el.addEventListener("click", function () {
-      settings.theme = el.getAttribute("data-theme");
-      syncControlsToSettings();
-      onSettingChange();
-    });
-  });
-
-  // C. Font
-  document.querySelectorAll('input[name="font"]').forEach(function (el) {
-    el.addEventListener("change", function () {
-      settings.font = el.value;
-      onSettingChange();
-    });
-  });
-
-  // D. Spacing
-  document.querySelectorAll(".spacing-btn").forEach(function (el) {
-    el.addEventListener("click", function () {
-      settings.spacing = el.getAttribute("data-spacing");
-      syncControlsToSettings();
-      onSettingChange();
-    });
-  });
-
-  // E. Width
-  document.querySelectorAll(".width-btn").forEach(function (el) {
-    el.addEventListener("click", function () {
-      settings.width = el.getAttribute("data-width");
-      syncControlsToSettings();
-      onSettingChange();
-    });
-  });
-
-  // F. Reset
-  resetBtn.addEventListener("click", function () {
-    settings = JSON.parse(JSON.stringify(DEFAULTS));
-    syncControlsToSettings();
-    onSettingChange();
-  });
+  // --- Event listeners: settings controls ---
+  // (rewired in chunk 4b when controls are added to toolbar popouts)
 
   // --- Init ---
 

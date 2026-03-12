@@ -4,12 +4,27 @@
   box-sizing: border-box;
 }
 
+/* --- CSS custom properties (light theme defaults) --- */
 body {
   font-family: system-ui, -apple-system, sans-serif;
   background: #fafaf7;
   color: #333;
   margin: 0;
   padding: 0;
+
+  --toolbar-bg: #ffffff;
+  --toolbar-border: rgba(12, 12, 13, 0.2);
+  --toolbar-shadow: rgba(12, 12, 13, 0.1);
+  --toolbar-button-border: transparent;
+  --toolbar-button-hover: rgba(12, 12, 13, 0.1);
+  --toolbar-button-active: rgba(12, 12, 13, 0.15);
+  --icon-fill: rgb(91, 91, 102);
+  --popup-bg: #ffffff;
+  --popup-border: rgba(0, 0, 0, 0.12);
+  --popup-shadow: rgba(49, 49, 49, 0.3);
+  --popup-text: #1a1a1a;
+  --tooltip-bg: rgb(207, 207, 216);
+  --tooltip-text: rgb(91, 91, 102);
 }
 
 .page-wrapper {
@@ -29,42 +44,6 @@ body {
   font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
-  color: #555;
-}
-
-.settings-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: none;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 0.4rem 0.75rem;
-  cursor: pointer;
-  font-size: 0.875rem;
-  color: #555;
-  transition: border-color 0.15s, background 0.15s;
-}
-
-.settings-btn:hover {
-  border-color: #999;
-  background: #f5f5f5;
-}
-
-.settings-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 4px;
-  background: #f0f0f0;
-  font-weight: 600;
-  font-size: 0.8rem;
-  color: #444;
-}
-
-.settings-label {
   color: #555;
 }
 
@@ -144,47 +123,11 @@ body {
   margin: 0;
 }
 
-/* Result bar (View Original) */
-.result-bar {
-  margin-bottom: 0.75rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.view-original-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: #555;
-  text-decoration: none;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 0.4rem 0.75rem;
-  transition: border-color 0.15s, background 0.15s;
-}
-
-.view-original-link:hover {
-  border-color: #999;
-  background: #f5f5f5;
-  text-decoration: none;
-}
-
-.view-original-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 4px;
-  background: #f0f0f0;
-  color: #444;
-}
-
-/* Output zone */
+/* Output zone — left padding makes room for toolbar */
 .output-zone {
   margin-top: 1rem;
-  transition: margin-right 0.3s ease;
+  position: relative;
+  padding-left: 56px;
 }
 
 #output-frame {
@@ -233,249 +176,140 @@ body {
 }
 
 /* -----------------------------------------------
-   Settings panel (slide-out from right)
+   Toolbar
    ----------------------------------------------- */
 
-.settings-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 90;
+.toolbar-container {
+  position: sticky;
+  z-index: 2;
+  top: 32px;
+  height: 0;
+  font-family: system-ui, sans-serif;
+  margin-left: -56px;
 }
 
-.settings-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100vh;
-  background: #fff;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  transform: translateX(100%);
-  transition: transform 0.25s ease;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+.toolbar {
+  padding-block: 16px;
+  border: 1px solid var(--toolbar-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--toolbar-shadow);
+  width: 48px;
+  padding-inline: 8px;
+  background-color: var(--toolbar-bg);
+  list-style: none;
+  user-select: none;
 }
 
-.settings-panel.open {
-  transform: translateX(0);
+/* When a dropdown is open, toolbar border/shadow hide */
+.dropdown-open .toolbar {
+  border-color: transparent;
+  box-shadow: 0 2px 8px transparent;
 }
 
-.panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid #eee;
-  flex-shrink: 0;
-}
-
-.panel-title {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.panel-close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #666;
+.toolbar ul {
+  list-style: none;
+  margin: 0;
   padding: 0;
+}
+
+.toolbar-button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--toolbar-button-border);
+  border-radius: 6px;
+  margin: 4px 0;
+  background-color: transparent;
+  background-size: 16px 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  color: var(--icon-fill);
+  fill: var(--icon-fill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbar-button:hover {
+  background-color: var(--toolbar-button-hover);
+}
+
+.toolbar-button:active,
+.open .toolbar-button {
+  background-color: var(--toolbar-button-active);
+}
+
+/* Aa icon text styling */
+.tb-icon-aa {
+  font-size: 14px;
+  font-weight: bold;
   line-height: 1;
+  color: inherit;
 }
 
-.panel-close:hover {
-  color: #333;
+/* -----------------------------------------------
+   Dropdown popups
+   ----------------------------------------------- */
+
+.dropdown {
+  position: relative;
 }
 
-.panel-body {
-  padding: 1rem 1.25rem;
-  flex: 1;
+.dropdown-popup {
+  position: absolute;
+  inset-inline-start: 48px;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--popup-bg);
+  color: var(--popup-text);
+  visibility: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--popup-border);
+  box-shadow: 0 0 10px 0 var(--popup-shadow);
+  min-width: 200px;
 }
 
-.control-group {
-  margin-bottom: 1.5rem;
+.open > .dropdown-popup {
+  visibility: visible;
 }
 
-.control-label {
-  display: block;
-  font-weight: 600;
-  font-size: 0.85rem;
-  margin-bottom: 0.6rem;
-  color: #444;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
+/* -----------------------------------------------
+   Tooltips
+   ----------------------------------------------- */
 
-.control-hint {
-  font-size: 0.8rem;
-  color: #888;
-  margin: 0.35rem 0 0 0;
-}
-
-/* A. Font size slider */
-.slider-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.slider-label-left,
-.slider-label-right {
-  font-size: 0.8rem;
-  color: #888;
-  flex-shrink: 0;
-}
-
-.range-slider {
-  flex: 1;
-  accent-color: #555;
-}
-
-/* B. Theme swatches */
-.theme-row {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.theme-swatch {
-  width: 48px;
-  height: 48px;
-  border: 2px solid #ddd;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.15s;
-}
-
-.theme-swatch:hover {
-  border-color: #999;
-}
-
-.theme-swatch.active {
-  border-color: #333;
-  box-shadow: 0 0 0 1px #333;
-}
-
-/* C. Font radios */
-.font-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.radio-option {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.radio-option input[type="radio"] {
-  accent-color: #555;
-}
-
-/* D. Text spacing buttons */
-.spacing-row {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.spacing-btn {
-  height: 36px;
-  padding: 0 0.75rem;
-  border: 2px solid #ddd;
-  border-radius: 6px;
-  background: #fafafa;
-  cursor: pointer;
-  font-size: 0.8rem;
-  color: #888;
-  transition: border-color 0.15s, color 0.15s;
-}
-
-.spacing-btn:hover {
-  border-color: #999;
-  color: #555;
-}
-
-.spacing-btn.active {
-  border-color: #333;
-  color: #333;
-  box-shadow: 0 0 0 1px #333;
-}
-
-.spacing-label-display {
-  font-size: 0.8rem;
-  color: #888;
-  margin-top: 0.35rem;
-}
-
-/* E. Content width buttons */
-.width-row {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.width-btn {
-  width: 48px;
-  height: 40px;
-  border: 2px solid #ddd;
-  border-radius: 6px;
-  background: #fafafa;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #888;
-  transition: border-color 0.15s, color 0.15s;
-}
-
-.width-btn:hover {
-  border-color: #999;
-  color: #555;
-}
-
-.width-btn.active {
-  border-color: #333;
-  color: #333;
-  box-shadow: 0 0 0 1px #333;
-}
-
-.width-label-display {
-  font-size: 0.8rem;
-  color: #888;
-  margin-top: 0.35rem;
-}
-
-/* F. Reset */
-.reset-group {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid #eee;
-}
-
-.reset-btn {
-  background: none;
-  border: 1px solid #ddd;
+.hover-label {
+  position: absolute;
+  inset-inline-start: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  padding: 4px 8px;
   border-radius: 4px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-size: 0.85rem;
-  color: #666;
-  width: 100%;
+  font-size: 13px;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1001;
 }
 
-.reset-btn:hover {
-  border-color: #999;
-  color: #333;
+.toolbar-button:hover > .hover-label {
+  visibility: visible;
+}
+
+/* Suppress tooltip when dropdown is open */
+.open > li > .dropdown-toggle:hover > .hover-label {
+  visibility: hidden;
+}
+
+/* -----------------------------------------------
+   URL-only buttons (visibility controlled in 4e)
+   ----------------------------------------------- */
+
+.url-only {
+  /* default: visible; hidden via data-source in chunk 4e */
 }
 
 /* Utility */
