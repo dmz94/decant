@@ -56,6 +56,7 @@ body {
 
 .input-zone {
   max-width: 800px;
+  margin: 0 auto;
 }
 
 /* URL input form */

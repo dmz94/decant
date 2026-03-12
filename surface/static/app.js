@@ -105,9 +105,13 @@
     currentHtml = html;
     currentSourceUrl = sourceUrl;
 
-    // Show action-only toolbar buttons
+    // Show action-only toolbar buttons (url-only ones only for URL conversions)
     document.querySelectorAll(".action-only").forEach(function (el) {
-      el.classList.remove("hidden");
+      if (el.classList.contains("url-only")) {
+        el.classList.toggle("hidden", !sourceUrl);
+      } else {
+        el.classList.remove("hidden");
+      }
     });
 
     applyToIframe();
@@ -246,24 +250,19 @@
     }
   }
 
-  // Event delegation for dropdown toggles
-  toolbarContainer.addEventListener("click", function (e) {
+  // Single document-level handler for all dropdown open/close
+  document.addEventListener("click", function (e) {
+    // If clicking a dropdown toggle, toggle that dropdown
     var toggle = e.target.closest(".dropdown-toggle");
     if (toggle) {
-      e.stopPropagation();
       var dropdown = toggle.closest(".dropdown");
       if (dropdown) toggleDropdown(dropdown);
       return;
     }
-    // Clicks inside a popup should not close it
+    // If clicking inside a popup, do nothing (keep it open)
     if (e.target.closest(".dropdown-popup")) return;
-  });
-
-  // Click outside closes all dropdowns
-  document.addEventListener("click", function (e) {
-    if (!e.target.closest(".toolbar-container")) {
-      closeAllDropdowns();
-    }
+    // Otherwise close all dropdowns
+    closeAllDropdowns();
   });
 
   // Escape closes dropdowns
