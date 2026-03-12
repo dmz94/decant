@@ -448,21 +448,40 @@
   // --- Save actions ---
 
   document.getElementById("print-btn").addEventListener("click", function () {
-    if (!currentHtml) return;
-    var blob = new Blob([currentHtml], { type: "text/html" });
-    var url = URL.createObjectURL(blob);
-    window.open(url);
-    URL.revokeObjectURL(url);
+    var content = outputFrame.srcdoc || currentHtml;
+    if (!content) return;
+    var blob = new Blob([content], { type: "text/html" });
+    var blobUrl = URL.createObjectURL(blob);
+    var printWindow = window.open(blobUrl);
+    printWindow.onload = function () {
+      printWindow.print();
+    };
+    setTimeout(function () {
+      URL.revokeObjectURL(blobUrl);
+    }, 60000);
     closeAllDropdowns();
   });
 
   document.getElementById("download-html-btn").addEventListener("click", function () {
     if (!currentHtml) return;
+    var filename = "decant.html";
+    try {
+      var parsed = new DOMParser().parseFromString(currentHtml, "text/html");
+      var titleEl = parsed.querySelector("title");
+      if (titleEl && titleEl.textContent) {
+        var slug = titleEl.textContent.toLowerCase().trim()
+          .replace(/[^a-z0-9\s-]/g, "")
+          .replace(/[\s]+/g, "-")
+          .replace(/-{2,}/g, "-")
+          .replace(/^-|-$/g, "");
+        if (slug) filename = slug + ".html";
+      }
+    } catch (e) { /* fall back to default */ }
     var blob = new Blob([currentHtml], { type: "text/html" });
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a");
     a.href = url;
-    a.download = "decant.html";
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
