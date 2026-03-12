@@ -664,6 +664,31 @@ body.loaded {
   transition: color 0.4s, background-color 0.4s;
 }
 
+/* -----------------------------------------------
+   Toast notification
+   ----------------------------------------------- */
+
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 80px;
+  background-color: var(--popup-bg);
+  color: var(--popup-text);
+  border: 1px solid var(--popup-border);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: system-ui, sans-serif;
+  z-index: 2000;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.toast.toast-fade {
+  opacity: 0;
+}
+
 /* Utility */
 .hidden {
   display: none;

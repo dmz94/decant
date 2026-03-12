@@ -450,6 +450,14 @@
   document.getElementById("print-btn").addEventListener("click", function () {
     var content = outputFrame.srcdoc || currentHtml;
     if (!content) return;
+    var printStyle = "<style>@media print { " +
+      "body { background: white !important; color: black !important; } " +
+      "a { color: #1856a8 !important; } }</style>";
+    if (content.indexOf("</head>") !== -1) {
+      content = content.replace("</head>", printStyle + "</head>");
+    } else {
+      content = printStyle + content;
+    }
     var blob = new Blob([content], { type: "text/html" });
     var blobUrl = URL.createObjectURL(blob);
     var printWindow = window.open(blobUrl);
@@ -487,6 +495,34 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     closeAllDropdowns();
+  });
+
+  // --- Share + View Original ---
+
+  function showToast(message) {
+    var el = document.createElement("div");
+    el.className = "toast";
+    el.textContent = message;
+    document.body.appendChild(el);
+    setTimeout(function () {
+      el.classList.add("toast-fade");
+    }, 2000);
+    setTimeout(function () {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    }, 2500);
+  }
+
+  document.getElementById("share-btn").addEventListener("click", function () {
+    if (!currentSourceUrl) return;
+    var shareUrl = "https://decant.cc?url=" + encodeURIComponent(currentSourceUrl);
+    navigator.clipboard.writeText(shareUrl).then(function () {
+      showToast("Link copied");
+    });
+  });
+
+  document.getElementById("view-original-btn").addEventListener("click", function () {
+    if (!currentSourceUrl) return;
+    window.open(currentSourceUrl, "_blank", "noopener,noreferrer");
   });
 
   // --- Init ---
