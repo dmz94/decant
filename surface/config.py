@@ -35,7 +35,7 @@ ALLOWED_SCHEMES = ("http", "https")
 ALLOWED_CONTENT_TYPES = ("text/html",)
 
 # Rate limiting
-RATE_LIMIT_MAX_REQUESTS = 10  # per IP per window
+RATE_LIMIT_MAX_REQUESTS = 60  # per IP per window
 RATE_LIMIT_WINDOW_SECONDS = 3600  # 1 hour
 MAX_CONCURRENT_FETCHES = 10
 MAX_FILE_UPLOAD_SIZE = 10 * 1024 * 1024  # 10 MB
