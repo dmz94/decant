@@ -584,6 +584,7 @@ body {
   width: 380px;
   max-height: 70vh;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .help-section {
@@ -674,25 +675,22 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 0;
-  margin: 4px 0 0;
+  padding: 10px 0;
+  margin: 0 0 4px;
   border-bottom: 1px solid var(--popup-border);
   font-family: system-ui, sans-serif;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
   flex-wrap: wrap;
 }
 
 .feedback-thumb {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   padding: 0;
   border: 1px solid transparent;
   border-radius: 4px;
   background: transparent;
   color: var(--popup-text);
-  opacity: 0.45;
+  opacity: 0.6;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -701,7 +699,7 @@ body {
 }
 
 .feedback-thumb:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .feedback-thumb.active {
@@ -711,9 +709,9 @@ body {
 }
 
 .feedback-prompt {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--popup-text);
-  opacity: 0.45;
+  opacity: 0.6;
   margin-left: 4px;
 }
 
