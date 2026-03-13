@@ -94,9 +94,16 @@ Do not silently guess.
 - Fixture URLs are chosen by Dave, not by AI.
   AI does the plumbing: fetch, save, manifest, baseline, commit.
 
-- Before modifying any file, read it first and confirm you
-  understand the current state. Do not assume file contents
-  based on prompt descriptions.
+- VERIFY BEFORE DESCRIBING OR MODIFYING: Never describe what
+  code does, what state it is in, or how it behaves without
+  reading it first. This applies to ALL AI sessions: Opus
+  controller chats, Claude Code implementation, and any other
+  context. If you cannot read the file, say so explicitly and
+  either (a) write a diagnostic prompt for CC to read and
+  report, or (b) ask Dave to provide the relevant code. Do not
+  fill the gap with speculation, inference from specs, or
+  assumptions about what the code "probably" does. Specs
+  describe intent. Code describes reality. They diverge.
 
 - Wait for Render deploy to go live before pushing another
   commit. Back-to-back pushes crash Render free tier.
