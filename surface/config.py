@@ -2,6 +2,12 @@
 Configuration constants for the Decant hosted surface.
 """
 import ipaddress
+import os
+
+# Airtable integration (feedback logging)
+AIRTABLE_API_TOKEN = os.environ.get("AIRTABLE_API_TOKEN", "")
+AIRTABLE_BASE_ID = os.environ.get("AIRTABLE_BASE_ID", "")
+AIRTABLE_TABLE_NAME = "Feedback"
 
 # HTTP Basic Auth (development credentials — change before deploy)
 BASIC_AUTH_ENABLED = True

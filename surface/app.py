@@ -13,6 +13,7 @@ import os
 import time
 from functools import wraps
 
+import requests as http_requests
 from flask import Flask, request, jsonify, render_template
 
 import config
@@ -103,6 +104,35 @@ def feedback():
         "timestamp": data.get("timestamp", ""),
     }
     print(json.dumps(payload), flush=True)
+
+    if config.AIRTABLE_API_TOKEN and config.AIRTABLE_BASE_ID:
+        client_ip = get_client_ip(request)
+        try:
+            http_requests.post(
+                "https://api.airtable.com/v0/{}/{}".format(
+                    config.AIRTABLE_BASE_ID, config.AIRTABLE_TABLE_NAME,
+                ),
+                headers={
+                    "Authorization": "Bearer {}".format(config.AIRTABLE_API_TOKEN),
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "records": [{
+                        "fields": {
+                            "timestamp": payload["timestamp"],
+                            "source": payload["source"],
+                            "rating": payload["rating"],
+                            "text": payload["text"],
+                            "ip": client_ip,
+                        }
+                    }]
+                },
+                timeout=5,
+            )
+            log.info("Feedback sent to Airtable")
+        except Exception as e:
+            log.warning("Airtable POST failed: %s", str(e))
+
     return jsonify({"status": "ok"})
 
 
