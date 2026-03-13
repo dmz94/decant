@@ -291,7 +291,7 @@
       toolbarContainer.classList.add("dropdown-open");
       if (dropdownEl.classList.contains("help-dropdown")) {
         var rect = dropdownEl.getBoundingClientRect();
-        var available = rect.bottom - 16;
+        var available = window.innerHeight - rect.top - 16;
         var helpBody = dropdownEl.querySelector(".help-popup-body");
         if (helpBody) {
           helpBody.style.maxHeight = available + "px";
