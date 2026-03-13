@@ -11,8 +11,8 @@ AIRTABLE_TABLE_NAME = "Feedback"
 
 # HTTP Basic Auth (development credentials — change before deploy)
 BASIC_AUTH_ENABLED = True
-BASIC_AUTH_USERNAME = "decant"
-BASIC_AUTH_PASSWORD = "preview"
+BASIC_AUTH_USERNAME = os.environ.get("BASIC_AUTH_USERNAME", "decant")
+BASIC_AUTH_PASSWORD = os.environ.get("BASIC_AUTH_PASSWORD", "preview")
 
 # URL fetching
 REQUEST_TIMEOUT = 20  # seconds
