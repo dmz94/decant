@@ -185,6 +185,7 @@
     }
 
     css.push(".container { padding-top: 0.5rem !important; }");
+    css.push(".container > :first-child { margin-top: 0 !important; }");
 
     return css.join("\n");
   }
