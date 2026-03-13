@@ -577,6 +577,156 @@ body {
 }
 
 /* -----------------------------------------------
+   Help popout
+   ----------------------------------------------- */
+
+.help-popup-body {
+  width: 280px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.help-section {
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--popup-border);
+}
+
+.help-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.help-heading {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: var(--popup-text);
+}
+
+.help-popup-body p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 6px 0;
+  color: var(--popup-text);
+}
+
+.help-popup-body p:last-child {
+  margin-bottom: 0;
+}
+
+.help-popup-body a {
+  color: var(--popup-text);
+  text-decoration: underline;
+}
+
+.help-popup-body a:hover {
+  color: var(--icon-fill);
+}
+
+/* -----------------------------------------------
+   Footer
+   ----------------------------------------------- */
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-size: 12px;
+  color: var(--popup-text);
+  opacity: 0.5;
+  font-family: system-ui, sans-serif;
+}
+
+.site-footer a {
+  color: var(--popup-text);
+  text-decoration: underline;
+}
+
+.site-footer a:hover {
+  opacity: 0.8;
+}
+
+/* -----------------------------------------------
+   Feedback widget
+   ----------------------------------------------- */
+
+.feedback-widget {
+  position: absolute;
+  right: -60px;
+  top: 120px;
+  background-color: var(--popup-bg);
+  border: 1px solid var(--popup-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--toolbar-shadow);
+  padding: 8px;
+  z-index: 2;
+  font-family: system-ui, sans-serif;
+}
+
+.feedback-thumbs {
+  display: flex;
+  gap: 4px;
+}
+
+.feedback-thumb {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--popup-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--popup-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s;
+}
+
+.feedback-thumb:hover {
+  border-color: var(--icon-fill);
+}
+
+.feedback-thumb.active {
+  border-color: var(--icon-fill);
+  background-color: var(--toolbar-button-active);
+}
+
+.feedback-expand {
+  margin-top: 8px;
+}
+
+.feedback-text {
+  width: 100%;
+  font-size: 12px;
+  font-family: system-ui, sans-serif;
+  padding: 6px 8px;
+  border: 1px solid var(--popup-border);
+  border-radius: 4px;
+  background: var(--input-bg);
+  color: var(--input-text);
+  resize: none;
+}
+
+.feedback-submit {
+  width: 100%;
+  margin-top: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  border: 1px solid var(--popup-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--popup-text);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.feedback-submit:hover {
+  border-color: var(--icon-fill);
+}
+
+/* -----------------------------------------------
    Body theme class overrides
    ----------------------------------------------- */
 

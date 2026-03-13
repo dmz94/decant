@@ -18,6 +18,12 @@
   var toolbarContainer = document.getElementById("toolbar-container");
   var fontSizeSlider = document.getElementById("font-size-slider");
   var resetBtn = document.getElementById("reset-btn");
+  var feedbackWidget = document.getElementById("feedback-widget");
+  var feedbackUp = document.getElementById("feedback-up");
+  var feedbackDown = document.getElementById("feedback-down");
+  var feedbackExpand = document.getElementById("feedback-expand");
+  var feedbackText = document.getElementById("feedback-text");
+  var feedbackSubmit = document.getElementById("feedback-submit");
 
   // --- Settings state ---
   var DEFAULTS = {
@@ -114,6 +120,12 @@
         el.classList.remove("hidden");
       }
     });
+
+    // Reset feedback widget
+    feedbackUp.classList.remove("active");
+    feedbackDown.classList.remove("active");
+    feedbackExpand.classList.add("hidden");
+    feedbackText.value = "";
 
     applyToIframe();
   }
@@ -523,6 +535,47 @@
   document.getElementById("view-original-btn").addEventListener("click", function () {
     if (!currentSourceUrl) return;
     window.open(currentSourceUrl, "_blank", "noopener,noreferrer");
+  });
+
+  // --- Feedback ---
+
+  function sendFeedback(rating, text) {
+    var source = currentSourceUrl || "file_upload";
+    fetch("/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source: source,
+        rating: rating,
+        text: text || "",
+        timestamp: new Date().toISOString()
+      })
+    }).catch(function () { /* silent */ });
+  }
+
+  function handleThumbClick(rating, btn, other) {
+    btn.classList.add("active");
+    other.classList.remove("active");
+    feedbackExpand.classList.remove("hidden");
+    sendFeedback(rating, "");
+  }
+
+  feedbackUp.addEventListener("click", function () {
+    handleThumbClick("up", feedbackUp, feedbackDown);
+  });
+
+  feedbackDown.addEventListener("click", function () {
+    handleThumbClick("down", feedbackDown, feedbackUp);
+  });
+
+  feedbackSubmit.addEventListener("click", function () {
+    var rating = feedbackUp.classList.contains("active") ? "up" : "down";
+    var text = feedbackText.value.trim();
+    if (text) {
+      sendFeedback(rating, text);
+      feedbackText.value = "";
+      feedbackExpand.classList.add("hidden");
+    }
   });
 
   // --- Init ---

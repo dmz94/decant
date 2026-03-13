@@ -2,10 +2,12 @@
 Flask application for the Decant hosted surface.
 
 Routes:
-    GET  /healthz — Health check (no auth).
-    GET  /        — Serve the index page.
-    POST /convert — Accept URL or file, return converted HTML as JSON.
+    GET  /healthz  — Health check (no auth).
+    POST /feedback — Log user feedback as JSON (no auth).
+    GET  /         — Serve the index page.
+    POST /convert  — Accept URL or file, return converted HTML as JSON.
 """
+import json
 import logging
 import os
 import time
@@ -80,6 +82,28 @@ def get_client_ip(req) -> str:
 @app.route("/healthz")
 def healthz():
     return "ok", 200
+
+
+@app.route("/feedback", methods=["POST"])
+def feedback():
+    data = request.get_json(silent=True)
+    if not data:
+        return jsonify({"status": "error", "message": "Invalid JSON."}), 400
+    rating = data.get("rating", "")
+    source = data.get("source", "")
+    if rating not in ("up", "down"):
+        return jsonify({"status": "error", "message": "Rating must be 'up' or 'down'."}), 400
+    if not source:
+        return jsonify({"status": "error", "message": "Source is required."}), 400
+    payload = {
+        "event": "feedback",
+        "source": source,
+        "rating": rating,
+        "text": data.get("text", ""),
+        "timestamp": data.get("timestamp", ""),
+    }
+    print(json.dumps(payload), flush=True)
+    return jsonify({"status": "ok"})
 
 
 @app.route("/")
