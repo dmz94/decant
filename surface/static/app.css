@@ -731,6 +731,8 @@ body {
   background: var(--input-bg);
   color: var(--input-text);
   width: 200px;
+  height: 30px;
+  box-sizing: border-box;
 }
 
 .feedback-submit-inline {
@@ -743,6 +745,8 @@ body {
   cursor: pointer;
   transition: border-color 0.15s;
   white-space: nowrap;
+  height: 30px;
+  box-sizing: border-box;
 }
 
 .feedback-submit-inline:hover {

@@ -184,6 +184,8 @@
       css.push(".container { max-width: " + maxW + " !important; }");
     }
 
+    css.push(".container { padding-top: 0.5rem !important; }");
+
     return css.join("\n");
   }
 
