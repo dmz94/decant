@@ -17,14 +17,12 @@ Runtime:
 - Python 3.12+ (floor)
 
 Distribution:
-- Dual distribution:
-  - pip package for developers: `pip install decant-cli`
-  - standalone binaries for Windows/macOS/Linux built with PyInstaller
+- pip package: `pip install decant-cli`
+- Hosted web surface at decant.cc
 
 Rationale (short):
 - v1 differentiator is transformation quality and iteration speed, not raw performance.
 - Python has the strongest HTML parsing ecosystem for tolerant real-world input.
-- Shipping binaries avoids requiring users to install Python.
 
 ---
 
@@ -94,12 +92,19 @@ decant/
     +-- writer.py            # File/stdout writing
 
 tests/
-+-- fixtures/
-|   +-- input/
-|   +-- expected/
-|   +-- snapshots/
-+-- test_*.py
-+-- test_integration.py
++-- unit/
+|   +-- test_*.py
++-- integration/
+|   +-- test_*.py
++-- fixtures/               # Shared test fixtures
++-- pipeline-audit/         # Eval harness (metrics + baselines)
+|   +-- run_metrics.py
+|   +-- audit_config.py
+|   +-- expected-results/
+|   +-- test-pages/
++-- benchmark-scrapinghub/  # ScrapingHub benchmark runner
++-- benchmark-wceb/         # WCEB benchmark runner
++-- benchmark-structural/   # Structural audit runner
 ```
 
 Notes:
@@ -134,20 +139,26 @@ Important:
 
 Required test layers:
 
-1) Golden file tests (end-to-end)
-- input HTML fixture -> expected output HTML fixture
-- byte-for-byte comparison
+1) Unit and integration tests (pytest)
+- Parser, renderer, sanitizer, model, and CLI tests
+- Parametrized fixtures for element handling rules
 
-2) Model snapshot tests (parser-only)
-- DOM -> Internal Document Model -> JSON
-- compare against stored snapshots
+2) Pipeline audit eval harness (separate from pytest)
+- 47 real-world HTML fixtures with human-reviewed baselines
+- 16 metrics computed per fixture (word counts, structure,
+  placeholder density, link-to-prose ratio)
+- Threshold-based regression detection
+- Status codes: PASS, MARGINAL, REGRESSION, FAIL, NEW
+- See docs/eval-harness.md for full reference
 
 3) Determinism test
 - run conversion twice with identical input/version/flags
 - outputs must be byte-identical
 
 Fixture corpus:
-- Minimum set is defined in [decisions.md](decisions.md) (real-world HTML, not hand-crafted micro HTML).
+- 47 fixtures from real-world sites (NHS, BDA, Wikipedia,
+  news, science journalism, educational content)
+- All human-reviewed via interactive baseline process
 
 ---
 

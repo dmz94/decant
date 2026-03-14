@@ -288,9 +288,7 @@ OpenDyslexic embedding:
 
 ## 11) CLI contract (v1)
 
-v1 ships one command only:
-
-`decant convert [INPUT] [-o OUTPUT] [--font opendyslexic]`
+`decant [INPUT] [-o OUTPUT] [--font opendyslexic] [--mode MODE] [--source-url URL] [--verbose]`
 
 Input:
 - If INPUT path is provided, read file.
@@ -301,6 +299,26 @@ Output:
 - Default output filename: `<basename>.decant.html` alongside input file.
 - `-o/--output` overrides output path.
 - In stdin mode, write to stdout unless `-o` is provided.
+
+Flags:
+
+--font:
+- Choices: opendyslexic
+- Embeds OpenDyslexic font in output
+
+--mode:
+- Choices: transform, extract, auto (default: auto)
+- transform: fidelity-first, no boilerplate removal
+- extract: boilerplate removal via Trafilatura
+- auto: detect mode from input
+
+--source-url:
+- URL of the original source page (optional, no default)
+- Used for "View original" links in placeholders and
+  notice banner
+
+--verbose:
+- Print processing decisions (mode selection) to stderr
 
 stdout/stderr:
 - stdout contains only output HTML in stdout mode.

@@ -227,20 +227,12 @@ Examples:
   wikipedia-photosynthesis.html
   propublica-3m-pfas.html
 
-### Current State (17 fixtures, all human-reviewed)
+### Current State
 
-PASS (11):
-  nhs-dyslexia, nhs-adhd, wwf-ways-to-help, pbs-crowd-surges,
-  propublica-3m-pfas, smithsonian-homo-sapiens, theringer-chase-budinger,
-  theconversation-ai-innovation, quanta-smell, yale360-baboons,
-  undark-brain-organoids
-
-MARGINAL (6):
-  cdc-west-nile, dyslexiaida-dyslexia-basics, sciencedaily-memory,
-  wikipedia-photosynthesis, wikipedia-world-war-i, hakai-caviar-sturgeon
-
-All 17 baselines were human-reviewed and approved during the Phase 3
-baseline review session.
+47 fixtures, all PASS. All baselines human-reviewed via
+interactive baseline process. See
+tests/pipeline-audit/test-pages/manifest.md for the full
+fixture list.
 
 ### Manifest
 

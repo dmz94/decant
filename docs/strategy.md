@@ -51,7 +51,7 @@ to integrate Decant into their own tools, plugins, and surfaces without
 maintaining the engine themselves.
 
 **Reference surface** -- a hosted implementation demonstrating the engine.
-Initially on a temporary domain for testing and demos. Accepts a URL or uploaded
+Live at decant.cc. Accepts a URL or uploaded
 HTML file, returns a converted document. Primary purpose is validation and
 demonstration, not scale.
 
@@ -194,7 +194,8 @@ Primary users:
 - Tutors preparing session materials from web content
 
 Distribution:
-Free open-source tool distributed via pip and standalone binaries.
+Free open-source tool distributed via pip (pip install decant-cli)
+and hosted at decant.cc.
 No monetization. No institutional sales dependency.
 
 ---
@@ -245,27 +246,24 @@ These are documented boundaries, not defects.
 
 ## 12. Validation Plan
 
-Before expansion:
+Validation is ongoing through early tester recruitment.
+The surface at decant.cc is the primary instrument.
 
-Instrument: the test surface (contract section 10). A disposable
-web page used to validate the product before v1 ships. Accepts
-a URL or uploaded HTML file, returns a Decant document. Includes
-curated side-by-side comparisons and a sandbox for user-supplied
-URLs.
+Current validation:
+- 47-fixture eval corpus with metrics-based regression tracking
+- ScrapingHub benchmark (181 pages, 87.3% pass)
+- WCEB benchmark (3,985 pages, 68.3% pass)
+- Tester recruitment via personal contacts (teachers, SEN
+  coordinators, parents)
 
-1. Structured testing with diagnosed dyslexic readers
-2. Compare:
-   - Original formatting
-   - Browser Reader Mode
-   - Decant output
-3. Measure:
-   - Reread frequency
-   - Line-loss incidents
-   - Subjective fatigue
-   - Preference and print usability
+Future validation (post-tester feedback):
+- Structured comparison: original vs Reader Mode vs Decant output
+- Subjective measures: fatigue, preference, print usability
+- Expand tester pool via BDA, dyslexia forums, and practitioner
+  networks
 
-If no meaningful benefit is demonstrated,
-scope expansion is premature.
+Scope expansion is premature until tester feedback confirms
+meaningful benefit.
 
 ---
 
