@@ -7,9 +7,27 @@
 <title>Decanters: Everything You Need to Know | The Wine Blog</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.3; color: #333; background: #fff; }
+body { font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.2; color: #333; background: #fff; }
 a { color: #8b0000; text-decoration: underline; }
 a:hover { color: #a00; }
+
+/* --- Animations --- */
+@keyframes promo-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+@keyframes subscribe-pulse {
+  0%, 100% { background-color: #8b0000; }
+  50% { background-color: #a81010; }
+}
+
+/* --- Promo banner --- */
+.promo-banner {
+  background: #8b0000; color: #fff; text-align: center; padding: 8px 20px;
+  font-size: 12px; font-weight: bold; letter-spacing: 0.5px;
+}
+.promo-banner span { animation: promo-pulse 2s ease-in-out infinite; display: inline-block; }
+.promo-banner a { color: #fff; margin-left: 6px; }
 
 /* --- Header --- */
 .top-bar {
@@ -32,13 +50,37 @@ a:hover { color: #a00; }
 }
 .breadcrumbs a { color: #888; font-size: 12px; }
 
+/* --- Floating social bar --- */
+.floating-share {
+  position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+  background: #3a3a3a; display: flex; flex-direction: column;
+  padding: 6px 0; z-index: 100; border-radius: 0 4px 4px 0;
+}
+.floating-share a {
+  display: block; padding: 6px 8px; color: #fff; text-decoration: none;
+  font-size: 10px; text-align: center; border-bottom: 1px solid #555;
+}
+.floating-share a:last-child { border-bottom: none; }
+.floating-share a:hover { background: #555; color: #fff; }
+.floating-share .share-label {
+  font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+  color: #aaa; padding: 4px 8px; text-align: center;
+}
+
 /* --- Layout --- */
 .page-body { display: flex; max-width: 1200px; margin: 0 auto; padding: 0; }
 .main-col { flex: 1; padding: 20px 25px 40px 20px; min-width: 0; }
 .sidebar {
-  width: 300px; flex-shrink: 0; padding: 20px 20px 40px 15px;
+  width: 260px; flex-shrink: 0; padding: 20px 20px 40px 15px;
   background: #fafaf8; border-left: 1px solid #eee;
 }
+
+/* --- Star rating --- */
+.star-rating { margin-bottom: 8px; font-size: 14px; }
+.star-rating .star-filled { color: #d4a017; }
+.star-rating .star-empty { color: #ccc; }
+.star-rating .rating-count { font-size: 11px; color: #888; margin-left: 4px; }
+.star-rating .rate-link { font-size: 11px; margin-left: 8px; }
 
 /* --- Article --- */
 .byline { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; color: #777; font-size: 13px; }
@@ -53,8 +95,8 @@ a:hover { color: #a00; }
 }
 .share-btn:hover { background: #e0e0e0; color: #333; }
 
-.article-body h2 { font-size: 17px; font-weight: bold; margin: 14px 0 6px; color: #333; }
-.article-body p { margin: 6px 0; }
+.article-body h2 { font-size: 1.1em; font-weight: bold; margin: 14px 0 6px; color: #333; }
+.article-body p { margin: 0.5em 0; }
 
 /* --- Inline ad --- */
 .inline-ad {
@@ -83,6 +125,60 @@ a:hover { color: #a00; }
 .inline-newsletter button {
   padding: 6px 14px; font-size: 13px; background: #8b0000; color: #fff;
   border: none; cursor: pointer; margin-left: 4px;
+  animation: subscribe-pulse 3s ease-in-out infinite;
+}
+
+/* --- Related articles --- */
+.related-articles {
+  margin: 20px 0; padding: 16px; background: #f7f7f5; border: 1px solid #e0e0e0;
+}
+.related-articles .ra-heading { font-size: 14px; font-weight: bold; color: #333; margin-bottom: 10px; }
+.related-articles .ra-grid { display: flex; gap: 14px; }
+.related-articles .ra-item { flex: 1; }
+.related-articles .ra-thumb {
+  width: 100%; height: 80px; background: #ddd; border: 1px solid #ccc; margin-bottom: 6px;
+}
+.related-articles .ra-item a { font-size: 12px; line-height: 1.3; }
+
+/* --- Sponsored content --- */
+.sponsored-block {
+  margin: 20px 0; padding: 16px; background: #faf8f2; border: 1px solid #e8e4d8;
+  position: relative;
+}
+.sponsored-block .sponsored-label {
+  position: absolute; top: 8px; right: 10px; font-size: 9px;
+  text-transform: uppercase; letter-spacing: 1px; color: #999;
+}
+.sponsored-block .sp-thumb {
+  width: 100%; height: 100px; background: #e4e0d4; border: 1px solid #d4d0c4; margin-bottom: 8px;
+}
+.sponsored-block .sp-title { font-size: 14px; font-weight: bold; color: #444; margin-bottom: 4px; }
+.sponsored-block .sp-sub { font-size: 11px; color: #888; }
+
+/* --- Pull quote --- */
+.pull-quote {
+  margin: 20px 0; padding: 18px 20px; background: #fdf8f0; border-left: 4px solid #8b0000;
+}
+.pull-quote .pq-text {
+  font-size: 18px; font-style: italic; color: #444; line-height: 1.4; margin-bottom: 6px;
+}
+.pull-quote .pq-attr { font-size: 11px; color: #888; }
+
+/* --- Cookie banner --- */
+.cookie-banner {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: #f0f0f0; border-top: 1px solid #ccc; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; font-size: 12px; color: #444;
+}
+.cookie-banner .cookie-buttons { display: flex; gap: 8px; flex-shrink: 0; }
+.cookie-banner .cookie-accept {
+  padding: 6px 16px; background: #8b0000; color: #fff; border: none;
+  font-size: 12px; cursor: pointer; border-radius: 2px;
+}
+.cookie-banner .cookie-manage {
+  padding: 6px 16px; background: transparent; color: #555; border: 1px solid #999;
+  font-size: 12px; cursor: pointer; border-radius: 2px;
 }
 
 /* --- Tags --- */
@@ -136,7 +232,7 @@ a:hover { color: #a00; }
 
 .sidebar-ad {
   padding: 20px 14px; background: #f2f2f0; border: 1px solid #ddd; text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 22px; position: relative;
 }
 .sidebar-ad .ad-label {
   font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
@@ -144,12 +240,17 @@ a:hover { color: #a00; }
 }
 .sidebar-ad .ad-box {
   width: 100%; height: 120px; background: #e0e0e0; border: 1px solid #ccc;
-  margin-bottom: 10px;
+  margin-bottom: 10px; position: relative;
 }
 .sidebar-ad .ad-text { font-size: 14px; font-weight: bold; color: #444; margin-bottom: 8px; }
 .sidebar-ad .ad-btn {
   display: inline-block; padding: 6px 16px; background: #8b0000; color: #fff;
   border: none; font-size: 12px; cursor: pointer; text-decoration: none; border-radius: 2px;
+}
+.sale-badge {
+  position: absolute; top: 8px; right: -4px; background: #c00; color: #fff;
+  font-size: 10px; font-weight: bold; padding: 3px 8px; border-radius: 2px;
+  transform: rotate(5deg); letter-spacing: 0.5px; z-index: 1;
 }
 
 .cat-list, .follow-list { list-style: none; }
@@ -164,6 +265,7 @@ a:hover { color: #a00; }
 .sidebar-newsletter button {
   padding: 6px 14px; font-size: 12px; background: #8b0000; color: #fff;
   border: none; cursor: pointer; width: 100%;
+  animation: subscribe-pulse 3s ease-in-out infinite;
 }
 
 .recent-comments-item { font-size: 12px; color: #666; padding: 4px 0; border-bottom: 1px solid #eee; }
@@ -194,6 +296,20 @@ a:hover { color: #a00; }
 </head>
 <body>
 
+<!-- ==================== PROMO BANNER ==================== -->
+<div class="promo-banner">
+  <span>FREE SHIPPING on all orders over $50 &mdash; <a href="#">Shop Now</a></span>
+</div>
+
+<!-- ==================== FLOATING SOCIAL BAR ==================== -->
+<div class="floating-share">
+  <div class="share-label">Share</div>
+  <a href="#">Facebook</a>
+  <a href="#">Twitter</a>
+  <a href="#">Pinterest</a>
+  <a href="#">Email</a>
+</div>
+
 <!-- ==================== HEADER ==================== -->
 <header>
   <div class="top-bar">
@@ -219,7 +335,14 @@ a:hover { color: #a00; }
   <!-- ========== MAIN COLUMN ========== -->
   <div class="main-col">
 
-    <h1 style="font-size:22px; margin-bottom:10px; line-height:1.2;">Decanters: Everything You Need to Know</h1>
+    <h1 style="font-size:22px; margin-bottom:6px; line-height:1.2;">Decanters: Everything You Need to Know</h1>
+
+    <!-- Star Rating -->
+    <div class="star-rating">
+      <span class="star-filled">&#9733;</span><span class="star-filled">&#9733;</span><span class="star-filled">&#9733;</span><span class="star-filled">&#9733;</span><span class="star-empty">&#9734;</span>
+      <span class="rating-count">(47 ratings)</span>
+      <a href="#" class="rate-link">Rate this article</a>
+    </div>
 
     <div class="byline">
       <div class="avatar-placeholder"></div>
@@ -257,7 +380,34 @@ a:hover { color: #a00; }
         <button type="button">Subscribe</button>
       </div>
 
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <div class="ra-heading">You Might Also Like</div>
+        <div class="ra-grid">
+          <div class="ra-item">
+            <div class="ra-thumb"></div>
+            <a href="#">How Long Should You Really Decant Wine?</a>
+          </div>
+          <div class="ra-item">
+            <div class="ra-thumb"></div>
+            <a href="#">The Surprising Science Behind Wine Aeration</a>
+          </div>
+          <div class="ra-item">
+            <div class="ra-thumb"></div>
+            <a href="#">A Sommelier's Guide to Glassware</a>
+          </div>
+        </div>
+      </div>
+
       <p>Curabitur sed urna. Morbi vel justo vitae lacus tincidunt ultrices. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In hac habitasse platea dictumst. Integer tempus convallis augue. Etiam facilisis. Nunc elementum fermentum wisi. Aenean placerat. Ut imperdiet, enim sed gravida sollicitudin, felis odio placerat quam, ac pulvinar elit purus eget enim. Nunc vitae tortor. Proin tempus nibh sit amet nisl. Vivamus quis tortor vitae risus porta vehicula.</p>
+
+      <!-- Sponsored Content -->
+      <div class="sponsored-block">
+        <div class="sponsored-label">Sponsored</div>
+        <div class="sp-thumb"></div>
+        <div class="sp-title">Why Every Home Chef Needs a Quality Decanter</div>
+        <div class="sp-sub">Presented by CrystalVine</div>
+      </div>
 
       <h2>Choosing the Right One</h2>
 
@@ -268,6 +418,12 @@ a:hover { color: #a00; }
         <div class="ad-label">Advertisement</div>
         <div class="ad-text">Crystal Decanter Gift Set &mdash; Free Shipping</div>
         <a href="#" class="ad-btn">Order Now</a>
+      </div>
+
+      <!-- Pull Quote -->
+      <div class="pull-quote">
+        <div class="pq-text">&ldquo;A good decanter does not just hold wine. It transforms it.&rdquo;</div>
+        <div class="pq-attr">&mdash; The Wine Blog editorial team</div>
       </div>
 
       <p>Nam vestibulum accumsan nisl. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna. Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus.</p>
@@ -337,6 +493,7 @@ a:hover { color: #a00; }
 
     <!-- Sidebar Ad -->
     <div class="sidebar-ad">
+      <div class="sale-badge">SALE</div>
       <div class="ad-label">Advertisement</div>
       <div class="ad-box"></div>
       <div class="ad-text">Wine Cellar Temperature Monitor &mdash; $49.99</div>
@@ -438,6 +595,15 @@ a:hover { color: #a00; }
     <a href="#">Back to top</a>
   </div>
 </footer>
+
+<!-- ==================== COOKIE BANNER ==================== -->
+<div class="cookie-banner">
+  <span>We use cookies to improve your experience. By continuing to browse, you agree to our <a href="#">Cookie Policy</a>.</span>
+  <div class="cookie-buttons">
+    <button class="cookie-accept" type="button">Accept All</button>
+    <button class="cookie-manage" type="button">Manage Preferences</button>
+  </div>
+</div>
 
 </body>
 </html>
