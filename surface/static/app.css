@@ -29,7 +29,7 @@ body {
   --input-text: #333;
   --input-border: rgba(0, 0, 0, 0.25);
   --logo-text: #555;
-  --logo-wine: #800000;
+  --logo-wine: #b01030;
 }
 
 .page-wrapper {
@@ -790,7 +790,7 @@ body.sepia {
   --input-text: rgb(91, 70, 54);
   --input-border: rgba(91, 70, 54, 0.4);
   --logo-text: rgb(91, 70, 54);
-  --logo-wine: #800000;
+  --logo-wine: #b01030;
 }
 
 body.dark {
