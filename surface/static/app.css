@@ -658,6 +658,60 @@ body {
   color: var(--icon-fill);
 }
 
+/* Help chooser */
+.help-nav-btn svg {
+  flex-shrink: 0;
+}
+
+/* Help sub-view back button */
+.help-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--popup-text);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+
+.help-back-btn:hover {
+  opacity: 1;
+}
+
+/* About logo in help popout */
+.help-about-logo {
+  text-align: center;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--popup-border);
+}
+
+.help-logo-svg {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto 6px;
+}
+
+.help-about-tagline {
+  font-size: 13px;
+  color: var(--popup-text);
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Code in help popout */
+.help-popup-body code {
+  font-family: monospace;
+  font-size: 12px;
+  background: var(--toolbar-button-hover);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
 /* -----------------------------------------------
    Footer
    ----------------------------------------------- */

@@ -279,11 +279,20 @@
 
   // --- Dropdown open/close ---
 
+  function resetHelpViews() {
+    document.querySelectorAll(".help-popup-body .help-view").forEach(function (el) {
+      el.style.display = "none";
+    });
+    var chooser = document.getElementById("help-chooser");
+    if (chooser) chooser.style.display = "";
+  }
+
   function closeAllDropdowns() {
     document.querySelectorAll(".dropdown.open").forEach(function (el) {
       el.classList.remove("open");
     });
     toolbarContainer.classList.remove("dropdown-open");
+    resetHelpViews();
   }
 
   function toggleDropdown(dropdownEl) {
@@ -316,6 +325,25 @@
     if (e.target.closest(".dropdown-popup")) return;
     // Otherwise close all dropdowns
     closeAllDropdowns();
+  });
+
+  // Help popout sub-view navigation (event delegation)
+  document.addEventListener("click", function (e) {
+    var navBtn = e.target.closest(".help-nav-btn");
+    if (navBtn) {
+      var targetId = navBtn.getAttribute("data-help-target");
+      var target = document.getElementById(targetId);
+      if (target) {
+        document.getElementById("help-chooser").style.display = "none";
+        target.style.display = "";
+      }
+      return;
+    }
+    var backBtn = e.target.closest(".help-back-btn");
+    if (backBtn) {
+      resetHelpViews();
+      return;
+    }
   });
 
   // Escape closes dropdowns

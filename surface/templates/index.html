@@ -219,37 +219,127 @@
           <li class="dropdown-popup" id="help-controls" tabindex="-1">
             <div class="popup-body help-popup-body">
 
-              <div class="help-section">
+              <!-- Chooser view (visible by default) -->
+              <div id="help-chooser" class="help-view">
+                <button type="button" class="save-action-btn help-nav-btn" data-help-target="help-getting-started">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                       stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 2v8M5 7l3 3 3-3"/>
+                    <path d="M2 11v3h12v-3"/>
+                  </svg>
+                  Getting Started
+                </button>
+                <button type="button" class="save-action-btn help-nav-btn" data-help-target="help-about">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                       stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="8" cy="8" r="6"/>
+                    <path d="M8 5v1"/>
+                    <path d="M8 8v4"/>
+                  </svg>
+                  About
+                </button>
+              </div>
+
+              <!-- Getting Started view (hidden by default) -->
+              <div id="help-getting-started" class="help-view" style="display:none">
+                <button type="button" class="help-back-btn" aria-label="Back">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                       stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 2L4 8l6 6"/>
+                  </svg>
+                </button>
                 <h3 class="help-heading">Getting Started</h3>
-                <p>Decant makes web articles easier to read by stripping away clutter and reformatting content with typography designed for readers with dyslexia. It is useful for anyone who prefers cleaner, distraction-free reading.</p>
-                <p>Paste a URL or upload an HTML file. It works best with articles, blog posts, and long-form prose.</p>
-                <p>Some websites load content in ways Decant cannot process. If a page appears blank or incomplete after conversion, try saving it from your browser and uploading it instead.</p>
+
+                <div class="help-section">
+                  <p><strong>What is Decant?</strong></p>
+                  <p>Decant strips away clutter from web articles and reformats them with typography designed for readers with dyslexia. It is also useful for anyone who prefers cleaner, distraction-free reading.</p>
+                </div>
+
+                <div class="help-section">
+                  <p><strong>See the difference</strong></p>
+                  <p>Open our <a href="/static/demo/index.html" target="_blank" rel="noopener noreferrer">demo page</a> -- a cluttered wine blog. Notice the ads, busy layout, and dense text. Now copy that URL and paste it into Decant. The clutter is gone. What is left is clean, readable content.</p>
+                </div>
+
+                <div class="help-section">
+                  <p><strong>Two ways to use Decant</strong></p>
+                  <p><em>Paste a URL</em> -- for any public web page. Paste the address into the input bar and press Convert.</p>
+                  <p><em>Upload a file</em> -- for pages behind logins, paywalls, or apps. Save the page from your browser (File &gt; Save As &gt; HTML), then drag the file onto Decant or click Browse.</p>
+                </div>
+
+                <div class="help-section">
+                  <p><strong>Make it yours</strong></p>
+                  <p>Every reader is different. These controls let you adjust the page until it works for you.</p>
+                  <ul>
+                    <li><strong>Aa</strong> -- Font, size, content width, and spacing. Wider spacing and larger text help many dyslexic readers. Use Reset to restore defaults.</li>
+                    <li><strong>Theme</strong> -- Light, Sepia, Dark, or High Contrast. Some readers find lower contrast or dark backgrounds easier on the eyes.</li>
+                  </ul>
+                  <p>Your choices are saved automatically -- set it up once and it stays that way on your next visit.</p>
+                </div>
+
+                <div class="help-section">
+                  <p><strong>Save and share</strong></p>
+                  <ul>
+                    <li><strong>Save</strong> -- Print or download the converted page. Downloaded files work offline and can be emailed, shared, or printed later. A dedicated PDF export is coming soon -- for now, choose Print and select "Save as PDF" from your printer options.</li>
+                    <li><strong>Share</strong> -- Copies a special link to your clipboard. When someone opens it, they see the article already converted -- no extra steps. Available for URL conversions only.</li>
+                    <li><strong>View Original</strong> -- Opens the original page in a new tab so you can see the difference. Available for URL conversions only.</li>
+                  </ul>
+                </div>
+
+                <div class="help-section" style="border-bottom:none">
+                  <p><strong>Feedback</strong></p>
+                  <p>After every conversion, you will see a thumbs up/down bar. Let us know how it went -- it helps us improve.</p>
+                </div>
               </div>
 
-              <div class="help-section">
-                <h3 class="help-heading">Usage Notes</h3>
-                <ul>
-                  <li>If a web page requires login, save it from your browser (File &gt; Save As &gt; HTML) and upload it instead.</li>
-                  <li>The Share and View Original buttons are only available when converting from a URL.</li>
-                  <li>If you uploaded a file, some links may not work because the original web address is not available.</li>
-                  <li>The Share button copies a link to your clipboard. Send it to someone and they will see the same article, already converted.</li>
-                  <li>Use the Reset button in Text controls to restore all settings to defaults.</li>
-                  <li>To save as PDF, click Print and choose Save as PDF from your printer options. A dedicated PDF export is planned for a future release.</li>
-                  <li>Tip: Some apps let you export content as HTML -- recipes from cooking apps, notes, saved articles. You can upload those files here too.</li>
-                </ul>
-              </div>
+              <!-- About view (hidden by default) -->
+              <div id="help-about" class="help-view" style="display:none">
+                <button type="button" class="help-back-btn" aria-label="Back">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                       stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 2L4 8l6 6"/>
+                  </svg>
+                </button>
 
-              <div class="help-section">
-                <h3 class="help-heading">About</h3>
-                <p>Decant is focused on making web content more accessible for readers with dyslexia. Support for other conditions, including color vision differences, is planned.</p>
-                <p>Decant is open source under the MIT license.</p>
-                <p>Developers: add Decant's conversion capabilities to your own app or workflow. See <a href="https://github.com/dmz94/flowdoc#readme" target="_blank" rel="noopener noreferrer">decant-cli on PyPI</a>.</p>
-                <p>
-                  <a href="https://github.com/dmz94/flowdoc" target="_blank" rel="noopener noreferrer">GitHub</a>
-                  &nbsp;&middot;&nbsp;
-                  <a href="https://github.com/dmz94/flowdoc/issues" target="_blank" rel="noopener noreferrer">Report an issue</a>
-                </p>
-                <p>Questions or feedback: <a href="mailto:feedback@decant.cc">feedback@decant.cc</a></p>
+                <div class="help-about-logo">
+                  <svg viewBox="0 0 68 17" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="help-logo-svg">
+                    <g transform="translate(-95.779913,-118.25255)">
+                      <g transform="matrix(0.25568162,0,0,0.25568162,73.405452,90.167546)">
+                        <path fill="var(--logo-text)" opacity="0.99" d="m 111.79603,118.25255 q 7.83168,0 13.68779,3.03389 5.92667,2.96334 9.10167,8.60779 3.24556,5.57389 3.24556,13.05278 0,7.4789 -3.24556,12.98223 -3.175,5.50334 -9.10167,8.46668 -5.85611,2.89278 -13.68779,2.89278 H 95.779913 v -49.03615 z m 0,42.47448 q 8.60779,0 13.1939,-4.65667 4.58612,-4.65667 4.58612,-13.12335 0,-8.53722 -4.58612,-13.33501 -4.58611,-4.79778 -13.1939,-4.79778 h -7.97278 v 35.91281 z"/>
+                        <path fill="var(--logo-text)" opacity="0.99" d="m 181.64605,146.89813 q 0,2.18722 -0.28222,3.95111 h -29.70391 q 0.35278,4.65667 3.45723,7.47889 3.10444,2.82223 7.62,2.82223 6.49112,0 9.17223,-5.43278 h 8.67834 q -1.76389,5.36222 -6.42056,8.81945 -4.58611,3.38667 -11.43001,3.38667 -5.57389,0 -10.01889,-2.46945 -4.37445,-2.54 -6.91445,-7.05556 -2.46945,-4.58611 -2.46945,-10.58334 0,-5.99723 2.39889,-10.51278 2.46945,-4.58612 6.8439,-7.05557 4.445,-2.46944 10.16,-2.46944 5.50334,0 9.80723,2.39889 4.30389,2.39889 6.70278,6.77334 2.39889,4.30389 2.39889,9.94834 z m -8.39611,-2.54 q -0.0706,-4.44501 -3.17501,-7.12612 -3.10444,-2.68111 -7.69056,-2.68111 -4.16278,0 -7.12611,2.68111 -2.96334,2.61056 -3.52778,7.12612 z"/>
+                        <path fill="var(--logo-text)" opacity="0.99" d="m 187.07888,147.81535 q 0,-5.99723 2.39889,-10.51278 2.46945,-4.58612 6.77334,-7.05557 4.30389,-2.46944 9.87778,-2.46944 7.05556,0 11.64168,3.38667 4.65667,3.31611 6.27945,9.525 h -8.67834 q -1.05834,-2.89278 -3.38667,-4.51555 -2.32834,-1.62278 -5.85612,-1.62278 -4.93889,0 -7.90223,3.52778 -2.89278,3.45722 -2.89278,9.73667 0,6.27945 2.89278,9.80723 2.96334,3.52778 7.90223,3.52778 6.98501,0 9.24279,-6.13834 h 8.67834 q -1.69334,5.92667 -6.35001,9.45445 -4.65667,3.45723 -11.57112,3.45723 -5.57389,0 -9.87778,-2.46945 -4.30389,-2.54 -6.77334,-7.05556 -2.39889,-4.58611 -2.39889,-10.58334 z"/>
+                        <path fill="var(--logo-text)" opacity="0.99" d="m 229.62393,147.67424 q 0,-5.85612 2.39889,-10.37167 2.46945,-4.51556 6.63223,-6.98501 4.23333,-2.54 9.31334,-2.54 4.58611,0 7.97278,1.83444 3.45723,1.76389 5.50334,4.44501 v -5.64445 h 8.11389 v 38.87614 h -8.11389 v -5.78556 q -2.04611,2.75167 -5.57389,4.58611 -3.52778,1.83445 -8.04334,1.83445 -5.00945,0 -9.17223,-2.54 -4.16278,-2.61056 -6.63223,-7.19668 -2.39889,-4.65667 -2.39889,-10.51278 z m 31.82058,0.14111 q 0,-4.02167 -1.69334,-6.985 -1.62278,-2.96334 -4.30389,-4.51556 -2.68111,-1.55223 -5.78556,-1.55223 -3.10444,0 -5.78556,1.55223 -2.68111,1.48166 -4.37444,4.445 -1.62278,2.89278 -1.62278,6.91445 0,4.02167 1.62278,7.05556 1.69333,3.03389 4.37444,4.65667 2.75167,1.55222 5.78556,1.55222 3.10445,0 5.78556,-1.55222 2.68111,-1.55222 4.30389,-4.51556 1.69334,-3.03389 1.69334,-7.05556 z"/>
+                        <path fill="var(--logo-text)" opacity="0.99" d="m 299.96783,127.77756 q 4.58611,0 8.18445,1.905 3.66889,1.905 5.715,5.64445 2.04611,3.73945 2.04611,9.03112 v 22.93057 h -7.97278 v -21.73113 q 0,-5.22111 -2.61056,-7.97278 -2.61056,-2.82223 -7.12611,-2.82223 -4.51556,0 -7.19668,2.82223 -2.61055,2.75167 -2.61055,7.97278 v 21.73113 h -8.04334 v -38.87614 h 8.04334 v 4.445 q 1.97555,-2.39889 5.00945,-3.73944 3.10444,-1.34056 6.56167,-1.34056 z"/>
+                        <path fill="var(--logo-text)" opacity="0.99" d="m 335.73954,134.97423 v 21.51946 q 0,2.18722 0.98778,3.175 1.05833,0.91722 3.52778,0.91722 h 4.93889 v 6.70279 h -6.35001 q -5.43278,0 -8.32556,-2.54001 -2.89278,-2.54 -2.89278,-8.255 v -21.51946 h -4.58611 v -6.56167 h 4.58611 v -9.66612 h 8.1139 v 9.66612 h 9.45445 v 6.56167 z"/>
+                        <path fill="var(--logo-wine)" opacity="0.99" d="m 103.82312,144.69298 v 16.03416 h 7.97316 c 5.73852,0 10.1361,-1.55212 13.19351,-4.65656 2.73447,-2.77654 4.24629,-6.56931 4.53512,-11.3776 -12.23324,4.09727 -19.62597,2.78456 -25.70179,0 z"/>
+                      </g>
+                    </g>
+                  </svg>
+                  <p class="help-about-tagline"><em>Readable web, every time.</em></p>
+                </div>
+
+                <div class="help-section">
+                  <p>A free, open-source tool that converts messy web articles into clean, accessible documents. Built for readers with dyslexia. Useful for everyone.</p>
+                  <p>Support for other conditions, including color vision differences, is planned.</p>
+                </div>
+
+                <div class="help-section">
+                  <p>Open source under the <a href="https://github.com/dmz94/flowdoc/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>.</p>
+                  <p>&copy; 2026 Lone Stone</p>
+                </div>
+
+                <div class="help-section">
+                  <p><a href="https://github.com/dmz94/flowdoc" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+                </div>
+
+                <div class="help-section">
+                  <p><strong>Developers</strong></p>
+                  <p>Add Decant to your own workflow:</p>
+                  <p><code>pip install decant-cli</code></p>
+                </div>
+
+                <div class="help-section" style="border-bottom:none">
+                  <p>Questions or feedback: <a href="mailto:feedback@decant.cc">feedback@decant.cc</a></p>
+                </div>
               </div>
 
             </div>
@@ -311,7 +401,7 @@
   </main>
 
   <footer class="site-footer">
-    &copy; 2026 Lone Stone &middot; Open source (MIT) &middot;
+    &copy; 2026 Lone Stone &middot; Open source (<a href="https://github.com/dmz94/flowdoc/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT</a>) &middot;
     <a href="https://github.com/dmz94/flowdoc" target="_blank" rel="noopener noreferrer">GitHub</a>
     &middot; <a href="mailto:feedback@decant.cc">Contact</a>
   </footer>
