@@ -66,29 +66,59 @@ a:hover { color: #a00; }
 }
 .breadcrumbs a { color: #888; font-size: 12px; }
 
-/* --- Floating social bar --- */
-.floating-share {
-  position: fixed; left: 0; top: 50%; transform: translateY(-50%);
-  background: #3a3a3a; display: flex; flex-direction: column;
-  padding: 6px 0; z-index: 100; border-radius: 0 4px 4px 0;
-}
-.floating-share a {
-  display: block; padding: 6px 8px; color: #fff; text-decoration: none;
-  font-size: 10px; text-align: center; border-bottom: 1px solid #555;
-}
-.floating-share a:last-child { border-bottom: none; }
-.floating-share a:hover { background: #555; color: #fff; }
-.floating-share .share-label {
-  font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
-  color: #aaa; padding: 4px 8px; text-align: center;
-}
-
 /* --- Layout --- */
 .page-body { display: flex; max-width: 1200px; margin: 0 auto; padding: 0; }
+.left-sidebar {
+  width: 180px; flex-shrink: 0; padding: 20px 15px 40px 15px;
+  background: #fafaf8; border-right: 1px solid #eee;
+}
 .main-col { flex: 1; padding: 20px 25px 40px 20px; min-width: 0; }
 .sidebar {
-  width: 260px; flex-shrink: 0; padding: 20px 20px 40px 15px;
+  width: 250px; flex-shrink: 0; padding: 20px 20px 40px 15px;
   background: #fafaf8; border-left: 1px solid #eee;
+}
+
+/* --- Left sidebar widgets --- */
+.left-sidebar .widget { margin-bottom: 22px; }
+.left-sidebar .widget-title {
+  font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;
+  color: #333; padding-bottom: 6px; border-bottom: 2px solid #8b0000; margin-bottom: 10px;
+}
+.left-sidebar .follow-list a { font-size: 12px; }
+.left-sidebar .trending-list { list-style: none; }
+.left-sidebar .trending-list li { padding: 4px 0; }
+.left-sidebar .trending-list a { font-size: 12px; }
+
+.left-ad {
+  padding: 16px 10px; background: #1a1a2e; text-align: center;
+  margin-bottom: 22px; border-radius: 4px;
+}
+.left-ad .ad-title {
+  font-size: 12px; font-weight: bold; color: #d4a017; text-transform: uppercase;
+  letter-spacing: 1px; line-height: 1.3; margin-bottom: 8px;
+}
+.left-ad .ad-desc { font-size: 11px; color: #ccc; line-height: 1.4; margin-bottom: 10px; }
+.left-ad .ad-btn {
+  display: inline-block; padding: 5px 14px; background: #8b0000; color: #fff;
+  font-size: 11px; font-weight: bold; text-decoration: none; border-radius: 2px;
+  animation: subscribe-pulse 2s ease-in-out infinite;
+}
+.left-ad .ad-free { display: block; margin-top: 6px; font-size: 9px; color: #aaa; }
+
+.left-ad-small {
+  padding: 14px 10px; background: #f0f0ee; border: 1px solid #ddd; text-align: center;
+  margin-bottom: 22px; border-radius: 4px;
+}
+.left-ad-small .ad-label {
+  font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+  color: #999; margin-bottom: 6px;
+}
+.left-ad-small .ad-text { font-size: 12px; font-weight: bold; color: #444; margin-bottom: 4px; }
+.left-ad-small .ad-sub { font-size: 11px; color: #666; margin-bottom: 8px; }
+.left-ad-small .ad-btn {
+  display: inline-block; padding: 4px 12px; background: #8b0000; color: #fff;
+  font-size: 10px; font-weight: bold; text-decoration: none; border-radius: 2px;
+  animation: subscribe-pulse 2s ease-in-out infinite;
 }
 
 /* --- Star rating --- */
@@ -355,39 +385,6 @@ a:hover { color: #a00; }
 .editors-pick .ep-sub { font-size: 12px; color: #666; }
 .editors-pick a { font-size: 12px; }
 
-/* --- Left vertical banner ad --- */
-.left-vertical-ad {
-  position: fixed; left: 0; top: 55%; z-index: 90;
-  width: 130px; background: #1a1a2e; color: #fff; padding: 14px 10px;
-  text-align: center; font-size: 11px; line-height: 1.4;
-  border-radius: 0 6px 6px 0; border: 1px solid #333;
-}
-.left-vertical-ad .lva-title {
-  font-size: 12px; font-weight: bold; color: #d4a017; text-transform: uppercase;
-  letter-spacing: 1px; margin-bottom: 10px; line-height: 1.3;
-}
-.left-vertical-ad .lva-divider {
-  width: 40px; height: 1px; background: #555; margin: 8px auto;
-}
-.left-vertical-ad .lva-cta {
-  display: inline-block; margin-top: 6px; padding: 5px 12px; background: #8b0000;
-  color: #fff; font-size: 10px; font-weight: bold; text-decoration: none;
-  border-radius: 2px; animation: subscribe-pulse 2s ease-in-out infinite;
-}
-.left-vertical-ad .lva-free {
-  display: block; margin-top: 6px; font-size: 9px; color: #aaa;
-}
-
-/* --- Chat widget --- */
-.chat-widget {
-  position: fixed; bottom: 60px; left: 16px; z-index: 150;
-  background: #8b0000; color: #fff; padding: 10px 14px;
-  border-radius: 20px; font-size: 12px; font-weight: bold;
-  cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  animation: subscribe-pulse 2s ease-in-out infinite;
-}
-.chat-widget .chat-bubble { margin-right: 4px; }
-
 /* --- Footer --- */
 .site-footer { background: #2a2a2a; color: #bbb; padding: 30px 20px 0; margin-top: 30px; }
 .footer-cols { display: flex; max-width: 1200px; margin: 0 auto; gap: 40px; padding-bottom: 20px; }
@@ -412,29 +409,6 @@ a:hover { color: #a00; }
   <span>FREE SHIPPING on all orders over $50 &mdash; <a href="#">Shop Now</a></span>
 </div>
 
-<!-- ==================== FLOATING SOCIAL BAR ==================== -->
-<div class="floating-share">
-  <div class="share-label">Share</div>
-  <a href="#">Facebook</a>
-  <a href="#">Twitter</a>
-  <a href="#">Pinterest</a>
-  <a href="#">Email</a>
-</div>
-
-<!-- ==================== LEFT VERTICAL BANNER AD ==================== -->
-<div class="left-vertical-ad">
-  <div class="lva-title">Wine of the Month Club</div>
-  <div class="lva-divider"></div>
-  <div>Curated selections delivered to your door</div>
-  <a href="#" class="lva-cta">Join Now</a>
-  <span class="lva-free">First Bottle Free</span>
-</div>
-
-<!-- ==================== CHAT WIDGET ==================== -->
-<div class="chat-widget">
-  <span class="chat-bubble">&#128172;</span> Chat with us
-</div>
-
 <!-- ==================== HEADER ==================== -->
 <header>
   <div class="top-bar">
@@ -456,6 +430,50 @@ a:hover { color: #a00; }
 
 <!-- ==================== PAGE BODY ==================== -->
 <div class="page-body">
+
+  <!-- ========== LEFT SIDEBAR ========== -->
+  <div class="left-sidebar">
+
+    <!-- Wine Club Ad -->
+    <div class="left-ad">
+      <div class="ad-title">Wine of the Month Club</div>
+      <div class="ad-desc">Curated selections delivered to your door</div>
+      <a href="#" class="ad-btn">Join Now</a>
+      <span class="ad-free">First Bottle Free</span>
+    </div>
+
+    <!-- Trending Topics -->
+    <div class="widget">
+      <div class="widget-title">Trending Topics</div>
+      <ul class="trending-list">
+        <li><a href="#">Wine Decanting</a></li>
+        <li><a href="#">Bordeaux 2024</a></li>
+        <li><a href="#">Crystal vs Glass</a></li>
+        <li><a href="#">Best Decanters Under $50</a></li>
+        <li><a href="#">Wine Storage Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Follow Us -->
+    <div class="widget">
+      <div class="widget-title">Follow Us</div>
+      <ul class="follow-list">
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Pinterest</a></li>
+      </ul>
+    </div>
+
+    <!-- WineApp Ad -->
+    <div class="left-ad-small">
+      <div class="ad-label">Sponsored</div>
+      <div class="ad-text">WineApp</div>
+      <div class="ad-sub">Rate, Review, Discover. Download Free.</div>
+      <a href="#" class="ad-btn">Download</a>
+    </div>
+
+  </div>
 
   <!-- ========== MAIN COLUMN ========== -->
   <div class="main-col">
