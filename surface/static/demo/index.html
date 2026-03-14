@@ -14,11 +14,15 @@ a:hover { color: #a00; }
 /* --- Animations --- */
 @keyframes promo-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  50% { opacity: 0.5; }
 }
 @keyframes subscribe-pulse {
   0%, 100% { background-color: #8b0000; }
-  50% { background-color: #a81010; }
+  50% { background-color: #cc1010; }
+}
+@keyframes sale-throb {
+  0%, 100% { transform: rotate(5deg) scale(1.0); }
+  50% { transform: rotate(5deg) scale(1.15); }
 }
 
 /* --- Promo banner --- */
@@ -26,7 +30,7 @@ a:hover { color: #a00; }
   background: #8b0000; color: #fff; text-align: center; padding: 8px 20px;
   font-size: 12px; font-weight: bold; letter-spacing: 0.5px;
 }
-.promo-banner span { animation: promo-pulse 2s ease-in-out infinite; display: inline-block; }
+.promo-banner span { animation: promo-pulse 1.5s ease-in-out infinite; display: inline-block; }
 .promo-banner a { color: #fff; margin-left: 6px; }
 
 /* --- Header --- */
@@ -125,7 +129,7 @@ a:hover { color: #a00; }
 .inline-newsletter button {
   padding: 6px 14px; font-size: 13px; background: #8b0000; color: #fff;
   border: none; cursor: pointer; margin-left: 4px;
-  animation: subscribe-pulse 3s ease-in-out infinite;
+  animation: subscribe-pulse 2s ease-in-out infinite;
 }
 
 /* --- Related articles --- */
@@ -175,6 +179,7 @@ a:hover { color: #a00; }
 .cookie-banner .cookie-accept {
   padding: 6px 16px; background: #8b0000; color: #fff; border: none;
   font-size: 12px; cursor: pointer; border-radius: 2px;
+  animation: subscribe-pulse 2s ease-in-out infinite;
 }
 .cookie-banner .cookie-manage {
   padding: 6px 16px; background: transparent; color: #555; border: 1px solid #999;
@@ -251,6 +256,7 @@ a:hover { color: #a00; }
   position: absolute; top: 8px; right: -4px; background: #c00; color: #fff;
   font-size: 10px; font-weight: bold; padding: 3px 8px; border-radius: 2px;
   transform: rotate(5deg); letter-spacing: 0.5px; z-index: 1;
+  animation: sale-throb 2s ease-in-out infinite;
 }
 
 .cat-list, .follow-list { list-style: none; }
@@ -265,7 +271,7 @@ a:hover { color: #a00; }
 .sidebar-newsletter button {
   padding: 6px 14px; font-size: 12px; background: #8b0000; color: #fff;
   border: none; cursor: pointer; width: 100%;
-  animation: subscribe-pulse 3s ease-in-out infinite;
+  animation: subscribe-pulse 2s ease-in-out infinite;
 }
 
 .recent-comments-item { font-size: 12px; color: #666; padding: 4px 0; border-bottom: 1px solid #eee; }
