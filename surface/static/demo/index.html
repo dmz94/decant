@@ -151,6 +151,18 @@ a:hover { color: #a00; }
 
 .article-body h2 { font-size: 1.1em; font-weight: bold; margin: 14px 0 6px; color: #333; }
 .article-body p { margin: 0.5em 0; }
+.article-body .hero-img { width: 100%; display: block; margin-bottom: 4px; }
+.article-body .hero-caption { font-size: 11px; color: #888; margin-bottom: 14px; }
+.article-body .img-right {
+  float: right; width: 45%; margin: 4px 0 10px 16px; border: 1px solid #ccc;
+}
+.article-body .img-right-caption { font-size: 10px; color: #999; text-align: right; clear: right; margin: -6px 0 10px 0; }
+.article-body .img-full { width: 100%; display: block; margin: 10px 0 4px; }
+.article-body .img-full-caption { font-size: 11px; color: #888; font-style: italic; margin-bottom: 12px; }
+.article-body .img-left {
+  float: left; width: 40%; margin: 4px 14px 10px 0;
+}
+.article-body .img-left-caption { font-size: 10px; color: #777; margin: -6px 0 10px 0; }
 
 /* --- Inline ad --- */
 .inline-ad {
@@ -193,6 +205,7 @@ a:hover { color: #a00; }
 .related-articles .ra-item { flex: 1; }
 .related-articles .ra-thumb {
   width: 100%; height: 80px; background: #ddd; border: 1px solid #ccc; margin-bottom: 6px;
+  object-fit: cover;
 }
 .related-articles .ra-item a { font-size: 12px; line-height: 1.3; }
 
@@ -285,6 +298,7 @@ a:hover { color: #a00; }
 .popular-item { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
 .popular-thumb {
   width: 60px; height: 45px; background: #ddd; flex-shrink: 0; border: 1px solid #ccc;
+  object-fit: cover;
 }
 .popular-item a { font-size: 13px; line-height: 1.3; }
 
@@ -390,6 +404,7 @@ a:hover { color: #a00; }
 }
 .editors-pick .ep-thumb {
   width: 100px; height: 80px; background: #ddd; border: 1px solid #ccc; flex-shrink: 0;
+  object-fit: cover;
 }
 .editors-pick .ep-title { font-size: 14px; font-weight: bold; color: #333; margin-bottom: 2px; }
 .editors-pick .ep-sub { font-size: 12px; color: #666; }
@@ -510,9 +525,33 @@ a:hover { color: #a00; }
     </div>
 
     <article class="article-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
 
-      <p>Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</p>
+      <!-- Hero Image -->
+      <img src="img/decanter-and-glasses.jpg" alt="A crystal decanter with two wine glasses" class="hero-img">
+      <div class="hero-caption">A crystal decanter ready for service</div>
+
+      <h2>You might already know about Decant</h2>
+
+      <p>Decant is a free tool that takes cluttered web articles and turns them into clean, readable documents. You paste in a URL, it strips out the ads, the sidebars, the newsletter popups, and the rest of the noise, and gives you back something you can actually read. Save it. Print it. Share it. The content comes through. The junk stays behind.</p>
+
+      <p>If you are reading this on the original page, you are looking at exactly the kind of mess Decant was designed to fix. Take a moment. Notice the ads. The sidebar. The comment section nobody asked for. The newsletter signup that appears twice for some reason. This is the web in 2026.</p>
+
+      <p>Now paste this URL into Decant and read the same article without all of that. That is the whole pitch.</p>
+
+      <p>But here is a question: do you know what the word &ldquo;decant&rdquo; actually means? It turns out it shows up in more places than you might expect.</p>
+
+      <!-- Inline Ad 1 -->
+      <div class="inline-ad">
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-text">Bordeaux Wine Club &mdash; First Case 50% Off</div>
+        <a href="#" class="ad-btn">Shop Now</a>
+      </div>
+
+      <h2>What the word means</h2>
+
+      <p>To decant is to pour a liquid gently from one container into another, leaving the sediment behind. That is the whole idea in one sentence: the good stuff flows through, the residue stays in the original vessel. Nobody shakes the bottle. Nobody forces anything through a filter. You just pour carefully and stop when the dregs start to move.</p>
+
+      <p>Merriam-Webster defines it as &ldquo;to draw off a liquid without disturbing the sediment or the lower liquid layers.&rdquo; It can also mean, more generally, to pour from one vessel into another, or to transfer and unload as if by pouring. That last sense is the loosest and the most recent, and it has taken the word into some unexpected territory.</p>
 
       <!-- Trending Ticker -->
       <div class="trending-ticker">
@@ -528,16 +567,11 @@ a:hover { color: #a00; }
         </span>
       </div>
 
-      <!-- Inline Ad 1 -->
-      <div class="inline-ad">
-        <div class="ad-label">Advertisement</div>
-        <div class="ad-text">Bordeaux Wine Club &mdash; First Case 50% Off</div>
-        <a href="#" class="ad-btn">Shop Now</a>
-      </div>
+      <h2>Where the word comes from</h2>
 
-      <h2>Understanding the Basics</h2>
+      <p>&ldquo;Decant&rdquo; entered English from the French &ldquo;decanter&rdquo; in the seventeenth century. The French borrowed it from Medieval Latin &ldquo;decanthare,&rdquo; built from &ldquo;de-&rdquo; (away from) and &ldquo;canthus&rdquo; (the lip or edge of a vessel). The literal meaning is to pour off the edge, which is exactly what you do when you tip a bottle slowly and let the clear liquid run while the sediment stays put.</p>
 
-      <p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc. Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna.</p>
+      <p>The Latin &ldquo;canthus&rdquo; itself comes from a word for the rim or beak of a jug. So the etymology is pleasingly specific: this is not a general word for pouring. It is a word about the lip of the container and what happens there. The separation occurs at the edge.</p>
 
       <!-- Inline Newsletter -->
       <div class="inline-newsletter">
@@ -547,26 +581,70 @@ a:hover { color: #a00; }
         <button type="button">Subscribe</button>
       </div>
 
+      <h2>At the dinner table</h2>
+
+      <p>Wine is where most people first encounter the word. You open a bottle of old red, and instead of pouring it straight into glasses, you pour it slowly into a wide glass vessel, a decanter, leaving the sediment behind in the bottle. The wine arrives in the glass clearer, smoother, and more drinkable.</p>
+
+      <img src="img/pouring-into-decanter.jpg" alt="Pouring wine into a decanter" class="img-right">
+      <div class="img-right-caption">Pouring wine into a decanter</div>
+
+      <p>Sediment in wine is not harmful, but it is bitter and gritty. It forms naturally as tannins and pigments bond over years of aging. Decanting separates the wine from this residue. It also aerates the wine, letting it &ldquo;breathe,&rdquo; which softens harsh tannins and opens up the aromatics. Younger wines especially benefit from this.</p>
+
+      <p>There is a whole culture around the vessels themselves. Riedel, the Austrian crystal house, makes decanters that are as much sculptural objects as functional tools. Their Snake decanter has a double aeration system built into its curves. Their Amadeo Figaro, shaped like a lyre, was made in a limited edition of 1,756 pieces. These are objects designed to be beautiful while doing a simple job: hold wine and let it breathe.</p>
+
+      <img src="img/wine-glasses-dinner.jpg" alt="Wine glasses at a dinner table" class="img-full">
+      <div class="img-full-caption">An evening table setting</div>
+
+      <p>Decanter Magazine, founded in London in 1975, has been covering wine for half a century. Published in over 90 countries, it runs the Decanter World Wine Awards, the world&rsquo;s largest wine competition. The name of the magazine, like the name of our tool, comes from the same modest verb: to pour carefully.</p>
+
       <!-- Related Articles -->
       <div class="related-articles">
         <div class="ra-heading">You Might Also Like</div>
         <div class="ra-grid">
           <div class="ra-item">
-            <div class="ra-thumb"></div>
+            <img src="img/red-wine-pouring.jpg" alt="" class="ra-thumb">
             <a href="#">How Long Should You Really Decant Wine?</a>
           </div>
           <div class="ra-item">
-            <div class="ra-thumb"></div>
+            <img src="img/sommelier-corkscrew.jpg" alt="" class="ra-thumb">
             <a href="#">The Surprising Science Behind Wine Aeration</a>
           </div>
           <div class="ra-item">
-            <div class="ra-thumb"></div>
-            <a href="#">A Sommelier's Guide to Glassware</a>
+            <img src="img/grape-harvest.jpg" alt="" class="ra-thumb">
+            <a href="#">A Sommelier&rsquo;s Guide to Glassware</a>
           </div>
         </div>
       </div>
 
-      <p>Curabitur sed urna. Morbi vel justo vitae lacus tincidunt ultrices. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In hac habitasse platea dictumst. Integer tempus convallis augue. Etiam facilisis. Nunc elementum fermentum wisi. Aenean placerat. Ut imperdiet, enim sed gravida sollicitudin, felis odio placerat quam, ac pulvinar elit purus eget enim. Nunc vitae tortor. Proin tempus nibh sit amet nisl. Vivamus quis tortor vitae risus porta vehicula.</p>
+      <!-- Inline Ad 2 -->
+      <div class="inline-ad">
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-text">Crystal Decanter Gift Set &mdash; Free Shipping</div>
+        <a href="#" class="ad-btn">Order Now</a>
+      </div>
+
+      <h2>In the laboratory</h2>
+
+      <p>In chemistry, decanting is one of the simplest separation techniques. You have a mixture of a liquid and something heavier, a solid, a denser liquid, whatever. You let gravity do the work: the heavy stuff sinks, you pour off the clear liquid on top. No filter required.</p>
+
+      <p>The technique is used to separate oil from water, cream from milk, mud from river water, precipitates from solutions. It is taught in introductory chemistry courses as one of the first separation methods students encounter, usually alongside filtration and distillation.</p>
+
+      <p>What makes decanting distinct from filtering is the absence of a barrier. Nothing is forced through anything. The separation happens because the components have already separated themselves by density. You are just completing the process by pouring.</p>
+
+      <!-- Wine Quiz Promo -->
+      <div class="quiz-promo">
+        <div class="quiz-heading">What Type of Wine Drinker Are You?</div>
+        <div class="quiz-sub">Take our 2-minute quiz and find out. Over 50,000 quiz takers!</div>
+        <a href="#" class="quiz-btn">Start Quiz</a>
+      </div>
+
+      <h2>On the factory floor</h2>
+
+      <p>Scale the laboratory technique up by several orders of magnitude and you get the decanter centrifuge. These are industrial machines that continuously separate solids from liquids using centrifugal force instead of gravity. The principle is the same but the forces involved are around 3,000 times stronger than gravity, so the separation happens fast.</p>
+
+      <p>Decanter centrifuges are used across dozens of industries: wastewater treatment, olive oil production, mining, food processing, pharmaceutical manufacturing, even wine production at commercial scale. Companies like Alfa Laval, Flottweg, and GEA build decanter centrifuges that run continuously, separating solids from one or two liquid phases in a single process.</p>
+
+      <p>The machines are enormous, expensive, and not particularly glamorous. But they are doing the same thing as the seventeenth-century gentleman tilting his wine bottle over a candle: separating what you want from what you do not.</p>
 
       <!-- Sponsored Content -->
       <div class="sponsored-block">
@@ -576,31 +654,28 @@ a:hover { color: #a00; }
         <div class="sp-sub">Presented by CrystalVine</div>
       </div>
 
-      <!-- Wine Quiz Promo -->
-      <div class="quiz-promo">
-        <div class="quiz-heading">What Type of Wine Drinker Are You?</div>
-        <div class="quiz-sub">Take our 2-minute quiz and find out. Over 50,000 quiz takers!</div>
-        <a href="#" class="quiz-btn">Start Quiz</a>
-      </div>
-
-      <h2>Choosing the Right One</h2>
-
-      <p>Fusce mauris. Vestibulum luctus nibh at lectus. Sed bibendum, nulla a faucibus semper, leo velit ultricies tellus, ac venenatis arcu wisi vel nisl. Vestibulum diam. Aliquam pellentesque, augue quis sagittis posuere, turpis lacus congue quam, in hendrerit risus eros eget felis. Maecenas eget erat in sapien mattis facilisis. Aliquam feugiat tellus ut neque. Nulla facilisis, risus a rhoncus fermentum, tellus tellus lacinia purus, et dictum nunc justo sit amet elit.</p>
-
-      <!-- Inline Ad 2 -->
-      <div class="inline-ad">
-        <div class="ad-label">Advertisement</div>
-        <div class="ad-text">Crystal Decanter Gift Set &mdash; Free Shipping</div>
-        <a href="#" class="ad-btn">Order Now</a>
-      </div>
-
       <!-- Pull Quote -->
       <div class="pull-quote">
         <div class="pq-text">&ldquo;A good decanter does not just hold wine. It transforms it.&rdquo;</div>
         <div class="pq-attr">&mdash; The Wine Blog editorial team</div>
       </div>
 
-      <p>Nam vestibulum accumsan nisl. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna. Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus.</p>
+      <h2>In the perfume world</h2>
+
+      <p>Walk into any fragrance community online and you will encounter the word &ldquo;decant&rdquo; used as a noun. A decant, in perfume culture, is a small sample vial of a fragrance, typically 2 to 10 milliliters, transferred from the original retail bottle into a smaller atomizer.</p>
+
+      <img src="img/wine-bottles.jpg" alt="Wine bottles lined up on a table" class="img-left">
+      <div class="img-left-caption">Bottles awaiting decanting</div>
+
+      <p>The practice exists because high-end fragrances are expensive. A full bottle of niche perfume can easily cost two hundred dollars or more. Decants let people try a fragrance for a few dollars before committing to the full bottle. There is an entire marketplace built around this: companies like DecantX, Scent Decant, and Surrender to Chance specialize in hand-decanting luxury fragrances into sample sizes and shipping them worldwide.</p>
+
+      <p>The word has evolved in this context. &ldquo;Decanting&rdquo; a perfume does not involve separating sediment from anything. It just means transferring liquid from a larger vessel to a smaller one. The word has kept the pouring part and dropped the separation part. Purists might object, but language does what it wants.</p>
+
+      <!-- Social Proof -->
+      <div class="social-proof">
+        <p class="sp-text"><strong>2,847</strong> wine enthusiasts are reading The Wine Blog right now. Join our community!</p>
+        <a href="#" class="sp-btn">Join Free</a>
+      </div>
 
       <!-- Inline Ad 3 -->
       <div class="inline-ad">
@@ -609,33 +684,50 @@ a:hover { color: #a00; }
         <a href="#" class="ad-btn">Get Started</a>
       </div>
 
-      <h2>Care and Maintenance</h2>
+      <h2>In housing</h2>
 
-      <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
+      <p>In the United Kingdom, &ldquo;decanting&rdquo; tenants is an official term used by local councils and housing associations. It means temporarily moving residents out of their homes so that major repairs, renovation, or demolition can take place.</p>
 
-      <!-- Social Proof / Join the Conversation -->
-      <div class="social-proof">
-        <p class="sp-text"><strong>2,847</strong> wine enthusiasts are reading The Wine Blog right now. Join our community!</p>
-        <a href="#" class="sp-btn">Join Free</a>
-      </div>
+      <p>The term appears in formal government policy documents. Councils publish &ldquo;Decant Policies&rdquo; that outline how tenants will be rehoused, what compensation they receive, how long the process takes, and what happens if they refuse to move. The Housing Ombudsman has specific guidance on decant procedures, timelines, and resident rights.</p>
 
-      <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</p>
+      <p>It is a strangely gentle word for what is often a stressful experience. You are being poured out of your home into temporary accommodation so that work can happen in the container you just left. The metaphor is accurate even if the emotional register is completely wrong.</p>
 
-      <h2>Common Myths</h2>
+      <h2>In museums</h2>
 
-      <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.</p>
+      <p>Museums use &ldquo;decant&rdquo; the same way housing authorities do: to describe the careful removal of contents from a space so that work can be done on the space itself.</p>
+
+      <p>The Victoria and Albert Museum decanted approximately 900 objects from its Europe galleries in 2011 before a major renovation. Every object had to be assessed, condition-checked, packed, and moved into storage. The V&amp;A blog describes the process in detail: chasubles removed from display cases, furniture placed on custom-built racked storage with plastazote cushioning, period rooms dismantled panel by panel.</p>
+
+      <p>The National Portrait Gallery completed a similar decant in 2020 before its Inspiring People redevelopment. They described it as the biggest move since portraits were evacuated to Buckinghamshire during the Second World War. 1,000 works, taken down and safely stored, some of the work planned from a bedroom desk during lockdown.</p>
+
+      <p>In both cases, &ldquo;decant&rdquo; is doing the same work as it does at the dinner table: the good stuff is carefully poured out, the container is left behind to be dealt with.</p>
 
       <!-- Editor's Pick -->
       <div class="editors-pick">
-        <div class="ep-thumb"></div>
+        <img src="img/decanter-filling.jpg" alt="" class="ep-thumb">
         <div>
-          <div class="ep-label">Editor's Pick</div>
+          <div class="ep-label">Editor&rsquo;s Pick</div>
           <div class="ep-title">Our Favorite Decanter of 2026</div>
           <div class="ep-sub">The Riedel Amadeo &mdash; a stunning centerpiece. <a href="#">Read our review.</a></div>
         </div>
       </div>
 
-      <p>Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui.</p>
+      <h2>The decanting problem</h2>
+
+      <p>In mathematics, a &ldquo;decanting problem&rdquo; is the formal name for water pouring puzzles. You have two or three unmarked jugs of known capacity and you need to measure an exact quantity of liquid by pouring between them. No measuring devices, no markings, just capacity and logic.</p>
+
+      <p>The most famous version involves a 3-liter jug and a 5-liter jug, and the goal is to measure exactly 4 liters. It is solvable, and the mathematics behind it involves Bezout&rsquo;s identity and the greatest common divisor of the jug capacities.</p>
+
+      <p>This puzzle became a pop culture fixture through the film Die Hard with a Vengeance, where Bruce Willis and Samuel L. Jackson have to solve it to stop a bomb. The film version uses 3-gallon and 5-gallon jugs. The mathematics is the same regardless of units.</p>
+
+      <p>There is also the puzzle jug, a medieval drinking vessel designed so that the obvious way to drink from it does not work. The earliest known English example dates to around 1300 AD, made in Saintonge, western France. You have to figure out the trick, which usually involves sucking from a hidden tube while blocking holes along its length. This is less decanting and more problem-solving, but the family resemblance is there: vessels, liquid, and the question of how to get the contents from one place to another.</p>
+
+      <h2>One word, many uses</h2>
+
+      <p>Not many English words work equally well in a chemistry lab, a wine cellar, a council housing office, and a museum conservation department. &ldquo;Decant&rdquo; does. It has been quietly useful for four hundred years, adapting to whatever someone needs to carefully separate, and it shows no sign of stopping.</p>
+
+      <p>It is also worth 9 points in Scrabble, which is not bad for six letters.</p>
+
     </article>
 
     <!-- Tags -->
@@ -693,11 +785,11 @@ a:hover { color: #a00; }
     <!-- Popular Posts -->
     <div class="widget">
       <div class="widget-title">Popular Posts</div>
-      <div class="popular-item"><div class="popular-thumb"></div><a href="#">How to Choose the Right Wine Glass</a></div>
-      <div class="popular-item"><div class="popular-thumb"></div><a href="#">Red vs White: A Beginner's Guide</a></div>
-      <div class="popular-item"><div class="popular-thumb"></div><a href="#">5 Wine Storage Mistakes You're Making</a></div>
-      <div class="popular-item"><div class="popular-thumb"></div><a href="#">The History of Bordeaux</a></div>
-      <div class="popular-item"><div class="popular-thumb"></div><a href="#">Why Decanting Matters More Than You Think</a></div>
+      <div class="popular-item"><img src="img/wine-toast.jpg" alt="" class="popular-thumb"><a href="#">How to Choose the Right Wine Glass</a></div>
+      <div class="popular-item"><img src="img/rose-wine-outdoors.jpg" alt="" class="popular-thumb"><a href="#">Red vs White: A Beginner&rsquo;s Guide</a></div>
+      <div class="popular-item"><img src="img/wine-tasting-group.jpg" alt="" class="popular-thumb"><a href="#">5 Wine Storage Mistakes You&rsquo;re Making</a></div>
+      <div class="popular-item"><img src="img/grapes-on-vine.jpg" alt="" class="popular-thumb"><a href="#">The History of Bordeaux</a></div>
+      <div class="popular-item"><img src="img/restaurant-table.jpg" alt="" class="popular-thumb"><a href="#">Why Decanting Matters More Than You Think</a></div>
     </div>
 
     <!-- Sidebar Ad -->
