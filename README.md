@@ -1,4 +1,4 @@
-<img src="docs/brand/decant-wordmark-light.svg" width="200">
+<img src="https://raw.githubusercontent.com/dmz94/decant/main/docs/brand/decant-wordmark-light.svg" width="200">
 
 # Decant
 
