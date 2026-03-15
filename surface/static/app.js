@@ -443,6 +443,11 @@
   }
 
   function convertUrl(url) {
+    // Auto-prepend https:// if no protocol given
+    if (!/^https?:\/\//i.test(url)) {
+      url = "https://" + url;
+      urlInput.value = url;
+    }
     // Clear file input state, reset drop zone text
     fileInput.value = "";
     dropZone.querySelector("p").textContent = dropZoneDefault;
