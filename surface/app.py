@@ -167,7 +167,7 @@ def _require_login():
     if not config.BASIC_AUTH_ENABLED:
         return None
     # Routes that don't require auth
-    open_paths = ("/login", "/healthz", "/feedback", "/static/")
+    open_paths = ("/login", "/healthz", "/static/")
     path = request.path
     if any(path == p or path.startswith(p) for p in open_paths):
         return None
