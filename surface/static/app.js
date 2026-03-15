@@ -108,7 +108,7 @@
 
     card.innerHTML =
       '<div class="demo-overlay-badge">Demo</div>' +
-      '<p>The clean article behind this card? That\u2019s the demo web page, cleaned up by Decant.</p>' +
+      '<p>The clean article behind this card? That\u2019s our test page, cleaned up by Decant.</p>' +
       '<p>The original is full of ads, pop-ups, and clutter. ' +
       'Click <strong>View Original</strong> in the toolbar to see how bad it is.</p>' +
       '<p>When you\u2019re done, come back to ' +
@@ -690,7 +690,7 @@
     tryDemoBtn.addEventListener("click", function () {
       closeAllDropdowns();
       isDemoConversion = true;
-      var demoUrl = "https://decant.cc/demo";
+      var demoUrl = "https://decant.cc/test-page";
       urlInput.value = demoUrl;
       urlClear.classList.remove("hidden");
       convertUrl(demoUrl);

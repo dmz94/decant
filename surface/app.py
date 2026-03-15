@@ -136,8 +136,8 @@ def feedback():
     return jsonify({"status": "ok"})
 
 
-@app.route("/demo")
-def demo():
+@app.route("/test-page")
+def test_page():
     return redirect("/static/demo/index.html")
 
 
@@ -194,7 +194,7 @@ def convert():
 
             # Vanity routes that map to static files
             _VANITY_ROUTES = {
-                "/demo": "demo/index.html",
+                "/test-page": "demo/index.html",
             }
             for _origin in ("https://decant.cc", "https://www.decant.cc"):
                 for _vanity, _static_rel in _VANITY_ROUTES.items():
