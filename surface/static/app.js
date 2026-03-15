@@ -358,11 +358,15 @@
       dropdownEl.classList.add("open");
       toolbarContainer.classList.add("dropdown-open");
       if (dropdownEl.classList.contains("help-dropdown")) {
-        var rect = dropdownEl.getBoundingClientRect();
-        var available = window.innerHeight - rect.top - 16;
         var helpBody = dropdownEl.querySelector(".help-popup-body");
         if (helpBody) {
-          helpBody.style.maxHeight = available + "px";
+          if (window.innerWidth <= 430) {
+            helpBody.style.maxHeight = "";
+          } else {
+            var rect = dropdownEl.getBoundingClientRect();
+            var available = window.innerHeight - rect.top - 16;
+            helpBody.style.maxHeight = available + "px";
+          }
         }
       }
     }

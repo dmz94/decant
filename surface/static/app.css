@@ -1127,6 +1127,134 @@ body.loaded {
   }
 }
 
+/* -----------------------------------------------
+   Phone breakpoint
+   ----------------------------------------------- */
+
+@media (max-width: 430px) {
+  /* --- Header --- */
+  .site-header {
+    padding: 0.5rem 1rem;
+  }
+
+  .site-logo {
+    height: 32px;
+  }
+
+  /* --- Container: remove left gutter --- */
+  .container {
+    padding: 1rem;
+  }
+
+  /* --- Toolbar: fixed horizontal bottom bar --- */
+  .toolbar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    height: auto;
+    margin-left: 0;
+    z-index: 100;
+  }
+
+  .toolbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid var(--toolbar-border);
+    box-shadow: 0 -2px 8px var(--toolbar-shadow);
+  }
+
+  /* Keep toolbar border visible when dropdown is open */
+  .dropdown-open .toolbar {
+    border-top: 1px solid var(--toolbar-border);
+    box-shadow: 0 -2px 8px var(--toolbar-shadow);
+  }
+
+  .toolbar-button {
+    margin: 0;
+  }
+
+  /* Suppress hover labels (no hover on touch) */
+  .hover-label {
+    display: none;
+  }
+
+  /* --- Popups: full-width panels above bottom bar --- */
+  .dropdown-popup {
+    position: fixed;
+    top: auto;
+    bottom: 52px;
+    inset-inline-start: 8px;
+    right: 8px;
+  }
+
+  .popup-body,
+  .theme-popup-body,
+  .save-popup-body {
+    width: auto;
+  }
+
+  #help-chooser,
+  #help-getting-started,
+  #help-about {
+    width: auto;
+  }
+
+  .help-popup-body {
+    max-height: 60vh;
+  }
+
+  /* --- URL form: stack vertically --- */
+  .url-form {
+    flex-direction: column;
+  }
+
+  .url-form button {
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  /* --- Drop zone: tighter padding --- */
+  .drop-zone {
+    padding: 1.25rem;
+  }
+
+  /* --- Output iframe --- */
+  #output-frame {
+    min-height: 400px;
+  }
+
+  /* --- Toast: centered above bottom bar --- */
+  .toast {
+    left: 50%;
+    transform: translateX(-50%);
+    top: auto;
+    bottom: 70px;
+  }
+
+  /* --- Page wrapper: room for fixed bottom bar --- */
+  .page-wrapper {
+    padding-bottom: 56px;
+  }
+
+  /* --- Footer --- */
+  .site-footer {
+    padding: 1rem;
+  }
+
+  /* --- Demo overlay card --- */
+  .demo-overlay-card {
+    width: calc(100% - 32px);
+  }
+}
+
 /* Utility */
 .hidden {
   display: none;
