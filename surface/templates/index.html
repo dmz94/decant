@@ -251,13 +251,18 @@
                 <h3 class="help-heading">Getting Started</h3>
 
                 <div class="help-section">
+                  <p><strong>Decant is designed for desktop browsers. Mobile and tablet support is coming soon.</strong></p>
+                </div>
+
+                <div class="help-section">
                   <p><strong>What is Decant?</strong></p>
                   <p>Decant strips away clutter from web articles and reformats them with typography designed for readers with dyslexia. It is also useful for anyone who prefers cleaner, distraction-free reading.</p>
                 </div>
 
                 <div class="help-section">
                   <p><strong>See the difference</strong></p>
-                  <p>Open our <a href="/static/demo/index.html" target="_blank" rel="noopener noreferrer">demo page</a> -- a cluttered wine blog. Notice the ads, busy layout, and dense text. Now copy that URL and paste it into Decant. The clutter is gone. What is left is clean, readable content.</p>
+                  <p>Our demo page is a cluttered wine blog full of ads and dense text. Click below to convert it with Decant and see the difference.</p>
+                  <button type="button" id="try-demo-btn" class="try-demo-btn">Try the demo &rarr;</button>
                 </div>
 
                 <div class="help-section">
@@ -351,8 +356,13 @@
 
     <section id="input-zone" class="input-zone">
       <form id="url-form" class="url-form">
-        <input type="text" id="url-input" name="url"
-               placeholder="Paste a URL..." autocomplete="off">
+        <div class="url-input-wrap">
+          <input type="text" id="url-input" name="url"
+                 placeholder="Paste a URL..." autocomplete="off"
+                 enterkeyhint="go">
+          <button type="button" id="url-clear" class="url-clear hidden"
+                  aria-label="Clear URL">&times;</button>
+        </div>
         <button type="submit">Convert</button>
       </form>
 

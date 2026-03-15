@@ -24,6 +24,8 @@
   var feedbackExpand = document.getElementById("feedback-expand");
   var feedbackText = document.getElementById("feedback-text");
   var feedbackSubmit = document.getElementById("feedback-submit");
+  var urlClear = document.getElementById("url-clear");
+  var tryDemoBtn = document.getElementById("try-demo-btn");
 
   // --- Settings state ---
   var DEFAULTS = {
@@ -415,6 +417,17 @@
     }
   });
 
+  // Clear button visibility
+  urlInput.addEventListener("input", function () {
+    urlClear.classList.toggle("hidden", !urlInput.value);
+  });
+
+  urlClear.addEventListener("click", function () {
+    urlInput.value = "";
+    urlClear.classList.add("hidden");
+    urlInput.focus();
+  });
+
   dropZone.addEventListener("click", function () {
     fileInput.click();
   });
@@ -621,6 +634,18 @@
       feedbackExpand.classList.add("hidden");
     }
   });
+
+  // --- Try demo ---
+
+  if (tryDemoBtn) {
+    tryDemoBtn.addEventListener("click", function () {
+      closeAllDropdowns();
+      var demoUrl = "https://decant.cc/demo";
+      urlInput.value = demoUrl;
+      urlClear.classList.remove("hidden");
+      convertUrl(demoUrl);
+    });
+  }
 
   // --- Init ---
 

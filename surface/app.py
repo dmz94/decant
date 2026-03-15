@@ -14,7 +14,7 @@ import time
 from functools import wraps
 
 import requests as http_requests
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
 
 import config
 from convert import convert_url, convert_file, ConvertError
@@ -134,6 +134,11 @@ def feedback():
             log.warning("Airtable POST failed: %s", str(e))
 
     return jsonify({"status": "ok"})
+
+
+@app.route("/demo")
+def demo():
+    return redirect("/static/demo/index.html")
 
 
 @app.route("/")

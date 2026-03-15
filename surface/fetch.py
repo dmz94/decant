@@ -73,9 +73,40 @@ class FetchConnectionError(FetchError):
         return "Couldn't connect to that site. Check the URL and try again."
 
 
+class BotProtectionError(FetchError):
+    """Response appears to be a bot-protection challenge page."""
+
+    @property
+    def user_message(self) -> str:
+        return (
+            "This site blocked our request. Try saving the page as HTML "
+            "in your browser (File > Save As > HTML) and uploading the "
+            "file instead."
+        )
+
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+_BOT_PROTECTION_SIGNATURES = [
+    "Checking if the site connection is secure",
+    "cf-browser-verification",
+    "challenge-platform",
+    "Just a moment...",
+    "Attention Required",
+]
+
+
+def _check_bot_protection(html: str) -> None:
+    """Raise BotProtectionError if HTML looks like a challenge page."""
+    for sig in _BOT_PROTECTION_SIGNATURES:
+        if sig in html:
+            raise BotProtectionError(f"Bot protection detected: {sig!r}")
+    # "Access denied" combined with "Cloudflare"
+    if "Access denied" in html and "Cloudflare" in html:
+        raise BotProtectionError("Bot protection detected: Access denied + Cloudflare")
+
 
 def _is_blocked_ip(ip_str: str) -> bool:
     """Check if an IP address falls within any blocked range."""
@@ -188,7 +219,12 @@ def fetch_url(url: str) -> str:
             )
         chunks.append(chunk)
 
-    # 9. Decode and return
+    # 9. Decode
     body = b"".join(chunks)
     encoding = response.encoding or "utf-8"
-    return body.decode(encoding, errors="replace")
+    html = body.decode(encoding, errors="replace")
+
+    # 10. Check for bot protection / challenge pages
+    _check_bot_protection(html)
+
+    return html
