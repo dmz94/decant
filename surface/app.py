@@ -150,7 +150,7 @@ a {{ color: #1856a8; }}
   {error}
   <form method="post">
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" autocomplete="username" required>
+    <input type="text" id="username" name="username" autocomplete="username" required value="{username}">
     <label for="password">Password</label>
     <input type="password" id="password" name="password" autocomplete="current-password" required>
     <button type="submit">Log in</button>
@@ -179,6 +179,7 @@ def _require_login():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     error_html = ""
+    username = ""
     if request.method == "POST":
         username = request.form.get("username", "")
         password = request.form.get("password", "")
@@ -188,7 +189,7 @@ def login():
             session["logged_in"] = True
             return redirect(url_for("index"))
         error_html = '<p class="error">Incorrect username or password.</p>'
-    return make_response(_LOGIN_PAGE_HTML.format(error=error_html))
+    return make_response(_LOGIN_PAGE_HTML.format(error=error_html, username=username))
 
 
 # ---------------------------------------------------------------------------
