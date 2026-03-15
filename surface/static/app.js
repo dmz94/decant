@@ -92,6 +92,8 @@
   function dismissDemoOverlay() {
     var existing = document.getElementById("demo-overlay");
     if (existing) existing.remove();
+    var voBtn = document.getElementById("view-original-btn");
+    if (voBtn) voBtn.classList.remove("toolbar-highlight");
   }
 
   function showDemoOverlay() {
@@ -106,7 +108,7 @@
 
     card.innerHTML =
       '<div class="demo-overlay-badge">Demo</div>' +
-      '<p>You\u2019re looking at the demo web page, cleaned up by Decant.</p>' +
+      '<p>The clean article behind this card? That\u2019s the demo web page, cleaned up by Decant.</p>' +
       '<p>The original is full of ads, pop-ups, and clutter. ' +
       'Click <strong>View Original</strong> in the toolbar to see how bad it is.</p>' +
       '<p>When you\u2019re done, come back to ' +
@@ -120,6 +122,9 @@
     overlay.addEventListener("click", function (e) {
       if (e.target === overlay) dismissDemoOverlay();
     });
+
+    var voBtn = document.getElementById("view-original-btn");
+    if (voBtn) voBtn.classList.add("toolbar-highlight");
   }
 
   // --- UI state helpers ---

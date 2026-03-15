@@ -299,6 +299,16 @@ body {
   background-color: var(--toolbar-button-active);
 }
 
+/* Toolbar highlight pulse (used for demo overlay) */
+@keyframes toolbar-glow {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 8px 2px var(--icon-fill); }
+}
+
+.toolbar-highlight {
+  animation: toolbar-glow 2s ease-in-out infinite;
+}
+
 /* Aa icon text styling */
 .tb-icon-aa {
   font-size: 14px;
