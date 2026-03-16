@@ -51,6 +51,14 @@ is surprising or unclear, stop and report instead of proceeding.
 Do not assume what the code does based on specs or memory.
 Specs describe intent. Code describes reality. They diverge.
 
+## DYRI (IMPORTANT)
+
+DYRI = "Did You Read It?" When a prompt starts with DYRI,
+you must verify you have actually read all relevant files
+before responding. If you have not read them, say so and
+read them first. Do not guess, infer, or describe file
+contents without reading them.
+
 ## Working Style
 
 - Dave drives pace. Do not advance to the next task without
