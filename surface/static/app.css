@@ -675,6 +675,13 @@ body {
   color: var(--popup-text);
 }
 
+.help-section-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--popup-text);
+  margin: 0 0 6px 0;
+}
+
 .help-popup-body p {
   font-size: 13px;
   line-height: 1.5;
