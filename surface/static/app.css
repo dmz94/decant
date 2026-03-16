@@ -919,10 +919,14 @@ body {
   opacity: 0.9;
 }
 
-.feedback-thumb.active {
+.feedback-thumb.sent {
   opacity: 1;
   border-color: var(--icon-fill);
   background-color: var(--toolbar-button-active);
+}
+
+.feedback-thumb.sent svg path {
+  fill: currentColor;
 }
 
 .feedback-prompt {

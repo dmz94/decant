@@ -165,8 +165,8 @@
     });
 
     // Reset feedback widget
-    feedbackUp.classList.remove("active");
-    feedbackDown.classList.remove("active");
+    feedbackUp.classList.remove("sent");
+    feedbackDown.classList.remove("sent");
     feedbackExpand.classList.add("hidden");
     feedbackText.value = "";
 
@@ -757,10 +757,11 @@
   }
 
   function handleThumbClick(rating, btn, other) {
-    btn.classList.add("active");
-    other.classList.remove("active");
-    feedbackExpand.classList.remove("hidden");
+    if (btn.classList.contains("sent")) return;
     sendFeedback(rating, "");
+    btn.classList.add("sent");
+    other.classList.remove("sent");
+    feedbackExpand.classList.remove("hidden");
   }
 
   feedbackUp.addEventListener("click", function () {
@@ -772,7 +773,7 @@
   });
 
   feedbackSubmit.addEventListener("click", function () {
-    var rating = feedbackUp.classList.contains("active") ? "up" : "down";
+    var rating = feedbackUp.classList.contains("sent") ? "up" : "down";
     var text = feedbackText.value.trim();
     if (text) {
       sendFeedback(rating, text);
