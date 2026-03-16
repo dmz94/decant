@@ -34,6 +34,7 @@ body {
 
 .page-wrapper {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* Header */
@@ -637,6 +638,7 @@ body {
 .help-popup-body {
   width: auto;
   max-height: 70vh;
+  max-height: 70dvh;
   overflow-y: auto;
   overscroll-behavior: contain;
 }
@@ -1232,6 +1234,7 @@ body.loaded {
     height: auto;
     margin-left: 0;
     z-index: 100;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   .toolbar {
@@ -1285,6 +1288,7 @@ body.loaded {
 
   .help-popup-body {
     max-height: 60vh;
+    max-height: 60dvh;
   }
 
   /* --- URL form: stack vertically --- */
@@ -1344,7 +1348,7 @@ body.loaded {
 
   /* Adjust page wrapper padding for taller toolbar */
   .page-wrapper {
-    padding-bottom: 68px;
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
   }
 
   /* Toast above taller toolbar */
