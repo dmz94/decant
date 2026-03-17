@@ -202,7 +202,7 @@ body {
 /* Error container */
 .error-container {
   max-width: 800px;
-  margin: 1.5rem 0 0;
+  margin: 1.5rem auto 0;
   background: #fff8f8;
   border-left: 4px solid #cc3333;
   padding: 1.25rem;
@@ -850,16 +850,51 @@ body {
   padding: 8px 28px;
   font-size: 14px;
   font-weight: 600;
-  border: 1px solid var(--icon-fill);
   border-radius: 6px;
-  background: var(--icon-fill);
-  color: var(--toolbar-bg);
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, background-color 0.15s;
 }
 
-.demo-overlay-btn:hover {
+.demo-overlay-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.demo-overlay-primary {
+  background: var(--icon-fill);
+  color: var(--toolbar-bg);
+  border: 1px solid var(--icon-fill);
+}
+
+.demo-overlay-primary:hover {
   opacity: 0.85;
+}
+
+.demo-overlay-secondary {
+  background: transparent;
+  color: var(--popup-text);
+  border: 1px solid var(--popup-border);
+}
+
+.demo-overlay-secondary:hover {
+  background-color: var(--toolbar-button-hover);
+}
+
+.demo-vo-hint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.demo-vo-hint strong {
+  color: var(--icon-fill);
+}
+
+.demo-vo-icon {
+  color: var(--icon-fill);
+  flex-shrink: 0;
 }
 
 /* -----------------------------------------------

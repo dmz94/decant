@@ -141,20 +141,65 @@
 
     card.innerHTML =
       '<div class="demo-overlay-badge">Demo</div>' +
-      '<p>The clean article behind this card? That\u2019s our test page, cleaned up by Decant.</p>' +
-      '<p>The original is full of ads, pop-ups, and clutter. ' +
-      'Click <strong>View Original</strong> in the toolbar to see how bad it is.</p>' +
-      '<p>When you\u2019re done, come back to ' +
-      '<strong>Help &gt; Getting Started</strong> to finish the guide.</p>' +
-      '<button type="button" class="demo-overlay-btn">Got it</button>';
+      '<p>The clean article behind this card is our test page, ' +
+      'cleaned up by Decant.</p>' +
+      '<p>The original is full of ads, pop-ups, and clutter.</p>' +
+      '<p class="demo-vo-hint">' +
+      '<svg class="demo-vo-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" ' +
+      'stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M6 2H2v12h12v-4"/>' +
+      '<path d="M9 2h5v5"/>' +
+      '<path d="M7 9L14 2"/>' +
+      '</svg> ' +
+      '<strong>View Original</strong> in the toolbar lets you ' +
+      'compare anytime.</p>' +
+      '<p>Click below now to see it for yourself.</p>' +
+      '<div class="demo-overlay-actions">' +
+      '<button type="button" class="demo-overlay-btn demo-overlay-primary">' +
+      'See the original &rarr;</button>' +
+      '<button type="button" class="demo-overlay-btn demo-overlay-secondary">' +
+      'Got it</button>' +
+      '</div>';
 
     overlay.appendChild(card);
     outputSection.appendChild(overlay);
 
-    card.querySelector(".demo-overlay-btn").addEventListener("click", dismissDemoOverlay);
+    // "See the original" opens the original page
+    card.querySelector(".demo-overlay-primary").addEventListener("click", function () {
+      if (currentSourceUrl) {
+        window.open(currentSourceUrl, "_blank", "noopener,noreferrer");
+      }
+    });
+
+    // "Got it" dismisses
+    card.querySelector(".demo-overlay-secondary").addEventListener("click", dismissDemoOverlay);
+
+    // Clicking backdrop dismisses
     overlay.addEventListener("click", function (e) {
       if (e.target === overlay) dismissDemoOverlay();
     });
+
+    // Make the inline icon clickable too (same as View Original)
+    var voIcon = card.querySelector(".demo-vo-icon");
+    if (voIcon) {
+      voIcon.style.cursor = "pointer";
+      voIcon.addEventListener("click", function () {
+        if (currentSourceUrl) {
+          window.open(currentSourceUrl, "_blank", "noopener,noreferrer");
+        }
+      });
+    }
+
+    // Also make the "View Original" text clickable
+    var voStrong = card.querySelector(".demo-vo-hint strong");
+    if (voStrong) {
+      voStrong.style.cursor = "pointer";
+      voStrong.addEventListener("click", function () {
+        if (currentSourceUrl) {
+          window.open(currentSourceUrl, "_blank", "noopener,noreferrer");
+        }
+      });
+    }
 
     var voBtn = document.getElementById("view-original-btn");
     if (voBtn) voBtn.classList.add("toolbar-highlight");
@@ -178,6 +223,12 @@
     errorContainer.classList.remove("hidden");
     outputSection.classList.add("hidden");
     convertingStatus.classList.add("hidden");
+    // Hide toolbar buttons from previous conversion
+    document.querySelectorAll(".action-only").forEach(function (el) {
+      el.classList.add("hidden");
+    });
+    currentSourceUrl = "";
+    currentHtml = "";
   }
 
   function hideError() {
