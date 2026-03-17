@@ -30,6 +30,10 @@ body {
   --input-border: rgba(0, 0, 0, 0.25);
   --logo-text: #555;
   --logo-wine: #b01030;
+  --error-bg: #fff8f8;
+  --error-border: #cc3333;
+  --error-text: #333;
+  --error-hint: #666;
 }
 
 .page-wrapper {
@@ -203,11 +207,11 @@ body {
 .error-container {
   max-width: 800px;
   margin: 1.5rem auto 0;
-  background: #fff8f8;
-  border-left: 4px solid #cc3333;
+  background: var(--error-bg);
+  border-left: 4px solid var(--error-border);
   padding: 1.25rem;
   border-radius: 4px;
-  color: #333;
+  color: var(--error-text);
 }
 
 .error-container p {
@@ -226,7 +230,16 @@ body {
 
 .error-hint {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--error-hint);
+}
+
+.error-hint a {
+  color: var(--error-hint);
+  text-decoration: underline;
+}
+
+.error-hint a:hover {
+  opacity: 0.8;
 }
 
 /* Converting status */
@@ -773,12 +786,14 @@ body {
   padding: 6px 14px;
   font-size: 13px;
   font-weight: 600;
+  font-family: inherit;
   border: 1px solid var(--icon-fill);
   border-radius: 6px;
   background: transparent;
   color: var(--popup-text);
   cursor: pointer;
   transition: background-color 0.15s, border-color 0.15s;
+  text-decoration: none;
 }
 
 .try-demo-btn:hover {
@@ -1108,6 +1123,10 @@ body.sepia {
   --input-border: rgba(91, 70, 54, 0.4);
   --logo-text: rgb(91, 70, 54);
   --logo-wine: #b01030;
+  --error-bg: #f5ebe0;
+  --error-border: #b33030;
+  --error-text: rgb(91, 70, 54);
+  --error-hint: rgba(91, 70, 54, 0.7);
 }
 
 body.dark {
@@ -1131,6 +1150,10 @@ body.dark {
   --input-border: rgba(249, 249, 250, 0.3);
   --logo-text: rgb(251, 251, 254);
   --logo-wine: #b01030;
+  --error-bg: rgba(180, 40, 40, 0.15);
+  --error-border: #cc4444;
+  --error-text: #e0e0e0;
+  --error-hint: rgba(224, 224, 224, 0.7);
 }
 
 body.contrast {
@@ -1154,6 +1177,10 @@ body.contrast {
   --input-border: #ffee32;
   --logo-text: #ffee32;
   --logo-wine: #b01030;
+  --error-bg: rgba(200, 0, 0, 0.15);
+  --error-border: #ff4444;
+  --error-text: #ffd700;
+  --error-hint: rgba(255, 215, 0, 0.7);
 }
 
 /* Page elements that need to respond to theme */
@@ -1307,14 +1334,11 @@ body.loaded {
   display: inline-block;
 }
 
-.ww-back a {
+.ww-back p {
   font-size: 0.9rem;
   color: var(--popup-text);
-  text-decoration: underline;
-}
-
-.ww-back a:hover {
-  color: var(--icon-fill);
+  opacity: 0.6;
+  margin: 0;
 }
 
 @media (max-width: 430px) {
