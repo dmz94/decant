@@ -1165,6 +1165,128 @@ body.loaded {
 }
 
 /* -----------------------------------------------
+   What Works page
+   ----------------------------------------------- */
+
+.what-works-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.ww-container {
+  max-width: 48em;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--popup-text);
+}
+
+.ww-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--popup-text);
+}
+
+.ww-intro {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+.ww-callout {
+  background: var(--toolbar-button-hover);
+  border-left: 3px solid var(--icon-fill);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin: 0 0 2rem;
+}
+
+.ww-callout p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.ww-section-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--popup-border);
+  color: var(--popup-text);
+}
+
+.ww-subheading {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin: 0 0 1rem;
+}
+
+.ww-card {
+  border: 1px solid var(--popup-border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.ww-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--icon-fill);
+  margin-bottom: 4px;
+}
+
+.ww-card-title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--popup-text);
+  text-decoration: underline;
+  margin-bottom: 4px;
+}
+
+.ww-card-title:hover {
+  color: var(--icon-fill);
+}
+
+.ww-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.ww-back {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--popup-border);
+}
+
+.ww-back a {
+  font-size: 0.9rem;
+  color: var(--popup-text);
+  text-decoration: underline;
+}
+
+.ww-back a:hover {
+  color: var(--icon-fill);
+}
+
+@media (max-width: 430px) {
+  .ww-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .ww-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* -----------------------------------------------
    Tablet breakpoint
    ----------------------------------------------- */
 

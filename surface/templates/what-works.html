@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Which pages work well with Decant?</title>
+<link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<div class="what-works-page">
+
+  <div class="ww-container">
+
+    <h1 class="ww-title">Which pages work well with Decant?</h1>
+
+    <p class="ww-intro">Decant works best on pages written mainly to be read -- articles, blog posts, and clear information pages. If a page is mostly there to help you shop, search, fill out forms, or check live updates, it is probably not a good fit. The examples below show the difference.</p>
+
+    <div class="ww-callout">
+      <p>If the page is mainly something you <strong>read</strong> from top to bottom, Decant will usually work well. If it is mainly something you <strong>use</strong>, browse, or interact with, it probably will not.</p>
+    </div>
+
+    <h2 class="ww-section-heading ww-good">Good fit</h2>
+
+    <div class="ww-card">
+      <span class="ww-label">Article</span>
+      <a class="ww-card-title" href="https://e360.yale.edu/features/cape-town-baboons" target="_blank" rel="noopener noreferrer">Yale Environment 360 -- Cape Town's Baboon Wars</a>
+      <p class="ww-card-desc">A long article with a clear beginning, middle, and end, written to be read straight through.</p>
+    </div>
+
+    <div class="ww-card">
+      <span class="ww-label">Blog post</span>
+      <a class="ww-card-title" href="https://www.marcozehe.de/my-journey-to-ghost/" target="_blank" rel="noopener noreferrer">Marco Zehe -- My Journey to Ghost</a>
+      <p class="ww-card-desc">A personal blog post with continuous text, headings, and a single main topic.</p>
+    </div>
+
+    <div class="ww-card">
+      <span class="ww-label">Information page</span>
+      <a class="ww-card-title" href="https://www.nhs.uk/mental-health/self-help/tips-and-support/mindfulness/" target="_blank" rel="noopener noreferrer">NHS -- Mindfulness</a>
+      <p class="ww-card-desc">An information page made up mostly of clear explanatory text that people read from top to bottom.</p>
+    </div>
+
+    <h2 class="ww-section-heading ww-bad">Not a good fit</h2>
+
+    <p class="ww-subheading">These kinds of pages usually do not convert well.</p>
+
+    <div class="ww-card">
+      <span class="ww-label">Dashboard</span>
+      <a class="ww-card-title" href="https://www.espn.com/nfl/team/_/name/pit/pittsburgh-steelers" target="_blank" rel="noopener noreferrer">ESPN -- Pittsburgh Steelers</a>
+      <p class="ww-card-desc">A live team page built around scores, schedules, and stats, not one main piece of reading.</p>
+    </div>
+
+    <div class="ww-card">
+      <span class="ww-label">Shopping page</span>
+      <a class="ww-card-title" href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">Amazon</a>
+      <p class="ww-card-desc">A page for browsing and buying products, with many choices and moving parts instead of one main article.</p>
+    </div>
+
+    <div class="ww-card">
+      <span class="ww-label">Directions tool</span>
+      <a class="ww-card-title" href="https://www.google.com/maps/dir/" target="_blank" rel="noopener noreferrer">Google Maps</a>
+      <p class="ww-card-desc">A tool for searching places and getting directions, not a page meant to be read like an article.</p>
+    </div>
+
+    <div class="ww-back">
+      <a href="/">&larr; Back to Decant</a>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    &copy; 2026 Lone Stone &middot; Open source (<a href="https://github.com/dmz94/decant/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT</a>) &middot;
+    <a href="https://github.com/dmz94/decant" target="_blank" rel="noopener noreferrer">GitHub</a>
+    &middot; <a href="mailto:feedback@decant.cc">Contact</a>
+    &middot; <a href="https://decant.fider.io" target="_blank" rel="noopener noreferrer">Suggest a Feature</a>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  try {
+    var stored = localStorage.getItem("decant_settings");
+    if (stored) {
+      var theme = JSON.parse(stored).theme || "light";
+      var map = { light: "", cream: "sepia", dark: "dark", contrast: "contrast" };
+      var cls = map[theme];
+      if (cls) document.body.classList.add(cls);
+    }
+  } catch (e) {}
+  document.body.classList.add("loaded");
+})();
+</script>
+</body>
+</html>

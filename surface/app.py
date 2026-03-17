@@ -307,6 +307,11 @@ def index():
     return render_template("index.html", prefilled_url=prefilled_url)
 
 
+@app.route("/what-works")
+def what_works():
+    return render_template("what-works.html")
+
+
 @app.route("/convert", methods=["POST"])
 def convert():
     start = time.monotonic()
