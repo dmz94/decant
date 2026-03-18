@@ -30,6 +30,7 @@
   var feedbackText = document.getElementById("feedback-text");
   var feedbackSubmit = document.getElementById("feedback-submit");
   var urlClear = document.getElementById("url-clear");
+  var inputHint = document.getElementById("input-hint");
   var tryDemoBtn = document.getElementById("try-demo-btn");
   var articleOverlay = document.getElementById("article-overlay");
   var articleOverlayStatus = document.getElementById("article-overlay-status");
@@ -328,6 +329,7 @@
   }
 
   function showLoading(options) {
+    if (inputHint) inputHint.classList.add("hidden");
     var mode = (options && options.mode) || "destructive";
     hideError();
 
@@ -1394,6 +1396,17 @@
     });
   }
 
+  var hintDemoBtn = document.getElementById("hint-demo-btn");
+  if (hintDemoBtn) {
+    hintDemoBtn.addEventListener("click", function () {
+      isDemoConversion = true;
+      var demoUrl = "https://decant.cc/test-page";
+      urlInput.value = demoUrl;
+      urlClear.classList.remove("hidden");
+      convertUrl(demoUrl);
+    });
+  }
+
   // --- Init ---
 
   applyOuterTheme();
@@ -1405,6 +1418,7 @@
   });
 
   if (window.__prefilled_url) {
+    if (inputHint) inputHint.classList.add("hidden");
     urlInput.value = window.__prefilled_url;
     convertUrl(window.__prefilled_url);
   }

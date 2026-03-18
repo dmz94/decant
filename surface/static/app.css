@@ -190,6 +190,30 @@ body {
   display: none;
 }
 
+.input-hint {
+  text-align: center;
+  font-size: 13px;
+  color: var(--input-text);
+  opacity: 0.5;
+  margin-top: 0.75rem;
+  font-family: system-ui, sans-serif;
+}
+
+.input-hint-link {
+  color: var(--input-text);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  opacity: 1;
+}
+
+.input-hint-link:hover {
+  opacity: 0.8;
+}
+
 /* Output zone */
 .output-zone {
   margin-top: 1rem;
