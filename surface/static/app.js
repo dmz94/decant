@@ -33,6 +33,7 @@
   var tryDemoBtn = document.getElementById("try-demo-btn");
   var articleOverlay = document.getElementById("article-overlay");
   var articleOverlayStatus = document.getElementById("article-overlay-status");
+  var srAnnouncer = document.getElementById("sr-announcer");
 
   // --- Settings state ---
   var DEFAULTS = {
@@ -78,6 +79,7 @@
   var articleCache = new Map();
   var cacheIdCounter = 0;
   var pendingScrollRestore = null;
+  var pendingFocusHeading = false;
   var dropZoneDefault = dropZone.querySelector("p").textContent;
 
   // --- localStorage ---
@@ -273,8 +275,16 @@
     articleOverlay.classList.add("hidden");
   }
 
+  function announce(text) {
+    srAnnouncer.textContent = "";
+    requestAnimationFrame(function () {
+      srAnnouncer.textContent = text;
+    });
+  }
+
   function beginArticleNavigation(statusText) {
     pendingScrollRestore = null;
+    pendingFocusHeading = false;
     navigationCounter++;
     activeNavigationId = navigationCounter;
     hideError();
@@ -552,6 +562,7 @@
       .then(function (result) {
         if (result.data.status === "ok") {
           if (!completeArticleNavigation(requestId)) return;
+          pendingFocusHeading = true;
           showResult(result.data.html, url);
           urlInput.value = url;
           urlClear.classList.remove("hidden");
@@ -563,6 +574,7 @@
             "",
             "/?url=" + encodeURIComponent(url)
           );
+          announce("Loaded: " + title);
         } else {
           var message = (result.data && result.data.message) || "Conversion failed.";
           var hint = "";
@@ -752,6 +764,16 @@
         var se = doc.scrollingElement || doc.documentElement;
         if (se) {
           se.scrollTop = scrollTarget;
+        }
+      }
+
+      // Focus primary heading if pending (from new navigation)
+      if (pendingFocusHeading) {
+        pendingFocusHeading = false;
+        var heading = doc.querySelector("h1, h2");
+        if (heading) {
+          heading.setAttribute("tabindex", "-1");
+          heading.focus({ preventScroll: true });
         }
       }
     } catch (e) { /* cross-origin or sandbox restriction */ }
