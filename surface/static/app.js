@@ -63,6 +63,12 @@
 
   var SPACING_LABELS = { standard: "Standard", loose: "Loose", veryloose: "Very Loose" };
 
+  var BLOCKED_EXTENSIONS = [
+    ".pdf", ".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp",
+    ".mp3", ".mp4", ".zip", ".doc", ".docx", ".xls", ".xlsx",
+    ".ppt", ".pptx"
+  ];
+
   var settings = loadSettings();
   var currentSourceUrl = "";
   var currentHtml = "";
@@ -444,25 +450,145 @@
     outputFrame.srcdoc = injected;
   }
 
-  // After iframe loads, rewrite links to open in new tab
+  // --- Link interception ---
+
+  function isQualifyingLink(href, baseUrl) {
+    var resolved;
+    try {
+      resolved = new URL(href, baseUrl);
+    } catch (e) {
+      return null;
+    }
+    if (resolved.protocol !== "http:" && resolved.protocol !== "https:") {
+      return null;
+    }
+    var pathname = resolved.pathname.toLowerCase();
+    for (var i = 0; i < BLOCKED_EXTENSIONS.length; i++) {
+      if (pathname.endsWith(BLOCKED_EXTENSIONS[i])) {
+        return null;
+      }
+    }
+    return resolved;
+  }
+
+  function isSameArticle(resolvedUrl) {
+    if (!currentSourceUrl) return false;
+    try {
+      var current = new URL(currentSourceUrl);
+      var a = resolvedUrl.origin + resolvedUrl.pathname + resolvedUrl.search;
+      var b = current.origin + current.pathname + current.search;
+      return a === b;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function handleInterceptedNavigation(url) {
+    var requestId = beginArticleNavigation("Converting...");
+
+    var formData = new FormData();
+    formData.append("url", url);
+
+    fetch("/convert", { method: "POST", body: formData })
+      .then(function (resp) {
+        return resp.json().then(function (data) {
+          return { resp: resp, data: data };
+        });
+      })
+      .then(function (result) {
+        if (result.data.status === "ok") {
+          if (!completeArticleNavigation(requestId)) return;
+          showResult(result.data.html, url);
+          urlInput.value = url;
+          urlClear.classList.remove("hidden");
+        } else {
+          var message = (result.data && result.data.message) || "Conversion failed.";
+          var hint = "";
+          var hintUrl = "";
+          if (result.data && result.data.hint) {
+            hint = result.data.hint;
+            hintUrl = result.data.hint_url || "";
+          } else if (result.resp.status === 429) {
+            hint = "You can try again shortly.";
+          } else if (result.resp.status === 500) {
+            hint = "If this keeps happening, the page may not be compatible.";
+          }
+          failArticleNavigation(requestId, "preserving", message, hint, hintUrl);
+        }
+      })
+      .catch(function () {
+        failArticleNavigation(
+          requestId, "preserving",
+          "Couldn't connect to the server.",
+          "Check your internet connection and try again."
+        );
+      });
+  }
+
+  // Link setup runs on every iframe load. Because applyToIframe()
+  // sets srcdoc (which replaces the contentDocument), old listeners
+  // are destroyed automatically. This handler re-attaches them.
   outputFrame.addEventListener("load", function () {
     try {
       var doc = outputFrame.contentDocument;
       if (!doc) return;
 
-      // Resolve relative hrefs against the source origin (URL conversions only)
-      var origin = "";
-      if (currentSourceUrl) {
-        try { origin = new URL(currentSourceUrl).origin; } catch (e) { /* malformed */ }
-      }
+      var baseUrl = currentSourceUrl || "";
 
       doc.querySelectorAll("a[href]").forEach(function (a) {
-        var href = a.getAttribute("href");
-        if (origin && href && !/^https?:\/\/|^#|^mailto:/i.test(href)) {
-          a.setAttribute("href", origin + href);
+        var rawHref = a.getAttribute("href");
+
+        // Category 1: Fragment-only links scroll within iframe
+        if (rawHref && rawHref.charAt(0) === "#") {
+          return;
         }
-        a.setAttribute("target", "_blank");
-        a.setAttribute("rel", "noopener noreferrer");
+
+        var href = rawHref;
+
+        // Resolve relative hrefs to absolute
+        if (baseUrl && href) {
+          try {
+            var abs = new URL(href, baseUrl).href;
+            a.setAttribute("href", abs);
+            href = abs;
+          } catch (e) { /* leave malformed href as-is */ }
+        }
+
+        // Qualify the link
+        var resolved = baseUrl ? isQualifyingLink(href, baseUrl) : null;
+
+        if (!resolved) {
+          // Category 4: Non-qualifying -- open in new tab
+          a.setAttribute("target", "_blank");
+          a.setAttribute("rel", "noopener noreferrer");
+        } else if (isSameArticle(resolved)) {
+          // Category 2: Same article -- no-op with optional
+          // fragment scroll. Without this handler the browser
+          // would navigate the iframe to the original URL,
+          // destroying the cleaned content.
+          a.addEventListener("click", function (e) {
+            if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+            e.preventDefault();
+            var fragment = resolved.hash ? resolved.hash.slice(1) : "";
+            if (fragment && doc) {
+              var target = doc.getElementById(fragment);
+              if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+          });
+        } else {
+          // Category 3: Qualifying different article -- intercept
+          a.addEventListener("click", function (e) {
+            if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+            if (isNavigationInProgress()) {
+              e.preventDefault();
+              return;
+            }
+            e.preventDefault();
+            handleInterceptedNavigation(resolved.href);
+          });
+        }
       });
     } catch (e) { /* cross-origin or sandbox restriction */ }
   });
