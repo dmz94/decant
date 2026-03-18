@@ -1316,8 +1316,6 @@
       // Context-sensitive placeholder
       if (radio.value === "up") {
         feedbackText.placeholder = "What worked well? (optional)";
-      } else if (radio.value === "broken") {
-        feedbackText.placeholder = "What happened? (optional)";
       } else {
         feedbackText.placeholder = "What went wrong? (optional)";
       }
@@ -1352,8 +1350,6 @@
     var rating = getSelectedRating();
     if (rating === "up") {
       feedbackText.placeholder = "What worked well? (optional)";
-    } else if (rating === "broken") {
-      feedbackText.placeholder = "What happened? (optional)";
     } else {
       feedbackText.placeholder = "What went wrong? (optional)";
     }
