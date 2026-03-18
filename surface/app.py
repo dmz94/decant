@@ -225,7 +225,7 @@ def feedback():
     interaction_id = data.get("interaction_id", "")
 
     if rating not in ("up", "down", "broken", "error_report"):
-        return jsonify({"status": "error", "message": "Rating must be 'up', 'down', or 'broken'."}), 400
+        return jsonify({"status": "error", "message": "Invalid rating value."}), 400
     if not source:
         return jsonify({"status": "error", "message": "Source is required."}), 400
     if not interaction_id:
