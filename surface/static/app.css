@@ -242,6 +242,45 @@ body {
   opacity: 0.8;
 }
 
+/* Inline error container (preserving mode — inside output zone) */
+.inline-error-container {
+  max-width: 800px;
+  margin: 0 auto 1rem;
+  background: var(--error-bg);
+  border-left: 4px solid var(--error-border);
+  padding: 1.25rem;
+  border-radius: 4px;
+  color: var(--error-text);
+}
+
+.inline-error-container p {
+  margin: 0 0 0.5rem 0;
+  line-height: 1.5;
+}
+
+.inline-error-container p:last-child {
+  margin-bottom: 0;
+}
+
+.inline-error-container .error-message {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.inline-error-container .error-hint {
+  font-size: 0.875rem;
+  color: var(--error-hint);
+}
+
+.inline-error-container .error-hint a {
+  color: var(--error-hint);
+  text-decoration: underline;
+}
+
+.inline-error-container .error-hint a:hover {
+  opacity: 0.8;
+}
+
 /* Converting status */
 .converting-status {
   text-align: center;

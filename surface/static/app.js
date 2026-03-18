@@ -14,6 +14,9 @@
   var errorContainer = document.getElementById("error");
   var errorMessage = document.getElementById("error-message");
   var errorHint = document.getElementById("error-hint");
+  var inlineError = document.getElementById("inline-error");
+  var inlineErrorMessage = document.getElementById("inline-error-message");
+  var inlineErrorHint = document.getElementById("inline-error-hint");
   var convertingStatus = document.getElementById("converting");
   var toolbarContainer = document.getElementById("toolbar-container");
   var fontSizeSlider = document.getElementById("font-size-slider");
@@ -207,38 +210,57 @@
 
   // --- UI state helpers ---
 
-  function showError(message, hint, hintUrl) {
-    errorMessage.textContent = message;
-    errorHint.textContent = "";
+  function populateHint(hintEl, hint, hintUrl) {
+    hintEl.textContent = "";
     if (hint && hintUrl) {
       var link = document.createElement("a");
       link.href = hintUrl;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       link.textContent = hint;
-      errorHint.appendChild(link);
+      hintEl.appendChild(link);
     } else {
-      errorHint.textContent = hint || "";
+      hintEl.textContent = hint || "";
     }
-    errorContainer.classList.remove("hidden");
-    outputSection.classList.add("hidden");
-    convertingStatus.classList.add("hidden");
-    // Hide toolbar buttons from previous conversion
-    document.querySelectorAll(".action-only").forEach(function (el) {
-      el.classList.add("hidden");
-    });
-    currentSourceUrl = "";
-    currentHtml = "";
+  }
+
+  function showError(message, hint, hintUrl, options) {
+    var mode = (options && options.mode) || "destructive";
+
+    if (mode === "preserving") {
+      inlineErrorMessage.textContent = message;
+      populateHint(inlineErrorHint, hint, hintUrl);
+      inlineError.classList.remove("hidden");
+    } else {
+      errorMessage.textContent = message;
+      populateHint(errorHint, hint, hintUrl);
+      errorContainer.classList.remove("hidden");
+      outputSection.classList.add("hidden");
+      convertingStatus.classList.add("hidden");
+      // Hide toolbar buttons from previous conversion
+      document.querySelectorAll(".action-only").forEach(function (el) {
+        el.classList.add("hidden");
+      });
+      currentSourceUrl = "";
+      currentHtml = "";
+    }
   }
 
   function hideError() {
     errorContainer.classList.add("hidden");
+    inlineError.classList.add("hidden");
   }
 
-  function showLoading() {
+  function showLoading(options) {
+    var mode = (options && options.mode) || "destructive";
     hideError();
-    outputSection.classList.add("hidden");
-    convertingStatus.classList.remove("hidden");
+
+    if (mode === "preserving") {
+      // Intentionally minimal: clear errors without disturbing current article
+    } else {
+      outputSection.classList.add("hidden");
+      convertingStatus.classList.remove("hidden");
+    }
   }
 
   function showResult(html, sourceUrl) {
@@ -278,7 +300,7 @@
     applyToIframe();
   }
 
-  function handleErrorResponse(resp, data) {
+  function handleErrorResponse(resp, data, options) {
     var message = (data && data.message) || "Conversion failed.";
     var hint = "";
     var hintUrl = "";
@@ -293,7 +315,7 @@
       hint = "If this keeps happening, the page may not be compatible.";
     }
 
-    showError(message, hint, hintUrl);
+    showError(message, hint, hintUrl, options);
   }
 
   // --- CSS injection into iframe ---
