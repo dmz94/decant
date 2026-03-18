@@ -455,7 +455,17 @@
         <p class="error-message" id="inline-error-message"></p>
         <p class="error-hint" id="inline-error-hint"></p>
       </div>
-      <iframe id="output-frame" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+      <div class="article-frame-wrap">
+        <div id="article-overlay" class="article-overlay hidden"
+             aria-hidden="true">
+          <div class="article-overlay-status" id="article-overlay-status">
+            Loading...
+          </div>
+        </div>
+        <iframe id="output-frame"
+                sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+        </iframe>
+      </div>
     </section>
 
   </main>

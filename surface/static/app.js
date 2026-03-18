@@ -31,6 +31,8 @@
   var feedbackSubmit = document.getElementById("feedback-submit");
   var urlClear = document.getElementById("url-clear");
   var tryDemoBtn = document.getElementById("try-demo-btn");
+  var articleOverlay = document.getElementById("article-overlay");
+  var articleOverlayStatus = document.getElementById("article-overlay-status");
 
   // --- Settings state ---
   var DEFAULTS = {
@@ -65,6 +67,8 @@
   var currentSourceUrl = "";
   var currentHtml = "";
   var isDemoConversion = false;
+  var navigationCounter = 0;
+  var activeNavigationId = 0;
   var dropZoneDefault = dropZone.querySelector("p").textContent;
 
   // --- localStorage ---
@@ -249,6 +253,42 @@
   function hideError() {
     errorContainer.classList.add("hidden");
     inlineError.classList.add("hidden");
+  }
+
+  function showArticleOverlay(statusText) {
+    articleOverlayStatus.textContent = statusText || "Loading...";
+    articleOverlay.classList.remove("hidden");
+  }
+
+  function hideArticleOverlay() {
+    articleOverlay.classList.add("hidden");
+  }
+
+  function beginArticleNavigation(statusText) {
+    navigationCounter++;
+    activeNavigationId = navigationCounter;
+    hideError();
+    showArticleOverlay(statusText);
+    return activeNavigationId;
+  }
+
+  function completeArticleNavigation(requestId) {
+    if (requestId !== activeNavigationId) return false;
+    activeNavigationId = 0;
+    hideArticleOverlay();
+    return true;
+  }
+
+  function failArticleNavigation(requestId, mode, message, hint, hintUrl) {
+    if (requestId !== activeNavigationId) return false;
+    activeNavigationId = 0;
+    hideArticleOverlay();
+    showError(message, hint, hintUrl, { mode: mode || "preserving" });
+    return true;
+  }
+
+  function isNavigationInProgress() {
+    return activeNavigationId !== 0;
   }
 
   function showLoading(options) {
