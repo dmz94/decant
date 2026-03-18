@@ -75,6 +75,9 @@
   var isDemoConversion = false;
   var navigationCounter = 0;
   var activeNavigationId = 0;
+  var articleCache = new Map();
+  var cacheIdCounter = 0;
+  var pendingScrollRestore = null;
   var dropZoneDefault = dropZone.querySelector("p").textContent;
 
   // --- localStorage ---
@@ -271,6 +274,7 @@
   }
 
   function beginArticleNavigation(statusText) {
+    pendingScrollRestore = null;
     navigationCounter++;
     activeNavigationId = navigationCounter;
     hideError();
@@ -452,6 +456,42 @@
 
   // --- Link interception ---
 
+  function extractArticleTitle(html, sourceUrl) {
+    try {
+      var match = html.match(/<title[^>]*>([^<]*)<\/title>/i);
+      if (match && match[1].trim()) return match[1].trim();
+    } catch (e) {}
+    if (sourceUrl) {
+      try { return new URL(sourceUrl).hostname; } catch (e) {}
+    }
+    return "Article";
+  }
+
+  function captureScrollPosition() {
+    try {
+      var se = outputFrame.contentDocument.scrollingElement
+            || outputFrame.contentDocument.documentElement;
+      return se.scrollTop || 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function addToCache(sourceUrl, articleHtml, title) {
+    cacheIdCounter++;
+    var id = cacheIdCounter;
+    articleCache.set(id, {
+      sourceUrl: sourceUrl,
+      articleHtml: articleHtml,
+      title: title
+    });
+    if (articleCache.size > 10) {
+      var oldest = articleCache.keys().next().value;
+      articleCache.delete(oldest);
+    }
+    return id;
+  }
+
   function isQualifyingLink(href, baseUrl) {
     var resolved;
     try {
@@ -484,6 +524,20 @@
   }
 
   function handleInterceptedNavigation(url) {
+    // Capture current scroll position before navigating away
+    var scrollTop = captureScrollPosition();
+
+    // Save scroll position into current history entry
+    var currentState = history.state;
+    if (currentState && currentState.cacheId !== undefined) {
+      history.replaceState({
+        sourceUrl: currentState.sourceUrl,
+        title: currentState.title,
+        scrollTop: scrollTop,
+        cacheId: currentState.cacheId
+      }, "", location.href);
+    }
+
     var requestId = beginArticleNavigation("Converting...");
 
     var formData = new FormData();
@@ -501,6 +555,14 @@
           showResult(result.data.html, url);
           urlInput.value = url;
           urlClear.classList.remove("hidden");
+          // Add to cache and push history entry
+          var title = extractArticleTitle(result.data.html, url);
+          var cacheId = addToCache(url, result.data.html, title);
+          history.pushState(
+            { sourceUrl: url, title: title, scrollTop: 0, cacheId: cacheId },
+            "",
+            "/?url=" + encodeURIComponent(url)
+          );
         } else {
           var message = (result.data && result.data.message) || "Conversion failed.";
           var hint = "";
@@ -524,6 +586,98 @@
         );
       });
   }
+
+  function handleCacheMissReconversion(state) {
+    var requestId = beginArticleNavigation("Restoring...");
+
+    var formData = new FormData();
+    formData.append("url", state.sourceUrl);
+
+    fetch("/convert", { method: "POST", body: formData })
+      .then(function (resp) {
+        return resp.json().then(function (data) {
+          return { resp: resp, data: data };
+        });
+      })
+      .then(function (result) {
+        if (result.data.status === "ok") {
+          if (!completeArticleNavigation(requestId)) return;
+          pendingScrollRestore = state.scrollTop || 0;
+          showResult(result.data.html, state.sourceUrl);
+          urlInput.value = state.sourceUrl;
+          urlClear.classList.toggle("hidden", !state.sourceUrl);
+          // Re-add to cache and update history entry
+          var title = extractArticleTitle(result.data.html, state.sourceUrl);
+          var cacheId = addToCache(state.sourceUrl, result.data.html, title);
+          history.replaceState({
+            sourceUrl: state.sourceUrl,
+            title: title,
+            scrollTop: state.scrollTop || 0,
+            cacheId: cacheId
+          }, "", location.href);
+        } else {
+          var message = (result.data && result.data.message) || "Conversion failed.";
+          var hint = "";
+          var hintUrl = "";
+          if (result.data && result.data.hint) {
+            hint = result.data.hint;
+            hintUrl = result.data.hint_url || "";
+          } else if (result.resp.status === 429) {
+            hint = "You can try again shortly.";
+          } else if (result.resp.status === 500) {
+            hint = "If this keeps happening, the page may not be compatible.";
+          }
+          failArticleNavigation(requestId, "preserving", message, hint, hintUrl);
+        }
+      })
+      .catch(function () {
+        failArticleNavigation(
+          requestId, "preserving",
+          "This article is no longer cached.",
+          "Open the original page",
+          state.sourceUrl
+        );
+      });
+  }
+
+  window.addEventListener("popstate", function (e) {
+    var state = e.state;
+
+    // Cancel any in-progress navigation
+    if (isNavigationInProgress()) {
+      activeNavigationId = 0;
+      hideArticleOverlay();
+    }
+    pendingScrollRestore = null;
+
+    // No Decant state -- restore to initial page state
+    if (!state || state.cacheId === undefined) {
+      outputSection.classList.add("hidden");
+      hideError();
+      convertingStatus.classList.add("hidden");
+      document.querySelectorAll(".action-only").forEach(function (el) {
+        el.classList.add("hidden");
+      });
+      currentSourceUrl = "";
+      currentHtml = "";
+      urlInput.value = "";
+      urlClear.classList.add("hidden");
+      return;
+    }
+
+    var cached = articleCache.get(state.cacheId);
+
+    if (cached) {
+      // Cache hit: restore instantly
+      pendingScrollRestore = state.scrollTop || 0;
+      showResult(cached.articleHtml, cached.sourceUrl);
+      urlInput.value = cached.sourceUrl;
+      urlClear.classList.toggle("hidden", !cached.sourceUrl);
+    } else {
+      // Cache miss: re-convert
+      handleCacheMissReconversion(state);
+    }
+  });
 
   // Link setup runs on every iframe load. Because applyToIframe()
   // sets srcdoc (which replaces the contentDocument), old listeners
@@ -590,6 +744,16 @@
           });
         }
       });
+
+      // Restore scroll position if pending (from popstate)
+      if (pendingScrollRestore !== null) {
+        var scrollTarget = pendingScrollRestore;
+        pendingScrollRestore = null;
+        var se = doc.scrollingElement || doc.documentElement;
+        if (se) {
+          se.scrollTop = scrollTarget;
+        }
+      }
     } catch (e) { /* cross-origin or sandbox restriction */ }
   });
 
@@ -807,6 +971,15 @@
       .then(function (result) {
         if (result.data.status === "ok") {
           showResult(result.data.html, sourceUrl);
+          if (sourceUrl) {
+            var title = extractArticleTitle(result.data.html, sourceUrl);
+            var cacheId = addToCache(sourceUrl, result.data.html, title);
+            history.replaceState(
+              { sourceUrl: sourceUrl, title: title, scrollTop: 0, cacheId: cacheId },
+              "",
+              "/?url=" + encodeURIComponent(sourceUrl)
+            );
+          }
         } else {
           handleErrorResponse(result.resp, result.data);
         }
