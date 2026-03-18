@@ -169,7 +169,7 @@
 
     card.innerHTML =
       '<div class="demo-overlay-badge">Demo</div>' +
-      '<p>The clean article behind this card is our test page, ' +
+      '<p>The article behind this card is a sample page, ' +
       'cleaned up by Decant.</p>' +
       '<p>The original is full of ads, pop-ups, and clutter.</p>' +
       '<p class="demo-vo-hint">' +
