@@ -61,6 +61,9 @@ extraction_trial_output.txt
 project_files.txt
 eval/reports/
 
+# Corpus screening review pages (generated)
+tests/corpus-screening/review/
+
 # Staging area for corpus expansion
 tests/pipeline-audit/staging/
 

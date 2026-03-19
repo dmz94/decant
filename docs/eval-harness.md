@@ -243,6 +243,34 @@ runner.
 
 ---
 
+## Corpus Screening Tool
+
+The screening tool compares source HTML against converted
+output and generates side-by-side review pages with flagged
+items for human review. It checks image survival, table
+rendering, heading fidelity, section completeness, and
+placeholder inventory.
+
+It is designed for two workflows:
+- Screening new fixture candidates before baselining
+- Investigating regressions flagged by the metrics runner
+
+### Usage
+
+    python tests/corpus-screening/run_screening.py
+    python tests/corpus-screening/run_screening.py --select-fixture nhs-dyslexia
+
+### Output
+
+Review pages are generated in tests/corpus-screening/review/
+(gitignored). Open review/index.html to see all fixtures
+sorted by flag count.
+
+The screening tool does not replace human judgment. It focuses
+attention on specific items to check during visual review.
+
+---
+
 ## Known Limitations
 
 The eval harness measures extraction completeness and structural

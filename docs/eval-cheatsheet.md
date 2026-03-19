@@ -31,6 +31,15 @@ a permanent record, e.g. before a release or after a significant change.
 
 Use when you're debugging a specific article or investigating an anomaly.
 
+### Screening new fixtures before baselining
+    python tests/corpus-screening/run_screening.py
+
+Generates side-by-side review pages in
+tests/corpus-screening/review/. Open review/index.html, work
+through fixtures sorted by flag count (most flags first).
+Check flagged items, then run --interactive-baseline on the
+ones you approve.
+
 ### Add baselines for new fixtures
   python tests/pipeline-audit/run_metrics.py --select-corpus main --interactive-baseline
 
