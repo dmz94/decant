@@ -39,9 +39,11 @@ First fetch pass: 97 candidates attempted.
 - SMALL: 2 (C53 usgs-yellowstone 2KB, C69 mozilla-sync 3KB)
 - FAILED: 22
 
-Dead (11 rows deleted from candidates.md):
+Dead (12 rows deleted from candidates.md):
 - C05 reuters-nuclear: 401, article too short
 - C06 axios-iran-fuel: 403, article too short
+- C09 longreads-best-2025: site down (connection error on
+  both automated fetch and manual retry)
 - C28 openlearn-teachers: course landing page, not content
 - C32 allrecipes-lasagna: 402 paywall
 - C38 marthastewart-cheesecake: 402 paywall
@@ -64,10 +66,9 @@ Manual browser saves completed (9 files added to staging/):
 - C93 elife-editorial
 
 Retried (connection errors from first pass):
-- C09 longreads-best-2025: FAILED again (connection reset)
-- C10 atavist-castles: FAILED again (connection reset)
-- C11 restofworld-tiger: FAILED again (connection reset)
-- C44 canada-ai-guidance: FAILED again (connection reset)
+- C10 atavist-castles: manual browser save OK
+- C11 restofworld-tiger: manual browser save OK
+- C44 canada-ai-guidance: manual browser save OK
 
 ## Screening Tool Improvements Needed
 

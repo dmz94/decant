@@ -28,7 +28,6 @@ addition workflow.
 | C04 | apnews-immigration | https://apnews.com/article/trump-immigration-law-enforcement-ice-fa3d8b65321fb207dfbcfec4dae08b1e | 1 | verified | Wire service, minimal chrome |
 | C07 | newsweek-cholesterol | https://www.newsweek.com/americas-cholesterol-guidelines-updated-acc-aha-11679770 | 1 | verified | News-magazine template, published/updated metadata |
 | C08 | startribune-mayo-clinic | https://www.startribune.com/mayo-clinic-reports-record-147b-profit-in-2025/601593203 | 1 | high-confidence | Local/regional news, metered paywall |
-| C09 | longreads-best-2025 | https://longreads.com/2025/12/15/best-of-2025-our-most-popular-originals-of-the-year/ | 2 | verified | WordPress editorial, prose commentary |
 | C10 | atavist-castles | https://magazine.atavist.com/2020/castles-in-the-sky-san-francisco-denmark-diary-love-mystery | 2 | verified | Magazine chrome, subscribe/archive modules |
 | C11 | restofworld-tiger | https://restofworld.org/2025/tiger-global-unicorn-investment-crash/ | 2 | verified | Hero illustration, author credits, sectioned layout |
 | C12 | marshallproject-prison | https://www.themarshallproject.org/2026/03/10/prison-music-texas-rodeo-redemption-songs | 2 | verified | Investigative, newsletter CTAs, newsroom nav |
