@@ -186,6 +186,13 @@ a baseline and prompts for a decision:
 Fixtures that already have a baseline are skipped automatically.
 The review block shows a [N of total] counter in the header.
 
+### Auto-baseline (bulk additions)
+  python tests/pipeline-audit/run_metrics.py --select-corpus main --auto-baseline
+
+Saves baselines for all fixtures without one. No TTY required.
+Classification: no anomalies = PASS, anomalies = MARGINAL,
+pipeline error = FAIL. Use after visual review of new fixtures.
+
 ---
 
 ## When Human Review Is Required

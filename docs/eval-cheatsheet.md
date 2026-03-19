@@ -46,6 +46,27 @@ ones you approve.
 Only presents fixtures that don't have a baseline yet. Existing
 baselines are skipped. See "Adding New Fixtures" below.
 
+### Auto-baseline for bulk additions
+  python tests/pipeline-audit/run_metrics.py --select-corpus main --auto-baseline
+
+Saves baselines automatically for all fixtures that do not
+have one yet. No human interaction required.
+
+Classification:
+- No anomalies: saved as PASS
+- Anomalies present: saved as MARGINAL
+- Pipeline error: saved as FAIL
+
+Use this for bulk corpus additions after visual review.
+For careful single-fixture additions, use --interactive-baseline.
+
+### Workflow: adding fixtures in bulk
+1. Run the screening tool to generate review pages
+2. Visual review: browse review/index.html, cull bad fixtures
+3. Auto-baseline survivors:
+   python tests/pipeline-audit/run_metrics.py --select-corpus main --auto-baseline
+4. Commit baselines and updated manifest
+
 ---
 
 ## Status Codes

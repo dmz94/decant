@@ -601,6 +601,12 @@ def main():
         help="Interactive review session to save baselines for new fixtures",
     )
     parser.add_argument(
+        "--auto-baseline",
+        action="store_true",
+        dest="auto_baseline",
+        help="Auto-save baselines for new fixtures (PASS/MARGINAL/FAIL)",
+    )
+    parser.add_argument(
         "--quality-json-report",
         action="store_true",
         dest="quality_json_report",
@@ -613,6 +619,10 @@ def main():
         help="Print a human-readable quality status table to the terminal",
     )
     args = parser.parse_args()
+
+    if args.interactive_baseline and args.auto_baseline:
+        print("ERROR: --interactive-baseline and --auto-baseline cannot be combined", file=sys.stderr)
+        sys.exit(1)
 
     fixture_dir = FIXTURE_DIRS[args.select_corpus]
     manifest_path = AUDIT_DIR / "manifest.md"
@@ -650,9 +660,13 @@ def main():
         )
         sys.exit(1)
     interactive_baseline = args.interactive_baseline
+    auto_baseline = args.auto_baseline
     collect_results = args.quality_json_report or args.quality_report
     saved_count = 0
     skipped_count = 0
+    auto_pass = 0
+    auto_marginal = 0
+    auto_fail = 0
     fixture_results = []
 
     if interactive_baseline:
@@ -673,8 +687,10 @@ def main():
             print(f"  {f['num']:02d}  {name:<40}  MISSING")
             continue
 
-        # Interactive baseline: skip fixtures that already have a baseline
-        if interactive_baseline and load_baseline(args.select_corpus, name) is not None:
+        # Interactive/auto baseline: skip fixtures that already have a baseline
+        if (interactive_baseline or auto_baseline) and load_baseline(args.select_corpus, name) is not None:
+            if auto_baseline:
+                skipped_count += 1
             continue
 
         try:
@@ -701,6 +717,24 @@ def main():
                 elif action == "q":
                     print("  -> quit")
                     break
+            elif auto_baseline:
+                anomalies = _collect_anomalies(metrics)
+                if anomalies:
+                    status = "MARGINAL"
+                    reason = anomalies[0]
+                    auto_marginal += 1
+                else:
+                    status = "PASS"
+                    reason = ""
+                    auto_pass += 1
+                record = build_baseline_record(name, args.select_corpus, metrics)
+                record["status"] = status
+                save_baseline(args.select_corpus, name, record)
+                saved_count += 1
+                label = f"  {f['num']:>3}  {name:<40}  AUTO  {status}"
+                if reason:
+                    label += f"  ({reason})"
+                print(label)
             else:
                 print(
                     f"  {f['num']:02d}  {name:<40}  OK    "
@@ -740,6 +774,14 @@ def main():
                 elif action == "q":
                     print("  -> quit")
                     break
+            elif auto_baseline:
+                record = build_baseline_record(name, args.select_corpus, {})
+                record["status"] = "FAIL"
+                record["notes"] = str(e)
+                save_baseline(args.select_corpus, name, record)
+                saved_count += 1
+                auto_fail += 1
+                print(f"  {f['num']:>3}  {name:<40}  AUTO  FAIL      ({e})")
             else:
                 print(f"  {f['num']:02d}  {name:<40}  FAIL        {e}")
                 if collect_results:
@@ -765,6 +807,9 @@ def main():
     if interactive_baseline:
         print("--- Baseline review complete ---")
         print(f"  Saved: {saved_count}  Skipped: {skipped_count}")
+    elif auto_baseline:
+        print("--- Auto-baseline complete ---")
+        print(f"  PASS: {auto_pass}  MARGINAL: {auto_marginal}  FAIL: {auto_fail}  Skipped: {skipped_count}")
     else:
         print("--- Done ---")
 
