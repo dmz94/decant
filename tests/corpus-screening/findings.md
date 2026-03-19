@@ -31,6 +31,50 @@ Updated after each screening run or engine fix.
 11. Pattern triage on engine issues logged during expansion
 12. Commit corpus, update docs
 
+## Fetch Results (2026-03-19)
+
+First fetch pass: 97 candidates attempted.
+
+- OK: 73 (saved to staging/)
+- SMALL: 2 (deleted -- C53 usgs-yellowstone 2KB 404 page,
+  C69 mozilla-sync 3KB JS-rendered needs manual save)
+- FAILED: 22
+
+Dead (rows deleted from candidates.md):
+- C32 allrecipes-lasagna: 402 paywall
+- C38 marthastewart-cheesecake: 402 paywall
+- C47 uscis-disability: 404 URL gone
+- C53 usgs-yellowstone: 404 page not found
+
+Retried (connection errors from first pass):
+- C09 longreads-best-2025: FAILED again (connection reset)
+- C10 atavist-castles: FAILED again (connection reset)
+- C11 restofworld-tiger: FAILED again (connection reset)
+- C44 canada-ai-guidance: FAILED again (connection reset)
+
+Manual browser save needed (403/406 to bots, loads in
+browser):
+- C05 reuters-nuclear (401)
+- C06 axios-iran-fuel (403)
+- C09 longreads-best-2025 (connection reset)
+- C10 atavist-castles (connection reset)
+- C11 restofworld-tiger (connection reset)
+- C19 drugs-metformin (403)
+- C22 mind-depression (403)
+- C23 nami-bipolar (403)
+- C28 openlearn-teachers (403)
+- C43 ssa-disability (403)
+- C44 canada-ai-guidance (connection reset)
+- C62 simple-wiki-photosynthesis (Wikimedia rate limit)
+- C64 wiktionary-dyslexia (Wikimedia rate limit)
+- C65 wikisource-magna-carta (Wikimedia rate limit)
+- C69 mozilla-sync (JS-rendered)
+- C77 rogerebert-shadows (403)
+- C83 atlasobscura-medieval (403)
+- C85 unesco-heritage (403)
+- C92 pmc-open-access (403)
+- C93 elife-editorial (406)
+
 ## Screening Tool Improvements Needed
 
 These must be fixed before screening 60+ new fixtures.

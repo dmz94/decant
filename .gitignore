@@ -66,6 +66,7 @@ tests/corpus-screening/review/
 
 # Staging area for corpus expansion
 tests/pipeline-audit/staging/
+tests/pipeline-audit/fetch-results.txt
 
 # Generated review pack (zipped and sent to reviewers)
 tests/pipeline-audit/visual-review/review-pack/

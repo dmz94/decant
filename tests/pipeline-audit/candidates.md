@@ -53,13 +53,11 @@ addition workflow.
 | C29 | scholastic-reading | https://www.scholastic.com/teachers/teaching-tools/articles/literacy/science-of-reading-resources.html | 5 | verified | Teacher resource, Science of Reading |
 | C30 | colorincolorado-ell | https://www.colorincolorado.org/article/what-ell-educator | 5 | verified | Bilingual education, ELL-specific content |
 | C31 | bbcgoodfood-victoria | https://www.bbcgoodfood.com/recipes/classic-victoria-sandwich-recipe | 6 | verified | Editorial recipe, skip-to-ingredients anchor, star ratings |
-| C32 | allrecipes-lasagna | https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/ | 6 | verified | Community recipe, 13k reviews, jump-to-recipe + jump-to-nutrition |
 | C33 | sallysbaking-applepie | https://sallysbakingaddiction.com/apple-pie-recipe/ | 6 | verified | Ad-heavy blog, jump-to-recipe, dense cross-linking before card |
 | C34 | pinchofyum-tikka | https://pinchofyum.com/chicken-tikka-masala | 6 | verified | Ratings widget, structured recipe card after long article text |
 | C35 | giallozafferano-tiramisu | https://www.giallozafferano.com/recipes/Tiramisu.html | 6 | verified | Italian publisher in English, language switch, calorie panel |
 | C36 | minimalistbaker-cake | https://minimalistbaker.com/one-bowl-vegan-chocolate-cake/ | 6 | verified | Vegan blog, disclosures, vote-based rating metadata |
 | C37 | damndelicious-pasta | https://damndelicious.net/2014/10/11/one-pot-garlic-parmesan-pasta/ | 6 | verified | Long preamble, star rating count, video section header |
-| C38 | marthastewart-cheesecake | https://www.marthastewart.com/313705/classic-cheesecake | 6 | verified | Editorial how-to, key ingredients + tools subsections |
 | C39 | instructables-elwire | https://www.instructables.com/Beginners-Guide-to-Start-an-EL-Wire-Project/ | 7 | verified | Step-based CMS, embedded images per step |
 | C40 | thisoldhouse-diy | https://www.thisoldhouse.com/home-improvement/25-diy-fundamentals | 7 | verified | 25 numbered skills, home-improvement publisher |
 | C41 | nerdwallet-will | https://www.nerdwallet.com/article/investing/estate-planning/how-to-write-a-will | 7 | high-confidence | Financial how-to, 7-step guide |
@@ -68,13 +66,11 @@ addition workflow.
 | C44 | canada-ai-guidance | https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-generative-ai.html | 8 | verified | Canadian federal guidance, WET framework, breadcrumbs |
 | C45 | epa-climate-actions | https://www.epa.gov/climate-change/climate-change-regulatory-actions-and-initiatives | 8 | verified | US EPA, prose across sectors, section headers |
 | C46 | australia-impact | https://oia.pmc.gov.au/resources/guidance-impact-analysis/australian-government-guide-policy-impact-analysis | 8 | verified | Australian gov, policy framework, downloadable attachments |
-| C47 | uscis-disability | https://www.uscis.gov/forms/all-forms/n-648-medical-certification-for-disability-exceptions | 8 | verified | Official form guidance, compliance boilerplate |
 | C48 | travel-state-passports | https://travel.state.gov/content/travel/en/passports/how-apply.html | 8 | verified | Multi-step passport instructions, eligibility subsections |
 | C49 | eu-commission-apply | https://commission.europa.eu/funding-tenders/how-apply/application-process_en | 8 | verified | EU institutional, layered structure, policy nav |
 | C50 | insideclimate-2025 | https://insideclimatenews.org/news/28122025/2025-year-in-climate/ | 9 | verified | Long-form year-in-review, free, no paywall |
 | C51 | nasa-globalwarming | https://www.earthobservatory.nasa.gov/Features/GlobalWarming/page5.php | 9 | verified | Multi-page/paginated explainer, continuity stitching test |
 | C52 | sciencenews-animals | https://www.sciencenews.org/article/favorite-animal-stories-2025 | 9 | high-confidence | Nature writing, metered paywall, full text in HTML |
-| C53 | usgs-yellowstone | https://www.usgs.gov/news/featured-story/hot-spring-cleaning-yellowstone-national-park | 9 | verified | USGS feature, featured-story framing, photo content |
 | C54 | history-constitution | https://www.history.com/topics/united-states-constitution/constitution | 10 | verified | History.com reference, extensive prose, inline video links |
 | C55 | mentalfloss-hysteria | https://www.mentalfloss.com/history/dark-history-of-hysteria | 10 | verified | History explainer, extended prose, historical analysis |
 | C56 | jstor-footnotes | https://daily.jstor.org/historys-footnotes/ | 10 | verified | Academic-adjacent explainer, peer-reviewed source links |
