@@ -323,6 +323,22 @@ def _count_block_words(blocks) -> int:
 # Comparison / flag generation
 # ---------------------------------------------------------------------------
 
+def _normalize_heading(text: str) -> str:
+    """Normalize heading text for fuzzy comparison.
+
+    Lowercase, strip, collapse whitespace, remove hyphens/colons/em dashes
+    and other punctuation that commonly differs between source and output.
+    """
+    t = text.lower().strip()
+    # Replace common separators with space
+    t = re.sub(r'[\-\u2013\u2014:]+', ' ', t)
+    # Remove non-breaking spaces and other unicode whitespace
+    t = re.sub(r'[\u00a0\u200b]+', ' ', t)
+    # Collapse whitespace
+    t = re.sub(r'\s+', ' ', t).strip()
+    return t
+
+
 def generate_flags(source: dict, output: dict) -> dict:
     """Compare source and output analyses, return categorized flags."""
     flags = {
@@ -393,17 +409,27 @@ def generate_flags(source: dict, output: dict) -> dict:
         )
 
     # --- Headings ---
-    src_heading_texts = {h["text"].lower() for h in source["headings"]}
-    out_heading_texts = {h["text"].lower() for h in output["headings"]}
+    src_headings_norm = [(h["text"], _normalize_heading(h["text"])) for h in source["headings"]]
+    out_headings_norm = [(h["text"], _normalize_heading(h["text"])) for h in output["headings"]]
+
+    out_norm_set = {norm for _, norm in out_headings_norm}
+    src_norm_set = {norm for _, norm in src_headings_norm}
 
     missing = []
-    for h in source["headings"]:
-        if h["text"].lower() not in out_heading_texts:
-            missing.append(h["text"])
+    for raw, norm in src_headings_norm:
+        if norm in out_norm_set:
+            continue
+        if any(norm in on or on in norm for on in out_norm_set if norm and on):
+            continue
+        missing.append(raw)
+
     extra = []
-    for h in output["headings"]:
-        if h["text"].lower() not in src_heading_texts:
-            extra.append(h["text"])
+    for raw, norm in out_headings_norm:
+        if norm in src_norm_set:
+            continue
+        if any(norm in sn or sn in norm for sn in src_norm_set if norm and sn):
+            continue
+        extra.append(raw)
 
     if missing:
         for h in missing:
