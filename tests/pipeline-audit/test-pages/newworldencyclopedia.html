@@ -1,0 +1,759 @@
+<!DOCTYPE html><html class="client-nojs" lang="en" dir="ltr"><head><script>
+// templated by golang 
+function __setCMPv2RequestData() {
+    window._CMPv2RequestData = {
+	    "language": "en",
+	    "stylingLogo": "//g.ezodn.com/utilcave_com/middleton/img.webp?dirname=newworldencyclopedia_org&amp;img=/logo/newworldencyclopedia_org"
+    };
+}
+__setCMPv2RequestData();
+
+var gtagLoadBackoff = 50;
+function gtagLoadedCheck() {
+    if(typeof gtag == 'undefined') {
+        gtagLoadBackoff += 50;
+
+        return setTimeout(function(){
+            gtagLoadedCheck();
+        }, gtagLoadBackoff);
+    } else {
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+    }
+}
+
+gtagLoadedCheck();</script>
+
+<script src="https://privacy.gatekeeperconsent.com/tcf2_stub.js" data-cfasync="false"></script><script>var __ezHttpConsent={setByCat:function(src,tagType,attributes,category,force,customSetScriptFn=null){var setScript=function(){if(force||window.ezTcfConsent[category]){if(typeof customSetScriptFn==='function'){customSetScriptFn();}else{var scriptElement=document.createElement(tagType);scriptElement.src=src;attributes.forEach(function(attr){for(var key in attr){if(attr.hasOwnProperty(key)){scriptElement.setAttribute(key,attr[key]);}}});var firstScript=document.getElementsByTagName(tagType)[0];firstScript.parentNode.insertBefore(scriptElement,firstScript);}}};if(force||(window.ezTcfConsent&&window.ezTcfConsent.loaded)){setScript();}else if(typeof getEzConsentData==="function"){getEzConsentData().then(function(ezTcfConsent){if(ezTcfConsent&&ezTcfConsent.loaded){setScript();}else{console.error("cannot get ez consent data");force=true;setScript();}});}else{force=true;setScript();console.error("getEzConsentData is not a function");}},};</script>
+<script>var ezTcfConsent=window.ezTcfConsent?window.ezTcfConsent:{loaded:false,store_info:false,develop_and_improve_services:false,measure_ad_performance:false,measure_content_performance:false,select_basic_ads:false,create_ad_profile:false,select_personalized_ads:false,create_content_profile:false,select_personalized_content:false,understand_audiences:false,use_limited_data_to_select_content:false,};function getEzConsentData(){return new Promise(function(resolve){document.addEventListener("ezConsentEvent",function(event){var ezTcfConsent=event.detail.ezTcfConsent;resolve(ezTcfConsent);});});}</script>
+<script>if(typeof _setEzCookies!=='function'){function _setEzCookies(ezConsentData){var cookies=window.ezCookieQueue;for(var i=0;i<cookies.length;i++){var cookie=cookies[i];if(ezConsentData&&ezConsentData.loaded&&ezConsentData[cookie.tcfCategory]){document.cookie=cookie.name+"="+cookie.value;}}}}
+window.ezCookieQueue=window.ezCookieQueue||[];if(typeof addEzCookies!=='function'){function addEzCookies(arr){window.ezCookieQueue=[...window.ezCookieQueue,...arr];}}
+addEzCookies([{name:"ezopvc_659062",value:"1; Path=/; Domain=newworldencyclopedia.org; Expires=Thu, 19 Mar 2026 15:38:32 UTC",tcfCategory:"understand_audiences",isEzoic:"true",},{name:"ezoab_659062",value:"mod280-c; Path=/; Domain=newworldencyclopedia.org; Max-Age=7200",tcfCategory:"store_info",isEzoic:"true",},{name:"active_template::659062",value:"pub_site.1773932912; Path=/; Domain=newworldencyclopedia.org; Expires=Sat, 21 Mar 2026 15:08:32 UTC",tcfCategory:"store_info",isEzoic:"true",},{name:"ezoadgid_659062",value:"-1; Path=/; Domain=newworldencyclopedia.org; Max-Age=1800",tcfCategory:"understand_audiences",isEzoic:"true",}]);if(window.ezTcfConsent&&window.ezTcfConsent.loaded){_setEzCookies(window.ezTcfConsent);}else if(typeof getEzConsentData==="function"){getEzConsentData().then(function(ezTcfConsent){if(ezTcfConsent&&ezTcfConsent.loaded){_setEzCookies(window.ezTcfConsent);}else{console.error("cannot get ez consent data");_setEzCookies(window.ezTcfConsent);}});}else{console.error("getEzConsentData is not a function");_setEzCookies(window.ezTcfConsent);}</script><script type="text/javascript" data-ezscrex='false' data-cfasync='false'>window._ezaq = Object.assign({"edge_cache_status":33,"edge_response_time":107,"url":"https://www.newworldencyclopedia.org/entry/Encyclopedia"}, typeof window._ezaq !== "undefined" ? window._ezaq : {});</script><script type="text/javascript" data-ezscrex='false' data-cfasync='false'>window._ezaq = Object.assign({"ab_test_id":"mod280-c"}, typeof window._ezaq !== "undefined" ? window._ezaq : {});window.__ez=window.__ez||{};window.__ez.tf={};</script><script data-ezscrex='false' data-cfasync='false' data-pagespeed-no-defer>var __ez=__ez||{};__ez.stms=Date.now();__ez.evt={};__ez.script={};__ez.ck=__ez.ck||{};__ez.template={};__ez.template.isOrig=false;window.__ezScriptHost="//www.ezojs.com";__ez.queue=__ez.queue||function(){var e=0,i=0,t=[],n=!1,o=[],r=[],s=!0,a=function(e,i,n,o,r,s,a){var l=arguments.length>7&&void 0!==arguments[7]?arguments[7]:window,d=this;this.name=e,this.funcName=i,this.parameters=null===n?null:w(n)?n:[n],this.isBlock=o,this.blockedBy=r,this.deleteWhenComplete=s,this.isError=!1,this.isComplete=!1,this.isInitialized=!1,this.proceedIfError=a,this.fWindow=l,this.isTimeDelay=!1,this.process=function(){f("... func = "+e),d.isInitialized=!0,d.isComplete=!0,f("... func.apply: "+e);var i=d.funcName.split("."),n=null,o=this.fWindow||window;i.length>3||(n=3===i.length?o[i[0]][i[1]][i[2]]:2===i.length?o[i[0]][i[1]]:o[d.funcName]),null!=n&&n.apply(null,this.parameters),!0===d.deleteWhenComplete&&delete t[e],!0===d.isBlock&&(f("----- F'D: "+d.name),p())}},l=function(e,i,t,n,o,r,s){var a=arguments.length>7&&void 0!==arguments[7]?arguments[7]:window,l=this;this.name=e,this.path=i,this.async=o,this.defer=r,this.isBlock=t,this.blockedBy=n,this.isInitialized=!1,this.isError=!1,this.isComplete=!1,this.proceedIfError=s,this.fWindow=a,this.isTimeDelay=!1,this.isPath=function(e){return"/"===e[0]&&"/"!==e[1]},this.getSrc=function(e){return void 0!==window.__ezScriptHost&&this.isPath(e)?window.__ezScriptHost+e:e},this.process=function(){l.isInitialized=!0,f("... file = "+e);var i=this.fWindow?this.fWindow.document:document,t=i.createElement("script");t.src=this.getSrc(this.path),!0===o?t.async=!0:!0===r&&(t.defer=!0),t.onerror=function(){var e={url:window.location.href,name:l.name,path:l.path,user_agent:window.navigator.userAgent};"undefined"!=typeof _ezaq&&(e.pageview_id=_ezaq.page_view_id);var i=encodeURIComponent(JSON.stringify(e)),t=new XMLHttpRequest;t.open("GET","//g.ezoic.net/ezqlog?d="+i,!0),t.send(),f("----- ERR'D: "+l.name),l.isError=!0,!0===l.isBlock&&p()},t.onreadystatechange=t.onload=function(){var e=t.readyState;f("----- F'D: "+l.name),e&&!/loaded|complete/.test(e)||(l.isComplete=!0,!0===l.isBlock&&p())},i.getElementsByTagName("head")[0].appendChild(t)}},d=function(e,i){this.name=e,this.path="",this.async=!1,this.defer=!1,this.isBlock=!1,this.blockedBy=[],this.isInitialized=!0,this.isError=!1,this.isComplete=i,this.proceedIfError=!1,this.isTimeDelay=!1,this.process=function(){}};function c(e,i,n,s,a,d,c,u,f){var p=new l(e,i,n,s,a,d,c,f);!0===u?o[e]=p:r[e]=p,t[e]=p,h(p)}function h(e){!0!==u(e)&&0!=s&&e.process()}function u(e){if(!0===e.isTimeDelay&&!1===n)return f(e.name+" blocked = TIME DELAY!"),!0;if(w(e.blockedBy))for(var i=0;i<e.blockedBy.length;i++){var o=e.blockedBy[i];if(!1===t.hasOwnProperty(o))return f(e.name+" blocked = "+o),!0;if(!0===e.proceedIfError&&!0===t[o].isError)return!1;if(!1===t[o].isComplete)return f(e.name+" blocked = "+o),!0}return!1}function f(e){var i=window.location.href,t=new RegExp("[?&]ezq=([^&#]*)","i").exec(i);"1"===(t?t[1]:null)&&console.debug(e)}function p(){++e>200||(f("let's go"),m(o),m(r))}function m(e){for(var i in e)if(!1!==e.hasOwnProperty(i)){var t=e[i];!0===t.isComplete||u(t)||!0===t.isInitialized||!0===t.isError?!0===t.isError?f(t.name+": error"):!0===t.isComplete?f(t.name+": complete already"):!0===t.isInitialized&&f(t.name+": initialized already"):t.process()}}function w(e){return"[object Array]"==Object.prototype.toString.call(e)}return window.addEventListener("load",(function(){setTimeout((function(){n=!0,f("TDELAY -----"),p()}),5e3)}),!1),{addFile:c,addFileOnce:function(e,i,n,o,r,s,a,l,d){t[e]||c(e,i,n,o,r,s,a,l,d)},addDelayFile:function(e,i){var n=new l(e,i,!1,[],!1,!1,!0);n.isTimeDelay=!0,f(e+" ...  FILE! TDELAY"),r[e]=n,t[e]=n,h(n)},addFunc:function(e,n,s,l,d,c,u,f,p,m){!0===c&&(e=e+"_"+i++);var w=new a(e,n,s,l,d,u,f,m);!0===p?o[e]=w:r[e]=w,t[e]=w,h(w)},addDelayFunc:function(e,i,n){var o=new a(e,i,n,!1,[],!0,!0);o.isTimeDelay=!0,f(e+" ...  FUNCTION! TDELAY"),r[e]=o,t[e]=o,h(o)},items:t,processAll:p,setallowLoad:function(e){s=e},markLoaded:function(e){if(e&&0!==e.length){if(e in t){var i=t[e];!0===i.isComplete?f(i.name+" "+e+": error loaded duplicate"):(i.isComplete=!0,i.isInitialized=!0)}else t[e]=new d(e,!0);f("markLoaded dummyfile: "+t[e].name)}},logWhatsBlocked:function(){for(var e in t)!1!==t.hasOwnProperty(e)&&u(t[e])}}}();__ez.evt.add=function(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n()},__ez.evt.remove=function(e,t,n){e.removeEventListener?e.removeEventListener(t,n,!1):e.detachEvent?e.detachEvent("on"+t,n):delete e["on"+t]};__ez.script.add=function(e){var t=document.createElement("script");t.src=e,t.async=!0,t.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(t)};__ez.dot=__ez.dot||{};__ez.queue.addFileOnce('/detroitchicago/boise.js', '/detroitchicago/boise.js?gcb=195-1&cb=5', true, [], true, false, true, false);__ez.queue.addFileOnce('/parsonsmaize/abilene.js', '/parsonsmaize/abilene.js?gcb=195-1&cb=284d222a52', true, [], true, false, true, false);__ez.queue.addFileOnce('/parsonsmaize/mulvane.js', '/parsonsmaize/mulvane.js?gcb=195-1&cb=e75e48eec0', true, ['/parsonsmaize/abilene.js'], true, false, true, false);__ez.queue.addFileOnce('/detroitchicago/birmingham.js', '/detroitchicago/birmingham.js?gcb=195-1&cb=539c47377c', true, ['/parsonsmaize/abilene.js'], true, false, true, false);</script>
+<script data-ezscrex="false" type="text/javascript" data-cfasync="false">window._ezaq = Object.assign({"ad_cache_level":1,"adpicker_placement_cnt":2,"ai_placeholder_cache_level":1,"ai_placeholder_placement_cnt":-1,"domain":"newworldencyclopedia.org","domain_id":659062,"ezcache_level":2,"ezcache_skip_code":0,"has_bad_image":0,"has_bad_words":0,"is_sitespeed":0,"lt_cache_level":0,"response_size":82008,"response_size_orig":71358,"response_time_orig":2,"template_id":134,"url":"https://www.newworldencyclopedia.org/entry/Encyclopedia","word_count":4455,"worst_bad_word_level":0}, typeof window._ezaq !== "undefined" ? window._ezaq : {});__ez.queue.markLoaded('ezaqBaseReady');</script>
+<link rel='preload' as='script' href='//securepubads.g.doubleclick.net/tag/js/gpt.js'>
+<link rel='preload' as='script' href='//go.ezodn.com/hb/dall.js?cb=195-1-147'>
+<script type="text/javascript">(function(){function storageAvailable(type){var storage;try{storage=window[type];var x='__storage_test__';storage.setItem(x,x);storage.removeItem(x);return true;}
+catch(e){return e instanceof DOMException&&(e.code===22||e.code===1014||e.name==='QuotaExceededError'||e.name==='NS_ERROR_DOM_QUOTA_REACHED')&&(storage&&storage.length!==0);}}
+function remove_ama_config(){if(storageAvailable('localStorage')){localStorage.removeItem("google_ama_config");}}
+remove_ama_config()})()</script>
+<script type="text/javascript">var ezoicTestActive = true</script>
+<script type='text/javascript' data-ezscrex='false' data-cfasync='false'>
+window.ezAnalyticsStatic = true;
+
+function analyticsAddScript(script) {
+	var ezDynamic = document.createElement('script');
+	ezDynamic.type = 'text/javascript';
+	ezDynamic.innerHTML = script;
+	document.head.appendChild(ezDynamic);
+}
+function getCookiesWithPrefix() {
+    var allCookies = document.cookie.split(';');
+    var cookiesWithPrefix = {};
+
+    for (var i = 0; i < allCookies.length; i++) {
+        var cookie = allCookies[i].trim();
+
+        for (var j = 0; j < arguments.length; j++) {
+            var prefix = arguments[j];
+            if (cookie.indexOf(prefix) === 0) {
+                var cookieParts = cookie.split('=');
+                var cookieName = cookieParts[0];
+                var cookieValue = cookieParts.slice(1).join('=');
+                cookiesWithPrefix[cookieName] = decodeURIComponent(cookieValue);
+                break; // Once matched, no need to check other prefixes
+            }
+        }
+    }
+
+    return cookiesWithPrefix;
+}
+function productAnalytics() {
+	var d = {"pr":[6,3,1],"aop":{"4":134,"7":0},"omd5":"6de1e24c21638bcfb2f512747f1b5e29"};
+	d.u = _ezaq.url;
+	d.p = _ezaq.page_view_id;
+	d.v = _ezaq.visit_uuid;
+	d.ab = _ezaq.ab_test_id;
+	d.e = JSON.stringify(_ezaq);
+	d.ref = document.referrer;
+	d.dw = document.documentElement.clientWidth || window.innerWidth || 0;
+	d.dh = window.screen.height || 0;
+	d.vpw = window.innerWidth || document.documentElement.clientWidth || 0;
+	d.vph = window.innerHeight || document.documentElement.clientHeight || 0;
+	d.doch = Math.max((document.body && document.body.scrollHeight) || 0, (document.documentElement && document.documentElement.scrollHeight) || 0, (document.body && document.body.offsetHeight) || 0, (document.documentElement && document.documentElement.offsetHeight) || 0, (document.body && document.body.clientHeight) || 0, (document.documentElement && document.documentElement.clientHeight) || 0);
+	d.c = getCookiesWithPrefix('active_template', 'ez', 'lp_');
+	if(typeof ez_utmParams !== 'undefined') {
+		d.utm = ez_utmParams;
+	}
+	d.qs = window.location.search;
+
+	var dataText = JSON.stringify(d);
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST','/ezais/analytics?cb=1', true);
+	xhr.onload = function () {
+		if (xhr.status!=200) {
+            return;
+		}
+
+        if(document.readyState !== 'loading') {
+            analyticsAddScript(xhr.response);
+            return;
+        }
+
+        var eventFunc = function() {
+            if(document.readyState === 'loading') {
+                return;
+            }
+            document.removeEventListener('readystatechange', eventFunc, false);
+            analyticsAddScript(xhr.response);
+        };
+
+        document.addEventListener('readystatechange', eventFunc, false);
+	};
+	xhr.setRequestHeader('Content-Type','text/plain');
+	xhr.send(dataText);
+}
+__ez.queue.addFunc("productAnalytics", "productAnalytics", null, true, ['ezaqBaseReady'], false, false, false, true);
+</script><script type="text/javascript" data-ezscrex="false" data-cfasync="false" async="">
+function productEzoicAds() {
+if(window.ezDisableAds === true) {
+	return;
+}
+window.google_reactive_ads_global_state = {
+                adCount: {},
+                floatingAdsStacking: { maxZIndexListeners: [], maxZIndexRestrictions: {}, nextRestrictionId: 0 },
+                messageValidationEnabled: false,
+                reactiveTypeDisabledByPublisher: {},
+                reactiveTypeEnabledInAsfe: {},
+                sideRailAvailableSpace: [],
+                sideRailOverlappableElements: [],
+                stateForType: {},
+                tagSpecificState: {},
+                wasPlaTagProcessed: true,
+                wasReactiveAdConfigReceived: { 1: true, 2: true, 8: true },
+                wasReactiveAdVisible: {},
+                wasReactiveTagRequestSent: true,
+                description: "Can't disable auto ads programmatically on the page, so here we are!"
+            };
+var d = {"ab":"","km":{},"pv":"","vu":"b1f817dc-833c-4139-69d3-c74f04717fd0","r":{"r":[{"p":" ezoic_pub_ad_placeholder-118-top_of_page-970x90-118-nonexxxnonexxxxxxezmaxscaleval100 ","s":118,"h":280,"w":970,"r":true},{"p":" ezoic_pub_ad_placeholder-127-incontent_40-300x250-127-nonexxxnonexxxxxxezmaxscaleval100 ","s":127,"h":280,"w":336,"r":true},{"p":" ezoic_pub_ad_placeholder-901-under_page_title-728x90-901-nonexxxnonexxxxxxezmaxscaleval100 ","s":901,"h":280,"w":970,"r":true},{"p":" ezoic_pub_ad_placeholder-909-under_first_paragraph-728x90-909-nonexxxnonexxxxxxezmaxscaleval100 ","s":909,"h":400,"w":970,"r":true},{"p":" ezoic_pub_ad_placeholder-910-under_second_paragraph-300x250-910-nonexxxnonexxxxxxezmaxscaleval100 ","s":910,"h":400,"w":970,"r":true},{"p":" ezoic_pub_ad_placeholder-911-mid_content-250x250-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-300x250-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-320x100-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-300x50v2-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-320x50-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-336x280-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-320x100v2-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-468x60-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-580x400-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-250x250x2-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-728x90-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-970x250-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911,"h":400,"w":970},{"p":" ezoic_pub_ad_placeholder-911-mid_content-300x250x3-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-911-mid_content-970x90-911-nonexxxnonexxxxxxezmaxscaleval100 ","s":911},{"p":" ezoic_pub_ad_placeholder-912-long_content-250x250-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-300x250-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-320x100-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-300x50v2-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-320x50-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-336x280-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-320x100v2-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-468x60-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-580x400-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912,"h":400,"w":970},{"p":" ezoic_pub_ad_placeholder-912-long_content-250x250x2-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-728x90-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-970x250-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-300x250x3-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-912-long_content-970x90-912-nonexxxnonexxxxxxezmaxscaleval100 ","s":912},{"p":" ezoic_pub_ad_placeholder-913-longer_content-250x250-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-300x250-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-320x100-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-300x50v2-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-320x50-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-336x280-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913,"h":400,"w":970},{"p":" ezoic_pub_ad_placeholder-913-longer_content-320x100v2-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-468x60-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-580x400-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-250x250x2-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-728x90-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-970x250-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-300x250x3-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-913-longer_content-970x90-913-nonexxxnonexxxxxxezmaxscaleval100 ","s":913},{"p":" ezoic_pub_ad_placeholder-914-longest_content-250x250-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-300x250-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-320x100-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-300x50v2-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-320x50-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-336x280-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914,"h":400,"w":970},{"p":" ezoic_pub_ad_placeholder-914-longest_content-320x100v2-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-468x60-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-580x400-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-250x250x2-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-728x90-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-970x250-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-300x250x3-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-914-longest_content-970x90-914-nonexxxnonexxxxxxezmaxscaleval100 ","s":914},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-250x250-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-300x250-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915,"h":400,"w":970},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-320x100-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-300x50v2-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-320x50-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-336x280-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-320x100v2-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-468x60-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-580x400-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-250x250x2-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-728x90-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-970x250-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-300x250x3-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-915-incontent_5-970x90-915-nonexxxnonexxxxxxezmaxscaleval100 ","s":915},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-250x250-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-300x250-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-320x100-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-300x50v2-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-320x50-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-336x280-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-320x100v2-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-468x60-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-580x400-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-250x250x2-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-728x90-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-970x250-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916,"h":400,"w":970},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-300x250x3-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-916-incontent_6-970x90-916-nonexxxnonexxxxxxezmaxscaleval100 ","s":916},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-250x250-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-300x250-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-320x100-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-300x50v2-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-320x50-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-336x280-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-320x100v2-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-468x60-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-580x400-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-250x250x2-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-728x90-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-970x250-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917,"h":400,"w":970},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-300x250x3-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-917-incontent_7-970x90-917-nonexxxnonexxxxxxezmaxscaleval100 ","s":917},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-250x250-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-300x250-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-320x100-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-300x50v2-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-320x50-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-336x280-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-320x100v2-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-468x60-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-580x400-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-250x250x2-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-728x90-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-970x250-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918,"h":400,"w":970},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-300x250x3-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-918-incontent_8-970x90-918-nonexxxnonexxxxxxezmaxscaleval100 ","s":918},{"p":" ezoic_pub_ad_placeholder-100-bottom_floating-728x90-100-nonexxxnonexxxxxxezmaxscaleval100 ","s":100,"h":90,"w":970,"r":true},{"p":" ezoic_pub_ad_placeholder-116-edge-160x600-116-nonexxxnonexxxxxxezmaxscaleval100 ","s":116,"h":600,"w":160,"r":true},{"p":" ezoic_pub_ad_placeholder-117-edge_2-160x600-117-nonexxxnonexxxxxxezmaxscaleval100 ","s":117,"h":600,"w":160,"r":true}],"a":{"100":true,"116":true,"117":true,"118":true,"12":true,"127":true,"6":true,"901":true,"909":true,"910":true,"911":true,"912":true,"913":true,"914":true,"915":true,"916":true,"917":true,"918":true},"g":-1,"l":{"0":90,"1":3,"2":2,"3":1,"4":-1,"5":-1},"m":{"0":90,"1":3,"2":2,"3":1,"4":-1,"5":-1},"v":0,"ve":false,"hr":false,"sa":false},"cr":"","tid":134,"tn":"pub_site","url":"","wc":4455,"ff":1,"dhh":"","dw":0,"dh":0,"vpw":0,"vph":0,"doch":0};
+d.ab = _ezaq.ab_test_id;
+d.pv = _ezaq.page_view_id;
+d.vu = _ezaq.visit_uuid;
+d.url = window.location.href;
+d.dw = document.documentElement.clientWidth || window.innerWidth || 0;
+d.dh = window.screen.height || 0;
+d.vpw = window.innerWidth || document.documentElement.clientWidth || 0;
+d.vph = window.innerHeight || document.documentElement.clientHeight || 0;
+d.doch = Math.max((document.body && document.body.scrollHeight) || 0, (document.documentElement && document.documentElement.scrollHeight) || 0, (document.body && document.body.offsetHeight) || 0, (document.documentElement && document.documentElement.offsetHeight) || 0, (document.body && document.body.clientHeight) || 0, (document.documentElement && document.documentElement.clientHeight) || 0);
+var dynamicAddScript = function(script) {
+	if(window.ezFinishedStatic === true) {
+		console.error("attempted to load dynamic script again");
+		return;
+	}
+	var errorMessages = [];
+	function errorHandler(event) {
+	  var errorObj = event.error;
+	  if (errorObj && errorObj.stack && errorObj.stack.indexOf('dynamicAddScript') !== -1) {
+		var errorMessage = {
+		  Message: event.message,
+		  LineNo: event.lineno,
+		  ColumnNo: event.colno,
+		  Stack: errorObj.stack
+		};
+		errorMessages.push(errorMessage);
+	  }
+
+	  if (typeof window.onerror === 'function') {
+		window.onerror.apply(this, arguments);
+	  }
+	}
+ 	window.addEventListener('error', errorHandler);
+
+	var ezDynamic = document.createElement('script');
+	ezDynamic.type = 'text/javascript';
+	ezDynamic.innerHTML = script;
+	document.head.appendChild(ezDynamic);
+
+	window.removeEventListener('error', errorHandler);
+	if (window.ezFinishedStatic !== true || typeof window.ezstaticerrors !== 'undefined') {
+		d.Script = script;
+		d.ErrorMessages = JSON.stringify(errorMessages);
+		d.ErrorStaticMessages = window.ezstaticerrors || '';
+		var dataTxt = JSON.stringify(d);
+		if (dataTxt.length > 0) {
+			var logXHR = new XMLHttpRequest();
+			logXHR.open('POST','/ezais/log?cb=1', true);
+			logXHR.setRequestHeader('Content-Type','application/json');
+			logXHR.send(dataTxt);
+		}
+	}
+};
+function collectFP(cb) {
+	var lib = (typeof ce !== "undefined") ? ce : (typeof FingerprintJS !== "undefined" ? FingerprintJS : null);
+	if (!lib) { cb(); return; }
+	try {
+		lib.load().then(function(agent) { return agent.get(); }).then(function(res) {
+			try {
+				var c = res.components || {};
+				d.fp = {
+					pr: window.devicePixelRatio || 0,
+					hc: (c.hardwareConcurrency && c.hardwareConcurrency.value) ? c.hardwareConcurrency.value : (navigator.hardwareConcurrency || 0),
+					dm: navigator.deviceMemory || 0,
+					ch: c.canvas && c.canvas.value && c.canvas.value.text ? c.canvas.value.text : '',
+					wr: c.webGlBasics && c.webGlBasics.value ? (c.webGlBasics.value.rendererUnmasked || c.webGlBasics.value.renderer || '') : '',
+					wv: c.webGlBasics && c.webGlBasics.value ? (c.webGlBasics.value.vendorUnmasked || c.webGlBasics.value.vendor || '') : '',
+					af: c.audio && c.audio.value !== undefined ? String(c.audio.value) : '',
+					ft: c.fonts && c.fonts.value ? c.fonts.value.join(',') : ''
+				};
+			} catch(e) {}
+			cb();
+		}).catch(function() { cb(); });
+	} catch(e) { cb(); }
+}
+collectFP(function() {
+var dataText = JSON.stringify(d);
+if (dataText.length > 0) {
+	var startTime = Date.now() - __ez.stms;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST','/ezais/dynamic?cb=1', true);
+	xhr.onload = function () {
+		if (xhr.status!=200) {
+            return;
+		}
+
+        if(document.readyState !== 'loading') {
+            dynamicAddScript(xhr.response);
+            return;
+        }
+
+        var eventFunc = function() {
+            if(document.readyState === 'loading') {
+                return;
+            }
+            document.removeEventListener('readystatechange', eventFunc, false);
+            dynamicAddScript(xhr.response);
+        };
+
+        document.addEventListener('readystatechange', eventFunc, false);
+	};
+	xhr.setRequestHeader('Content-Type','text/plain');
+	xhr.send(dataText);
+}
+});
+}
+
+function callDynamicAfterConsent() {
+	if (window.__tcfapi) {
+		window.__tcfapi("addEventListener", 2, function (tcdata, success) {
+			if (success) {
+				if(tcdata.gdprApplies == true) {
+					if(tcdata.eventStatus === "useractioncomplete" || tcdata.eventStatus === "tcloaded") {
+						__ez.queue.addFunc("productEzoicAds", "productEzoicAds", null, true, ['ezaqReady'], false, false, false, true);
+					}
+				} else {
+					__ez.queue.addFunc("productEzoicAds", "productEzoicAds", null, true, ['ezaqReady'], false, false, false, true);
+				}
+			}
+		});
+	} else {
+		__ez.queue.addFunc("productEzoicAds", "productEzoicAds", null, true, ['ezaqReady'], false, false, false, true);
+	}
+}
+
+
+if (window.__tcfapi) {
+	callDynamicAfterConsent();
+} else {
+	if (typeof window.ezCMPQueue !== "undefined") {
+		window.ezCMPQueue.push(callDynamicAfterConsent);
+	} else {
+		__ez.queue.addFunc("productEzoicAds", "productEzoicAds", null, true, ['ezaqReady'], false, false, false, true);
+	}
+}
+</script><base href="https://www.newworldencyclopedia.org/entry/Encyclopedia"/>
+<meta charset="UTF-8"/>
+<title>Encyclopedia - New World Encyclopedia</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"078e62c0c9902ac74a4f81f1","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Encyclopedia","wgTitle":"Encyclopedia","wgCurRevisionId":1123304,"wgRevisionId":1123304,"wgArticleId":17788,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Pages using ISBN magic links","Politics and social sciences","Literature","Credited"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Encyclopedia","wgRelevantArticleId":17788,"wgIsProbablyEditable":!1,"wgRelevantPageIsProbablyEditable":!1,"wgRestrictionEdit":["sysop"],
+"wgRestrictionMove":["sysop"]};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","ext.cite.styles":"ready","mediawiki.ui.button":"ready","skins.chameleon":"ready","zzz.ext.bootstrap.styles":"ready","mediawiki.toc.styles":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","site","mediawiki.page.startup","mediawiki.page.ready","mediawiki.toc","ext.bootstrap.scripts"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<style>@media screen{a{text-decoration:none;color:#0645ad;background:0 0}a:visited{color:#0b0080}img{border:0;vertical-align:middle}h1{color:#000;background:0 0;font-weight:400;margin:0;overflow:hidden;padding-top:.5em;padding-bottom:.17em;border-bottom:1px solid #a2a9b1}h1{font-size:188%}h1{margin-bottom:.6em}p{margin:.4em 0 .5em 0}ul{margin:.3em 0 0 1.6em;padding:0}li{margin-bottom:.1em}form{border:0;margin:0}div.thumb{margin-bottom:.5em;width:auto;background-color:transparent}div.thumbinner{border:1px solid #c8ccd1;padding:3px;background-color:#f8f9fa;font-size:94%;text-align:center;overflow:hidden}html .thumbimage{background-color:#fff;border:1px solid #c8ccd1}html .thumbcaption{border:0;line-height:1.4em;padding:3px;font-size:94%;text-align:left}div.magnify{float:right;margin-left:3px}div.magnify a{display:block;text-indent:15px;white-space:nowrap;overflow:hidden;width:15px;height:11px;background-image:url(/resources/src/mediawiki.skinning/images/magnify-clip-ltr.png?4f704);background-image:linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2215%22 height=%2211%22 viewBox=%220 0 11 15%22%3E %3Cg id=%22magnify-clip%22 fill=%22%23fff%22 stroke=%22%23000%22%3E %3Cpath id=%22bigbox%22 d=%22M1.509 1.865h10.99v7.919H1.509z%22/%3E %3Cpath id=%22smallbox%22 d=%22M-1.499 6.868h5.943v4.904h-5.943z%22/%3E %3C/g%3E %3C/svg%3E")}.mw-content-ltr .thumbcaption{text-align:left}.mw-content-ltr .magnify{float:right;margin-left:3px;margin-right:0}.mw-content-ltr div.magnify a{background-image:url(/resources/src/mediawiki.skinning/images/magnify-clip-ltr.png?4f704);background-image:linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2215%22 height=%2211%22 viewBox=%220 0 11 15%22%3E %3Cg id=%22magnify-clip%22 fill=%22%23fff%22 stroke=%22%23000%22%3E %3Cpath id=%22bigbox%22 d=%22M1.509 1.865h10.99v7.919H1.509z%22/%3E %3Cpath id=%22smallbox%22 d=%22M-1.499 6.868h5.943v4.904h-5.943z%22/%3E %3C/g%3E %3C/svg%3E")}div.tright{margin:.5em 0 1.3em 1.4em}div.tleft{margin:.5em 1.4em 1.3em 0}body.mw-hide-empty-elt .mw-empty-elt{display:none}}:root{--blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#007bff;--secondary:#6c757d;--success:#28a745;--info:#17a2b8;--warning:#ffc107;--danger:#dc3545;--light:#e9ecef;--dark:#343a40;--error:#dc3545;--darker:#ced4da;--black:#000;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-cmln:1105px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}*,::after,::before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%}nav{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;text-align:left;background-color:#fff}h1{margin-top:0;margin-bottom:.5rem}p{margin-top:0;margin-bottom:1rem}ul{margin-top:0;margin-bottom:1rem}b{font-weight:bolder}a{color:#1b599b;text-decoration:none;background-color:transparent}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}img{vertical-align:middle;border-style:none}button{border-radius:0}button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button{text-transform:none}[type=button],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}h1{margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:1.8rem}@media (max-width:1200px){h1{font-size:calc(1.305rem + .66vw)}}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col,.col-sm-4,.col-sm-8{position:relative;width:100%;padding-right:15px;padding-left:15px}.col{flex-basis:0;flex-grow:1;max-width:100%}.order-first{order:-1}@media (min-width:576px){.col-sm-4{flex:0 0 33.3333333333%;max-width:33.3333333333%}.col-sm-8{flex:0 0 66.6666666667%;max-width:66.6666666667%}}@media (min-width:1105px){.order-cmln-0{order:0}}.p-search .searchGoButton{display:inline-block;font-weight:400;color:#212529;text-align:center;vertical-align:middle;background-color:transparent;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem}.p-search .searchGoButton{color:#212529;background:#e9ecef linear-gradient(180deg,#eceff1,#e9ecef) repeat-x;border-color:#e9ecef;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.075)}.collapse:not(.show){display:none}.dropdown{position:relative}.dropdown-toggle{white-space:nowrap}.dropdown-toggle::after{display:inline-block;margin-left:.255em;vertical-align:.255em;content:"";border-top:.3em solid;border-right:.3em solid transparent;border-bottom:0;border-left:.3em solid transparent}.dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;float:left;min-width:10rem;padding:.5rem 0;margin:.125rem 0 0;font-size:1rem;color:#212529;text-align:left;list-style:none;background-color:#fff;background-clip:padding-box;border:1px solid rgba(0,0,0,.15);border-radius:.25rem;box-shadow:0 .5rem 1rem rgba(0,0,0,.175)}.p-navbar .navbar-nav .dropdown-menu>div>a:first-child:last-child{display:block;width:100%;padding:.25rem 1.5rem;clear:both;font-weight:400;color:#212529;text-align:inherit;white-space:nowrap;background-color:transparent;border:0}.form-control{display:block;width:100%;height:calc(1.5em + .75rem + 2px);padding:.375rem .75rem;font-size:1rem;font-weight:400;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem;box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.form-control::-ms-expand{background-color:transparent;border:0}.input-group{position:relative;display:flex;flex-wrap:wrap;align-items:stretch;width:100%}.input-group>.form-control{position:relative;flex:1 1 auto;width:1%;margin-bottom:0}.input-group>.form-control:not(:last-child){border-top-right-radius:0;border-bottom-right-radius:0}.input-group-append{display:flex}.p-search .input-group-append .searchGoButton{position:relative;z-index:2}.input-group-append{margin-left:-1px}.p-search .input-group>.input-group-append>.searchGoButton{border-top-left-radius:0;border-bottom-left-radius:0}.nav-link{display:block;padding:.5rem 1rem}.p-navbar{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:.5rem 1rem}.navbar-brand{display:inline-block;padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;line-height:inherit;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none;text-align:center}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-nav .dropdown-menu{position:static;float:none}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:.1rem .5rem;font-size:1rem;line-height:1;background-color:transparent;border:1px solid transparent;border-radius:.25rem}@media (min-width:1105px){.p-navbar.collapsible{flex-flow:row nowrap;justify-content:flex-start;height:62px}.p-navbar.collapsible .navbar-nav{flex-direction:row}.p-navbar.collapsible .navbar-nav .dropdown-menu{position:absolute}.p-navbar.collapsible .navbar-nav .nav-link{padding-right:1rem;padding-left:1rem}.p-navbar.collapsible .navbar-collapse{display:flex!important;flex-basis:auto}.p-navbar.collapsible .navbar-toggler{display:none}}.p-navbar .navbar-brand{color:#b3b3b3}.p-navbar .navbar-nav .nav-link{color:#fff}.p-navbar .navbar-toggler{color:#fff;border-color:rgba(255,255,255,.5)}.card{position:relative;display:flex;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:.25rem}.card-body{flex:1 1 auto;padding:1.25rem}.card-header{padding:.75rem 1.25rem;margin-bottom:0;color:#fff;background-color:#000;border-bottom:1px solid rgba(0,0,0,.125)}.card-header:first-child{border-radius:calc(.25rem - 1px) calc(.25rem - 1px) 0 0}.p-navbar .navbar-nav.right{flex-direction:row!important}.p-navbar.collapsible .navbar-collapse{flex-direction:column!important}.p-navbar .navbar-nav.right{justify-content:center!important}@media (min-width:1105px){.p-navbar.collapsible .navbar-collapse{flex-direction:row!important}}.mw-body .jump-to-nav{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.mt-1{margin-top:.25rem!important}.mb-2{margin-bottom:.5rem!important}.p-navbar .navbar-nav.right{margin-top:1.5rem!important}.p-navbar .navbar-toggler{margin-left:auto!important}@media (min-width:1105px){.p-navbar .navbar-nav.right{margin-top:0!important}.p-navbar .navbar-nav.right{margin-left:auto!important}}.navbar-toggler,.search-btn{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;line-height:1}.navbar-toggler:before,.search-btn:before{text-align:center;width:1.25em}.navbar-toggler:before{content:"�0"}.search-btn:before{content:"002"}.mw-body .jump-to-nav{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}#catlinks{text-align:left}.catlinks-allhidden{display:none}div.tright{clear:right;float:right}div.tleft{float:left;clear:left}@media (max-width:575.98px){.container{max-width:540px}}.navbar-toggler,.search-btn{font-family:inherit;font-weight:inherit;line-height:inherit}.navbar-toggler:before,.search-btn:before{line-height:1}.navbar-toggler:before,.search-btn:before{font-family:'Font Awesome 5 Free';font-weight:900}body{display:flex;flex-direction:column;justify-content:flex-start;min-height:100vh}ul{list-style:outside disc}ul{padding-left:3.5ex;margin-left:0;margin-right:0}@media not print{.printfooter{display:none!important}}@media (min-width:1105px){.mw-body{padding:0 2rem;margin-bottom:1rem}}.mw-body #siteSub{display:none}.mw-body .firstHeading{border-bottom:1px solid rgba(0,0,0,.1);margin-bottom:1rem;overflow:visible}.mw-body h1{margin-top:1rem}.mw-body div.thumbinner{box-sizing:content-box;max-width:calc(100% - 8px);height:auto}.mw-body div.thumb,.mw-body img.thumbimage{max-width:100%;height:auto}.mw-body .mw-indicators{float:right;line-height:1.6;font-size:.875rem;position:relative;z-index:1}.mw-body .catlinks{margin:2rem 0 0}.mw-body .toc li{margin-bottom:0.4em}.p-navbar{background-color:#000}.p-navbar a{outline:0}.p-navbar a:visited{color:#1b599b}.p-navbar .navbar-nav .dropdown-menu{list-style:none;padding-left:0}.p-navbar .navbar-nav .dropdown-menu>div>a:first-child:last-child:before{margin-right:1rem}.p-navbar .navbar-nav>.nav-item>.nav-link::before{margin-right:.5rem;display:inline-block;text-decoration:none}.p-navbar .navbar-brand.p-logo{padding-top:0;padding-bottom:0;height:56px}.p-navbar .navbar-brand img{height:2.5rem;position:relative}.p-navbar .navbar-form{padding-left:1rem;padding-right:1rem}.p-navbar .navbar-form button{color:#fff}.p-search{width:100%}@media (min-width:768px){.p-search{width:auto}}.p-navbar{padding:.2rem 1rem}.p-navbar .navbar-brand img{width:260px;height:56px;position:relative}.p-navbar a,.p-navbar a:visited{color:#fff}.card-header a,.card-header a:visited{color:#f90}ul{list-style:inside disc}body.page-Info_Main_Page h1.firstHeading{display:none}@media (max-width:490px){li{margin-bottom:.6em}}@media (max-width:490px){.toc,.infobox{width:100%!important;max-width:100%!important}}@media (max-width:490px){div.thumb:not(.card){width:100%;text-align:center}div.thumbinner:not(.card){display:inline-block}}@media (max-width:490px){.wikitable,.navbox{overflow:scroll;display:block}}</style><link rel="stylesheet" href="/p/chameleon.css?v33"/><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-V8Y4J8V4EV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-V8Y4J8V4EV');
+</script>
+
+<script async="" src="/p/loader.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=chameleon"></script>
+<meta name="generator" content="MediaWiki 1.35.9"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+<link rel="shortcut icon" href="https://static.newworldencyclopedia.org/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+    <link rel="manifest" href="/site.webmanifest"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="New World Encyclopedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="https://www.newworldencyclopedia.org/api.php?action=rsd"/>
+<link rel="license" href="https://www.newworldencyclopedia.org/entry/New World Encyclopedia:Creative_Commons_CC-by-sa_3.0"/>
+<link rel="canonical" href="https://www.newworldencyclopedia.org/entry/Encyclopedia"/>
+<style type="text/css">
+/*<![CDATA[*/
+/**
+ * CSS for the BackAndForth extension
+ */
+div.mw-backforth-prev,
+div.mw-backforth-next {
+	font-size: 90%;
+	margin-bottom: 0.5em;
+}
+div.mw-backforth-prev {
+	float: left;
+}
+div.mw-backforth-next {
+	float: right;
+}
+
+/* NWE customizations */
+.infobox {
+    border: 1px solid #aaa;
+    background-color: #f9f9f9;
+    color: black;
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+    padding: 0.2em;
+    float: right;
+    clear: right
+}
+.eptell {
+  display: none;
+  position: absolute;
+  width: 150px;
+  border: 1px solid #2f6fab;
+  border-bottom: none;
+  background-color: #f9f9f9;
+  padding: 0;
+  z-index: 100;
+}
+.eptell a {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1em;
+  height: 1.6em;
+  border-bottom: 1px solid #2f6fab;
+  width: 142px;
+  display: block;
+  padding: 4px;
+}
+.eptell a:hover {
+  text-decoration: none;
+  background-color: #ccf;
+}
+.statusline {
+        position: absolute;
+        top: -50px;
+        right: 0;
+}
+.statusline span {
+        border-bottom:1px solid orange;
+        margin: 0.3em;
+        padding-left: 0.5em;
+        font-weight: bold;
+        float: left;
+}
+.articletag {
+        border: 1px solid orange;
+        background-color: #ffffcc;
+        margin: 1px;
+        padding: 1px 2px 1px 2px;
+        float: left;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.9em;
+}
+.wordcount {
+   border: 1px solid #ccc;
+   margin: 1px;
+   padding: 1px 2px 1px 2px;
+   float: left;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 0.9em;
+   display: block !important;
+}
+.optional a {
+   color: #000000;
+   text-decoration: none;
+}
+.epcredits {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: .5em;
+  margin: .5em 0 .5em 0;
+  color: #000;
+}
+.epcredits ul {
+  margin-bottom: .5em;
+}
+.epcredits .editsection {
+  display: none;
+}
+.epcredits .importdate {
+  color: #777;
+  font-size: 0.9em;
+}
+.approvals_table td {background-color: #ffffff;}
+.approvals_table th {background-color: #f9f9f9; white-space: nowrap;}
+.approvalcopyedit td {background-color: #ccccff;}
+.approvalhold td {background-color: #ffcccc;}
+
+
+/*]]>*/
+</style>
+
+<script data-ezscrex="false">window.QubitCssExclusions = ["nav",".entry-summary",".excerpt",".entry-actions",".widget-area",".site-footer","#toc",".infobox",".epcredits"];</script><script async data="qubit" src="//www.ezojs.com/ezoic/sa.min.js?q=1"></script>
+<script>
+  window.ezstandalone = window.ezstandalone || {};
+  ezstandalone.cmd = ezstandalone.cmd || [];
+</script><script>(function () {
+    if (document.getElementById('qubit-js-ezoic')) {
+        return;
+    }
+
+    var start = Date.now();
+    var delay = 50;
+
+    function loadQubitScript() {
+    
+        if (window.QubitInstantRemove) {
+            if(typeof ezstandalone !== 'undefined' && typeof ezstandalone.CleanupGhostPlaceholders === 'function') {ezstandalone.CleanupGhostPlaceholders();}
+        }
+
+        var s = document.createElement('script');
+        s.id = 'qubit-js-ezoic';
+        s.src = 'https://g.ezoic.net/porpoiseant/qubit.js?v=2&did=659062';
+        s.async = true;
+        document.head.appendChild(s);
+    }
+
+    function waitForStandalone() {
+    
+        var timeElapsed = Date.now() - start;
+
+
+        if (window.ezstandalone && typeof window.ezstandalone.GetGeneratedId === 'function') {
+            var isPlacementService = typeof window.productEzoicAds === "function" || !!document.querySelector('[data-method="placement-service"]');
+            if(window.QubitInstantRemove) {isPlacementService = false;}
+            if (isPlacementService && window.ezFinishedStatic || isPlacementService && timeElapsed > 10000 || !isPlacementService) {
+                loadQubitScript();
+                return;
+            }
+        }
+
+        if (timeElapsed >= 30000) {
+            console.error('ezstandalone not ready after 30s, skipping qubit load');
+            return;
+        }
+
+        setTimeout(waitForStandalone, delay);
+
+        delay = Math.min(Math.floor(delay * 1.02), 500);
+    }
+
+    waitForStandalone();
+})();
+</script>
+<script type='text/javascript'>
+var ezoTemplate = 'pub_site';
+var ezouid = '1';
+var ezoFormfactor = '1';
+</script><script data-ezscrex="false" type='text/javascript'>
+var soc_app_id = '0';
+var did = 659062;
+var ezdomain = 'newworldencyclopedia.org';
+var ezoicSearchable = 1;
+</script>
+<script type='text/javascript' style='display:none;' async>if (typeof window.__ez !== 'undefined' && window.__ez?.queue?.addFileOnce) {window.__ez.queue.addFileOnce('identity', 'https://go.ezodn.com/detroitchicago/indy.js?cb=105&gcb=0', true, [], true, false, false, true);} </script><script type="text/javascript">var cmpIsOn = true;</script></head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Encyclopedia rootpage-Encyclopedia layout-nwe skin-chameleon action-view"><script>var ezCmpChangeLogId=954796;var ezCmpCacheBusterId=446</script><script src="https://the.gatekeeperconsent.com/v2/cmp.js?v=446" id="cmpjs" async="true"></script>
+	<!-- navigation bar -->
+	<nav class="p-navbar collapsible" role="navigation" id="mw-navigation">
+		<!-- logo and main page link -->
+		<div id="p-logo" class="navbar-brand p-logo" role="banner">
+			<a href="/" title="Visit the main page"><img src="/images/nwe_header.jpg" alt="Research Begins Here" width="260px" height="56px"/></a>
+		</div>
+		<button type="button" class="navbar-toggler" data-toggle="collapse" aria-label="Open Menu" data-target="#i4pz1p8ncr"></button>
+		<div class="collapse navbar-collapse i4pz1p8ncr" id="i4pz1p8ncr">
+			<div class="navbar-nav">
+				<!-- navigation -->
+				<div id="n-samplepage"><a href="/entry/Category:Copyedited" class="nav-link n-samplepage">Articles</a></div>
+				<div id="n-about"><a href="/entry/Info:Project_Vision" class="nav-link n-about">About</a></div>
+				<div><a href="/feedback/encyclopedia" class="nav-link">Feedback</a></div>
+			<!-- toolbox -->
+			</div>
+			<div class="navbar-nav right">
+				<!-- search form -->
+				<div id="p-search" class="p-search order-first order-cmln-0 navbar-form" role="search">
+					<form id="searchform" class="mw-search" action="/p/index.php">
+						<input type="hidden" name="title" value=" Special:Search"/>
+						<div class="input-group">
+							<input name="search" placeholder="Search New World Encyclopedia" title="Search New World Encyclopedia [f]" accesskey="f" id="searchInput" class="form-control"/>
+							<div class="input-group-append">
+								<button value="Go" id="searchGoButton" name="go" type="submit" class="search-btn searchGoButton" aria-label="Go to page" title="Go to a page with this exact name if it exists"></button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+			<!-- start the content area -->
+			<div id="content" class="mw-body content"><a id="top" class="top"></a>
+					<div id="mw-indicators" class="mw-indicators"></div>
+					<div class="contentHeader"><span id="ezoic-pub-ad-placeholder-118" class="ezoic-adpicker-ad"></span><span data-ez-ph-id="118" style="min-height:90px;padding:0;float:none !important;box-sizing:content-box;margin-top:15px !important;margin-left:auto !important;display:block !important;max-width:100% !important;line-height:0px;margin-right:auto !important;margin-bottom:15px !important;text-align:center !important;min-width:970px;"></span>
+					<h1 id="firstHeading" class="firstHeading">Encyclopedia</h1>
+					<!-- tagline; usually goes something like "From WikiName" primary purpose of this seems to be for printing to identify the source of the content -->
+					<div id="siteSub" class="siteSub">From New World Encyclopedia</div><div id="jump-to-nav" class="mw-jump jump-to-nav">Jump to:<a href="#mw-navigation">navigation</a>, <a href="#p-search">search</a></div>
+				</div>
+				<div id="bodyContent" class="bodyContent">
+					<!-- body text -->
+
+					<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-backforth-prev"><a href="/entry/Encryption" title="Encryption">Previous (Encryption)</a></div><div class="mw-backforth-next"><a href="/entry/Endangered_species" title="Endangered species">Next (Endangered species)</a></div><div style="clear: both;"></div><div class="mw-parser-output"><p><br/></p>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="/entry/File:NewStandardEncyclopedia.jpg" class="image"><img alt="" src="/d/images/thumb/5/53/NewStandardEncyclopedia.jpg/400px-NewStandardEncyclopedia.jpg" decoding="async" width="400" height="95" class="thumbimage" srcset="/d/images/thumb/5/53/NewStandardEncyclopedia.jpg/600px-NewStandardEncyclopedia.jpg 1.5x, /d/images/thumb/5/53/NewStandardEncyclopedia.jpg/800px-NewStandardEncyclopedia.jpg 2x"/></a>  <div class="thumbcaption"><div class="magnify"><a href="/entry/File:NewStandardEncyclopedia.jpg" class="internal" title="Enlarge"></a></div><i>Funk &amp; Wagnall&#39;s New Standard Encyclopedia</i> (1931) was a small encyclopedia which could be afforded by many households</div></div></div>
+<p><span id="ezoic-pub-ad-placeholder-127" class="ezoic-adpicker-ad"></span><span data-ez-ph-id="127" style="min-width:336px;min-height:250px;line-height:0px;float:none !important;margin-right:auto !important;margin-bottom:15px !important;display:block !important;max-width:100% !important;padding:0;box-sizing:content-box;margin-top:15px !important;margin-left:auto !important;text-align:center !important;"></span>An <b>encyclopedia</b>, <b>encyclopaedia</b> or (traditionally) <b>encyclopædia</b>,<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup> is a comprehensive written compendium that contains <a href="/entry/Information" class="mw-redirect" title="Information">information</a> on all branches of <a href="/entry/Knowledge" title="Knowledge">knowledge</a> or a particular branch of knowledge.
+The word comes from the <a href="/entry/Ancient_Greek" class="mw-redirect" title="Ancient Greek">Classical Greek</a> <span lang="grc" class="polytonic">ἐγκύκλιος παιδεία</span> (pron. <i>enkyklos paideia</i>), literally &#39;the things of boys/child in a circle&#39;, meaning &#34;a general knowledge.&#34; 
+</p><!-- End Ezoic - gen_under_page_title - under_page_title --><span id="ezoic-pub-ad-placeholder-901" data-method="placement-service"></span><span data-ez-ph-id="901" style="margin-right:auto !important;margin-bottom:15px !important;min-width:970px;margin-top:15px !important;margin-left:auto !important;display:block !important;text-align:center !important;min-height:90px;max-width:100% !important;line-height:0px;padding:0;float:none !important;box-sizing:content-box;"></span><!-- Ezoic - gen_under_page_title - under_page_title --><p>In ancient times encyclopedias were teaching tools for instruction of the <a href="/entry/Aristocracy" class="mw-redirect" title="Aristocracy">aristocracy</a>. They were compiled by teachers and their <a href="/entry/School" class="mw-redirect" title="School">schools</a>, and they were arranged by subject matter rather than as an alphabetical reference work. In the <a href="/entry/Middle_Ages" title="Middle Ages">Middle Ages</a> in the <a href="/entry/Holy_Roman_Empire" title="Holy Roman Empire">Holy Roman Empire</a> knowledge was largely controlled by the Church and encyclopedias were kept by religious scholars in conformity with church doctrine.
+</p><p>The modern <a href="/entry/Alphabet" title="Alphabet">alphabetical</a> encyclopedia evolved in the context of the <a href="/entry/Enlightenment" class="mw-redirect" title="Enlightenment">Enlightenment</a> and the rise of modern science. It is a reference work ordered like an expanded dictionary and is designed to be available to everyone. The first modern type encyclopedia, compiled by teams of scholars, arranged alphabetically, and composing 20-30 volumes, was produced by <a href="/entry/Denis_Diderot" title="Denis Diderot">Denis Diderot</a> in <a href="/entry/France" title="France">France</a>, with the expressed purpose of disseminating Enlightenment ideas and the new advances in scientific knowledge to a wide audience. In so doing, it effectively undermined the Church&#39;s traditional monopoly on knowledge. 
+</p><!-- End Ezoic - gen_under_first_paragraph - under_first_paragraph --><span id="ezoic-pub-ad-placeholder-909" data-method="placement-service"></span><span data-ez-ph-id="909" style="box-sizing:content-box;margin-top:15px !important;margin-right:auto !important;margin-bottom:15px !important;margin-left:auto !important;display:block !important;min-width:970px;line-height:0px;float:none !important;text-align:center !important;min-height:90px;max-width:100% !important;padding:0;"></span><!-- Ezoic - gen_under_first_paragraph - under_first_paragraph --><p>Modern encyclopedias, by making the sum of knowledge available to all citizens, are designed to be tools for <a href="/entry/Democracy" title="Democracy">democracy</a>. The <i>Encyclopedia Britannica,</i> became the premier standard for encyclopedias in the nineteenth century as it integrated scientific and traditional knowledge. However, it too was charged with cultural bias, and after its eleventh edition, the <i>Britannica</i> began producing a more <a href="/entry/Scientism" title="Scientism">scientistic</a> collection of facts and data with greatly reduced entries on <a href="/entry/Biography" class="mw-redirect" title="Biography">biography</a> and <a href="/entry/Social_sciences" title="Social sciences">social sciences</a>. As knowledge has increased exponentially over the last century, modern encyclopedias contained annual updates to attempt to keep their owners current. Modern religious encyclopedias, like the Catholic Encyclopedia (1917) provided some counterbalance to the scientism of the scientific encyclopedias.
+</p>
+<div class="thumb" style="float: left; margin: 0; margin-right:10px"><div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"/><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Use_of_the_term_Encyclopedia"><span class="tocnumber">1</span> <span class="toctext">Use of the term Encyclopedia</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Characteristics_of_an_Encyclopedia"><span class="tocnumber">2</span> <span class="toctext">Characteristics of an Encyclopedia</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#History_of_Encyclopedias"><span class="tocnumber">3</span> <span class="toctext">History of Encyclopedias</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Early_encyclopedic_works"><span class="tocnumber">3.1</span> <span class="toctext">Early encyclopedic works</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Modern_Encyclopedias"><span class="tocnumber">4</span> <span class="toctext">Modern Encyclopedias</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Information_Age_Encyclopedias"><span class="tocnumber">5</span> <span class="toctext">Information Age Encyclopedias</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Knowledge_and_Values"><span class="tocnumber">6</span> <span class="toctext">Knowledge and Values</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#See_also"><span class="tocnumber">7</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Notes"><span class="tocnumber">8</span> <span class="toctext">Notes</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#References"><span class="tocnumber">9</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#External_links"><span class="tocnumber">10</span> <span class="toctext">External links</span></a></li>
+<li class="toclevel-1"><a href="#Credits"><span class="tocnumber">11</span> <span class="toctext">Credits</span></a></li>
+</ul>
+</div>
+</div>
+<p>The information age led to digital encyclopedias which are not bound by the restrictions of print. They go beyond modern encyclopedias in content, size, and cross-referencing. These digital encyclopedias, produced on CD-ROM and the <a href="/entry/Internet" title="Internet">Internet</a>, have almost entirely superseded print encyclopedias in the twenty-first century. Traditional encyclopedias, like the <i>Encyclopedia Britannica,</i> have survived by creating CD-ROM and Internet versions. However, new forms of encyclopedias, like the popular <i>Wikipedia,</i> have taken advantage of the Internet, which provides wide accessibility and the possibility of harnessing a huge virtual community of volunteer writers and editors to the task of creating and updating articles on every imaginable topic. These online collaborative encyclopedias are frequently charged with lack of quality control, but they have nonetheless rapidly displaced the traditional print encyclopedias because of their accessibility and breadth.
+</p><p>The ongoing issues related to the development of encyclopedias include the proper integration of facts and values and the quality control of the accuracy of vast bodies of information becoming available.
+</p><!-- End Ezoic - gen_under_second_paragraph - under_second_paragraph --><span id="ezoic-pub-ad-placeholder-910" data-method="placement-service"></span><span data-ez-ph-id="910" style="min-height:250px;padding:0;float:none !important;box-sizing:content-box;margin-bottom:15px !important;display:block !important;text-align:center !important;min-width:970px;max-width:100% !important;line-height:0px;margin-top:15px !important;margin-right:auto !important;margin-left:auto !important;"></span><!-- Ezoic - gen_under_second_paragraph - under_second_paragraph -->
+<h2><span class="mw-headline" id="Use_of_the_term_Encyclopedia">Use of the term Encyclopedia</span></h2>
+<p>Though the notion of a compendium of knowledge dates back thousands of years, the term was first used in the title of a book in 1541 by Joachimus Fortius Ringelbergius in the title page of his <i>Lucubrationes vel potius absolutissima kyklopaideia</i> (Basel 1541). It was first used as a noun by the encyclopedist Pavao Skalic in the title of his book <i>Encyclopaedia seu orbis disciplinarum tam sacrarum quam prophanarum epistemon</i> (&#34;Encyclopaedia, or Knowledge of the World of Disciplines&#34;) (Basel 1559). Several encyclopedias have names that include the term <i>-p(a)edia</i>, e.g., Banglapedia (on matters relevant for <a href="/entry/Bangladesh" title="Bangladesh">Bengal</a>).
+</p>
+<h2><span class="mw-headline" id="Characteristics_of_an_Encyclopedia">Characteristics of an Encyclopedia</span></h2>
+<p>The encyclopedia as we recognize it today was developed from the <a href="/entry/Dictionary" title="Dictionary">dictionary</a> in the eighteenth century. A dictionary primarily focuses on <a href="/entry/Word" title="Word">words</a> and their <a href="/entry/Definition" title="Definition">definition</a>, typically in one sentence. This leave the reader lacking in a comprehensive understanding of the meaning or significance of the term, and how the term relates to a broader field of knowledge.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="/entry/File:Ad_Encyclopaedia-Britannica_05-1913.jpg" class="image"><img alt="" src="/d/images/thumb/d/d8/Ad_Encyclopaedia-Britannica_05-1913.jpg/400px-Ad_Encyclopaedia-Britannica_05-1913.jpg" decoding="async" width="400" height="252" class="thumbimage" srcset="/d/images/d/d8/Ad_Encyclopaedia-Britannica_05-1913.jpg 1.5x"/></a>  <div class="thumbcaption"><div class="magnify"><a href="/entry/File:Ad_Encyclopaedia-Britannica_05-1913.jpg" class="internal" title="Enlarge"></a></div>1913 advertisement for <i>Encyclopædia Britannica,</i> the oldest and one of the largest contemporary English encyclopedias.</div></div></div>
+<p>To address those needs, an encyclopedia treats each subject in more depth and conveys the most relevant accumulated knowledge on that subject or discipline, given the overall length of the particular work. An encyclopedia also often includes many <a href="/entry/Map" title="Map">maps</a> and illustrations, as well as <a href="/entry/Bibliography" title="Bibliography">bibliography</a> and <a href="/entry/Statistics" class="mw-redirect" title="Statistics">statistics</a>. Historically, both encyclopedias and dictionaries have been researched and written by well-educated, well-informed content experts, who have attempted to make them as accurate, concise and readable as possible. 
+</p><!-- End Ezoic - gen_mid_content - mid_content --><span id="ezoic-pub-ad-placeholder-911" data-method="placement-service"></span><span data-ez-ph-id="911"></span><!-- Ezoic - gen_mid_content - mid_content --><p>Four major elements define an encyclopedia: its subject matter, its scope, its method of organization, and its method of production.
+</p>
+<ul><li>Encyclopedias can be general, containing articles on topics in every field (the English-language <i>Encyclopædia Britannica</i> and German <i>Brockhaus</i> are well-known examples). General encyclopedias often contain guides on how to do a variety of things, as well as embedded <a href="/entry/Dictionary" title="Dictionary">dictionaries</a> and gazetteers. They can also specialize in a particular field (such as an encyclopedia of medicine, philosophy, or law). There are also encyclopedias that cover a wide variety of topics from a particular cultural, ethnic, or national perspective, such as the <i>Great Soviet Encyclopedia</i> or <i>Encyclopaedia Judaica.</i></li>
+<li>Works of encyclopedic scope aim to convey the important accumulated knowledge for their subject domain. Such works have been envisioned and attempted throughout much of human history, but the term <i>encyclopedia</i> was first used to refer to such works in the sixteenth century. The first general encyclopedias that succeeded in being both authoritative as well as encyclopedic in scope appeared in the eighteenth century. Every encyclopedic work is, of course, an abridged version of all knowledge, and works vary in the breadth of material and the depth of discussion. The target audience may influence the scope; a children&#39;s encyclopedia will be narrower than one for adults.</li></ul>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="/entry/File:Brockhaus_Lexikon.jpg" class="image"><img alt="" src="/d/images/thumb/e/eb/Brockhaus_Lexikon.jpg/400px-Brockhaus_Lexikon.jpg" decoding="async" width="400" height="300" class="thumbimage" srcset="/d/images/thumb/e/eb/Brockhaus_Lexikon.jpg/600px-Brockhaus_Lexikon.jpg 1.5x, /d/images/thumb/e/eb/Brockhaus_Lexikon.jpg/800px-Brockhaus_Lexikon.jpg 2x"/></a>  <div class="thumbcaption"><div class="magnify"><a href="/entry/File:Brockhaus_Lexikon.jpg" class="internal" title="Enlarge"></a></div>Brockhaus Konversations-Lexikon, 1902</div></div></div>
+<ul><li>Some systematic method of organization is essential to making an encyclopedia usable as a work of reference. There have historically been two main methods of organizing printed encyclopedias: the alphabetical method (consisting of a number of separate articles, organized in alphabetical order), or organization by hierarchical categories. The former method is today the most common by far, especially for general works. The fluidity of electronic media, however, allows new possibilities for multiple methods of organization of the same content. Further, electronic media offer previously unimaginable capabilities for search, indexing and cross reference. The epigraph from <a href="/entry/Horace" title="Horace">Horace</a> on the title page of the eighteenth-century <i>Encyclopédie</i> suggests the importance of the structure of an encyclopedia: &#34;What grace may be added to commonplace matters by the power of order and connection.&#34;</li>
+<li>As modern multimedia and the information age have evolved, they have had an ever-increasing effect on the collection, verification, summation, and presentation of information of all kinds. Projects such as h2g2 and Wikipedia are examples of new forms of the encyclopedia as information retrieval becomes simpler.</li></ul>
+<p>Some works titled &#34;dictionaries&#34; are actually more similar to encyclopedias, especially those concerned with a particular field (such as the <i>Dictionary of the Middle Ages,</i> the <i>Dictionary of American Naval Fighting Ships,</i> and <i>Black&#39;s Law Dictionary</i>). The <i>Macquarie Dictionary,</i> <a href="/entry/Australia" title="Australia">Australia</a>&#39;s national dictionary, became an encyclopedic <a href="/entry/Dictionary" title="Dictionary">dictionary</a> after its first edition in recognition of the use of proper nouns in common communication, and the words derived from such proper nouns.
+</p>
+<h2><span class="mw-headline" id="History_of_Encyclopedias">History of Encyclopedias</span></h2>
+<h3><span class="mw-headline" id="Early_encyclopedic_works">Early encyclopedic works</span></h3>
+<p>The idea of collecting all of the world&#39;s knowledge into a single work was an elusive vision for centuries. The earliest encyclopedia may have been compiled by the Greek philosopher Speusippus, who preceded <a href="/entry/Aristotle" title="Aristotle">Aristotle</a>. But Aristotle is sometimes called the father of encyclopedias because of his vast collection and categorization of knowledge, most of which remains valid today. The oldest complete encyclopedia in existence was the <i>Historia Naturalis</i> compiled by Pliny the Elder about 79 <small>C.E.</small> It is a 37-volume account of the natural world in 2,493 chapters that was extremely popular in western Europe for over 1,500 years.
+</p><p>The first <a href="/entry/Christian" class="mw-redirect" title="Christian">Christian</a> encyclopedia was Cassiodorus&#39; <i>Institutiones</i> (560 <small>C.E.</small>) which inspired Saint <a href="/entry/Isidore_of_Seville" title="Isidore of Seville">Isidore of Seville</a>&#39;s <i>Etymologiarum, sive Originum Libri XX</i> (Twenty Books of Etymologies, or Origins) (623) which became the most influential encyclopedia of the Early Middle Ages. The <i>Bibliotheca</i> by the <a href="/entry/Patriarch" title="Patriarch">Patriarch</a> <a href="/entry/Photius" class="mw-redirect" title="Photius">Photius</a> (ninth century) was the earliest <a href="/entry/Byzantine_Empire" title="Byzantine Empire">Byzantine</a> work that could be called an encyclopedia. Bartholomeus de Glanvilla&#39;s <i>De proprietatibus rerum</i> (1240) was the most widely read and quoted encyclopedia in the High Middle Ages while Dominican Friar Vincent of Beauvais&#39;s <i>Speculum Majus</i> (1260) was the most ambitious encyclopedia in the late-medieval period at over three million words.
+</p><!-- End Ezoic - gen_long_content - long_content --><span id="ezoic-pub-ad-placeholder-912" data-method="placement-service"></span><span data-ez-ph-id="912"></span><!-- Ezoic - gen_long_content - long_content --><p>The early <a href="/entry/Muslim" class="mw-redirect" title="Muslim">Muslim</a> compilations of knowledge in the Middle Ages included many comprehensive works, and much development of what we now call scientific method, historical method, and <a href="/entry/Citation" title="Citation">citation</a>. Notable works include <a href="/entry/Al-Razi" class="mw-redirect" title="Al-Razi">Abu Bakr al-Razi</a>&#39;s encyclopedia of science, the <i>Mutazilite</i> <a href="/entry/Al-Kindi" title="Al-Kindi">Al-Kindi</a>&#39;s prolific output of 270 books, and <a href="/entry/Ibn_Sina" class="mw-redirect" title="Ibn Sina">Ibn Sina</a>&#39;s medical encyclopedia, which was a standard reference work for centuries. Also notable are works of universal history (or sociology) from Asharites, al-Tabri, al-Masudi, the Brethren of Sincerity&#39;s <i>Encyclopedia,</i> Ibn Rustah, al-Athir, and <a href="/entry/Ibn_Khaldun" title="Ibn Khaldun">Ibn Khaldun</a>, whose Muqadimmah contains cautions regarding trust in written records that remain wholly applicable today. These scholars had an incalculable influence on methods of research and editing, due in part to the Islamic practice of isnad which emphasized fidelity to written record, checking sources, and skeptical inquiry.
+</p><p>The Chinese emperor Yongle of the <a href="/entry/Ming_Dynasty" title="Ming Dynasty">Ming Dynasty</a> oversaw the compilation of the <a href="/entry/Yongle_Encyclopedia" title="Yongle Encyclopedia">Yongle Encyclopedia</a>, one of the largest encyclopedias in history, which was completed in 1408 and comprised over 11,000 handwritten volumes, of which only about 400 remain today. In the succeeding dynasty, emperor Qianlong of the <a href="/entry/Qing_Dynasty" title="Qing Dynasty">Qing Dynasty</a> personally composed 40,000 poems as part of a 4.7 million page library in four divisions, including thousands of essays. It is instructive to compare his title for this knowledge, <i>Watching the waves in a Sacred Sea</i> to a Western-style title for all knowledge. Encyclopedic works, both in imitation of Chinese encyclopedias and as independent works of their own origin, have been known to exist in Japan since the ninth century <small>C.E.</small>
+</p><p>These works were all hand copied and thus rarely available, beyond wealthy patrons or monastic men of learning: they were expensive, and usually written for those extending knowledge rather than those using it (with some exceptions in medicine).
+</p>
+<h2><span class="mw-headline" id="Modern_Encyclopedias">Modern Encyclopedias</span></h2>
+<p>The beginnings of the modern idea of the general-purpose, widely distributed printed encyclopedia precede the eighteenth-century encyclopedists. However, Chambers&#39; <i>Cyclopaedia, or Universal Dictionary of Arts and Sciences</i>, and the <i>Encyclopédie,</i> <i>Encyclopædia Britannica,</i> and the <i>Conversations-Lexikon</i> were the first to realize the form we would recognize today, with a comprehensive scope of topics, discussed in depth and organized in an accessible, systematic method. 
+</p><!-- End Ezoic - gen_longer_content - longer_content --><span id="ezoic-pub-ad-placeholder-913" data-method="placement-service"></span><span data-ez-ph-id="913"></span><!-- Ezoic - gen_longer_content - longer_content --><p>The English physician and philosopher Sir Thomas Browne specifically employed the word <i>encyclopaedia</i> as early as 1646 in the preface to the reader to describe his <i>Pseudodoxia Epidemica</i> or <i>Vulgar Errors,</i> a series of refutations of common errors of his age. Browne structured his encyclopaedia upon the time-honored schemata of the Renaissance, the so-called &#39;scale of creation&#39; which ascends a hierarchical ladder via the mineral, vegetable, animal, human, planetary and cosmological worlds. Browne&#39;s compendium went through no less than five editions, each revised and augmented, the last edition appearing in 1672. <i>Pseudodoxia Epidemica</i> found itself upon the bookshelves of many educated European readers for throughout the late seventeenth and early eighteenth centuries it was translated into the <a href="/entry/France" title="France">French</a>, <a href="/entry/Netherlands" title="Netherlands">Dutch</a> and <a href="/entry/Germany" title="Germany">German</a> languages as well as <a href="/entry/Latin" class="mw-redirect" title="Latin">Latin</a>. 
+</p><p>John Harris is often credited with introducing the now-familiar alphabetic format in 1704 with his English <i>Lexicon technicum.</i> Organized <a href="/entry/Alphabet" title="Alphabet">alphabetically</a>, it sought to explain not merely the terms used in the arts and sciences, but the arts and sciences themselves. <a href="/entry/Isaac_Newton" title="Isaac Newton">Sir Isaac Newton</a> contributed his only published work on chemistry to the second volume of 1710. Its emphasis was on science and, at about 1200 pages, its scope was more that of an encyclopedic <a href="/entry/Dictionary" title="Dictionary">dictionary</a> than a true encyclopedia. Harris himself considered it a dictionary; the work is one of the first technical dictionaries in any language. However, the alphabetical arrangement made encyclopedias ready reference tools in which complete books or chapters did not have to be read to glean knowledge. They became a mainstay of modern general encyclopedias.
+</p><p>Ephraim Chambers published his <i>Cyclopaedia</i> in 1728. It included a broad scope of subjects, used an alphabetic arrangement, relied on many different contributors and included the innovation of cross-referencing other sections within articles. Chambers has been referred to as the father of the modern encyclopedia for this two-volume work.
+</p><p>A French translation of Chambers&#39; work inspired the <i>Encyclopédie,</i> perhaps the most famous early encyclopedia, notable for its scope, the quality of some contributions, and its political and cultural impact in the years leading up to the French revolution. The <i>Encyclopédie</i> was edited by <a href="/entry/Jean_le_Rond_d%27Alembert" title="Jean le Rond d&#39;Alembert">Jean le Rond d&#39;Alembert</a> and <a href="/entry/Denis_Diderot" title="Denis Diderot">Denis Diderot</a> and published in 17 volumes of articles, issued from 1751 to 1765, and 11 volumes of illustrations, issued from 1762 to 1772. While Diderot did the final editing on all the work itself, this encyclopedia gained its breadth and excellence over the Chambers encyclopedia by employing a team of writers on the social philosophy including Voltaire, Montesquieu, and Rousseau. Five volumes of supplementary material and a two volume index, supervised by other editors, were issued from 1776 to 1780 by Charles Joseph Panckoucke.
+</p><!-- End Ezoic - gen_longest_content - longest_content --><span id="ezoic-pub-ad-placeholder-914" data-method="placement-service"></span><span data-ez-ph-id="914"></span><!-- Ezoic - gen_longest_content - longest_content --><p>Realizing the inherent problems with the model of knowledge he had created, Diderot&#39;s view of his own success in writing the &#34;Encyclopédie&#34; were far from ecstatic. Diderot envisioned the perfect encyclopedia as more than the sum of its parts. In his own article on the encyclopedia, Diderot wrote: &#34;Were an analytical dictionary of the sciences and arts nothing more than a methodical combination of their elements, I would still ask whom it behooves to fabricate good elements.&#34;<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">[2]</a></sup> Diderot viewed the ideal encyclopedia as an index of connections. He realized that all knowledge could never be amassed in one work, but he hoped the relations between subjects could. The realization of the dream in becoming more a reality with information age methods of hyper-linking electronic encyclopedias.
+</p><p>The <i>Encyclopédie</i> in turn inspired the venerable <i>Encyclopædia Britannica,</i> which had a modest beginning in <a href="/entry/Scotland" title="Scotland">Scotland</a>: the first edition, issued between 1768 and 1771, had just three hastily completed volumes—A-B, C-L, and M-Z—with a total of 2,391 pages. By 1797, when the third edition was completed, it had been expanded to 18 volumes addressing a full range of topics, with articles contributed by a range of authorities on their subjects.
+</p><p>The <i>Conversations-Lexikon</i> was published in Leipzig from 1796 to 1808, in six volumes. Paralleling other eighteenth century encyclopedias, the scope was expanded beyond that of earlier publications, in an effort to become comprehensive. But the work was intended not for scientific use, but to give the results of research and discovery in a simple and popular form without extended details. This format, a contrast to the <i>Encyclopædia Britannica,</i> was widely imitated by later nineteenth century encyclopedias in <a href="/entry/Britain" class="mw-redirect" title="Britain">Britain</a>, the <a href="/entry/United_States" title="United States">United States</a>, <a href="/entry/France" title="France">France</a>, <a href="/entry/Spain" title="Spain">Spain</a>, <a href="/entry/Italy" title="Italy">Italy</a>, and other countries. Of the influential late eighteenth century and early nineteenth century encyclopedias, the <i>Conversations-Lexikon</i> is perhaps most similar in form to today&#39;s encyclopedias.
+</p><p>The early years of the nineteenth century saw a flowering of encyclopedia publishing in the <a href="/entry/United_Kingdom" title="United Kingdom">United Kingdom</a>, Europe, and America. In <a href="/entry/England" title="England">England</a> <i>Rees&#39;s Cyclopaedia</i> (1802–1819) contains an enormous amount in information about the industrial and scientific revolutions of the time. A feature of these publications is the high-quality illustrations made by engravers like Wilson Lowry of art work supplied by specialist draftsmen like John Farey, Jr. Encyclopaedias were published in <a href="/entry/Scotland" title="Scotland">Scotland</a>, as a result of the <a href="/entry/Scottish_Enlightenment" class="mw-redirect" title="Scottish Enlightenment">Scottish Enlightenment</a>, for education there was of a higher standard than in the rest of the United Kingdom.
+</p><!-- End Ezoic - gen_incontent_5 - incontent_5 --><span id="ezoic-pub-ad-placeholder-915" data-method="placement-service"></span><span data-ez-ph-id="915"></span><!-- Ezoic - gen_incontent_5 - incontent_5 --><p>The 17-volume <i>Grand dictionnaire universel du XIXe siècle</i> and its supplements were published in <a href="/entry/France" title="France">France</a> from 1866 to 1890.
+</p><p><i>Encyclopædia Britannica</i> appeared in various editions throughout the century, and the growth of popular education and the Mechanics Institutes, spearheaded by the Society for the Diffusion of Useful Knowledge led to the production of the <i>Penny Cyclopaedia,</i> as its title suggests issued in weekly numbers at a penny each like a <a href="/entry/Newspaper" title="Newspaper">newspaper</a>. 
+</p><p>In the early twentieth century, the <i>Encyclopædia Britannica</i> reached its eleventh edition (considered by many the zenith of modern print encyclopedias), and inexpensive encyclopedias such as <i>Harmsworth&#39;s Encyclopaedia</i> and <i>Everyman&#39;s Encyclopaedia</i> were common.
+</p><p>In the United States, the 1950s and 1960s saw the rise of several large popular encyclopedias, often sold on installment plans. The best known of these were World Book and Funk and Wagnalls.
+</p><!-- End Ezoic - gen_incontent_6 - incontent_6 --><span id="ezoic-pub-ad-placeholder-916" data-method="placement-service"></span><span data-ez-ph-id="916"></span><!-- Ezoic - gen_incontent_6 - incontent_6 --><p>The second half of the twentieth century also saw the publication of several encyclopedias that were notable for synthesizing important topics in specific fields, often by means of new works authored by significant researchers. Such encyclopedias included <i>The Encyclopedia of Philosophy</i> (first published in 1967 and now in its second edition), and <i>Elsevier&#39;s Handbooks In Economics</i><sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup> series. Encyclopedias of at least one volume in size exist for most if not all Academic disciplines, including, typically, such narrow topics such as <a href="/entry/Bioethics" title="Bioethics">bioethics</a> and African American history.
+</p>
+<h2><span class="mw-headline" id="Information_Age_Encyclopedias">Information Age Encyclopedias</span></h2>
+<div style="float:right; margin:10px; margin-right:0;" class="thumb">
+<div style="font-size:110%; border:1px solid #777; padding:0;" class="thumbinner"><div style="width:100%; background-color:#000000; color:#ffffff; padding:2px 0; text-align:center;">Did you know?</div><div style="width:290px; padding:5px; font-style:oblique;">In the early days of personal <a href="/entry/Computer" title="Computer">computers</a>, before the <a href="/entry/Internet" title="Internet">Internet</a> developed, encyclopedia companies often sold CD-ROM versions, with <a href="/entry/Microsoft" title="Microsoft">Microsoft</a> &#34;Encarta&#34; being an early example</div></div></div> 
+<p>By the late twentieth century, the information age was beginning to stimulate an entirely new generation of encyclopedias based on digital, electronic, and computer technology. Initially, traditional encyclopedia makers began offering electronic forms of their encyclopedias on CD-ROMs for use with personal computers. <a href="/entry/Microsoft" title="Microsoft">Microsoft</a>&#39;s <i>Encarta</i> was a landmark in this sea change, as it had no print version. Articles were supplemented with video and audio files as well as numerous high-quality images. The development of <a href="/entry/Hyperlink" title="Hyperlink">hyperlinking</a> greatly aided cross referencing, making quick transitions from one subject to the next. In addition, nearly instantaneous searches of thousands of articles, using keyword technology, are possible. 
+</p><p>With the development of the <a href="/entry/Internet" title="Internet">Internet</a>, similar encyclopedias were also being published online, and made available by subscription. Most libraries stopped buying print encyclopedias at this point, because the online encyclopedias were constantly revised, making the cumbersome and expensive purchase of annual additions and new editions obsolete.
+</p><p>Traditional encyclopedias are written by a number of employed text writers, usually people with an academic degree, but the interactive nature of the Internet allowed for the creation of collaborative projects such as Nupedia, Everything2, Open Site, and Wikipedia, some of which allowed anyone to add or improve content. Wikipedia, begun as an on-line collaborative free encyclopedia with <a href="/entry/Wiki" class="mw-redirect" title="Wiki">wiki</a> software was begun in 2001 and already had more than  two million articles in more than 80 languages with content licensed under the <a href="/entry/GNU_Free_Documentation_License" title="GNU Free Documentation License">GNU Free Documentation License</a> by 2005. However Wikipedia&#39;s articles are not necessarily peer reviewed and many of those articles may be considered to be of a trivial nature. Wikipedia co-founder Larry Sanger stated that the neutral policy is &#34;dead&#34; due to left-wing bias being imposed by activists on the site.<sup id="cite_ref-4" class="reference"><a href="#cite_note-4">[4]</a></sup>  Concerns have been raised as to the accuracy of information generated through open source projects generally. The <i>New World Encyclopedia</i> attempts to improve on this quality control weakness by offering more specialized and supervised on-line collaboration.
+</p><!-- End Ezoic - gen_incontent_7 - incontent_7 --><span id="ezoic-pub-ad-placeholder-917" data-method="placement-service"></span><span data-ez-ph-id="917"></span><!-- Ezoic - gen_incontent_7 - incontent_7 -->
+<h2><span class="mw-headline" id="Knowledge_and_Values">Knowledge and Values</span></h2>
+<p>It is often said that &#34;knowledge is power&#34; or &#34;those who control education control the future.&#34; Before the invention of the printing press, and the development of primary schools to educate masses, knowledge remained in the hands of the <a href="/entry/Aristocracy" class="mw-redirect" title="Aristocracy">aristocracy</a> and the churches. Only the wealthy families were able to afford tutors like <a href="/entry/Aristotle" title="Aristotle">Aristotle</a>. 
+</p><p>Throughout history, people have sought to control others by enforcing official thought and punishing <a href="/entry/Heresy" class="mw-redirect" title="Heresy">heresy</a>. The destruction of the great ancient <a href="/entry/Alexandria_Library" title="Alexandria Library">Alexandria Library</a>, the canonization of the Bible in the fourth century <small>C.E.</small>, the <a href="/entry/Genocide" title="Genocide">genocide</a> against the Cathars and <a href="/entry/Albigenses" class="mw-redirect" title="Albigenses">Albigenses</a> of Southern France in the thirteenth century, the burning of <a href="/entry/Jan_Hus" title="Jan Hus">Jan Hus</a> in Bohemia in 1415, Savonarola&#39;s &#34;Bonfire of the Vanities&#39; (destruction of works of art) in <a href="/entry/Florence" title="Florence">Florence</a> in 1497, in Michael Servetus&#39; execution for a &#34;false view of the Trinity&#34; in Geneva in 1553, the banishment of <a href="/entry/Roger_Williams" title="Roger Williams">Roger Williams</a> from Massachussetts in 1635, the Catholic ban on <a href="/entry/Copernicus" class="mw-redirect" title="Copernicus">Copernicus</a>&#39; theory of a heliocentric universe in 1757, the elimination of <a href="/entry/Sociology" title="Sociology">sociology</a> from the University of Moscow in 1923 with the pronouncement that &#34;Marxism-Leninism had said the final word on the subject, and the Taliban ban on education of women and their obliteration of great <a href="/entry/Buddhism" title="Buddhism">Buddhist</a> works of art at the end of the twentieth, are only a few of the notorious examples of repression of knowledge. Millions of people have been killed in the effort by oppressors to control knowledge.
+</p><p>Encyclopedias and education of the masses are attempts to break the yoke of imposed thought control and allow all people the knowledge required to pursue a life of happiness, prosperity and peace on more equal terms. Nevertheless, encyclopedias have been criticized for their own attempts to distort knowledge, just as political groups continue to control the curriculum of public schools in an attempt to shape social consciousness. Enlightenment encyclopedias were accused of promoting Enlightenment values by both traditional religious institutions that were threatened by them, as well as scientists that argued the social philosophy of the encyclopedists was unproven or faulty. The <i>Britannica</i> was accused of imposing the values of British aristocracy. 
+</p><p>The reaction to this was the attempt to remove values from encyclopedias in the twentieth century. This created a form of <a href="/entry/Scientism" title="Scientism">scientism</a> by default. &#34;Value free&#34; encyclopedias failed to help readers organize knowledge for a meaningful purpose, but simply presented collections of facts and data which readers were supposed to figure out how to use by themselves. This value neutrality or <a href="/entry/Relativism" title="Relativism">relativism</a> led to a generations of people with less ability to make informed judgments, and thus a less productive society.
+</p><!-- End Ezoic - gen_incontent_8 - incontent_8 --><span id="ezoic-pub-ad-placeholder-918" data-method="placement-service"></span><span data-ez-ph-id="918"></span><!-- Ezoic - gen_incontent_8 - incontent_8 --><p>Contemporary philosophy accepts that value neutrality is neither possible nor desired, however the modern pluralism of cultures makes it difficult to highlight any specific values without criticism. As a result, it is becoming more standard to articulate one&#39;s values at the onset of a written work, thus defining its purpose. This very encyclopedia, the <i>New World Encyclopedia</i>, while associated with a believing community (namely that of <a href="/entry/Sun_Myung_Moon" title="Sun Myung Moon">Sun Myung Moon</a>), differs from classical religious encyclopedias insofar as it seeks to provide and protect a thoroughly pluriform, multi-religious stance, and to communicate universal values in a scholarly and rigorous manner that does not posit particularistic faith affirmations or other non-universal positions as &#34;fact.&#34; Its stance is based on the premise that there exists universal values, which can be found in the essence of all religions and non-theistic philosophical traditions; these are values that derive from efforts to bring about <a href="/entry/Happiness" title="Happiness">happiness</a>, prosperity and <a href="/entry/Peace" class="mw-redirect" title="Peace">peace</a> for all.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<p>Other types of Reference works:
+</p>
+<ul><li><a href="/entry/Dictionary" title="Dictionary">Dictionary</a></li>
+<li><a href="/entry/Thesaurus" title="Thesaurus">Thesaurus</a></li></ul>
+<h2><span class="mw-headline" id="Notes">Notes</span></h2>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">Owing to differences in American and British English orthographic conventions, the spellings <b>encyclopedia</b> and <b>encyclopaedia</b> both see common use, in American- and British-influenced sources, respectively. It should however be noted that, as with <a href="/p/index.php?title=American_and_British_English_spelling_differences&amp;action=edit&amp;redlink=1" class="new" title="American and British English spelling differences (page does not exist)"><i>-ize</i> and <i>-ise</i></a>, the former is the only accepted form in the U.S. whereas both are accepted in Commonwealth English. Further, converse to <a href="/entry/Archaeology" title="Archaeology">archaeology</a>, where the <i>ae</i> spelling is retained all but universally, the &#34;simplified&#34; spelling has become increasingly widespread in recent years. The spelling <b>encyclopædia</b>—with the <i>æ</i> ligature—was frequently used in the nineteenth century and is increasingly rare, although it is retained in product titles such as <i>Encyclopædia Britannica</i> and others. The <i>Oxford English Dictionary</i> and <i>Webster&#39;s Third New International Dictionary</i> record both spellings: the former (1989) notes the <i>æ</i> would be obsolete except that it is preserved in works that have Latin titles, while the latter (1961-2002) notes that the digraph is &#34;rare&#34; in the United States. Similarly, <b>cyclopaedia</b> and <b>cyclopedia</b> are now rarely-used alternate forms of the word originating in the early seventeenth century.</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text"><a class="external text" href="https://quod.lib.umich.edu/cgi/t/text/text-idx?c=did;cc=did;idno=did2222.0000.004;rgn=main;view=text">Encyclopedia of Diderot &amp; D&#39;alembert</a>, Scholarly Publishing Office of the University of Michigan Library. Retrieved September 26, 2023.</span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="#cite_ref-3">↑</a></span> <span class="reference-text"><a class="external text" href="https://www.elsevier.com/books-and-journals/book-series/handbooks-in-economics">Handbooks in Economics</a> Elsevier. Retrieved September 26, 2023.</span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="#cite_ref-4">↑</a></span> <span class="reference-text">T.D. Adler, <a class="external text" href="https://www.breitbart.com/tech/2020/05/26/wikipedia-co-founder-sites-neutrality-is-dead-thanks-to-leftist-bias/">&#34;Wikipedia Co-Founder: Site’s Neutrality Is ‘Dead’ Thanks to Leftist Bias&#34;</a> <i>Breitbart</i> (May 26, 2020). Retrieved September 26, 2023.</span>
+</li>
+</ol></div>
+<h2><span class="mw-headline" id="References">References</span><div style="float: right; font-weight: normal; font-size: 70%; font-style: italic; margin-top:7px;" class="">ISBN links support NWE through referral fees</div></h2>
+<ul><li>Bram, Leon. <i>Funk &amp; Wagnalls New Encyclopedia.</i> vol. 9. New York, Rand McNally, 1986. <a href="https://www.amazon.com/gp/product/0834300729/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0834300729&amp;linkCode=as2&amp;tag=newworldencyc-20&amp;linkId=83df4bed72539f2a52beb06a1d71be79" class="external">ISBN 0834300729</a></li>
+<li>Collison, Robert. <i>Encyclopaedias: Their History Throughout the Ages,</i> 2nd ed. New York, London: Hafner, 1966. <a href="https://www.amazon.com/gp/product/0028431006/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0028431006&amp;linkCode=as2&amp;tag=newworldencyc-20&amp;linkId=83df4bed72539f2a52beb06a1d71be79" class="external">ISBN 978-0028431000</a></li>
+<li>Darnton, Robert. <i>The business of enlightenment: a publishing history of the Encyclopédie, 1775-1800.</i> Cambridge: Belknap Press, 1979. <a href="https://www.amazon.com/gp/product/0674087852/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0674087852&amp;linkCode=as2&amp;tag=newworldencyc-20&amp;linkId=83df4bed72539f2a52beb06a1d71be79" class="external">ISBN 0674087852</a></li>
+<li>Kafker, Frank A. (ed.). <i>Notable encyclopedias of the seventeenth and eighteenth centuries: nine predecessors of the Encyclopédie.</i> Oxford: Voltaire Foundation, 1981. <a href="https://www.amazon.com/gp/product/0729402568/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0729402568&amp;linkCode=as2&amp;tag=newworldencyc-20&amp;linkId=83df4bed72539f2a52beb06a1d71be79" class="external">ISBN 978-0729402569</a></li>
+<li>Moon, Sun Myung. <i>Science and Absolute Values: Twenty Addresses.</i> New York: International Conference on the Unity of the Sciences, 1997. <a href="https://www.amazon.com/gp/product/089226201X/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=089226201X&amp;linkCode=as2&amp;tag=newworldencyc-20&amp;linkId=83df4bed72539f2a52beb06a1d71be79" class="external">ISBN 089226201X</a></li>
+<li>Walsh, S. Padraig. <i>Anglo-American General Encyclopedias: A historical bibliography, 1703-1967.</i> New York: Bowker, 1968. <a href="https://www.amazon.com/gp/product/0835200264/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0835200264&amp;linkCode=as2&amp;tag=newworldencyc-20&amp;linkId=83df4bed72539f2a52beb06a1d71be79" class="external">ISBN 978-0835200264</a></li>
+<li>Yeo, Richard R. <i>Encyclopaedic Visions: Scientific dictionaries and enlightenment culture</i>. Cambridge, New York: Cambridge University Press, 2001. <a href="https://www.amazon.com/gp/product/0521651913/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0521651913&amp;linkCode=as2&amp;tag=newworldencyc-20&amp;linkId=83df4bed72539f2a52beb06a1d71be79" class="external">ISBN 0521651913</a></li></ul>
+<h2><span class="mw-headline" id="External_links">External links</span></h2>
+<p>All links retrieved September 26, 2023.
+</p>
+<ul><li><a class="external text" href="https://www.etymonline.com/search?q=encyclopedia">encyclopedia</a> <i>Online Etymology Dictionary</i></li>
+<li><a class="external text" href="https://quod.lib.umich.edu/cgi/t/text/text-idx?c=did;cc=did;idno=did2222.0000.004;rgn=main;view=text">Diderot&#39;s article on the Encyclopedia</a> from the original <i>Encyclopédie</i>.</li>
+<li><a class="external text" href="http://en.wikipedia.org/wiki/Main_Page">Wikipedia</a></li>
+<li><a class="external text" href="https://quod.lib.umich.edu/cgi/t/text/text-idx?c=moa&amp;cc=moa&amp;key=title&amp;page=browse&amp;value=encyclop%C3%A6dia+americana&amp;Submit=Quick+Browse"><i>Encyclopædia Americana</i></a> – 1851, Francis Lieber (ed.), (Boston: Mussey &amp; Co.) at the University of Michigan Making of America site</li>
+<li><a class="external text" href="https://www.jewishencyclopedia.com/">The Jewish Encyclopedia</a></li>
+<li><a class="external text" href="https://www.newadvent.org/cathen/">The Catholic Encyclopedia</a></li></ul>
+<div class="epcredits">
+<h2><span class="mw-headline" id="Credits">Credits</span></h2>
+<p><i>New World Encyclopedia</i> writers and editors rewrote and completed the <i>Wikipedia</i> article 
+in accordance with <i>New World Encyclopedia</i> <a href="/entry/Help:Writers_Manual" title="Help:Writers Manual">standards</a>. This article abides by terms of the <a href="/entry/New_World_Encyclopedia:Creative_Commons_CC-by-sa_3.0" title="New World Encyclopedia:Creative Commons CC-by-sa 3.0">Creative Commons CC-by-sa 3.0 License</a> (CC-by-sa), which may be used and disseminated with proper attribution. Credit is due under the terms of this license that can reference both the <i>New World Encyclopedia</i> contributors and the selfless volunteer contributors of the Wikimedia Foundation. To cite this article <a class="external text" href="https://www.newworldencyclopedia.org/entry/Special:CiteThisPage?page=Encyclopedia&amp;wpFormIdentifier=titleform">click here</a> for a list of acceptable citing formats.The history of earlier contributions by wikipedians is accessible to researchers here: 
+</p>
+<ul><li><a class="external text" href="http://en.wikipedia.org/w/index.php?title=Encyclopedia&amp;oldid=85582117">Encyclopedia</a>  <sup><a class="external text" href="http://en.wikipedia.org/w/index.php?title=Encyclopedia&amp;action=history">history</a></sup></li></ul>
+<p>The history of this article since it was imported to <i>New World Encyclopedia</i>:
+</p>
+<ul><li><span class="plainlinks"><a class="external text" href="https://www.newworldencyclopedia.org/p/index.php?title=Encyclopedia&amp;action=history">History of &#34;Encyclopedia&#34;</a><span></span></span></li></ul>
+<p>Note: Some restrictions may apply to use of individual images which are separately licensed.
+</p>
+</div>
+<!-- 
+NewPP limit report
+Cached time: 20250825040943
+Cache expiry: 86400
+Dynamic content: false
+Complications: []
+CPU time usage: 0.049 seconds
+Real time usage: 0.094 seconds
+Preprocessor visited node count: 362/1000000
+Post‐expand include size: 3171/3145728 bytes
+Template argument size: 238/3145728 bytes
+Highest expansion depth: 4/40
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2878/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    8.947      1 -total
+ 28.53%    2.553      1 Template:Credit
+ 10.53%    0.942      1 Template:Readout
+ 10.18%    0.911      1 Template:Polytonic
+ 10.15%    0.908      1 Template:Toc
+-->
+
+<!-- Saved in parser cache with key epdraft:pcache:idhash:17788-0!canonical and timestamp 20250825040943 and revision id 1123304
+ -->
+</div></div><div class="printfooter">
+Retrieved from <a dir="ltr" href="https://www.newworldencyclopedia.org/p/index.php?title=Encyclopedia&amp;oldid=1123304">https://www.newworldencyclopedia.org/p/index.php?title=Encyclopedia&amp;oldid=1123304</a></div>
+
+					<!-- end body text -->
+					<!-- data blocks which should go somewhere after the body text, but not before the catlinks block-->
+					
+				</div>
+				<!-- category links -->
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/entry/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/entry/Category:Politics_and_social_sciences" title="Category:Politics and social sciences">Politics and social sciences</a></li><li><a href="/entry/Category:Literature" title="Category:Literature">Literature</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/entry/Category:Pages_using_ISBN_magic_links" title="Category:Pages using ISBN magic links">Pages using ISBN magic links</a></li></ul></div></div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="mb-2 mt-4 container-fluid">
+		<div class="row">
+			<div class="col">
+				<!-- navigation bar -->
+				<nav class="p-navbar not-collapsible justify-content-center" role="navigation" id="mw-navigation-i4pz1p8nld">
+					<div class="navbar-nav">
+					<!-- places -->
+					<div id="footer-places" class="justify-content-center footer-places">
+						<div><a href="/entry/New_World_Encyclopedia:Privacy_policy" title="New World Encyclopedia:Privacy policy">Privacy policy</a></div>
+						<div><a href="/entry/New_World_Encyclopedia:About" title="New World Encyclopedia:About">About New World Encyclopedia</a></div>
+						<div><a href="/entry/New_World_Encyclopedia:General_disclaimer" title="New World Encyclopedia:General disclaimer">Disclaimers</a></div>
+					</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="justify-content-center col">
+				<!-- footer links -->
+				<div id="footer-info" class="justify-content-center footer-info">
+					<!-- info -->
+					<div><br/>Content is available under <a class="external" href="https://www.newworldencyclopedia.org/entry/New World Encyclopedia:Creative_Commons_CC-by-sa_3.0">Creative Commons Attribution/Share-Alike License</a>; additional terms may apply. See <a href="//www.newworldencyclopedia.org/entry/New_World_Encyclopedia:Terms_of_Use">Terms of Use</a> for details.</div>
+				</div>
+				<!-- footer icons -->
+				<div id="footer-icons" class="justify-content-center footer-icons" style="margin-bottom: 100px;">
+					<!-- copyright -->
+					<div><img src="https://static.newworldencyclopedia.org/skins/common/images/Cc.logo.circle.png" width="40" height="40" alt="Copyright Logo" loading="lazy"/></div>
+					<!-- poweredby -->
+					<div><a href="https://www.mediawiki.org/"><img src="/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" loading="lazy"/></a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.049","walltime":"0.094","ppvisitednodes":{"value":362,"limit":1000000},"postexpandincludesize":{"value":3171,"limit":3145728},"templateargumentsize":{"value":238,"limit":3145728},"expansiondepth":{"value":4,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":2878,"limit":5000000},"timingprofile":["100.00%    8.947      1 -total"," 28.53%    2.553      1 Template:Credit"," 10.53%    0.942      1 Template:Readout"," 10.18%    0.911      1 Template:Polytonic"," 10.15%    0.908      1 Template:Toc"]},"cachereport":{"timestamp":"20250825040943","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":237});});</script>
+
+<!--[selectrongo:done]--><span id="ezoic-pub-ad-placeholder-100"></span><span data-ez-ph-id="100" style="box-sizing:content-box;display:inline-block;min-width:0px;max-width:100% !important;padding:0;float:none !important;min-height:0px;line-height:0px;"></span><div id="ez-sidebar-wall-left" class="ez-sidebar-wall" style="left: 0px;">
+	<div class="ez-sidebar-wall-ad">
+		<span id="ezoic-pub-ad-placeholder-116"></span><span data-ez-ph-id="116" style="float:none !important;margin-right:0px !important;margin-bottom:0px !important;min-width:160px;min-height:600px;line-height:0px;padding:0;box-sizing:content-box;margin-top:0px !important;margin-left:0px !important;display:inline-block;max-width:100% !important;"></span>
+		<span class="ez-rail-close" id="ez-rail-close-left" style="top: -21px; left: 0; display: none;" onclick="__ez_close_rail(this.parentElement.parentElement.id)">x</span>
+	</div>
+</div><div id="ez-sidebar-wall-right" class="ez-sidebar-wall" style="right: 0px;">
+	<div class="ez-sidebar-wall-ad">
+		<span id="ezoic-pub-ad-placeholder-117"></span><span data-ez-ph-id="117" style="margin-top:0px !important;min-width:160px;min-height:600px;max-width:100% !important;padding:0;box-sizing:content-box;margin-right:0px !important;margin-bottom:0px !important;margin-left:0px !important;display:inline-block;line-height:0px;float:none !important;"></span>
+		<span class="ez-rail-close" id="ez-rail-close-right" style="top: -21px; right: 0; display: none;" onclick="__ez_close_rail(this.parentElement.parentElement.id)">x</span>
+	</div>
+</div><script>!function(){function t(t,r){var n="undefined"!=typeof Symbol&&t[Symbol.iterator]||t["@@iterator"];if(!n){if(Array.isArray(t)||(n=function(t,r){if(t){if("string"==typeof t)return e(t,r);var n=Object.prototype.toString.call(t).slice(8,-1);return"Object"===n&&t.constructor&&(n=t.constructor.name),"Map"===n||"Set"===n?Array.from(t):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?e(t,r):void 0}}(t))||r&&t&&"number"==typeof t.length){n&&(t=n);var a=0,o=function(){};return{s:o,n:function(){return a>=t.length?{done:!0}:{done:!1,value:t[a++]}},e:function(t){throw t},f:o}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var i,u=!0,s=!1;return{s:function(){n=n.call(t)},n:function(){var t=n.next();return u=t.done,t},e:function(t){s=!0,i=t},f:function(){try{u||null==n.return||n.return()}finally{if(s)throw i}}}}function e(t,e){(null==e||e>t.length)&&(e=t.length);for(var r=0,n=new Array(e);r<e;r++)n[r]=t[r];return n}!function(){var e=function(t){var e=getComputedStyle(t);if(-1===parseInt(e.bottom,10)){var r=t.offsetHeight||300;t.style.bottom=-r+"px"}};function r(){return document.querySelector('ins[data-anchor-shown="true"][data-anchor-status="displayed"]')}function n(t){var e=t.querySelector("iframe");e&&requestAnimationFrame((function(){var r=parseFloat(getComputedStyle(e).height);isNaN(r)||t.style.setProperty("height","".concat(r+5,"px"),"important")}))}function a(t){t.style.setProperty("width","100%","important"),t.style.maxWidth="none"}function o(t){var e=t.querySelector("iframe");e&&(e.style.setProperty("display","block","important"),e.style.setProperty("margin","0 auto","important"));var r=t.querySelector("[id$='__container__']");r&&r.style.setProperty("display","contents","important")}new MutationObserver((function(r){var n,a=t(r);try{for(a.s();!(n=a.n()).done;){var o=n.value;if("attributes"===o.type){var i=o.target;i.matches("[data-anchor-status]")&&("data-anchor-status"===o.attributeName&&"dismissed"===i.getAttribute("data-anchor-status")&&e(i),"style"===o.attributeName&&"dismissed"===i.getAttribute("data-anchor-status")&&e(i))}}}catch(t){a.e(t)}finally{a.f()}})).observe(document.documentElement,{subtree:!0,attributes:!0,attributeFilter:["style","data-anchor-status"]});var i=new WeakSet;function u(e){e&&(i.has(e)||(i.add(e),new MutationObserver((function(r){var i,u=t(r);try{for(u.s();!(i=u.n()).done;){var s=i.value;"style"===s.attributeName?(n(e),a(e),o(e)):"attributes"===s.type&&"data-google-query-id"===s.attributeName&&o(e)}}catch(t){u.e(t)}finally{u.f()}})).observe(e,{attributes:!0,attributeFilter:["style","data-google-query-id"]})))}!function(){var t=r();if(t)return n(t),a(t),o(t),void u(t);var e=new MutationObserver((function(){var t=r();t&&(n(t),a(t),o(t),u(t),e.disconnect())}));e.observe(document.body,{attributes:!0,subtree:!0,childList:!0})}()}()}();</script><script data-cfasync="false">function _emitEzConsentEvent(){var customEvent=new CustomEvent("ezConsentEvent",{detail:{ezTcfConsent:window.ezTcfConsent},bubbles:true,cancelable:true,});document.dispatchEvent(customEvent);}
+(function(window,document){function _setAllEzConsentTrue(){window.ezTcfConsent.loaded=true;window.ezTcfConsent.store_info=true;window.ezTcfConsent.develop_and_improve_services=true;window.ezTcfConsent.measure_ad_performance=true;window.ezTcfConsent.measure_content_performance=true;window.ezTcfConsent.select_basic_ads=true;window.ezTcfConsent.create_ad_profile=true;window.ezTcfConsent.select_personalized_ads=true;window.ezTcfConsent.create_content_profile=true;window.ezTcfConsent.select_personalized_content=true;window.ezTcfConsent.understand_audiences=true;window.ezTcfConsent.use_limited_data_to_select_content=true;window.ezTcfConsent.select_personalized_content=true;}
+function _clearEzConsentCookie(){document.cookie="ezCMPCookieConsent=tcf2;Domain=.newworldencyclopedia.org;Path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";}
+_clearEzConsentCookie();if(typeof window.__tcfapi!=="undefined"){window.ezgconsent=false;var amazonHasRun=false;function _ezAllowed(tcdata,purpose){return(tcdata.purpose.consents[purpose]||tcdata.purpose.legitimateInterests[purpose]);}
+function _handleConsentDecision(tcdata){window.ezTcfConsent.loaded=true;if(!tcdata.vendor.consents["347"]&&!tcdata.vendor.legitimateInterests["347"]){window._emitEzConsentEvent();return;}
+window.ezTcfConsent.store_info=_ezAllowed(tcdata,"1");window.ezTcfConsent.develop_and_improve_services=_ezAllowed(tcdata,"10");window.ezTcfConsent.measure_content_performance=_ezAllowed(tcdata,"8");window.ezTcfConsent.select_basic_ads=_ezAllowed(tcdata,"2");window.ezTcfConsent.create_ad_profile=_ezAllowed(tcdata,"3");window.ezTcfConsent.select_personalized_ads=_ezAllowed(tcdata,"4");window.ezTcfConsent.create_content_profile=_ezAllowed(tcdata,"5");window.ezTcfConsent.measure_ad_performance=_ezAllowed(tcdata,"7");window.ezTcfConsent.use_limited_data_to_select_content=_ezAllowed(tcdata,"11");window.ezTcfConsent.select_personalized_content=_ezAllowed(tcdata,"6");window.ezTcfConsent.understand_audiences=_ezAllowed(tcdata,"9");window._emitEzConsentEvent();}
+function _handleGoogleConsentV2(tcdata){if(!tcdata||!tcdata.purpose||!tcdata.purpose.consents){return;}
+var googConsentV2={};if(tcdata.purpose.consents[1]){googConsentV2.ad_storage='granted';googConsentV2.analytics_storage='granted';}
+if(tcdata.purpose.consents[3]&&tcdata.purpose.consents[4]){googConsentV2.ad_personalization='granted';}
+if(tcdata.purpose.consents[1]&&tcdata.purpose.consents[7]){googConsentV2.ad_user_data='granted';}
+if(googConsentV2.analytics_storage=='denied'){gtag('set','url_passthrough',true);}
+gtag('consent','update',googConsentV2);}
+__tcfapi("addEventListener",2,function(tcdata,success){if(!success||!tcdata){window._emitEzConsentEvent();return;}
+if(!tcdata.gdprApplies){_setAllEzConsentTrue();window._emitEzConsentEvent();return;}
+if(tcdata.eventStatus==="useractioncomplete"||tcdata.eventStatus==="tcloaded"){if(typeof gtag!='undefined'){_handleGoogleConsentV2(tcdata);}
+_handleConsentDecision(tcdata);if(tcdata.purpose.consents["1"]===true&&tcdata.vendor.consents["755"]!==false){window.ezgconsent=true;(adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;}
+if(window.__ezconsent){__ezconsent.setEzoicConsentSettings(ezConsentCategories);}
+__tcfapi("removeEventListener",2,function(success){return null;},tcdata.listenerId);if(!(tcdata.purpose.consents["1"]===true&&_ezAllowed(tcdata,"2")&&_ezAllowed(tcdata,"3")&&_ezAllowed(tcdata,"4"))){if(typeof __ez=="object"&&typeof __ez.bit=="object"&&typeof window["_ezaq"]=="object"&&typeof window["_ezaq"]["page_view_id"]=="string"){__ez.bit.Add(window["_ezaq"]["page_view_id"],[new __ezDotData("non_personalized_ads",true),]);}}}});}else{_setAllEzConsentTrue();window._emitEzConsentEvent();}})(window,document);</script></body><!-- Cached 20250825040944 --></html>

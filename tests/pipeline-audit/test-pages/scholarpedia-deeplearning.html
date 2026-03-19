@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>Deep Learning - Scholarpedia</title>
+<meta charset="UTF-8" />
+<meta name="generator" content="MediaWiki 1.19.17" />
+<meta name="citation_title" content="Deep Learning" />
+<meta name="citation_author" content="Juergen Schmidhuber" />
+<meta name="citation_date" content="2015/11/28" />
+<meta name="citation_journal_title" content="Scholarpedia" />
+<meta name="citation_issn" content="1941-6016" />
+<meta name="citation_volume" content="10" />
+<meta name="citation_issue" content="11" />
+<meta name="citation_firstpage" content="32832" />
+<meta name="citation_doi" content="10.4249/scholarpedia.32832" />
+<link rel="shortcut icon" href="/w/images/6/64/Favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Scholarpedia (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="//www.scholarpedia.org/w/api.php?action=rsd" />
+<link rel="alternate" type="application/atom+xml" title="Scholarpedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="//www.scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cskins.vector&amp;only=styles&amp;skin=vector&amp;*" />
+<link rel="stylesheet" href="/w/skins/vector/font-awesome.min.css" />
+<link rel="stylesheet" href="/w/skins/vector/local-screen.css" /><meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="//www.scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector&amp;*" />
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}a.new,#quickbar a.new{color:#ba0000}
+
+/* cache key: wikidb:resourceloader:filter:minify-css:7:c88e2bcd56513749bec09a7e29cb3ffa */</style>
+
+<script src="//www.scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Deep_Learning","wgTitle":"Deep Learning","wgCurRevisionId":184887,"wgArticleId":32832,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgRelevantPageName":"Deep_Learning","wgRestrictionEdit":[],"wgRestrictionMove":[],"wgVectorEnabledModules":{"collapsiblenav":true,"collapsibletabs":true,"editwarning":false,"expandablesearch":false,"footercleanup":false,"sectioneditlinks":false,"simplesearch":true,"experiments":true}});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":1,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"highlightbroken":1,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"vector-simplesearch":1,"vector-collapsiblenav":1,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs200":false,"searchNs201":false,"searchNs400":false,"searchNs401":false});;},{},{});mw.loader.implement("user.tokens",function($){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+
+/* cache key: wikidb:resourceloader:filter:minify-js:7:e87579b4b142a5fce16144e6d8ce1889 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<link rel="canonical" href="http://www.scholarpedia.org/article/Deep_Learning" />
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Deep_Learning skin-vector action-view cp-body-published">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- sitenotice -->
+			<div id="siteNotice"><script type="text/javascript">
+/* <![CDATA[ */
+document.writeln("\x3cdiv id=\"localNotice\" lang=\"en\" dir=\"ltr\"\x3e\x3cp style=text-align:left;font-style:italic\x3eScholarpedia is supported by \x3ca href=\'https://www.braincorp.com\'\x3eBrain Corporation\x3c/a\x3e\x3c/p\x3e\x3c/div\x3e");
+/* ]]> */
+</script></div>
+			<!-- /sitenotice -->
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">
+				<span dir="auto">Deep Learning</span>
+			</h1>
+			<!-- /firstHeading -->
+
+                            <div class="cp-googleplus">
+                    <div class="g-plusone" align="right" data-size="small" data-annotation="inline"
+                         data-width="180"></div>
+                    <script type="text/javascript">
+                        (function () {
+                            var po = document.createElement('script');
+                            po.type = 'text/javascript';
+                            po.async = true;
+                            po.src = 'https://apis.google.com/js/plusone.js';
+                            var s = document.getElementsByTagName('script')[0];
+                            s.parentNode.insertBefore(po, s);
+                        })();
+                    </script>
+                </div>
+            
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">From Scholarpedia</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"><span class="subpages"><table class="cp-citation-subtitle" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr valign="bottom">
+<td align="left">Juergen Schmidhuber (2015), Scholarpedia, 10(11):32832.</td>
+<td align="center"><a href="http://dx.doi.org/10.4249/scholarpedia.32832">doi:10.4249/scholarpedia.32832</a></td>
+<td align="right">revision #184887 [<a href="/w/index.php?title=Deep_Learning&amp;action=cite&amp;rev=184887" title="Deep Learning">link to/cite this article</a>]</td>
+</tr>
+</table>
+</span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to: <a href="#mw-head">navigation</a>,
+					<a href="#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="cp-box-container"><div class="cp-curator-box noprint"><b><u>Post-publication activity</u></b><br /><button class="cp-button btn"></button><p><span class="cp-title-label">Curator:</span> <a href="/article/User:Juergen_Schmidhuber" title="User:Juergen Schmidhuber">Juergen Schmidhuber</a>
+</p><div class="cp-assistants hidden"><div><span class="cp-title-label">Contributors:</span><p>&nbsp;</p></div><div><span>0.50 - </span><p><a href="/article/User:Neil_Girdhar" title="User:Neil Girdhar">Neil Girdhar</a>
+</p></div><div><span></span><p><a href="/article/User:Risto_Miikkulainen" title="User:Risto Miikkulainen">Risto Miikkulainen</a>
+</p></div><div><span></span><p><a href="/article/User:Eugene_M._Izhikevich" title="User:Eugene M. Izhikevich">Eugene M. Izhikevich</a>
+</p></div></div></div></div><div class="cp-author-order"><ul id="sp_authors"><li id="sort-1"><p><a href="/article/User:Juergen_Schmidhuber" title="User:Juergen Schmidhuber"><span class="bold">Dr. Juergen Schmidhuber</span>, Dalle Molle Institute for Artificial Intelligence, Manno-Lugano, Switzerland</a>
+</p></li></ul></div><p><strong>Deep Learning</strong> has revolutionised Pattern Recognition and Machine Learning.
+It is about credit assignment in adaptive systems with long chains of 
+potentially causal links between actions and consequences.  
+</p><p>The ancient term "Deep Learning" was first introduced 
+to Machine Learning by Dechter (1986), 
+and to Artificial <a href="/article/Neuron" title="Neuron">Neural</a> Networks (NNs) by Aizenberg et al (2000). 
+Subsequently it became especially popular in the context of deep NNs,
+the most successful Deep Learners,
+which are much older though, dating back half a century.
+This article will focus on essential developments since the 1960s, 
+addressing supervised, unsupervised, and (briefly) <a href="/article/Reinforcement_learning" title="Reinforcement learning">reinforcement learning</a>.
+There is a recent, more detailed survey 
+with 888 references (Schmidhuber, 2015).
+LeCun et al (2015) provide a more limited view of more recent Deep Learning history.
+</p><p>A standard NN consists of many simple, connected processors called units,
+each producing a sequence of real-valued activations. 
+Input units get activated through sensors perceiving the environment, 
+other units through connections with real-valued weights from previously active units. 
+Some units may influence the environment by triggering actions.
+Learning or credit assignment is about finding weights that make the NN exhibit desired behavior,
+such as controlling a robot. 
+Depending on the problem and how the units are connected, such behavior
+may require long causal chains of computational stages, where each stage transforms (often
+in a non-linear way) the aggregate activation of the network. 
+Deep Learning in NNs is about accurately assigning credit across many such stages. 
+</p><p>In a sense, sequence-processing recurrent NNs (RNNs) are the ultimate NNs, 
+because they are general computers (an RNN can emulate the circuits of a microchip). 
+In fully connected RNNs, all units have connections to all non-input units.
+Unlike feedforward NNs, RNNs can implement while loops, recursion, etc. 
+The program of an RNN is its weight matrix. 
+RNNs can learn programs that mix sequential
+and parallel information processing in a natural and efficient way.
+</p><p>To measure whether credit assignment in a given NN application 
+is of the deep or shallow type, 
+we consider the length of the corresponding credit assignment paths, 
+which are chains of possibly causal connections between subsequent unit activations, e.g., 
+from input units through hidden units to output units in feedforward NNs (FNNs)
+without feedback connections, 
+or through transformations over time in RNNs. 
+FNNs with fixed topology have a problem-independent maximal 
+problem depth bounded by the number of layers of units.
+RNNs, the deepest of all NNs, may learn to solve problems of potentially unlimited depth,
+for example, by learning to store in their activation-based "short-term <a href="/article/Memory" title="Memory">memory</a>" 
+representations of certain important previous observations 
+for arbitrary time intervals. 
+</p><p>The difficulty of a problem may have little to do with its depth. 
+Some NNs can quickly learn
+to solve certain deep but simple problems 
+through random weight guessing (e.g., Hochreiter and Schmidhuber, 1997b). In general, however,
+finding an NN that precisely models a given training set (of input patterns 
+and corresponding labels) is an NP-complete problem, 
+also in the case of deep NNs (e.g., Sima, 1994).
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#First_Deep_Learners"><span class="tocnumber">1</span> <span class="toctext">First Deep Learners</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Architectures_of_Convolutional_NNs_.28CNNs.29"><span class="tocnumber">2</span> <span class="toctext">Architectures of Convolutional NNs (CNNs)</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Backpropagation"><span class="tocnumber">3</span> <span class="toctext">Backpropagation</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Backpropagation_for_CNNs"><span class="tocnumber">4</span> <span class="toctext">Backpropagation for CNNs</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Fundamental_Deep_Learning_Problem_and_Unsupervised_Pre-Training_of_RNNs_and_FNNs"><span class="tocnumber">5</span> <span class="toctext">Fundamental Deep Learning Problem and Unsupervised Pre-Training of RNNs and FNNs</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Very_Deep_Learning_in_Supervised_Sequence-Processing_RNNs"><span class="tocnumber">6</span> <span class="toctext">Very Deep Learning in Supervised Sequence-Processing RNNs</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Some_Tricks_to_Improve_NNs"><span class="tocnumber">7</span> <span class="toctext">Some Tricks to Improve NNs</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Consequences_for_Neuroscience"><span class="tocnumber">8</span> <span class="toctext">Consequences for Neuroscience</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Deep_Learning_with_Spiking_Neurons.3F"><span class="tocnumber">9</span> <span class="toctext">Deep Learning with Spiking Neurons?</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Deep_Reinforcement_Learning_.28RL.29"><span class="tocnumber">10</span> <span class="toctext">Deep Reinforcement Learning (RL)</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#Outlook"><span class="tocnumber">11</span> <span class="toctext">Outlook</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#References"><span class="tocnumber">12</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#External_links"><span class="tocnumber">13</span> <span class="toctext">External links</span></a></li>
+</ul>
+</td></tr></table>
+<h2> <span class="mw-headline" id="First_Deep_Learners">First Deep Learners</span></h2>
+<p>Certain early NNs (McCulloch and Pitts, 1943) did not learn at all. 
+<a href="/article/Donald_Olding_Hebb" title="Donald Olding Hebb">Hebb</a> (1949) published ideas about unsupervised learning.
+The following decades brought shallow unsupervised NNs 
+and supervised NNs (e.g., Rosenblatt, 1958).
+Early supervised NNs were essentially variants
+of linear regressors dating back two centuries (Gauss, Legendre).
+</p><p>Deep Learning networks originated in the 1960s
+when Ivakhnenko and Lapa (1965) published the first general, 
+working learning <a href="/article/Algorithm" title="Algorithm">algorithm</a> for supervised 
+deep feedforward multilayer perceptrons. 
+Their units had polynomial activation functions combining 
+additions and multiplications in Kolmogorov-Gabor polynomials. 
+Ivakhnenko (1971) already described a deep network with 8 layers  
+trained by the "Group Method of Data Handling,"
+still popular in the new millennium.
+Given a training set of input vectors with corresponding target output vectors, 
+layers are incrementally grown and trained by regression analysis, 
+then pruned with the help of a separate validation set, 
+where regularisation is used to weed out superfluous units. 
+The numbers of layers and units per layer can be learned in problem-dependent fashion.
+</p><p>Like later deep NNs, Ivakhnenko’s nets 
+learned to create hierarchical, distributed, 
+internal representations of incoming data. 
+Many later non-neural methods of Artificial Intelligence and Machine Learning also 
+learn more and more abstract, hierarchical data representations. 
+For example, syntactic pattern recognition methods (Fu, 1977) such as grammar induction 
+discover hierarchies of formal rules to model observations. 
+</p>
+<h2> <span class="mw-headline" id="Architectures_of_Convolutional_NNs_.28CNNs.29">Architectures of Convolutional NNs (CNNs)</span></h2>
+<p>The 1970s also saw the birth of the convolutional NN (CNN) 
+architecture (Fukushima’s <a href="/article/Neocognitron" title="Neocognitron">Neocognitron</a>, 1979) 
+inspired by neurophysiological insights.
+Today such architectures are widely used for computer <a href="/article/Vision" title="Vision">vision</a>. 
+Here the (typically rectangular) <a href="/article/Receptive_field" title="Receptive field">receptive field</a> of a unit with given weight
+vector (a filter) is shifted step by step across a 2-dimensional array of input values, such as the pixels
+of an image (usually there are several such filters). The resulting array of subsequent activation
+events of this unit can then provide inputs to higher-level units, and so on. Due to massive weight
+replication, relatively few parameters may be necessary to describe the behavior of
+such convolutional layers, which typically feed 
+downsampling layers consisting of units whose fixed-weight connections originate
+from physical neighbours in the convolutional layers below. 
+Downsampling units use "Spatial <a href="/article/Averaging" title="Averaging">Averaging</a>" to become active if at
+least one of their inputs is active; their responses are insensitive to certain small image shifts.
+Weng (1993) later replaced Spatial Averaging  by "Max-Pooling" (MP), which is widely used today. Here
+a 2-dimensional layer or array of unit activations is partitioned into smaller rectangular arrays. Each
+is replaced in a downsampling layer by the activation of its maximally active unit.
+</p>
+<h2> <span class="mw-headline" id="Backpropagation">Backpropagation</span></h2>
+<p>Ivakhnenko and Fukushima did not yet use supervised backpropagation (BP) to train 
+the weights of their nets by gradient descent in an objective function, 
+such as the total classification error on a given training set of input patterns and 
+corresponding labels, 
+although BP was also developed back then. 
+</p><p>BP’s continuous form was derived in the early 1960s (Kelley, 1960; Bryson, 1961; Bryson and Ho, 1969). 
+Dreyfus (1962) published the elegant derivation of BP based on the chain rule only. 
+BP’s modern efficient version for discrete sparse networks 
+(including FORTRAN code) was published by Linnainmaa (1970). 
+Here the <a href="/article/Complexity" title="Complexity">complexity</a> of computing the derivatives of the output error with respect to each weight
+is proportional to the number of weights. That’s the method still used today.
+Dreyfus (1973) used BP to change weights of controllers in proportion to such gradients.
+By 1980, automatic differentiation could derive BP for any differentiable graph (Speelpenning, 1980). 
+Werbos (1982) published the first application of BP to NNs, 
+extending thoughts in his 1974 thesis, which did not yet have Linnainmaa’s modern, efficient form of BP.  
+In 1980-1990, computers became 10,000 times faster per cent than those of 1960-1970, 
+and widely accessible in academic labs. 
+Computational experiments then demonstrated that BP in NNs 
+can indeed yield useful internal representations in hidden layers of NNs (Rumelhart et al., 1986). 
+Wan (1994) produced the first BP-trained NN to win a controlled pattern recognition contest with secret test set. Amari (1998) described BP for natural gradient-based NNs. 
+By 2003, deep BP-based standard FNNs with up to 7 layers were 
+used to successfully classify high-dimensional data (e.g., Vieira and Barradas, 2003).
+</p><p>In the 2000s, computing hardware had again become 10,000 times faster per cent than in the 1980s. 
+Cheap massively parallel Graphics Processing Units (GPUs, originally developed for video games) 
+started to revolutionise NN research.  
+Standard FNNs implemented on GPU were 20 times faster than on CPU (Oh and Jung, 2004).
+A plain GPU-based FNN trained by BP with pattern distortions (Baird, 1990) 
+set a new record of 0.35% error rate (Ciresan et al., 2010)
+on the MNIST handwritten digit dataset, 
+which by then had been the perhaps most 
+famous Machine Learning benchmark for decades. 
+This seemed to suggest that advances in exploiting modern computing hardware
+were more important than advances in algorithms.
+</p>
+<h2> <span class="mw-headline" id="Backpropagation_for_CNNs">Backpropagation for CNNs</span></h2>
+<p>LeCun et al. (1989) first applied BP to Neocognitron-like CNNs, 
+achieving good performance on MNIST.
+Similar CNNs were used commercially in the 1990s. 
+Ranzato et al. (2007) first applied BP to Max-Pooling CNNs (MPCNNs);
+advantages
+of doing this were pointed out subsequently (Scherer et al., 2010).
+</p><p>Efficient parallelized GPU-based MPCNNs (Ciresan et al., 2011a) further improved the MNIST record dramatically, 
+achieving human performance (around 0.2%) for the first time (Ciresan et al., 2012c). 
+To detect human actions in surveillance videos, a 3-dimensional CNN, combined with support vector machines, 
+was part of a larger system using a bag
+of features approach to extract regions of interest. The system won three 2009
+TRECVID competitions. These were possibly the first official international contests won with the
+help of (MP)CNNs; compare (Ji et al., 2013).
+</p><p>In 2011, an ensemble (Breiman, 1996; Schapire, 1990) of GPU-based MPCNNs also 
+was the first system to achieve superhuman visual pattern recognition
+in a controlled competition, namely, the IJCNN 2011 traffic
+sign recognition contest in Silicon Valley (Ciresan et al., 2012c). The system was
+twice better than humans, and three times better than the nearest nonhuman competitor. 
+Subsequently, similar committees of GPU-MPCNNs became widely used, 
+and also won the 2012 ImageNet classification contest (Krizhevsky et al., 2012), 
+which is popular in the computer vision community.
+Further progress on ImageNet was achieved through variants of such systems 
+(e.g., Zeiler and Fergus, 2013; Szegedy et al., 2014; Simonyan &amp; Zisserman, 2015).
+</p><p>In 2012, a GPU-MPCNN committee also was the first Deep Learning NN to win a contest
+on visual object discovery in large images (Ciresan et al., 2013), namely, the
+ICPR 2012 Contest on Mitosis Detection in Breast Cancer Histological Images.
+Here deep MPCNNs are trained on labelled patches of big images, then used as feature 
+detectors to be shifted across unknown visual scenes,
+using various rotations and zoom factors. 
+Image parts that yield highly active output units are likely
+to contain objects similar to those the NN was trained on.
+A similar GPU-MPCNN committee was the first Deep Learner to win a 
+pure image segmentation contest (Ciresan et al., 2012a),
+namely, the  ISBI 2012 Segmentation of Neuronal Structures in EM Stacks Challenge. 
+The MPCNN learned to predict for each pixel 
+whether it belongs to the background.
+Fast MPCNN image scanners avoid redundant computations and 
+speed up naive implementations by up to three orders of magnitude (Masci et al., 2013),
+extending earlier efficient methods for CNNs without MP (Vaillant et al., 1994).
+</p><p>It is fair to say that deep GPU-CNNs have revolutionised computer vision.
+For example, GPU-MPCNNs helped to recognise multi-digit numbers in Google Street View
+images (Goodfellow et al., 2014b), where part of the NN was trained to count visible digits.  
+Other successful recent CNN applications
+include scene parsing (Farabet et al., 2013),  shadow
+detection (Khan et al., 2014), and video classification (Karpathy et al., 2014), to name a few.  
+</p>
+<h2> <span class="mw-headline" id="Fundamental_Deep_Learning_Problem_and_Unsupervised_Pre-Training_of_RNNs_and_FNNs">Fundamental Deep Learning Problem and Unsupervised Pre-Training of RNNs and FNNs</span></h2>
+<p>There are extensions of backpropagation (BP) for supervised RNNs (e.g., 
+Williams, 1989; Robinson and Fallside, 1987; Werbos, 1988).
+During training by "BP through time" (BPTT), the RNN is "unfolded" into an FNN that has essentially
+as many layers as there are time steps in the observed sequence of input vectors.
+</p><p>The drawbacks of BP and BPTT became obvious in 1991, when 
+the vanishing/exploding gradient problem or "Fundamental Deep Learning Problem"  
+was identified and analysed (Hochreiter, 1991):
+With standard activation functions, cumulative backpropagated error
+signals either shrink exponentially in the number of layers (or time steps), or grow out of bounds.
+The problem is most apparent in RNNs, the deepest of all NNs.
+</p><p>To some extent, Hessian-free <a href="/article/Optimization" title="Optimization">optimization</a> can alleviate the problem for FNNs (Moller, 1993;
+Pearlmutter, 1994) and RNNs (Martens and Sutskever, 2011). 
+</p><p>To overcome the vanishing gradient problem, an early generative model was proposed, namely, 
+an unsupervised stack of RNNs called the neural history compressor (Schmidhuber, 1992b). 
+A first RNN uses unsupervised learning to predict its next input. 
+Each higher level RNN tries to learn a compressed representation of the info in the RNN below, 
+trying to minimise the description length (or negative log probability) of the data. 
+The top RNN may then find it easy to classify the data by supervised learning. 
+One can also "distill" the knowledge of a higher RNN (the teacher) into a lower RNN (the student) 
+by forcing the lower RNN to predict the hidden units of the higher one. 
+In the early 1990s, 
+such systems could solve previously unsolvable "Very Deep Learning" tasks involving hundreds
+of subsequent computational stages.
+</p><p>A conceptually very similar but FNN-based system was the 
+<a href="/article/Deep_Belief_Networks" title="Deep Belief Networks">deep belief network</a> (DBN, Hinton and Salakhutdinov, 2006), 
+a stack of restricted <a href="/article/Boltzmann_machine" title="Boltzmann machine">Boltzmann machines</a> (RBMs, Smolensky, 1986)
+with a single layer of feature-detecting units. 
+They can be trained by the
+contrastive divergence algorithm (Hinton, 2002).
+At least in theory under certain assumptions, 
+adding more layers improves a bound on the data’s negative log probability (Hinton et al., 2006), 
+equivalent to the data’s description length - just like with the RNN history compressor above. 
+A GPU-DBN implementation (Raina et al., 2009) was orders of magnitudes faster than previous CPU-DBNs;
+see also (Coates et al., 2013).
+DBNs achieved good results on phoneme recognition (Mohamed and Hinton, 2010).
+Autoencoder stacks (Ballard, 1987) became a popular alternative way of pre-training
+deep FNNs in unsupervised fashion, before fine-tuning them through BP (e.g., Bengio et al., 2007).
+</p><p>Generally speaking, unsupervised learning (UL)
+can help to encode input data in a form advantageous for further processing.
+For example, FNNs may profit from pre-training by competitive
+UL prior to BP-based fine-tuning (Maclin and Shavlik, 1995).
+Many UL methods generate distributed, <a href="/article/Sparse_representation" title="Sparse representation">sparse representations</a> of input
+patterns.
+Ideally, given an ensemble of input patterns,
+redundancy reduction through a deep NN will create a factorial code (a code with statistically
+independent components) of the ensemble (Barlow et al., 1989).
+Such codes may be sparse and can be
+advantageous for (1) data compression, (2) speeding up subsequent BP, (3) trivialising
+the task of subsequent naive yet optimal Bayes 
+classifiers.
+Methods for deep UL FNNs include 
+hierarchical
+<a href="/article/Self-organization" title="Self-organization">self-organizing</a> <a href="/article/Kohonen_Network" title="Kohonen Network">Kohonen maps</a> (e.g., Koikkalainen and Oja, 1990), hierarchical Gaussian
+potential function networks (Lee and Kil, 1991), layer-wise UL of feature hierarchies fed into SL
+classifiers (Behnke, 1999), the Self-Organising Tree Algorithm (Herrero et al., 2001),
+and nonlinear Autoencoder (AEs) with 5 or more layers (e.g., Kramer, 1991). 
+Predictability Minimization (Schmidhuber, 1992c) searches for factorial codes
+through nonlinear feature detectors that fight nonlinear predictors, trying to become both as informative
+and as unpredictable as possible. 
+Hierarchical CNNs in a Neural Abstraction Pyramid (e.g., Behnke, 2003b) can be trained to
+reconstruct images corrupted by structured noise, thus enforcing increasingly abstract
+image representations in deeper and deeper layers. 
+</p><p>In many applications of the 2000s, however, DBNs and other unsupervised methods 
+were largely replaced by purely supervised FNNs, especially MPCNNs (see above).
+Here history repeated itself, because already in the 1990s, 
+unsupervised RNN-based history compressors (see above) 
+were largely replaced by purely supervised LSTM RNNs (see below).
+</p>
+<h2> <span class="mw-headline" id="Very_Deep_Learning_in_Supervised_Sequence-Processing_RNNs">Very Deep Learning in Supervised Sequence-Processing RNNs</span></h2>
+<p>Supervised Long Short-Term Memory (LSTM) RNNs have been developed since the 1990s 
+(e.g., Hochreiter and Schmidhuber, 1997b; Gers and Schmidhuber, 2001;  Graves et al., 2009). 
+Parts of LSTM RNNs are designed such that backpropagated errors
+can neither vanish nor explode, but flow backwards in "civilized" fashion
+for thousands or even more steps. Thus
+LSTM variants could learn previously unlearnable Very Deep Learning tasks 
+(including some unlearnable by the 1992 history compressor above)
+that require 
+to discover the importance of (and memorize) events that
+happened thousands of discrete time steps ago, while previous standard 
+RNNs already failed in case of minimal
+time lags of 10 steps. It is possible to evolve good problem-specific LSTM-like 
+topologies (Bayer et al., 2009).
+</p><p>Recursive NNs (Goller and Küchler, 1996) generalize RNNs, 
+by operating on hierarchical structures, 
+recursively combining child representations into parent representations.
+Bi-directional RNNs (BRNNs) (Schuster and Paliwal, 1997) are designed for input
+sequences whose starts and ends are known in advance, 
+such as spoken sentences to be labeled by their phonemes. 
+DAG-RNNs (Baldi and Pollastri, 2003) generalize BRNNs to multiple dimensions.
+Recursive NNs, BRNNs and DAG-RNNs unfold their full potential when combined with 
+LSTM (Graves et al., 2009). 
+</p><p>Particularly successful in competitions were stacks of LSTM RNNs (Fernandez
+et al., 2007) trained by Connectionist Temporal Classification
+(CTC, Graves et al., 2006), a gradient-based method for finding RNN weights that maximize
+the probability of teacher-given label sequences, 
+given (typically much longer and more high-dimensional)
+streams of real-valued input vectors. CTC performs simultaneous segmentation
+(alignment) and recognition. In 2009, CTC-trained
+LSTM became the first RNN to win controlled international contests,
+namely, 3 competitions in connected handwriting recognition.
+Hannun et al (2014) used CTC-trained RNNs to break a famous speech recognition benchmark record,
+without using any traditional speech processing methods such as 
+Hidden Markov Models (HMMs) 
+or Gaussian Mixture Models. 
+</p><p>Unlike HMMs and previous RNNs, LSTM can learn to recognise 
+context-sensitive <a href="/article/Language" title="Language">languages</a>.
+By 2007, LSTM had started to revolutionise speech recognition, 
+outperforming traditional HMMs in keyword spotting tasks (Fernandez et al., 2007). 
+By 2013, LSTM achieved best known results on the famous
+TIMIT phoneme recognition benchmark (Graves et al., 2013). 
+Hybrids  of  traditional methods  and LSTM RNNs 
+obtained best known performance on 
+large-vocabulary speech recognition (Sak et al., Google, 2014a; Li &amp; Wu, 2015a). 
+LSTM also helped to improve the state of the art in numerous other fields,
+including  
+image caption generation (in conjunction with CNNs) (Vinyals et al., Google, 2014),
+machine translation (Sutskever et al., Google, 2014), 
+text-to-speech synthesis (Fan et al., 2015; Zen &amp; Sak, 2015,
+now available for Google Android),
+photo-real talking heads (Fan et al., Microsoft, 2015), 
+syntactic parsing for natural language processing (Vinyals et al., Google, 2014b),
+and many other applications. In 2015, CTC-trained LSTM 
+dramatically improved Google Voice (by 49%), 
+and is now available to a billion smartphone users
+(Sak et al, 2015). 
+</p><p>Gradient-based
+LSTM is no panacea though. Other methods sometimes outperformed LSTM at least on certain
+tasks (e.g., Jaeger, 2004; Schmidhuber et al., 2007; Martens and Sutskever, 2011; 
+Zimmermann et al., 2012; Pascanu et al., 2013b; Koutnik et al., 2014).
+Several alternative RNN-related methods with fast memory control have been proposed 
+over the decades (e.g., AMAmemory 2015). 
+</p>
+<h2> <span class="mw-headline" id="Some_Tricks_to_Improve_NNs">Some Tricks to Improve NNs</span></h2>
+<p>BP-like methods can be used to search for "simple," low-complexity NNs 
+with high generalization capability. For example, weight decay (e.g., Hanson and Pratt, 1989) 
+encourages near-zero weights, by penalizing large
+weights.  
+Related weight priors are implicit in additional penalty terms (MacKay, 1992) or in methods based
+on validation sets (e.g., Hastie and Tibshirani, 1990). Similar priors (or biases towards simplicity)
+are implicit in constructive and pruning algorithms, e.g., layer-by-layer sequential network construction
+(e.g., Ivakhnenko, 1971), input pruning (Moody, 1992), 
+unit pruning (e.g., Ivakhnenko, 1971; Mozer and Smolensky, 1989), weight pruning (e.g., LeCun et al., 1990b),
+fast and short weight matrix-computing programs (Schmidhuber, 1997),
+and Flat Minimum Search (FMS, Hochreiter and Schmidhuber, 1999).
+DBN training can be improved (Cho et al., 2012) through Tikhonov-type
+regularization (Tikhonov et al., 1977). See also sparsity-enforcing methods mentioned earlier. 
+</p><p>Dropout (Hinton et al., 2012b) 
+removes units from NNs during training to
+improve generalisation. It is
+closely related to older, biologically plausible techniques for adding noise to neurons or synapses during
+training (e.g., Hanson, 1990).  
+NNs with competing units (e.g., Schmidhuber, 1989b; Maass, 2000; Goodfellow et al., 2013) 
+tend to outperform those with non-competing units,
+and avoid catastrophic forgetting through BP when training sets change over time (Srivastava et al.,
+2013).
+</p><p>The popular activation function f of Rectified Linear Units (ReLUs) is f(x) = x for x &gt; 0; f(x) = 0
+otherwise. 
+ReLU NNs are useful for RBMs (Nair and Hinton, 2010; Maas et al., 2013), outperformed sigmoidal activation
+functions in deep NNs (Glorot et al., 2011), and helped to obtain best results on several
+benchmark problems across multiple domains (e.g., Krizhevsky et al., 2012).
+</p><p>Many additional tricks for improving NNs have been described (e.g., Montavon et al., 2012; Schmidhuber, 2015).
+</p>
+<h2> <span class="mw-headline" id="Consequences_for_Neuroscience">Consequences for <a href="/article/Neuroscience" title="Neuroscience">Neuroscience</a></span></h2>
+<p>Artificial NNs (ANNs) can help to better understand biological NNs (BNNs).
+The feature detectors learned by single-layer visual ANNs are 
+similar to those found in early visual processing stages of BNNs. 
+Likewise, the feature detectors learned in deep layers of visual ANNs 
+should be highly predictive of what neuroscientists will find in deep layers of BNNs. 
+While the visual cortex of BNNs may use quite different learning algorithms, 
+its objective function to be minimized may be rather similar to the one of visual ANNs. 
+In fact, results obtained with relatively deep artificial NNs (e.g., Yamins et al., 2013) 
+seem compatible with insights about the visual pathway in the primate cerebral cortex, 
+which has been studied for many decades. 
+</p>
+<h2> <span class="mw-headline" id="Deep_Learning_with_Spiking_Neurons.3F">Deep Learning with Spiking Neurons?</span></h2>
+<p>Current deep NNs greatly profit from GPUs, 
+which are little ovens, much hungrier for energy than biological <a href="/article/Brain" title="Brain">brains</a>, whose neurons efficiently
+communicate by brief spikes (e.g., Hodgkin and Huxley, 1952), and often remain quiet. 
+Many computational models of such spiking neurons have been proposed
+and analyzed (e.g., Gerstner and Kistler, 2002).
+Future energy-efficient hardware for DL in NNs may implement aspects of such models - see numerous
+references in the survey (Schmidhuber, 2015, Sec. 5.26). In practical applications,
+however, current artificial networks of spiking neurons cannot yet compete with the best traditional
+deep NNs.
+</p>
+<h2> <span class="mw-headline" id="Deep_Reinforcement_Learning_.28RL.29">Deep Reinforcement Learning (RL)</span></h2>
+<p>Reinforcement Learning (RL) is the most general type of learning. 
+General RL agents must discover, without the aid of a teacher, how to interact
+with a dynamic, initially unknown, partially observable environment in order to maximize
+their expected cumulative <a href="/article/Reward_signals" title="Reward signals">reward signals</a> (e.g., Kaelbling et al., 1996; Sutton and Barto,
+1998; Wiering and van Otterlo, 2012). There may be arbitrary, a priori unknown delays between actions
+and perceivable consequences. The RL problem is as hard as any problem of computer science,
+since any task with a computable description can be formulated in the general RL framework (e.g., Hutter,
+2005). Deep FNNs and RNNs are useful tools for various types of RL. 
+Many references on this since the 1980s can be found in the 
+recent survey (Schmidhuber, 2015, Sec. 6). 
+</p>
+<h2> <span class="mw-headline" id="Outlook">Outlook</span></h2>
+<p>Deep Learning in NNs is more than a temporary fad. Physics seems
+to dictate that any future efficient computational hardware will have to be brain-like,
+with many compactly placed processors in 3-dimensional space, 
+sparsely connected by many short and few long wires, to minimize total connection cost
+(even if the "wires" are actually light beams). The basic architecture
+is essentially the one of a deep, sparsely connected,  
+3-dimensional RNN, and Deep Learning methods for such RNNs are expected to become 
+even much more important than they are today. 
+</p><p>The contents of this article may be used for educational and non-commercial purposes, 
+including articles for Wikipedia and similar sites. 
+</p>
+<h2> <span class="mw-headline" id="References">References</span></h2>
+<p>I. Aizenberg, N.N. Aizenberg, and J. P.L. Vandewalle (2000). Multi-Valued and Universal Binary Neurons: Theory, Learning and Applications. Springer Science &amp; Business Media. First work to introduce the term "Deep Learning" to Neural Networks; compare a popular <a rel="nofollow" class="external text" href="https://plus.google.com/100849856540000067209/posts/7N6z251w2Wd?pid=6127540521703625346&amp;oid=100849856540000067209">G+ post on this</a>.
+</p><p>AMAmemory (2015): <a rel="nofollow" class="external text" href="http://www.reddit.com/r/MachineLearning/comments/2xcyrl/i_am_j%C3%BCrgen_schmidhuber_ama/cp0q12t">Answer at reddit AMA (Ask Me Anything) on "memory networks" etc (with references)</a>
+</p><p>Amari, S.-I. (1998). Natural gradient works efficiently in learning. Neural Computation, 10(2):251–
+276.
+</p><p>Baird, H. (1990). Document image defect models. In Proc. IAPR Workshop on Syntactic and
+<a href="/article/Structural_Pattern_Recognition" title="Structural Pattern Recognition">Structural Pattern Recognition</a>, Murray Hill, NJ.
+</p><p>Baldi, P. and Pollastri, G. (2003). The principled design of large-scale recursive neural network architectures – DAG-RNNs and the protein structure prediction problem. J. Mach. Learn. Res., 4:575–602.
+</p><p>Ballard, D. H. (1987). Modular learning in neural networks. Proc. AAAI, pp. 279–284.
+</p><p>Barlow, H. B., Kaushal, T. P., and Mitchison, G. J. (1989). Finding minimum <a href="/article/Entropy" title="Entropy">entropy</a> codes. Neural
+Computation, 1(3):412–423.
+</p><p>Bayer, J., Wierstra, D., Togelius, J., and Schmidhuber, J. (2009). Evolving memory cell structures for
+<a href="/article/Sequence_learning" title="Sequence learning">sequence learning</a>. Proc. ICANN (2), pp. 755–764.
+</p><p>Behnke, S. (1999). Hebbian learning and competition in the neural abstraction pyramid. Proc. IJCNN, vol 2, pp. 1356–1361.
+</p><p>Behnke, S. (2003b). Hierarchical Neural Networks for Image Interpretation, vol LNCS 2766 of
+Lecture Notes in Computer Science, Springer.
+</p><p>Bengio, Y., Lamblin, P., Popovici, D., and Larochelle, H. (2007). Greedy layer-wise training of deep
+networks. In Cowan, J. D., Tesauro, G., and Alspector, J., editors, Proc. NIPS 19, pp. 153–160. MIT Press.
+</p><p>Bryson, A. E. (1961). A gradient method for optimizing multi-stage allocation processes. In Proc.
+Harvard Univ. Symposium on digital computers and their applications.
+</p><p>Bryson, A. and Ho, Y. (1969). Applied <a href="/article/Optimal_control" title="Optimal control">optimal control</a>: optimization, estimation, and control. Blaisdell Pub. Co.
+</p><p>Cho, K., Ilin, A., and Raiko, T. (2012). Tikhonov-type regularization for restricted Boltzmann machines.
+Proc. ICANN 2012, pp. 81–88. Springer.
+</p><p>Ciresan, D. C., Giusti, A., Gambardella, L. M., and Schmidhuber, J. (2012a). Deep neural networks
+segment neuronal membranes in electron microscopy images. Proc. NIPS, pp. 2852–2860.
+</p><p>Ciresan, D. C., Giusti, A., Gambardella, L. M., and Schmidhuber, J. (2013). Mitosis detection in
+breast cancer histology images with deep neural networks. Proc. MICCAI, vol 2, pp. 411–418.
+</p><p>Ciresan, D. C., Meier, U., Gambardella, L. M., and Schmidhuber, J. (2010). Deep big simple neural
+nets for handwritten digit recognition. Neural Computation, 22(12):3207–3220.
+</p><p>Ciresan, D. C., Meier, U., Masci, J., Gambardella, L. M., and Schmidhuber, J. (2011a). Flexible, high
+performance convolutional neural networks for image classification. Proc. IJCAI, pp. 1237–1242.
+</p><p>Ciresan, D. C., Meier, U., Masci, J., and Schmidhuber, J. (2012b). Multi-column deep neural network
+for traffic sign classification. Neural Networks, 32:333–338.
+</p><p>Ciresan, D. C., Meier, U., and Schmidhuber, J. (2012c). Multi-column deep neural networks for image
+classification. Proc. CVPR 2012. Long preprint arXiv:1202.2745v1 [cs.CV].
+</p><p>Coates, A., Huval, B., Wang, T., Wu, D. J., Ng, A. Y., and Catanzaro, B. (2013). Deep learning with
+COTS HPC systems. Proc. ICML’13. 
+</p><p>R. Dechter (1986). Learning while searching in constraint-satisfaction problems. University of California, Computer Science Department, Cognitive Systems Laboratory. First paper to introduce the term "Deep Learning" to Machine Learning; compare a popular <a rel="nofollow" class="external text" href="https://plus.google.com/100849856540000067209/posts/7N6z251w2Wd?pid=6127540521703625346&amp;oid=100849856540000067209">G+ post on this</a>.
+</p><p>Dreyfus, S. E. (1962). The numerical solution of variational problems. Journal of Mathematical Analysis and Applications, 5(1):30–45.
+</p><p>Dreyfus, S. E. (1973). The computational solution of optimal control problems with time lag. IEEE Transactions on Automatic Control, 18(4):383–385.
+</p><p>Fan, B.; Wang, L.; Soong, F. K.; Xie, L. (2015). Photo-Real Talking Head with Deep Bidirectional LSTM. Proc. ICASSP 2015.  
+</p><p>Farabet, C., Couprie, C., Najman, L., and LeCun, Y. (2013). Learning hierarchical features for scene
+labeling. IEEE Transactions on Pattern Analysis and Machine Intelligence, 35(8):1915–1929.
+</p><p>Fernandez, S., Graves, A., and Schmidhuber, J. (2007). An application of <a href="/article/Recurrent_neural_networks" title="Recurrent neural networks">recurrent neural networks</a> to discriminative keyword spotting. Proc. ICANN (2), pp. 220–229.
+</p><p>Fernandez, S., Graves, A., and Schmidhuber, J. (2007). Sequence labelling in structured domains with hierarchical recurrent neural networks. Proc. IJCAI.
+</p><p>Fu, K. S. (1977). Syntactic Pattern Recognition and Applications. Berlin, Springer.
+</p><p>Fukushima, K. (1979). Neural network model for a mechanism of pattern recognition unaffected by shift in position - Neocognitron. Trans. IECE, J62-A(10):658–665.
+</p><p>Gers, F. A. and Schmidhuber, J. (2001). LSTM recurrent networks learn simple context free and
+context sensitive languages. IEEE Transactions on Neural Networks, 12(6):1333–1340.
+</p><p>Gerstner, W. and Kistler, W. K. (2002). Spiking Neuron Models. Cambridge University Press.
+</p><p>Glorot, X., Bordes, A., and Bengio, Y. (2011). Deep sparse rectifier networks. Proc. AISTATS, vol 15,
+pp. 315–323.
+</p><p>Goodfellow, I. J., Warde-Farley, D., Mirza, M., Courville, A., and Bengio, Y. (2013). Maxout networks. Proc. ICML.
+</p><p>Goodfellow, I. J., Bulatov, Y., Ibarz, J., Arnoud, S., and Shet, V. (2014b). Multi-digit number
+recognition from street view imagery using deep convolutional neural networks. arXiv preprint
+arXiv:1312.6082 v4.
+</p><p>Goller, C.; Küchler, A. (1996). Learning task-dependent distributed representations by backpropagation through structure. IEEE International Conference on Neural Networks, 1996, vol. 1, pp. 347-352. 
+</p><p>Graves, A., Fernandez, S., Gomez, F. J., and Schmidhuber, J. (2006). Connectionist temporal classification:
+Labelling unsegmented sequence data with recurrent neural nets. Proc. ICML’06, pp. 369–376.
+</p><p>Graves, A., Liwicki, M., Fernandez, S., Bertolami, R., Bunke, H., and Schmidhuber, J. (2009). A novel connectionist system for improved unconstrained handwriting recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence, 31(5).
+</p><p>Graves, A., Mohamed, A.-R., and Hinton, G. E. (2013). Speech recognition with deep recurrent
+neural networks. Proc. ICASSP, pp. 6645–6649. 
+</p><p>Hannun, A.; Case, C; Casper, J.; Catanzaro, B.; Diamos, G.; Elsen, E.; Prenger, R.; Satheesh, S.; Sengupta, S.; Coates, A.; Ng, A. Y. (2014). Deep Speech: Scaling up end-to-end speech recognition. arXiv preprint <a rel="nofollow" class="external free" href="http://arxiv.org/abs/1412.5567">http://arxiv.org/abs/1412.5567</a>
+</p><p>Hanson, S. J. and Pratt, L. Y. (1989). Comparing biases for minimal network construction with
+back-propagation. In Touretzky, D. S., editor, Proc. NIPS, 1, pp. 177–185. San Mateo, CA: Morgan Kaufmann.
+</p><p>Hanson, S. J. (1990). A stochastic version of the delta rule. Physica D: Nonlinear Phenomena,
+42(1):265–272.
+</p><p>Hastie, T. J. and Tibshirani, R. J. (1990). Generalized additive models. Monographs on Statisics and
+Applied Probability, 43.
+</p><p>Hebb, D. O. (1949). The Organization of Behavior. Wiley, New York.
+</p><p>Herrero, J., Valencia, A., and Dopazo, J. (2001). A hierarchical unsupervised growing neural network
+for clustering gene expression patterns. Bioinformatics, 17(2):126–136.
+</p><p>Hinton, G. and Salakhutdinov, R. (2006). Reducing the dimensionality of data with neural networks.
+Science, 313(5786):504–507.
+</p><p>Hinton, G. E. (2002). Training products of experts by minimizing contrastive divergence. Neural
+Computation, 14(8):1771–1800.
+</p><p>Hinton, G. E., Osindero, S., and Teh, Y.-W. (2006). A fast learning algorithm for deep belief nets.
+Neural Computation, 18(7):1527–1554.
+</p><p>Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., and Salakhutdinov, R. R. (2012b).
+Improving neural networks by preventing co-adaptation of feature detectors. Technical Report
+arXiv:1207.0580.
+</p><p>Hochreiter, S. (1991). Untersuchungen zu dynamischen neuronalen Netzen. Diploma thesis, Institut
+fuer Informatik, Lehrstuhl Prof. Brauer, Tech. Univ. Munich. Advisor: J. Schmidhuber.
+</p><p>Hochreiter, S. and Schmidhuber, J. (1997a). Flat minima. Neural Computation, 9(1):1–42.
+</p><p>Hochreiter, S. and Schmidhuber, J. (1997b). Long Short-Term Memory. Neural Computation,
+9(8):1735–1780. Based on TR FKI-207-95, TUM (1995).
+</p><p>Hodgkin, A. L. and Huxley, A. F. (1952). A quantitative description of membrane current and its
+application to conduction and excitation in nerve. The Journal of Physiology, 117(4):500.
+</p><p>Hutter, M. (2005). Universal Artificial Intelligence: Sequential Decisions based on <a href="/article/Algorithmic_Probability" title="Algorithmic Probability">Algorithmic Probability</a>.
+Springer, Berlin. 
+</p><p>Ivakhnenko, A. G. and Lapa, V. G. (1965). Cybernetic Predicting Devices. CCM Information Corporation.
+</p><p>Ivakhnenko, A. G. (1971). Polynomial theory of <a href="/article/Complex_systems" title="Complex systems">complex systems</a>. IEEE Transactions on Systems, Man and Cybernetics, (4):364–378.
+</p><p>Jaeger, H. (2004). Harnessing nonlinearity: Predicting chaotic systems and saving energy in wireless
+communication. Science, 304:78–80.
+</p><p>Ji, S., Xu, W., Yang, M., and Yu, K. (2013). 3D convolutional neural networks for human action
+recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence, 35(1):221–231.
+</p><p>Kaelbling, L. P., Littman, M. L., and Moore, A.W. (1996). Reinforcement learning: a survey. Journal
+of AI research, 4:237–285.
+</p><p>Karpathy, A., Toderici, G., Shetty, S., Leung, T., Sukthankar, R., and Fei-Fei, L. (2014). Large-scale
+video classification with convolutional neural networks. Proc. CVPR.
+</p><p>Kelley, H. J. (1960). Gradient theory of optimal flight paths. ARS Journal, 30(10):947–954.
+</p><p>Khan, S. H., Bennamoun, M., Sohel, F., and Togneri, R. (2014). Automatic feature learning for robust
+shadow detection. Proc. CVPR.
+</p><p>Koikkalainen, P. and Oja, E. (1990). Self-organizing hierarchical feature maps. Proc. IJCNN, pp. 279–284.
+</p><p>Koutnik, J., Greff, K., Gomez, F., and Schmidhuber, J. (2014). A Clockwork RNN. Proc. ICML, vol 32, pp. 1845–1853.
+arXiv:1402.3511 [cs.NE].
+</p><p>Kramer, M. (1991). Nonlinear principal component analysis using autoassociative neural networks.
+AIChE Journal, 37:233–243.
+</p><p>Krizhevsky, A., Sutskever, I., and Hinton, G. E. (2012). Imagenet classification with deep convolutional
+neural networks. Proc. NIPS, page 4. 
+</p><p>LeCun, Y., Boser, B., Denker, J. S., Henderson, D., Howard, R. E., Hubbard, W., and Jackel, L. D.
+(1989). Back-propagation applied to handwritten zip code recognition. Neural Computation,
+1(4):541–551.
+</p><p>LeCun, Y., Denker, J. S., and Solla, S. A. (1990b). Optimal brain damage. In Touretzky, D. S., Proc. NIPS 2, 
+pp. 598–605. Morgan Kaufmann.
+</p><p>LeCun, Y., Bengio, Y., Hinton, G. (2015). Deep Learning. Nature 521, 436-444. <a rel="nofollow" class="external text" href="http://www.nature.com/nature/journal/v521/n7553/full/nature14539.html">Link.</a> See  <a rel="nofollow" class="external text" href="http://people.idsia.ch/~juergen/deep-learning-conspiracy.html">critique by J. Schmidhuber (2015)</a>
+</p><p>Lee, S. and Kil, R. M. (1991). A Gaussian potential function network with hierarchically selforganizing
+learning. Neural Networks, 4(2):207–224.
+</p><p>Li, X.; Wu, X (2015). Constructing Long Short-Term Memory based Deep Recurrent Neural Networks for Large Vocabulary Speech Recognition. Proc. ICASSP 2015. <a rel="nofollow" class="external free" href="http://arxiv.org/abs/1410.4281">http://arxiv.org/abs/1410.4281</a>
+</p><p>Linnainmaa, S. (1970). The representation of the cumulative rounding error of an algorithm as a Taylor expansion of the local rounding errors. Master’s thesis, Univ. Helsinki.
+</p><p>Linnainmaa, S. (1976). Taylor expansion of the accumulated rounding error. BIT Numerical Mathematics, 16(2):146–160.
+</p><p>Maas, A. L., Hannun, A. Y., and Ng, A. Y. (2013). Rectifier nonlinearities improve neural network
+acoustic models. Proc. ICML.
+</p><p>Maass, W. (2000). On the computational power of winner-take-all. Neural Computation, 12:2519–2535.
+</p><p>MacKay, D. J. C. (1992). A practical <a href="/article/Bayesian_statistics" title="Bayesian statistics">Bayesian</a> framework for backprop networks. Neural Computation,
+4:448–472.
+</p><p>Maclin, R. and Shavlik, J. W. (1995). Combining the predictions of multiple classifiers: Using competitive
+learning to initialize neural networks. Proc. IJCAI, pp. 524–531.
+</p><p>Martens, J. and Sutskever, I. (2011). Learning recurrent neural networks with Hessian-free optimization.
+Proc. ICML, pp. 1033–1040.
+</p><p>Masci, J., Giusti, A., Ciresan, D. C., Fricout, G., and Schmidhuber, J. (2013). A fast learning algorithm
+for image segmentation with max-pooling convolutional networks. Proc. ICIP13, pp. 2713–2717.
+</p><p>McCulloch, W. and Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. Bulletin of Mathematical Biophysics, 7:115–133.
+</p><p>Mohamed, A. and Hinton, G. E. (2010). Phone recognition using restricted Boltzmann machines.
+Proc. ICASSP, pp. 4354–4357.
+</p><p>Moller, M. F. (1993). Exact calculation of the product of the Hessian matrix of feed-forward network
+error functions and a vector in O(N) time. Technical Report PB-432, Computer Science Department,
+Aarhus University, Denmark.
+</p><p>Montavon, G., Orr, G., and Mueller, K. (2012). Neural Networks: Tricks of the Trade. Number LNCS
+7700 of Lecture Notes in Computer Science. Springer Verlag.
+</p><p>Moody, J. E. (1992). The effective number of parameters: An analysis of generalization and regularization
+in nonlinear learning systems. Proc. NIPS’4, pp. 847–854. Morgan Kaufmann.
+</p><p>Mozer, M. C. and Smolensky, P. (1989). Skeletonization: A technique for trimming the fat from a
+network via relevance assessment. In Proc. NIPS 1, pp. 107–115. Morgan Kaufmann.
+</p><p>Nair, V. and Hinton, G. E. (2010). Rectified linear units improve restricted Boltzmann machines. Proc. ICML.
+</p><p>Oh, K.-S. and Jung, K. (2004). GPU implementation of neural networks. Pattern Recognition,
+37(6):1311–1314.
+</p><p>Pascanu, R., Mikolov, T., and Bengio, Y. (2013b). On the difficulty of training recurrent neural
+networks. In ICML’13: JMLR: W&amp;CP vol 28.
+</p><p>Pearlmutter, B. A. (1994). Fast exact multiplication by the Hessian. Neural Computation, 6(1):147–160.
+</p><p>Raina, R., Madhavan, A., and Ng, A. (2009). Large-scale deep unsupervised learning using graphics
+processors. Proc. ICML, pp. 873–880. 
+</p><p>Ranzato, M. A., Huang, F., Boureau, Y., and LeCun, Y. (2007). Unsupervised learning of invariant
+feature hierarchies with applications to object recognition. Proc. CVPR, pp. 1–8. 
+</p><p>Robinson, A. J. and Fallside, F. (1987). The utility driven dynamic error propagation network. Technical
+Report CUED/F-INFENG/TR.1, Cambridge University Engineering Department.
+</p><p>Rosenblatt, F. (1958). The perceptron: a probabilistic model for information storage and organization
+in the brain. Psychological Review, 65(6):386.
+</p><p>Rumelhart, D. E., Hinton, G. E., and Williams, R. J. (1986). Learning internal representations by error
+propagation. In Rumelhart, D. E. and McClelland, J. L., editors, Parallel Distributed Processing,
+volume 1, pp. 318–362. MIT Press.
+</p><p>Sak, H., Senior, A., Rao, K.,  Beaufays, F., Schalkwyk, J. (2015):
+<a rel="nofollow" class="external text" href="http://googleresearch.blogspot.ch/2015/09/google-voice-search-faster-and-more.html">Google Research Blog</a>
+</p><p>Scherer, D., Mueller, A., and Behnke, S. (2010). Evaluation of pooling operations in convolutional architectures for object recognition. Proc. ICANN, pp. 92–101.
+</p><p>Schmidhuber, J. (1989b). A local learning algorithm for dynamic feedforward and recurrent networks.
+Connection Science, 1(4):403–412.
+</p><p>Schmidhuber, J. (1992b). Learning complex, extended sequences using the principle of history compression.
+Neural Computation, 4(2):234–242. Based on TR FKI-148-91, TUM, 1991.
+</p><p>Schmidhuber, J. (1992c). Learning factorial codes by predictability minimization. Neural Computation,
+4(6):863–879.
+</p><p>Schmidhuber, J. (1997). Discovering neural nets with low <a href="/article/Algorithmic_information_theory" title="Algorithmic information theory">Kolmogorov complexity</a> and high generalization
+capability. Neural Networks, 10(5):857–873.
+</p><p>Schmidhuber, J., Wierstra, D., Gagliolo, M., and Gomez, F. J. (2007). Training recurrent networks by
+Evolino. Neural Computation, 19(3):757–779.
+</p><p>Schmidhuber, J. (2015). Deep learning in neural networks: An overview. Neural Networks, 61, 85-117. <a rel="nofollow" class="external text" href="http://arxiv.org/abs/1404.7828">arXiv preprint 1404.7828</a>
+</p><p>Schuster, M. and Paliwal, K. K. (1997). Bidirectional recurrent neural networks. IEEE Transactions on Signal Processing, 45:2673–2681.
+</p><p>Sima, J. (1994). Loading deep networks is hard. Neural Computation, 6(5):842–850.
+</p><p>Simonyan, K., and Zisserman, A. (2015). Very Deep Convolutional Networks for Large-Scale Image Recognition. arXiv preprint <a rel="nofollow" class="external free" href="http://arxiv.org/abs/1409.1556">http://arxiv.org/abs/1409.1556</a>
+</p><p>Smolensky, P. (1986). Parallel distributed processing: Explorations in the microstructure of cognition,
+vol. 1. chapter Information Processing in <a href="/article/Dynamical_Systems" title="Dynamical Systems">Dynamical Systems</a>: Foundations of Harmony Theory,
+pp. 194–281. MIT Press.
+</p><p>Speelpenning, B. (1980). Compiling Fast Partial Derivatives of Functions Given by Algorithms. PhD
+thesis, Department of Computer Science, University of Illinois, Urbana-Champaign. 
+</p><p>Srivastava, R. K., Masci, J., Kazerounian, S., Gomez, F., and Schmidhuber, J. (2013). Compete to
+compute. Proc. NIPS, pp. 2310–2318.
+</p><p>Sutskever, I., Vinyals, O., and Le, Q. V. (2014). Sequence to sequence learning with neural networks.
+Proc. NIPS’2014. arXiv preprint arXiv:1409.3215 [cs.CL].
+</p><p>Sutton, R. and Barto, A. (1998). Reinforcement learning: An introduction. Cambridge, MA, MIT
+Press.
+</p><p>Szegedy, C., Liu, W., Jia, Y., Sermanet, P., Reed, S., Anguelov, D., Erhan, D., Vanhoucke, V., and Rabinovich,
+A. (2014). Going deeper with convolutions. arXiv preprint arXiv:1409.4842 [cs.CV].
+</p><p>Tikhonov, A. N., Arsenin, V. I., and John, F. (1977). Solutions of ill-posed problems. Winston.
+</p><p>Vaillant, R., Monrocq, C., and LeCun, Y. (1994). Original approach for the localisation of objects in
+images. IEE Proc. on Vision, Image, and Signal Processing, 141(4):245–250.
+</p><p>Vieira, A. and Barradas, N. (2003). A training algorithm for classification of high-dimensional data.
+Neurocomputing, 50:461–472.
+</p><p>Vinyals, O.; Toshev, A.; Bengio, S.; Erhan, D. (2014). Show and Tell: A Neural Image Caption Generator. 
+arXiv Preprint <a rel="nofollow" class="external free" href="http://arxiv.org/pdf/1411.4555v1.pdf">http://arxiv.org/pdf/1411.4555v1.pdf</a>
+</p><p>Vinyals, O.; Kaiser, L.; Koo, T.; Petrov, S.; Sutskever, I.; Hinton, G. (2014b). Grammar as a Foreign Language. Preprint <a rel="nofollow" class="external free" href="http://arxiv.org/abs/1412.7449">http://arxiv.org/abs/1412.7449</a>
+</p><p>Wan, E. A. (1994). Time series prediction by using a connectionist network with internal delay lines.
+In Weigend, A. S. and Gershenfeld, N. A., editors, Time series prediction: Forecasting the future
+and understanding the past, pp. 265–295. Addison-Wesley.
+</p><p>Williams, R. J. (1989). Complexity of exact gradient computation algorithms for recurrent neural
+networks. Technical Report Technical Report NU-CCS-89-27, Boston: Northeastern University,
+College of Computer Science.
+</p><p>Wiering, M. and van Otterlo, M. (2012). Reinforcement Learning. Springer.
+</p><p>Weng, J., Ahuja, N., and Huang, T. S. (1993). Learning recognition and segmentation of 3-D objects from 2-D images. Proc. 4th Intl. Conf. Computer Vision, Berlin, Germany, pp. 121-128. 
+</p><p>Werbos, P. J. (1974). Beyond Regression: New Tools for Prediction and Analysis in the Behavioral
+Sciences. PhD thesis, Harvard University.
+</p><p>Werbos, P. J. (1982). Applications of advances in nonlinear sensitivity analysis. In Proceedings of the
+10th IFIP Conference, 31.8 - 4.9, NYC, pp. 762–770.
+</p><p>Werbos, P. J. (1988). Generalization of backpropagation with application to a recurrent gas market
+model. Neural Networks, 1.
+</p><p>Yamins, D., Hong, H., Cadieu, C., and DiCarlo, J. J. (2013). Hierarchical modular optimization of
+convolutional networks achieves representations similar to macaque IT and human <a href="/article/What_And_Where_Pathways" title="What And Where Pathways">ventral stream</a>.
+Proc. NIPS, pp. 1–9.
+</p><p>Zeiler, M. D. and Fergus, R. (2013). Visualizing and understanding convolutional networks. Technical
+Report arXiv:1311.2901 [cs.CV], NYU.
+</p><p>Zen, H. and Sak, H. (2015). Unidirectional Long Short-Term Memory Recurrent Neural Network with Recurrent Output Layer for Low-Latency Speech Synthesis. Proc. ICASSP, pp. 4470-4474
+</p><p>Zimmermann, H.-G., Tietz, C., and Grothmann, R. (2012). Forecasting with recurrent neural networks:
+12 tricks. In Montavon, G., Orr, G. B., and Mueller, K.-R., editors, Neural Networks:
+Tricks of the Trade (2nd ed.), vol 7700 of Lecture Notes in Computer Science, pp. 687–707.
+Springer.
+</p>
+<h2> <span class="mw-headline" id="External_links">External links</span></h2>
+<p><a rel="nofollow" class="external text" href="http://people.idsia.ch/~juergen/who-invented-backpropagation.html">Who Invented Backpropagation?</a>
+</p><p><a rel="nofollow" class="external text" href="http://people.idsia.ch/~juergen/deeplearning.html">J. Schmidhuber's Deep Learning website</a>
+</p>
+<!-- Tidy found serious XHTML errors -->
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 51/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+ExtLoops count: 0/100
+-->
+<div class="cp-footer"><table cellpadding="0" border="0"><tr><td>Sponsored by: <a href="/article/User:Risto_Miikkulainen" title="User:Risto Miikkulainen"><span>Prof. Risto Miikkulainen</span>, <span>The University of Texas at Austin, Austin, TX, USA</span></a></td></tr><tr><td><a rel="nofollow" class="external text" href="//www.scholarpedia.org/w/index.php?title=Deep_Learning&amp;oldid=152220">Reviewed by</a>: <a href="/article/User:Eugene_M._Izhikevich" title="User:Eugene M. Izhikevich"><span>Eugene M. Izhikevich</span>, <span>Editor-in-Chief of Scholarpedia, the peer-reviewed open-access encyclopedia</span></a></td></tr><tr><td><a rel="nofollow" class="external text" href="//www.scholarpedia.org/w/index.php?title=Deep_Learning&amp;oldid=0">Reviewed by</a>: <a href="/article/User:Risto_Miikkulainen" title="User:Risto Miikkulainen"><span>Prof. Risto Miikkulainen</span>, <span>The University of Texas at Austin, Austin, TX, USA</span></a></td></tr><tr><td>Accepted on: <a rel="nofollow" class="external text" href="//www.scholarpedia.org/w/index.php?title=Deep_Learning&amp;oldid=152272">2015-11-27 14:37:33 GMT</a></td></tr></table></div>
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Retrieved from "<a href="http://www.scholarpedia.org/w/index.php?title=Deep_Learning&amp;oldid=184887">http://www.scholarpedia.org/w/index.php?title=Deep_Learning&amp;oldid=184887</a>"				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+		<li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Deep+Learning" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="/article/Deep_Learning"  title="View the content page [c]" accesskey="c">Page</a></span></li>
+					<li  id="ca-talk" class="new"><span><a href="/w/index.php?title=Talk:Deep_Learning&amp;action=edit&amp;redlink=1"  title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Variants</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="/article/Deep_Learning" >Read</a></span></li>
+					<li id="ca-viewsource"><span><a href="/w/index.php?title=Deep_Learning&amp;action=edit"  title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=Deep_Learning&amp;action=history"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="/w/index.php" id="searchform">
+				<div id="simpleSearch">
+						<input name="search" title="Search Scholarpedia [f]" accesskey="f" id="searchInput" />						<button name="button" title="Search the pages for this text" id="searchButton"><img src="/w/skins/vector/images/search-ltr.png?303" alt="Search" /></button>								<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(/w/skins/vector/images/splogo.png);" href="/article/Main_Page"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="/article/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-About"><a href="/article/Scholarpedia:About">About</a></li>
+			<li id="n-Propose-a-new-article"><a href="/article/Special:ProposeArticle">Propose a new article</a></li>
+			<li id="n-Instructions-for-Authors"><a href="/article/Scholarpedia:Instructions_for_Authors">Instructions for Authors</a></li>
+			<li id="n-randompage"><a href="/article/Special:Random" title="Load a random page [x]" accesskey="x">Random article</a></li>
+			<li id="n-FAQs"><a href="/article/Help:Frequently_Asked_Questions">FAQs</a></li>
+			<li id="n-Help"><a href="/article/Scholarpedia:Help">Help</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- Focal areas -->
+<div class="portal" id='p-Focal_areas'>
+	<h5>Focal areas</h5>
+	<div class="body">
+		<ul>
+			<li id="n-Astrophysics"><a href="/article/Encyclopedia:Astrophysics">Astrophysics</a></li>
+			<li id="n-Celestial-mechanics"><a href="/article/Encyclopedia:Celestial_Mechanics">Celestial mechanics</a></li>
+			<li id="n-Computational-neuroscience"><a href="/article/Encyclopedia:Computational_neuroscience">Computational neuroscience</a></li>
+			<li id="n-Computational-intelligence"><a href="/article/Encyclopedia:Computational_intelligence">Computational intelligence</a></li>
+			<li id="n-Dynamical-systems"><a href="/article/Encyclopedia:Dynamical_systems">Dynamical systems</a></li>
+			<li id="n-Physics"><a href="/article/Encyclopedia:Physics">Physics</a></li>
+			<li id="n-Touch"><a href="/article/Encyclopedia:Touch">Touch</a></li>
+			<li id="n-More-topics"><a href="/article/Scholarpedia:Topics">More topics</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /Focal areas -->
+
+<!-- Activity -->
+<div class="portal" id='p-Activity'>
+	<h5>Activity</h5>
+	<div class="body">
+		<ul>
+			<li id="n-Recently-published-articles"><a href="/article/Special:RecentlyPublished">Recently published articles</a></li>
+			<li id="n-Recently-sponsored-articles"><a href="/article/Special:RecentlySponsored">Recently sponsored articles</a></li>
+			<li id="n-recentchanges"><a href="/article/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-All-articles"><a href="/article/Special:AllPages">All articles</a></li>
+			<li id="n-List-all-Curators"><a href="/article/Special:ListCurators">List all Curators</a></li>
+			<li id="n-List-all-users"><a href="/article/Special:ListUsers">List all users</a></li>
+			<li id="n-Journal"><a href="/article/Special:Journal">Scholarpedia Journal</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /Activity -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id='p-tb'>
+	<h5>Tools</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="/article/Special:WhatLinksHere/Deep_Learning" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="/article/Special:RecentChangesLinked/Deep_Learning" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-specialpages"><a href="/article/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li><a href="/w/index.php?title=Deep_Learning&amp;printable=yes" rel="alternate">Printable version</a></li>
+			<li id="t-permalink"><a href="/w/index.php?title=Deep_Learning&amp;oldid=184887" title="Permanent link to this revision of the page">Permanent link</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+
+                
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+
+            
+
+            <div id="footer-icons">
+                <ul class="social">
+                    <li><a href="https://twitter.com/scholarpedia" target="_blank"><img src="/w/skins/vector/images/twitter.png?303" /></a></li>
+                    <li><a href="https://plus.google.com/112873162496270574424" target="_blank"><img src="https://ssl.gstatic.com/images/icons/gplus-16.png" /></a></li>
+                    <li><a href="http://www.facebook.com/Scholarpedia" target="_blank"><img src="/w/skins/vector/images/facebook.png?303" /></a></li>
+                    <li><a href="http://www.linkedin.com/groups/Scholarpedia-4647975/about" target="_blank"><img src="/w/skins/vector/images/linkedin.png?303" /></a></li>
+                </ul>
+
+                                    <ul id="footer-icons" class="noprint">
+                                                    <li id="footer-poweredbyico">
+                                                                    <a href="https://www.mediawiki.org/"><img src="/w/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>                                                                    <a href="https://www.mathjax.org/"><img src="/w/skins/common/images/MathJaxBadge.gif" alt="Powered by MathJax" width="88" height="31" /></a>                                                                    <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img src="/w/skins/common/88x31.png" alt="Creative Commons License" width="88" height="31" /></a>                                                            </li>
+                                            </ul>
+                            </div>
+
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 2 December 2017, at 00:40.</li>
+											<li id="footer-info-viewcount">This page has been accessed 159,881 times.</li>
+											<li id="footer-info-copyright">
+                <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">"Deep Learning"</span> by
+            <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.scholarpedia.org/article/Deep_Learning" property="cc:attributionName" rel="cc:attributionURL">
+                Juergen Schmidhuber
+            </a> is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">
+	    Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>. Permissions beyond the scope of this license are described in the <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.scholarpedia.org/article/Scholarpedia:Terms_of_use" rel="cc:morePermissions">Terms of Use</a></li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="/article/Scholarpedia:Privacy_policy" title="Scholarpedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/article/Scholarpedia:About" class="mw-redirect" title="Scholarpedia:About">About Scholarpedia</a></li>
+											<li id="footer-places-disclaimer"><a href="/article/Scholarpedia:General_disclaimer" title="Scholarpedia:General disclaimer">Disclaimers</a></li>
+									</ul>
+			
+			<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script src="//www.scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.loader.load(["jquery.ui.dialog","curatorpedia.dashboard","curatorpedia.confirm","mediawiki.user","mediawiki.page.ready","ext.vector.collapsibleNav","ext.vector.collapsibleTabs","ext.vector.simpleSearch"], null, true);
+}</script>
+<script>
+var wgSitename = '//www.scholarpedia.org';</script>
+
+<script src="//www.scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-22078568-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script><!-- Served in 13.102 secs. -->
+        
+	</body>
+</html>
