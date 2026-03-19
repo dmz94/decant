@@ -94,11 +94,4 @@ First tester round active.
 
 ## Known Issues (v1 accepted)
 
-- **Demo page social proof line** -- "2,847 wine
-  enthusiasts..." leaks through Trafilatura extraction.
-  Shows testers where engine gaps are. Not worth a
-  special-case fix.
-- **Relative links in uploaded files** -- When a user uploads
-  a saved HTML file, relative links in the content have no
-  base URL to resolve against. Links break. Documented in
-  Help but not fixable without the original URL.
+(none)
