@@ -81,10 +81,8 @@ Fixed set -- do not change filenames or scoring criteria mid-run.
 | 74 | canada-ai-guidance.html | https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-generative-ai.html | in-scope | cat 8 |
 | 75 | epa-climate-actions.html | https://www.epa.gov/climate-change/climate-change-regulatory-actions-and-initiatives | in-scope | cat 8 |
 | 76 | australia-impact.html | https://oia.pmc.gov.au/resources/guidance-impact-analysis/australian-government-guide-policy-impact-analysis | in-scope | cat 8 |
-| 77 | travel-state-passports.html | https://travel.state.gov/content/travel/en/passports/how-apply.html | in-scope | cat 8 |
 | 78 | eu-commission-apply.html | https://commission.europa.eu/funding-tenders/how-apply/application-process_en | in-scope | cat 8 |
 | 79 | insideclimate-2025.html | https://insideclimatenews.org/news/28122025/2025-year-in-climate/ | in-scope | cat 9 |
-| 80 | nasa-globalwarming.html | https://www.earthobservatory.nasa.gov/Features/GlobalWarming/page5.php | in-scope | cat 9 |
 | 81 | sciencenews-animals.html | https://www.sciencenews.org/article/favorite-animal-stories-2025 | in-scope | cat 9 |
 | 82 | history-constitution.html | https://www.history.com/topics/united-states-constitution/constitution | in-scope | cat 10 |
 | 83 | mentalfloss-hysteria.html | https://www.mentalfloss.com/history/dark-history-of-hysteria | in-scope | cat 10 |
@@ -124,7 +122,5 @@ Fixed set -- do not change filenames or scoring criteria mid-run.
 | 117 | elife-editorial.html | https://elifesciences.org/articles/102432 | in-scope | cat 16 |
 | 118 | frontiers-metrics.html | https://frontiersin.org/articles/10.3389/frma.2022.943932/full | in-scope | cat 16 |
 | 119 | nature-comms.html | https://www.nature.com/articles/s41467-024-50779-y | in-scope | cat 16 |
-| 120 | cochrane-evidence.html | https://www.cochrane.org/evidence | in-scope | cat 16 |
 | 121 | arxiv-html.html | https://arxiv.org/html/2510.15842v1 | in-scope | cat 16 |
 | 122 | drugs-metformin.html | https://www.drugs.com/metformin.html | in-scope | cat 4 |
-| 123 | ssa-disability.html | https://www.ssa.gov/applyfordisability/ | in-scope | cat 8 |

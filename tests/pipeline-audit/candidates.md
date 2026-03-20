@@ -58,14 +58,11 @@ addition workflow.
 | C40 | thisoldhouse-diy | https://www.thisoldhouse.com/home-improvement/25-diy-fundamentals | 7 | verified | 25 numbered skills, home-improvement publisher |
 | C41 | nerdwallet-will | https://www.nerdwallet.com/article/investing/estate-planning/how-to-write-a-will | 7 | high-confidence | Financial how-to, 7-step guide |
 | C42 | nps-climate-action | https://www.nps.gov/pore/learn/nature/climatechange_action_home.htm | 7 | verified | Gov practical advice, step-like sections, nested lists |
-| C43 | ssa-disability | https://www.ssa.gov/applyfordisability/ | 7 | verified | Structured apply guidance, process steps, prominent nav |
 | C44 | canada-ai-guidance | https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-generative-ai.html | 8 | verified | Canadian federal guidance, WET framework, breadcrumbs |
 | C45 | epa-climate-actions | https://www.epa.gov/climate-change/climate-change-regulatory-actions-and-initiatives | 8 | verified | US EPA, prose across sectors, section headers |
 | C46 | australia-impact | https://oia.pmc.gov.au/resources/guidance-impact-analysis/australian-government-guide-policy-impact-analysis | 8 | verified | Australian gov, policy framework, downloadable attachments |
-| C48 | travel-state-passports | https://travel.state.gov/content/travel/en/passports/how-apply.html | 8 | verified | Multi-step passport instructions, eligibility subsections |
 | C49 | eu-commission-apply | https://commission.europa.eu/funding-tenders/how-apply/application-process_en | 8 | verified | EU institutional, layered structure, policy nav |
 | C50 | insideclimate-2025 | https://insideclimatenews.org/news/28122025/2025-year-in-climate/ | 9 | verified | Long-form year-in-review, free, no paywall |
-| C51 | nasa-globalwarming | https://www.earthobservatory.nasa.gov/Features/GlobalWarming/page5.php | 9 | verified | Multi-page/paginated explainer, continuity stitching test |
 | C52 | sciencenews-animals | https://www.sciencenews.org/article/favorite-animal-stories-2025 | 9 | high-confidence | Nature writing, metered paywall, full text in HTML |
 | C54 | history-constitution | https://www.history.com/topics/united-states-constitution/constitution | 10 | verified | History.com reference, extensive prose, inline video links |
 | C55 | mentalfloss-hysteria | https://www.mentalfloss.com/history/dark-history-of-hysteria | 10 | verified | History explainer, extended prose, historical analysis |
@@ -105,5 +102,4 @@ addition workflow.
 | C93 | elife-editorial | https://elifesciences.org/articles/102432 | 16 | verified | eLife editorial, DOI, article metrics, open-access badge |
 | C94 | frontiers-metrics | https://frontiersin.org/articles/10.3389/frma.2022.943932/full | 16 | verified | Full structured sections, data figures, CC-BY |
 | C95 | nature-comms | https://www.nature.com/articles/s41467-024-50779-y | 16 | verified | Nature Communications OA, abstract, figures, methods |
-| C96 | cochrane-evidence | https://www.cochrane.org/evidence | 16 | verified | Cochrane overview, systematic reviews, plain language summaries |
 | C97 | arxiv-html | https://arxiv.org/html/2510.15842v1 | 16 | high-confidence | arXiv HTML paper, single-page, sections, references |

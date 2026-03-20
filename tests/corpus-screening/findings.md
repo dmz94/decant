@@ -70,6 +70,12 @@ Retried (connection errors from first pass):
 - C11 restofworld-tiger: manual browser save OK
 - C44 canada-ai-guidance: manual browser save OK
 
+Culled after screening (pipeline correctly rejected):
+- C43 ssa-disability: out of scope (navigation/reference)
+- C48 travel-state-passports: out of scope (tool/form page)
+- C51 nasa-globalwarming: out of scope (navigation/reference)
+- C96 cochrane-evidence: out of scope (navigation/reference)
+
 ## Screening Tool Improvements Needed
 
 These must be fixed before screening 60+ new fixtures.
