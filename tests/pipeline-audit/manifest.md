@@ -33,8 +33,8 @@ Fixed set -- do not change filenames or scoring criteria mid-run.
 | 26 | ribbonfarm-gervais-principle.html | https://www.ribbonfarm.com/2009/10/07/the-gervais-principle-or-the-office-according-to-the-office/ | in-scope | |
 | 27 | natarchives-magna-carta.html | https://www.nationalarchives.gov.uk/education/resources/magna-carta/ | in-scope | |
 | 28 | who-mental-health.html | https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response | in-scope | |
-| 29 | wikipedia-dyslexia.html | https://en.wikipedia.org/wiki/Dyslexia | in-scope | |
-| 30 | plos-one-open-access.html | https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0270268 | in-scope | |
+| 29 | wikipedia-dyslexia.html | https://en.wikipedia.org/wiki/Dyslexia | out-of-scope | Culled: encyclopedia (parked category) |
+| 30 | plos-one-open-access.html | https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0270268 | out-of-scope | Culled: academic paper (parked category) |
 | 31 | irs-child-tax-credit.html | https://www.irs.gov/credits-deductions/individuals/child-tax-credit | in-scope | |
 | 32 | govuk-pip.html | https://www.gov.uk/pip | in-scope | |
 | 33 | substack-dyslexia-myths.html | https://readwritejen.substack.com/p/why-dyslexia-myths-persist | in-scope | |
@@ -68,13 +68,13 @@ Fixed set -- do not change filenames or scoring criteria mid-run.
 | 61 | edutopia-strategies.html | https://www.edutopia.org/article/selecting-instructional-strategies-students-can-master/ | in-scope | cat 5 |
 | 62 | scholastic-reading.html | https://www.scholastic.com/teachers/teaching-tools/articles/literacy/science-of-reading-resources.html | in-scope | cat 5 |
 | 63 | colorincolorado-ell.html | https://www.colorincolorado.org/article/what-ell-educator | in-scope | cat 5 |
-| 64 | bbcgoodfood-victoria.html | https://www.bbcgoodfood.com/recipes/classic-victoria-sandwich-recipe | in-scope | cat 6 |
+| 64 | bbcgoodfood-victoria.html | https://www.bbcgoodfood.com/recipes/classic-victoria-sandwich-recipe | out-of-scope | Culled: recipe (parked category) |
 | 65 | sallysbaking-applepie.html | https://sallysbakingaddiction.com/apple-pie-recipe/ | in-scope | cat 6 |
 | 66 | pinchofyum-tikka.html | https://pinchofyum.com/chicken-tikka-masala | in-scope | cat 6 |
-| 67 | giallozafferano-tiramisu.html | https://www.giallozafferano.com/recipes/Tiramisu.html | in-scope | cat 6 |
-| 68 | minimalistbaker-cake.html | https://minimalistbaker.com/one-bowl-vegan-chocolate-cake/ | in-scope | cat 6 |
-| 69 | damndelicious-pasta.html | https://damndelicious.net/2014/10/11/one-pot-garlic-parmesan-pasta/ | in-scope | cat 6 |
-| 70 | instructables-elwire.html | https://www.instructables.com/Beginners-Guide-to-Start-an-EL-Wire-Project/ | in-scope | cat 7 |
+| 67 | giallozafferano-tiramisu.html | https://www.giallozafferano.com/recipes/Tiramisu.html | out-of-scope | Culled: recipe (parked category) |
+| 68 | minimalistbaker-cake.html | https://minimalistbaker.com/one-bowl-vegan-chocolate-cake/ | out-of-scope | Culled: recipe (parked category) |
+| 69 | damndelicious-pasta.html | https://damndelicious.net/2014/10/11/one-pot-garlic-parmesan-pasta/ | out-of-scope | Culled: recipe (parked category) |
+| 70 | instructables-elwire.html | https://www.instructables.com/Beginners-Guide-to-Start-an-EL-Wire-Project/ | out-of-scope | Culled: bad fixture (empty JS shell) |
 | 71 | thisoldhouse-diy.html | https://www.thisoldhouse.com/home-improvement/25-diy-fundamentals | in-scope | cat 7 |
 | 72 | nerdwallet-will.html | https://www.nerdwallet.com/article/investing/estate-planning/how-to-write-a-will | in-scope | cat 7 |
 | 73 | nps-climate-action.html | https://www.nps.gov/pore/learn/nature/climatechange_action_home.htm | in-scope | cat 7 |
@@ -90,9 +90,9 @@ Fixed set -- do not change filenames or scoring criteria mid-run.
 | 85 | iwm-dunkirk.html | https://www.iwm.org.uk/history/what-you-need-to-know-about-the-dunkirk-evacuations | in-scope | cat 10 |
 | 86 | loc-magna-carta.html | https://www.loc.gov/exhibits/magna-carta-muse-and-mentor/executive-power.html | in-scope | cat 10 |
 | 87 | stanford-epistemology.html | https://plato.stanford.edu/entries/epistemology/ | in-scope | cat 11 |
-| 88 | worldhistory-rome.html | https://www.worldhistory.org/Rome/ | in-scope | cat 11 |
+| 88 | worldhistory-rome.html | https://www.worldhistory.org/Rome/ | out-of-scope | Culled: encyclopedia (parked category) |
 | 89 | newworldencyclopedia.html | https://www.newworldencyclopedia.org/entry/Encyclopedia | in-scope | cat 11 |
-| 90 | simple-wiki-photosynthesis.html | https://simple.wikipedia.org/wiki/Photosynthesis | in-scope | cat 11 |
+| 90 | simple-wiki-photosynthesis.html | https://simple.wikipedia.org/wiki/Photosynthesis | out-of-scope | Culled: encyclopedia (parked category) |
 | 91 | scholarpedia-deeplearning.html | http://www.scholarpedia.org/article/Deep_Learning | in-scope | cat 11 |
 | 92 | copyright-gov-faq.html | https://www.copyright.gov/help/faq/ | in-scope | cat 12 |
 | 93 | apple-support-2fa.html | https://support.apple.com/en-in/102641 | in-scope | cat 12 |
@@ -118,9 +118,10 @@ Fixed set -- do not change filenames or scoring criteria mid-run.
 | 113 | yahoo-sports-ncaa.html | https://sports.yahoo.com/mens-college-basketball/article/2026-ncaa-tournament-will-feature-new-potentially-crucial-element-the-coachs-challenge-183306667.html | in-scope | cat 15 |
 | 114 | bleacherreport-bracket.html | https://bleacherreport.com/articles/25407372-ncaa-tournament-2026-predictions-mens-sweet-16-bracket-after-selection-sunday | in-scope | cat 15 |
 | 115 | foxsports-nfl.html | https://www.foxsports.com/stories/nfl/2026-nfl-offseason-buzz-rumors | in-scope | cat 15 |
-| 116 | pmc-open-access.html | https://pmc.ncbi.nlm.nih.gov/articles/PMC8221498/ | in-scope | cat 16 |
-| 117 | elife-editorial.html | https://elifesciences.org/articles/102432 | in-scope | cat 16 |
-| 118 | frontiers-metrics.html | https://frontiersin.org/articles/10.3389/frma.2022.943932/full | in-scope | cat 16 |
-| 119 | nature-comms.html | https://www.nature.com/articles/s41467-024-50779-y | in-scope | cat 16 |
-| 121 | arxiv-html.html | https://arxiv.org/html/2510.15842v1 | in-scope | cat 16 |
+| 116 | pmc-open-access.html | https://pmc.ncbi.nlm.nih.gov/articles/PMC8221498/ | out-of-scope | Culled: academic paper (parked category) |
+| 117 | elife-editorial.html | https://elifesciences.org/articles/102432 | out-of-scope | Culled: academic paper (parked category) |
+| 118 | frontiers-metrics.html | https://frontiersin.org/articles/10.3389/frma.2022.943932/full | out-of-scope | Culled: academic paper (parked category) |
+| 119 | nature-comms.html | https://www.nature.com/articles/s41467-024-50779-y | out-of-scope | Culled: academic paper (parked category) |
+| 121 | arxiv-html.html | https://arxiv.org/html/2510.15842v1 | out-of-scope | Culled: academic paper (parked category) |
 | 122 | drugs-metformin.html | https://www.drugs.com/metformin.html | in-scope | cat 4 |
+| 123 | bda-about-history.html | https://www.bdadyslexia.org.uk/about/our-history | in-scope | cat 10; BDA target audience, SEN-relevant org history |
