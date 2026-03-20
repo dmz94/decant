@@ -107,7 +107,7 @@ def run_pipeline(fixture_path: Path):
     Returns (doc, rendered_html, source_html) on success.
     Raises on validation or pipeline failure.
     """
-    html = fixture_path.read_text(encoding="utf-8")
+    html = fixture_path.read_text(encoding="utf-8", errors="replace")
 
     mode = detect_mode(html)
 

@@ -1,0 +1,55 @@
+{
+  "fixture": "newworldencyclopedia",
+  "corpus": "main",
+  "baselined_at": "2026-03-20T23:08:11.728574+00:00",
+  "decant_version": "0.1.0",
+  "status": "PASS",
+  "notes": "",
+  "metrics": {
+    "section_count": 12,
+    "headings": [
+      "Encyclopedia",
+      "Use of the term Encyclopedia",
+      "Characteristics of an Encyclopedia",
+      "Early encyclopedic works",
+      "Modern Encyclopedias",
+      "Information Age Encyclopedias",
+      "Knowledge and Values",
+      "See also",
+      "Notes",
+      "ReferencesISBN links support NWE through referral fees",
+      "External links",
+      "Credits"
+    ],
+    "output_word_count": 4115,
+    "source_plain_word_count": 6019,
+    "word_count_ratio": 0.6836683834524008,
+    "paragraph_count": 49,
+    "avg_paragraph_words": 69.73469387755102,
+    "shortest_paragraph_words": [
+      4,
+      4,
+      4
+    ],
+    "placeholder_count": 0,
+    "placeholder_types": {
+      "image": 0,
+      "form": 0,
+      "table": 0,
+      "hr": 0,
+      "other": 0
+    },
+    "placeholder_density": 0.0,
+    "link_word_count": 169,
+    "prose_word_count": 4115,
+    "link_to_prose_ratio": 0.04106925880923451,
+    "empty_sections": 0,
+    "stub_sections": 0
+  },
+  "thresholds_applied": {
+    "word_count_ratio_max": 1.5,
+    "avg_paragraph_words_min": 8.0,
+    "placeholder_density_max": 0.2,
+    "link_to_prose_ratio_max": 0.5
+  }
+}
