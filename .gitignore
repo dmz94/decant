@@ -68,5 +68,8 @@ tests/corpus-screening/review/
 tests/pipeline-audit/staging/
 tests/pipeline-audit/fetch-results.txt
 
+# Comparison script output
+scripts/output/
+
 # Generated review pack (zipped and sent to reviewers)
 tests/pipeline-audit/visual-review/review-pack/
