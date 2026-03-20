@@ -1,88 +1,81 @@
-# Comparison Tool Results Summary
+# Comparison Results Summary
 
-Generated: 2026-03-20
-Tool: scripts/run-comparison-batch.py --all
-Baseline: Readability.js + jsdom vs Decant pipeline
-Status: TRIAGE COMPLETE. Keep/cull decisions made. Execution pending.
+Scratch file for controller thread. Updated after corpus
+finalization (2026-03-20).
 
-## Classification Counts
+## Corpus State
 
-| Classification | Count |
-|---|---|
-| Clean (90%+) | 23 |
-| Good (80-90%) | 29 |
-| Decant Wins | 16 |
-| Moderate Gap (50-80%) | 28 |
-| Severe Gap (15-50%) | 12 |
-| Near Total Loss (<15%) | 8 |
-| Errors | 2 |
-| **Total** | **118** |
+105 in-scope fixtures, 15 out-of-scope.
+Manifest: tests/pipeline-audit/test-pages/manifest.md
 
-68 fixtures (58%) need no engine work (Clean + Good + Decant Wins).
+Baseline status:
+- PASS: 102
+- MARGINAL: 2 (copyright-gov-faq, netflix-help)
+- FAIL: 1 (scholastic-reading -- parser produces 0 sections)
 
-## Cull List (14 fixtures)
+## Comparison Classification (118 fixtures, pre-cull)
 
-| Fixture | Reason |
-|---|---|
-| plos-one-open-access | Academic paper (parked) |
-| nature-comms | Academic paper (parked) |
-| pmc-open-access | Academic paper (parked) |
-| elife-editorial | Academic paper (parked) |
-| frontiers-metrics | Academic paper (parked) |
-| arxiv-html | Academic paper (parked) |
-| minimalistbaker-cake | Recipe (parked) |
-| damndelicious-pasta | Recipe (parked) |
-| bbcgoodfood-victoria | Recipe (parked) |
-| giallozafferano-tiramisu | Recipe (parked) |
-| wikipedia-dyslexia | Encyclopedia (parked) |
-| simple-wiki-photosynthesis | Encyclopedia (parked) |
-| worldhistory-rome | Encyclopedia (parked) |
-| instructables-elwire | Bad fixture (empty JS shell) |
+These counts are from the Readability.js comparison run
+across the full corpus before culling.
 
-After cull: ~104 in-scope fixtures.
+- Clean: 23
+- Good: 29
+- Decant Wins: 16
+- Moderate Gap: 28
+- Severe Gap: 11
+- Near Total Loss: 8
+- Errors: 2 (both resolved)
 
-## Engine Fix Priority Order
+## Cull Executed
 
+14 fixtures marked out-of-scope:
+- 5 academic papers (plos-one-open-access, elife-editorial,
+  frontiers-metrics, nature-comms, arxiv-html)
+- 4 recipes (bbcgoodfood-victoria, giallozafferano-tiramisu,
+  minimalistbaker-cake, damndelicious-pasta)
+- 3 encyclopedia (wikipedia-dyslexia, worldhistory-rome,
+  simple-wiki-photosynthesis)
+- 1 bad fixture (instructables-elwire, empty JS shell)
+- 1 geo-redirect (history-constitution, pre-existing)
+
+Parked categories (not v1): academic papers, recipes,
+encyclopedia/Wikipedia.
+
+## Fixture Added
+
+bda-about-history.html (row 123, cat 10). BDA org history
+page, SEN-relevant. Replaces the BDA about page which was
+a JS-loaded hub (see Known Scope Boundaries in
+docs/corpus-design.md).
+
+## Engine Patterns Found (11)
+
+Priority order for engine fixes:
+
+1. LISTICLE_TRUNCATION -- Body content dropped on long
+   multi-item pages. timeout-london (5.5%),
+   roughguides-barcelona, tomsguide-espresso,
+   outdoorgearlab-boots (1 heading of 54). Priority #1.
+2. CALLOUT_CONTENT_LOSS -- Embedded pedagogical elements
+   stripped (teacher notes, practice questions).
+   openstax-photosynthesis. Priority #1.
+3. IMAGE_LOSS -- 0% image survival on most fixtures.
+4. CONTENT_BEFORE_FIRST_HEADING -- Parser drops pre-heading
+   content by design.
+5. EMPTY_SECTIONS -- Headings survive, 0 words beneath.
+6. BRACKETED_LINK_REFERENCES -- Inline promo links as text.
+7. STRUCTURED_CONTENT_LOSS -- Stat cards, pros/cons stripped.
+8. BOILERPLATE_LEAK -- CTA, subscribe blocks surviving.
+   stanford-epistemology extreme case (431 extra paragraphs).
+9. CAPTION_LOSS -- figcaptions not matching after extraction.
+10. ITALICIZED_CONTENT_DROPPED -- em/i tags lost.
+11. HEADING_STRUCTURE_LOSS -- Sub-section headings flattened.
+
+Engine fix priority order:
 1. Core text fidelity (titles, headings, body content)
 2. Images and captions
 3. Tables and charts
 4. Pre-heading content (taglines, decks, author info)
-
-## Engine Patterns Found
-
-| # | Pattern | Priority | Examples |
-|---|---|---|---|
-| 1 | Image loss (0% survival on most fixtures) | #2 | Most moderate+ fixtures |
-| 2 | Content before first heading dropped | #4 | yale360-baboons, atavist-castles |
-| 3 | Listicle truncation (NEW) | #1 | timeout-london (5.5%), outdoorgearlab-boots (1/54 headings) |
-| 4 | Empty sections | #1 | tomsguide-espresso |
-| 5 | Bracketed link references | Low | foxsports-nfl |
-| 6 | Structured content loss | Medium | foxsports-nfl, outdoorgearlab-boots |
-| 7 | Boilerplate leak | Under investigation | stanford-epistemology (431 extra paras) |
-| 8 | Caption loss | #2 | All fixtures with figcaptions |
-| 9 | Italicized content dropped | #1 | allaboutjazz-genesis |
-| 10 | Callout content loss (NEW) | #1 | openstax-photosynthesis |
-| 11 | Heading structure loss | #1 | github-2fa (1 heading vs 7) |
-
-## Parked Categories (not v1)
-
-- Academic papers
-- Recipes
-- Wikipedia/encyclopedia
-
-## Architecture Issue: Accordion/JS-Hidden Content
-
-Two fixtures (copyright-gov-faq, BDA about page) use
-accordion/collapsed content that requests.get() never
-sees. Content MAY be in static HTML hidden by CSS/JS.
-If so, engine fix. If not, architecture change needed.
-BDA is a target-audience site -- this matters.
-
-## New Fixture to Add
-
-BDA about page: https://www.bdadyslexia.org.uk/about
-Accordion FAQ on target-audience site. Fetch and add
-during corpus finalization.
 
 ## Notable Fixture Decisions
 
@@ -94,7 +87,21 @@ during corpus finalization.
 - mind-depression: DECANT_WINS (Decant got more content)
 - readingrockets-dyslexia: DECANT_WINS
 
-## Comparison Tool Location
+## Known Scope Boundaries
+
+JS-loaded accordion/hub pages: content fetched dynamically
+on click, not in static HTML. BDA about page is the
+confirmed example. Documented in docs/corpus-design.md.
+
+CSS-hidden accordions (e.g. copyright-gov-faq): content IS
+in the HTML but collapsed. Potential engine fix, not
+architecture change.
+
+## Comparison Scripts
+
+Decision: KEEP in repo permanently. They are the QA loop
+for engine fixes -- re-run after fixing LISTICLE_TRUNCATION
+to prove the fix worked on timeout-london, etc.
 
 Scripts (tracked):
 - scripts/readability-extract.js
@@ -103,19 +110,11 @@ Scripts (tracked):
 - package.json
 
 Output (gitignored):
-- scripts/output/full-results.json (complete data)
-- scripts/output/full-summary.txt (text summary)
-- scripts/output/triage-needed.txt
-- scripts/output/decant-wins.txt
-- scripts/output/cleanup-manifest.txt
+- scripts/output/ (full-results.json, summaries, manifests)
+- tests/corpus-screening/review/compare-*.html
 
-Decision pending: keep scripts in repo permanently or
-remove after investigation completes.
+## Corpus Status
 
-## Next Steps
-
-1. Execute cull (mark 14 fixtures out-of-scope in manifest)
-2. Add BDA about page fixture
-3. Auto-baseline survivors
-4. Update docs with final counts
-5. Report to controller for viability call
+Corpus is closed for the viability call. 105 in-scope
+fixtures, all baselined. Engine patterns documented.
+Fix priorities established.
