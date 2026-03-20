@@ -404,6 +404,7 @@ def _normalize_heading(text: str) -> str:
     t = re.sub(r'[^\w\s.,;:!?\'\-]', '', t, flags=re.UNICODE)
     # Collapse whitespace
     t = re.sub(r'\s+', ' ', t).strip()
+    t = t.replace(' ', '')
     return t
 
 
