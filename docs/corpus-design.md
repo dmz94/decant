@@ -262,7 +262,8 @@ Empty.
 
 ## Coverage Targets
 
-39 current fixtures + 1 self-test. 60 new fixtures needed.
+105 in-scope fixtures. 15 out-of-scope. See manifest for
+current breakdown.
 
 | Category | Have | Target | To add |
 |----------|------|--------|--------|

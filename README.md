@@ -63,7 +63,7 @@ A single self-contained HTML file:
 ## Testing
 
 - Unit and integration tests (pytest)
-- 47-fixture real-world corpus with metrics-based regression
+- 105-fixture real-world corpus with metrics-based regression
   tracking
 - ScrapingHub Article Extraction Benchmark (181 pages)
 - Webis Web Content Extraction Benchmark (3,985 pages)

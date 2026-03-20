@@ -236,8 +236,7 @@ Examples:
 
 ### Current State
 
-38 fixtures, all PASS. All baselines human-reviewed via
-interactive baseline process. See
+105 fixtures (102 PASS, 2 MARGINAL, 1 FAIL). See
 tests/pipeline-audit/test-pages/manifest.md for the full
 fixture list.
 
